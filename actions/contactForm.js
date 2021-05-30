@@ -20,7 +20,7 @@ export const sendMessageAction = (formData) => async (dispatch) => {
             payload: res.data.data,
         });
         dispatch(
-            setAlert('Successfully subscribed to the newsletter', 'success')
+            setAlert('Successfully sent message. :)', 'success')
         );
     } catch (err) {
         const errors = err.response.data.error;
