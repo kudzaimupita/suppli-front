@@ -12,7 +12,7 @@ class ProductHorizontal extends Component {
         return (
             <div className="ps-product--horizontal">
                 <div className="ps-product__thumbnail">
-                    <Link href="/shop">
+                    <Link href="/product/[pid]" as={`/product/${product._id}`}>
                         <a>
                             <img
                                 src={`https://suppli-api.herokuapp.com/img/products/${product.imageCover}`}
