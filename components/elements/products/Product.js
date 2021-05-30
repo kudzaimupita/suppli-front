@@ -148,7 +148,7 @@ class Product extends Component {
                     <div className="ps-product__content">
                         <Link
                             href="/product/[pid]"
-                            as={`/product/R{product.id}`}>
+                            as={`/product/${product._id}`}>
                             <a className="ps-product__title">
                                 {product.name && product.name}
                             </a>
@@ -186,7 +186,7 @@ class Product extends Component {
                     <div className="ps-product__content hover">
                         <Link
                             href="/product/[pid]"
-                            as={`/product/R{product.id}`}>
+                            as={`/product/${product._id}`}>
                             <a className="ps-product__title">
                                 {product.name && product.name}
                             </a>
