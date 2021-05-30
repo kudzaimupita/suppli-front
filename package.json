@@ -7,7 +7,7 @@
         "build": "next build",
         "export": "next export",
         "start": "next dev",
-"heroku-postbuild": "npm run build"
+"heroku-postbuild": "npx next dev"
     },
     "dependencies": {
         "@ant-design/icons": "^4.6.2",
