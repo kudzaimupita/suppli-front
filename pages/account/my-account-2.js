@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FooterDefault from '../../components/shared/footers/FooterMarketPlace2';
 import HeaderDefault from '../../components/shared/headers/HeaderMarketPlace';
-import HeaderDefault from '../../components/shared/headers/HeaderMarketPlace';
+// import HeaderDefault from '../../components/shared/headers/HeaderMarketPlace';
 import BreadCrumb from '../../components/elements/BreadCrumb';
 import MyAccount2 from '../../components/partials/account/MyAccount2';
 import HeaderMobile from '../../components/shared/headers/HeaderMobile';
