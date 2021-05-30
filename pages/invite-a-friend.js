@@ -3,7 +3,7 @@ import React from 'react';
 import FooterDefault from '../components/shared/footers/FooterMarketPlace2';
 import HeaderDefault from '../components/shared/headers/HeaderMarketPlace';
 import BreadCrumb from '../components/elements/BreadCrumb';
-import InviteAFriend from '../components/partials/account/InviteAFriend';
+import InviteAFriend from '../components/partials/account/inviteAFriend';
 import HeaderMobile from '../components/shared/headers/HeaderMobile';
 import NavigationList from '../components/shared/navigation/NavigationList';
 
