@@ -88,7 +88,7 @@ const VendorFaqs = () => (
             </div>
             <div className="ps-section__footer">
                 <p>Still have more questions? Feel free to contact us.</p>
-                <a className="ps-btn" href="#">
+                <a className="ps-btn" href="/contact">
                     Contact Us
                 </a>
             </div>
