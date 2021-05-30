@@ -1,0 +1,17 @@
+.containerr {
+    margin: auto;
+    width: 200px;
+    position: relative;
+}
+
+img {
+    width: 100%;
+}
+
+.block {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    box-shadow: inset 0px 0px 10px 20px white;
+}
