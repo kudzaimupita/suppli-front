@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Newsletters from '../../components/partials/commons/Newletters';
-// import FooterDefault from '../../components/shared/footers/FooterDefault';
-// import HeaderDefault from '../../components/shared/headers/HeaderDefault';
+import FooterDefault from '../../components/shared/footers/FooterMarketPlace2';
+import HeaderDefault from '../../components/shared/headers/HeaderMarketPlace';
 import BreadCrumb from '../../components/elements/BreadCrumb';
 import RecentViewedProducts from '../../components/partials/account/RecentViewedProducts';
 import HeaderMobile from '../../components/shared/headers/HeaderMobile';
