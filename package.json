@@ -6,8 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "export": "next export",
-        "start": "next dev",
-"heroku-postbuild": "npx next dev"
+  "start": "next start -p $PORT",
+  "heroku-postbuild": "npm run build",
     },
     "dependencies": {
         "@ant-design/icons": "^4.6.2",
