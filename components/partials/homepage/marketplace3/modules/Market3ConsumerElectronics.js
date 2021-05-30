@@ -47,7 +47,7 @@ class Market3ConsumerElectronics extends Component {
                     </h3>
                     <ul>
                         <li>
-                            <Link href="/sales">
+                            <Link href="/sale">
                                 <a>Specials</a>
                             </Link>
                         </li>
