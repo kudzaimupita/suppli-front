@@ -141,7 +141,7 @@ const FooterTechnology = () => {
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link href="/page/contact-us">
+                                                <Link href="/contact-us">
                                                     <a
                                                         style={{
                                                             color: 'white',
@@ -193,7 +193,7 @@ const FooterTechnology = () => {
                                                 </Link>
                                             </li>
                                             <li>
-                                                <Link href="/specials">
+                                                <Link href="/sale">
                                                     <a
                                                         style={{
                                                             color: 'white',
