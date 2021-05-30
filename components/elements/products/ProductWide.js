@@ -68,7 +68,7 @@ class ProductWide extends Component {
         return (
             <div className="ps-product ps-product--wide">
                 <div className="ps-product__thumbnail">
-                    <Link href="/product/[pid]" as={`/product/R{product.id}`}>
+                    <Link href="/product/[pid]" as={`/product/${product._id}`}>
                         <a>
                             {/* <img src={product.thumbnail} alt="Suppl-i" /> */}
                         </a>
@@ -78,7 +78,7 @@ class ProductWide extends Component {
                     <div className="ps-product__content">
                         <Link
                             href="/product/[pid]"
-                            as={`/product/R{product._id}`}>
+                            as={`/product/${product._id}`}>
                             {/* src=
                             {`https://suppli-api.herokuapp.com/img/products/${
                                 product.imageCover && product.imageCover
