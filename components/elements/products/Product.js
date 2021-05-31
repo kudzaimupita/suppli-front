@@ -140,11 +140,11 @@ class Product extends Component {
                     </ul>
                 </div>
                 <div className="ps-product__container">
-                    <Link href="/shop">
+          
                         <a className="ps-product__vendor">
-                            {/* {this.props.name && this.props.products} */}
+                             {product.brandName && product.brandName}
                         </a>
-                    </Link>
+             
                     <div className="ps-product__content">
                         <Link
                             href="/product/[pid]"
