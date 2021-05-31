@@ -55,9 +55,9 @@ class InformationBox extends Component {
                 <div className="ps-product__meta">
                     <p>
                         Brand:
-                        <a className="ml-2 text-capitalize">
+                 
                             {product.brandName && product.brandName}
-                        </a>
+                  
                     </p>
                     <div className="ps-product__rating">
                         <Rate
