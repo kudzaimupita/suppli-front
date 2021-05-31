@@ -40,11 +40,11 @@ class InformationQuickView extends Component {
                 <div className="ps-product__meta">
                     <p>
                         Brand:
-                        <Link href="/shop">
+                      
                             <a className="ml-2 text-capitalize">
                                 {product.brandName && product.brandName}
                             </a>
-                        </Link>
+                      
                     </p>
                     <div className="ps-product__rating">
                         <Rate
