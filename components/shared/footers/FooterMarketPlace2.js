@@ -172,16 +172,7 @@ const FooterTechnology = () => {
                                                     </a>
                                                 </Link>
                                             </li>
-                                            <li>
-                                                <Link href="/account/checkout">
-                                                    <a
-                                                        style={{
-                                                            color: 'white',
-                                                        }}>
-                                                        Checkout
-                                                    </a>
-                                                </Link>
-                                            </li>
+                                 
                                             <li>
                                                 <Link href="/account/my-account">
                                                     <a
