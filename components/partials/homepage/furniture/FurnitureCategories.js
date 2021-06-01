@@ -15,7 +15,7 @@ class FurnitureCategories extends Component {
                         <div
                             className="ps-section__header center"
                             style={{ textAlign: 'center' }}>
-                            <h3>Our stores</h3>
+                            <h3><strong>Our stores</strong></h3>
                         </div>
                         <div className="row">
                             {this.props.vendors &&
