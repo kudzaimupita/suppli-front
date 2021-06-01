@@ -43,7 +43,7 @@ class Market3ConsumerElectronics extends Component {
             <div className="ps-block--product-box">
                 <div className="ps-block__header">
                     <h3>
-                        <i className="icon-laundry"></i> Recommended
+                        <i className="icon-laundry"></i><strong> Recommended</strong>
                     </h3>
                     <ul>
                         <li>
