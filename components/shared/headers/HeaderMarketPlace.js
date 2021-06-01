@@ -50,6 +50,19 @@ class HeaderAutoPart extends Component {
 
     render() {
         const menuAutopart = [
+             {
+                text: 'Home',
+                url: '/',
+                icon: (
+                    <i
+                        class="fa fa-home"
+                        style={{
+                            fontSize: '17px',
+                            marginRight: '8px',
+                            color: 'white',
+                        }}></i>
+                ),
+            },
             {
                 text: 'FAQs',
                 url: '/faqs',
