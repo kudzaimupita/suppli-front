@@ -139,7 +139,7 @@ export const register = (formData) => async (dispatch) => {
         dispatch(authLogin());
         localStorage.setItem('token', res.data.token);
 
-        dispatch(setAlert('Welcome!', 'success'));
+//         dispatch(setAlert('Welcome!', 'success'));
     } catch (err) {
         console.log(err);
 
@@ -172,7 +172,7 @@ export const login = (formData) => async (dispatch) => {
         console.log(res.data);
         localStorage.setItem('token', res.data.token);
 
-        dispatch(setAlert('Welcome!', 'success'));
+//         dispatch(setAlert('Welcome!', 'success'));
     } catch (err) {
         console.log(err);
 
