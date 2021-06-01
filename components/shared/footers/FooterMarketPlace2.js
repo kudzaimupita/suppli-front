@@ -88,16 +88,7 @@ const FooterTechnology = () => {
                                                     </a>
                                                 </Link>
                                             </li>
-                                            <li>
-                                                <Link href="/faqs">
-                                                    <a
-                                                        style={{
-                                                            color: 'white',
-                                                        }}>
-                                                        FAQs
-                                                    </a>
-                                                </Link>
-                                            </li>
+                               
                                         </ul>
                                     </aside>
                                 </div>
@@ -173,13 +164,13 @@ const FooterTechnology = () => {
                                                 </Link>
                                             </li>
                                  
-                                            <li>
-                                                <Link href="/account/my-account">
+                                              <li>
+                                                <Link href="/faqs">
                                                     <a
                                                         style={{
                                                             color: 'white',
                                                         }}>
-                                                        My account
+                                                        FAQs
                                                     </a>
                                                 </Link>
                                             </li>
