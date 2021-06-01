@@ -69,7 +69,7 @@ class MarketPlaceDealOfDay extends Component {
                     <div className="ps-section__header">
                         <div className="ps-block--countdown-deal">
                             <div className="ps-block__left">
-                                <h3>Today's Deals</h3>
+                                <h3><strong>Today's Deals</strong></h3>
                             </div>
                         </div>
                         <a href="/sale">View all</a>
