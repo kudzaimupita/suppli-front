@@ -101,13 +101,7 @@ class VendorStore extends Component {
                                     <div className="ps-block__divider"></div>
                                     <div className="ps-block__content">
                                         <p>
-                                            <strong>
-                                                {' '}
-                                                {this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc.name}
-                                            </strong>
-                                          
+                                           
                                             {this.props.vendor &&
                                                 this.props.vendor.doc &&
                                                 this.props.vendor.doc.aboutUs}
