@@ -127,7 +127,7 @@ class ThumbnailBox extends Component {
                         this.props.product.images.map((image) => (
                             <div className="item" key={image}>
                                 <img
-                                    src={`https://suppli-api.herokuapp.com/img/products/${
+                                    src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
                                         image && image
                                     }`}
                                     alt="Suppl-i"
