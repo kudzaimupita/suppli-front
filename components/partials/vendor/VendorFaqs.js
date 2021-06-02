@@ -13,31 +13,32 @@ const VendorFaqs = () => (
                         <figure>
                             <figcaption>How do fees work on Suppl-i?</figcaption>
                             <p>
-                                Joining and starting a shop on Suppl-i is free. There are three
-                                basic selling fees: a listing fee, a transaction fee, and a payment
-                                processing fee.
+                          Joining and starting a shop on Suppl-i is free. There are two basic selling
+costs: online banking fees and transaction fees.
+Listing products and creating your online store is completely free of
+charge. Once an item sells, there is a standard online banking charge of
+3% with an additional 5% transaction charge per product.
                             </p>
                             <p>
-                                It costs USD 0.20 to publish a listing to the marketplace. A listing
-                                lasts for four months or until the item is sold. Once an item sells,
-                                there is a 3.5% transaction fee on the sale price (not including
-                                shipping costs). If you accept payments with PayPal, there is also a
-                                payment processing fee based on their fee structure.
+                              Joining and starting a shop on Suppl-i is free. There are two basic selling
+costs: online banking fees and transaction fees.
+Listing products and creating your online store is completely free of
+charge. Once an item sells, there is a standard online banking charge of
+3% with an additional 5% transaction charge per product.
                             </p>
-                            <p>
-                                Listing fees are billed for $0.20 USD, so if your bank’s currency is
-                                not USD, the amount may differ based on changes in the exchange
-                                rate.
-                            </p>
+                       
                         </figure>
                         <figure>
-                            <figcaption>What do I need to do to create a shop?</figcaption>
+                            <figcaption>What do I need to do to create my online store?</figcaption>
                             <p>
-                                It’s easy to set up a shop on Suppl-i. Create an Suppl-i account
-                                (if you don’t already have one), set your shop location and
-                                currency, choose a shop name, create a listing, set a payment method
-                                (how you want to be paid), and finally set a billing method (how you
-                                want to pay your Suppl-ifees).
+                              It’s easy to set up an e-store with Suppl-i. First, register and signup to
+create a Suppl-i account. Once your account has been approved and
+verified, you set your shop name, location, bank details and other
+relevant information. Lastly, you upload your products, images, pricing
+and product information to start selling online.
+It is important to keep you online store updated with correct information
+to enhance sales and customer experience.
+
                             </p>
                         </figure>
                     </div>
@@ -45,24 +46,17 @@ const VendorFaqs = () => (
                         <figure>
                             <figcaption>How do I get paid?</figcaption>
                             <p>
-                                If you accept payments with PayPal, funds from PayPal sales on
-                                Suppl-i will be deposited into your PayPal account. We encourage
-                                sellers to use a PayPal Business account and not a Personal account,
-                                as personal accounts are subject to monthly receiving limits and
-                                cannot accept payments from buyers that are funded by a credit card.
+                              Once you have completed uploading your products and creating your
+online store, funds received by Suppl-i for the sale of your goods will be
+paid directly to your business bank account. Payments to vendors will
+exclude the 3% banking fee and 5% transaction fee as per the Suppl-i
+T&C’s.
                             </p>
                             <p>
-                                It costs USD 0.20 to publish a listing to the marketplace. A listing
-                                lasts for four months or until the item is sold. Once an item sells,
-                                there is a 3.5% transaction fee on the sale price (not including
-                                shipping costs). If you accept payments with PayPal, there is also a
-                                payment processing fee based on their fee structure.
+                         Payments may take up to 3-5 business days to clear in the vendors
+account once payments have been cleared and confirmed by Suppl-i.
                             </p>
-                            <p>
-                                Listing fees are billed for $0.20 USD, so if your bank’s currency is
-                                not USD, the amount may differ based on changes in the exchange
-                                rate.
-                            </p>
+                        
                         </figure>
                         <figure>
                             <figcaption>
@@ -79,10 +73,12 @@ const VendorFaqs = () => (
                             <figcaption>What can I sell on Suppl-i?</figcaption>
                         </figure>
                         <p>
-                            Suppl-i provides a marketplace for crafters, artists and collectors to
-                            sell their handmade creations, vintage goods (at least 20 years old),
-                            and both handmade and non-handmade crafting supplies.
+                          Suppl-i provides a marketplace for small, local business owners, product
+crafters, artists and entrepreneurs to sell their handmade creations,
+groceries, clothing, accessories, collector items and more...
                         </p>
+    <p>No second hands or used goods can be sold on Suppl-i, as it is a
+marketplace for new items only.</p>
                     </div>
                 </div>
             </div>
