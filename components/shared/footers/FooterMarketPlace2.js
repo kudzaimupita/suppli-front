@@ -88,7 +88,6 @@ const FooterTechnology = () => {
                                                     </a>
                                                 </Link>
                                             </li>
-                               
                                         </ul>
                                     </aside>
                                 </div>
@@ -163,8 +162,8 @@ const FooterTechnology = () => {
                                                     </a>
                                                 </Link>
                                             </li>
-                                 
-                                              <li>
+
+                                            <li>
                                                 <Link href="/faqs">
                                                     <a
                                                         style={{
@@ -262,6 +261,21 @@ const FooterTechnology = () => {
                                                     className="fa fa-instagram"
                                                     style={{
                                                         fontSize: '30px',
+                                                    }}></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                // className="youtube"
+                                                href="https://www.youtube.com/channel/UCJPu-4Z9qDwheU9j0Dj40sg">
+                                                <i
+                                                    className="fa fa-youtube"
+                                                    style={{
+                                                        fontSize: '30px',
+                                                        color: 'red',
                                                     }}></i>
                                             </a>
                                         </li>
