@@ -2,6 +2,8 @@ import React from 'react';
 
 import '../../scss/market-place-3.scss';
 // import "./../../assets/scss/theme.scss"//
+import { connect } from 'react-redux';
+import { Spin } from 'antd';
 import HeaderMobile from '../../components/shared/headers/HeaderMobile';
 import FooterMarketPlace2 from '../../components/shared/footers/FooterMarketPlace2';
 import NavigationList from '../../components/shared/navigation/NavigationList';
@@ -16,24 +18,74 @@ import FurnitureCategories from '../../components/partials/homepage/furniture/Fu
 import ShopBrands from '../../components/partials/shop/ShopBrands';
 import ShopBanner from '../../components/partials/shop/ShopCarouselBanner';
 
-const HomeMarketPlace3Page = () => (
+const HomeMarketPlace3Page = (props) => (
     <div className="site-content">
-        <HeaderDefault />
-        <HeaderMobile />
-        <NavigationList />
-        <SubscribePopup />
-        <main id="homepage-5">
-            <ShopBanner />
-            {/* <MarketPlace3SearchTrending /> */}
-            {/* <ShopBanner /> */}
-            <FurnitureCategories />
-            <MarketPlace3DealOfDay />
-            <MarketPlace3ProductBox />
-            {/* <MarketPlace3ProductBox /> */}
-            {/* <MarketPlace3SearchTrending /> */}
-        </main>
-        <FooterMarketPlace2 />
+        <>
+            {/* {props.productsLoading && props.productsLoading && (
+                <div
+                    style={{
+                        borderRadius: ' 4px',
+                        textAlign: 'center',
+                        // left: ' 20px',
+                        // top: '60px',
+                        marginBottom: '20px',
+                        padding: '300px 100px',
+                        background: '#fff',
+                        zIndex: '99',
+                        width: '100%',
+                        height: '100%',
+                        margin: 'auto',
+                        display: 'block',
+                        position: 'fixed',
+                    }}>
+                    <Spin size="large" />
+                </div>
+            )} */}
+            <HeaderDefault />
+            <HeaderMobile />
+            <NavigationList />
+            <SubscribePopup />
+            <main id="homepage-5">
+                <ShopBanner />{' '}
+                {props.productsLoading || props.vendorsLoading ? (
+                    <div
+                        style={{
+                            borderRadius: ' 4px',
+                            textAlign: 'center',
+                            // left: ' 20px',
+                            // top: '60px',
+                            marginBottom: '20px',
+                            padding: '300px 100px',
+                            paddingBottom: '3000x',
+                            background: '#fff',
+                            zIndex: '99',
+                            width: '100%',
+                            height: '1000px',
+                            margin: 'auto',
+                            display: 'block',
+                            position: 'fixed',
+                        }}>
+                        <Spin size="large" />
+                    </div>
+                ) : null}
+                {/* <MarketPlace3SearchTrending /> */}
+                {/* <ShopBanner /> */}
+                <FurnitureCategories />
+                <MarketPlace3DealOfDay />
+                <MarketPlace3ProductBox />
+                {/* <MarketPlace3ProductBox /> */}
+                {/* <MarketPlace3SearchTrending /> */}
+            </main>
+            <FooterMarketPlace2 />
+        </>
     </div>
 );
 
-export default HomeMarketPlace3Page;
+const mapStateToProps = (state) => ({
+    vendors: state.allVendors.vendors,
+    vendorsLoading: state.allVendors.loading,
+    productsLoading: state.popularProducts.loading,
+    // catergories: state.catergories.catergories,
+});
+
+export default connect(mapStateToProps, {})(HomeMarketPlace3Page);
