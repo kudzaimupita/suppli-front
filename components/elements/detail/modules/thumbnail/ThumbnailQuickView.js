@@ -41,7 +41,7 @@ class ThumbnailQuickView extends Component {
                                 this.props.product.images.map((variant) => (
                                     <div className="item" key={variant}>
                                         <img
-                                            src={`https://suppli-api.herokuapp.com/img/products/${
+                                            src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
                                                 variant && variant
                                             }`}
                                             alt="Suppl-i"
