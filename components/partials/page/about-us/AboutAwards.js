@@ -125,54 +125,44 @@ class AboutAwards extends Component {
                         style={{ marginTop: '40px' }}>
                         <Slider {...carouselSetting} className="ps-carousel">
                             <div className="item">
-                                <Link href="/page/blank">
-                                    <a>
-                                        <img
-                                            src="/static/img/picture1.png"
-                                            alt="Suppl-i"
-                                        />
-                                    </a>
-                                </Link>
+                                <a>
+                                    <img
+                                        src="/static/img/picture1.png"
+                                        alt="Suppl-i"
+                                    />
+                                </a>
+                            </div>
+                            <div>
+                                <a>
+                                    <img
+                                        src="/static/img/picture2.png"
+                                        alt="Suppl-i"
+                                    />
+                                </a>
                             </div>
                             <div className="item">
-                                <Link href="/page/blank">
-                                    <a>
-                                        <img
-                                            src="/static/img/picture2.png"
-                                            alt="Suppl-i"
-                                        />
-                                    </a>
-                                </Link>
+                                <a>
+                                    <img
+                                        src="/static/img/picture3.png"
+                                        alt="Suppl-i"
+                                    />
+                                </a>
                             </div>
                             <div className="item">
-                                <Link href="/page/blank">
-                                    <a>
-                                        <img
-                                            src="/static/img/picture3.png"
-                                            alt="Suppl-i"
-                                        />
-                                    </a>
-                                </Link>
+                                <a>
+                                    <img
+                                        src="/static/img/picture4.png"
+                                        alt="Suppl-i"
+                                    />
+                                </a>
                             </div>
                             <div className="item">
-                                <Link href="/page/blank">
-                                    <a>
-                                        <img
-                                            src="/static/img/picture4.png"
-                                            alt="Suppl-i"
-                                        />
-                                    </a>
-                                </Link>
-                            </div>
-                            <div className="item">
-                                <Link href="/page/blank">
-                                    <a>
-                                        <img
-                                            src="/static/img/picture5.png"
-                                            alt="Suppl-i"
-                                        />
-                                    </a>
-                                </Link>
+                                <a>
+                                    <img
+                                        src="/static/img/picture5.png"
+                                        alt="Suppl-i"
+                                    />
+                                </a>
                             </div>
                         </Slider>
                     </div>
