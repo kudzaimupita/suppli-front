@@ -57,8 +57,11 @@ Suppl-i.
                                     className="ps-block__desc"
                                     data-mh="about-desc">
                                     <p>
-                                        Our tools and services make it easy to
-                                        manage, promote and grow your business.
+                                 Our tools and services make
+it easy to manage, promote and grow your
+business. You get your own dashboard to manage
+and monitor your online store.
+
                                     </p>
                                 </div>
                          
