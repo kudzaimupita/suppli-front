@@ -133,7 +133,7 @@ class FAQs extends Component {
                                 key="4">
                                 <p>
                                     Yes you can, if you give us an email at
-                                    info@suppl-i.comwe’ll be able to advise you
+                                    info@suppl-i.com we’ll be able to advise you
                                     further on this.
                                 </p>
                             </Panel>
@@ -228,7 +228,7 @@ class FAQs extends Component {
                                 <p>
                                     As we currently ship with Droppa, they state
                                     that your courier will make several attempts
-                                    to deliver your parcel. If Droppahave
+                                    to deliver your parcel. If Droppa have
                                     attempted to deliver your parcel after a few
                                     attempts this will then be sent back to us
                                     and you will be refunded, minus costs to
@@ -239,7 +239,7 @@ class FAQs extends Component {
                                     address?
                                 </p>
                                 <p>
-                                    No, you cannothave your order delivered to a
+                                    No, you cannot have your order delivered to a
                                     PO Box Address.Only physical home or office
                                     addresses can be used.
                                 </p>
@@ -332,25 +332,7 @@ class FAQs extends Component {
                         </Collapse>
                         ,<h4 style={{ marginTop: '15px' }}>RETURNS</h4>
                         <Collapse>
-                            <Panel
-                                header="Can I still purchase from your website?"
-                                key="1">
-                                <p>
-                                    If you’ve received the wrong item in your
-                                    order and you're a SA customer, please
-                                    return it using our returns serviceon our
-                                    website. Please also contact us on
-                                    info@suppl-i.com where a member of our
-                                    customer service team will help you
-                                    further.If your refund has been approved,
-                                    this will then be processed, and the credit
-                                    will automatically be applied to your
-                                    original payment method within 5 working
-                                    days. If you have requested an exchange,
-                                    please allow 7-10 days for this process to
-                                    be managed
-                                </p>
-                            </Panel>
+                          
                             <Panel
                                 header="Can I return items bought with a gift voucher?"
                                 key="2">
@@ -413,7 +395,7 @@ class FAQs extends Component {
                                 </p>
                             </Panel>
                             <Panel
-                                header="How canI find out if you'll be getting in more stock of a product I want?"
+                                header="How can I find out if you'll be getting in more stock of a product I want?"
                                 key="2">
                                 <p>
                                     Due to high demand, some of the items on our
@@ -433,8 +415,8 @@ class FAQs extends Component {
                                     isn’t always possible –if there is something
                                     you see advertised and it isn’t in stock on
                                     the website, please check the advert to see
-                                    if the special is still valid orfeel free to
-                                    email us on info@suppl-i.comfor more
+                                    if the special is still valid or feel free to
+                                    email us on info@suppl-i.com for more
                                     information! We’ll always try and help.
                                 </p>
                             </Panel>
@@ -459,7 +441,7 @@ class FAQs extends Component {
                                 <p>
                                     Oh no! Please try resetting your password
                                     initially. If this still doesn't work please
-                                    contact us at info@suppl-i.comand we'll try
+                                    contact us at info@suppl-i.com and we'll try
                                     and help!
                                 </p>
                             </Panel>
@@ -493,8 +475,7 @@ class FAQs extends Component {
                                     securities are maintained and that our
                                     customer information is kept private and
                                     safe from third parties. To read more about
-                                    our privacy policy please see here(insert
-                                    link to privacy policy page)..
+                                    our privacy policy please see here <a href='/privacy-policy'>Privacy Policy</a>
                                 </p>
                             </Panel>
                             <Panel
@@ -513,7 +494,7 @@ class FAQs extends Component {
                                     Click unsubscribe at the bottom of any
                                     newsletter or email your receive from us,
                                     alternatively email us at
-                                    info@suppl-i.comand we can remove your
+                                    info@suppl-i.com and we can remove your
                                     information from our database completely
                                 </p>
                             </Panel>
@@ -539,7 +520,7 @@ class FAQs extends Component {
                                 key="2">
                                 <p>
                                     Yes, we do require that you create an
-                                    account when selling onSuppl-i. This in
+                                    account when selling on Suppl-i. This in
                                     order for us to maintain a high level of
                                     service to our vendorsand to try ensure that
                                     no errors or mistakes are made when creating
@@ -600,12 +581,12 @@ class FAQs extends Component {
                                 header="What services are available to me as a vendor?"
                                 key="7">
                                 <p>
-                                    AtSuppl-i, we provide vendors with a
+                                    At Suppl-i, we provide vendors with a
                                     platform in which to create their own online
                                     store and manage their products and specials
                                     through their own management portal. We also
                                     manage the logistics for all our vendors (we
-                                    handle all courier requirements) so thatyou
+                                    handle all courier requirements) so that you
                                     can focus on your day-to-day running of the
                                     business.
                                 </p>
