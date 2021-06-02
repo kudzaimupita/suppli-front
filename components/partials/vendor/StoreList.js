@@ -32,7 +32,7 @@ class FurnitureCategories extends Component {
                                             </Link>
                                             <img
                                                 style={{ borderRadius: '50px' }}
-                                                src={`https://suppli-api.herokuapp.com/img/plugs/${vendor.logo}`}
+                                                src={`https://suppli-images.s3.af-south-1.amazonaws.com/${vendor.logo}`}
                                                 alt="Suppl-i"
                                             />
                                             <p>{vendor.name}</p>
