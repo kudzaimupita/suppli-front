@@ -30,9 +30,12 @@ const VendorAbout = () => (
                                     className="ps-block__desc"
                                     data-mh="about-desc">
                                     <p>
-                                        It doesn’t take much to list your items
-                                        and once you make a sale, Suppl-i’s
-                                        transaction fee is just 5%.
+                                     There are no signup
+fees, no contracts and no listing fees. You only get
+charges standard banking fees of 3% and a
+transaction fee of 5% when an item is sold on
+Suppl-i.
+
                                     </p>
                                 </div>
                              
