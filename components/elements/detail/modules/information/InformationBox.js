@@ -137,7 +137,7 @@ class InformationBox extends Component {
                     </Link>
                 </div>
                 <div className="ps-product__specification">
-                    <Link href="/contact-us">
+                    <Link href="/contact">
                         <a className="report">Report Abuse</a>
                     </Link>
                     <p>
