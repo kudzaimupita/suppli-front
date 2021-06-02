@@ -80,7 +80,7 @@ class ProductWide extends Component {
                             href="/product/[pid]"
                             as={`/product/${product._id}`}>
                             {/* src=
-                            {`https://suppli-api.herokuapp.com/img/products/${
+                            {`https://suppli-images.s3.af-south-1.amazonaws.com/${
                                 product.imageCover && product.imageCover
                             }`} */}
                         </Link>
