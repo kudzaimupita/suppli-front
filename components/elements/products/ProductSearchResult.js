@@ -17,7 +17,7 @@ class ProductResult extends Component {
                     <Link href="/product/[pid]" as={`/product/${product._id}`}>
                         <a>
                             <img
-                                src={`https://suppli-api.herokuapp.com/img/products/${
+                                src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
                                     product.imageCover && product.imageCover
                                 }`}
                                 alt="Suppl-i"
