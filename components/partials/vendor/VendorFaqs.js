@@ -60,13 +60,12 @@ account once payments have been cleared and confirmed by Suppl-i.
                         </figure>
                         <figure>
                             <figcaption>
-                                Do I need a credit or debit card to create a shop?
+                              What type of bank account do I need to receive payments?
                             </figcaption>
                             <p>
-                                No, a credit or debit card is not required to create a shop. To be
-                                verified as a seller you have the choice to use either a credit card
-                                or to register via PayPal. You will not incur any charges until you
-                                open your shop and publish your listings.
+                               Any registered bank account with a South African banking institution is
+fine for use with your Suppl-i store. It can be a personal savings or
+cheque account as well as a business account.
                             </p>
                         </figure>
                         <figure>
