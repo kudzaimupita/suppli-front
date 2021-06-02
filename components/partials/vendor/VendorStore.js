@@ -113,7 +113,9 @@ class VendorStore extends Component {
                                                 this.props.vendor.doc.aboutUs}
                                         </p>
                                         <span className="ps-block__divider"></span>
-                                        <p>
+                                       {this.props.vendor &&
+                                               
+                                                this.props.vendor.doc.address && (  <p>
                                             <strong>Address</strong>{' '}
                                             {this.props.vendor &&
                                                 this.props.vendor.doc &&
@@ -131,11 +133,16 @@ class VendorStore extends Component {
                                             {this.props.vendor &&
                                                 this.props.vendor.doc &&
                                                 this.props.vendor.doc.country}
-                                        </p>
+                                        </p>)}
                                         <figure>
-                                            <figcaption>
+                                          {this.props.vendor &&
+                                                    this.props.vendor.doc &&
+                                                    this.props.vendor.doc
+                                                        .facebookLink ||  this.props.vendor.doc &&
+                                                    this.props.vendor.doc
+                                                        .instagramLink && (    <figcaption>
                                                 Follow us on social
-                                            </figcaption>
+                                            </figcaption>)}
                                             <ul className="ps-list--social-color">
                                                 {this.props.vendor &&
                                                     this.props.vendor.doc &&
