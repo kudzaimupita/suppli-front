@@ -72,7 +72,7 @@ class VendorStore extends Component {
                             <div className="ps-block--vendor">
                                 <div className="ps-block__thumbnail">
                                     <img
-                                        src={`https://suppli-api.herokuapp.com/img/plugs/${
+                                        src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
                                             this.props.vendor &&
                                             this.props.vendor.doc &&
                                             this.props.vendor.doc.logo
