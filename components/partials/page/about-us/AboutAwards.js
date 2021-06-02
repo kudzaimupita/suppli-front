@@ -58,7 +58,7 @@ class AboutAwards extends Component {
             ],
         };
         return (
-            <div className="ps-about-awards">
+            <div className="" style={{ marginTop: '20px' }}>
                 <div className="container">
                     <div className="" style={{ marginBottom: '30px' }}>
                         <h3>About Us</h3>
