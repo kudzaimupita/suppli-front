@@ -35,7 +35,7 @@ const VendorAbout = () => (
                                         transaction fee is just 5%.
                                     </p>
                                 </div>
-                                <a href="#">Learn more</a>
+                             
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ const VendorAbout = () => (
                                         manage, promote and grow your business.
                                     </p>
                                 </div>
-                                <a href="#">Learn more</a>
+                         
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@ const VendorAbout = () => (
                                         and merchants.
                                     </p>
                                 </div>
-                                <a href="#">Learn more</a>
+                          
                             </div>
                         </div>
                     </div>
