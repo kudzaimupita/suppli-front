@@ -99,7 +99,7 @@ class ThumbnailBox extends Component {
                                                     )
                                                 }>
                                                 <img
-                                                    src={`https://suppli-api.herokuapp.com/img/products/${
+                                                    src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
                                                         image && image
                                                     }`}
                                                     alt="Suppl-i"
