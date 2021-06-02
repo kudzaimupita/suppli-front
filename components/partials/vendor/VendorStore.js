@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Slider from 'react-slick';
 import { relatedProduct } from '../../../public/static/data/product';
 // import { getVendor } from '../../../actions/vendors';
-import Link from 'next/link';
+import { Spin } from 'antd';
 import Product from '../../elements/products/Product';
 import VendorProducts from './modules/VendorProducts';
 import NextArrow from '../../elements/carousel/NextArrow';
@@ -65,221 +65,251 @@ class VendorStore extends Component {
             ],
         };
         return (
-            <div className="ps-vendor-store">
-                <div className="container">
-                    <div className="ps-section__container">
-                        <div className="ps-section__left">
-                            <div className="ps-block--vendor">
-                                <div className="ps-block__thumbnail">
-                                    <img
-                                        src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
-                                            this.props.vendor &&
-                                            this.props.vendor.doc &&
-                                            this.props.vendor.doc.logo
-                                        }`}
-                                        alt="Suppl-i"
-                                    />
-                                </div>
-                                <div className="ps-block__container">
-                                    <div className="ps-block__header">
-                                        <h4>
+            <>
+                {this.props.vendorLoading && this.props.vendorLoading && (
+                    <div
+                        className="example"
+                        style={{
+                            borderRadius: ' 4px',
+                            textAlign: 'center',
+                            // margin: ' 20px 0',
+                            marginBottom: '20px',
+                            padding: '30px 50px',
+                            background: '#fff',
+                            zIndex: '99',
+                            width: '100%',
+                            height: '100%',
+                            margin: 'auto',
+                            display: 'block',
+                            position: 'fixed',
+                        }}>
+                        <Spin size="large" />
+                    </div>
+                )}{' '}
+                <div className="ps-vendor-store">
+                    <div className="container">
+                        <div className="ps-section__container">
+                            <div className="ps-section__left">
+                                <div className="ps-block--vendor">
+                                    <div className="ps-block__thumbnail">
+                                        <img
+                                            src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
+                                                this.props.vendor &&
+                                                this.props.vendor.doc &&
+                                                this.props.vendor.doc.logo
+                                            }`}
+                                            alt="Suppl-i"
+                                        />
+                                    </div>
+                                    <div className="ps-block__container">
+                                        <div className="ps-block__header">
+                                            <h4>
+                                                {this.props.vendor &&
+                                                    this.props.vendor.doc &&
+                                                    this.props.vendor.doc.name}
+                                            </h4>
+                                            <Rating />({'    '}
                                             {this.props.vendor &&
                                                 this.props.vendor.doc &&
-                                                this.props.vendor.doc.name}
-                                        </h4>
-                                        <Rating />({'    '}
-                                        {this.props.vendor &&
-                                            this.props.vendor.doc &&
-                                            this.props.vendor.doc
-                                                .ratingsQuantity}{' '}
-                                        ) Reviews
-                                        {/* <p>
+                                                this.props.vendor.doc
+                                                    .ratingsQuantity}{' '}
+                                            ) Reviews
+                                            {/* <p>
                                             <strong>85% Positive</strong> (562
                                             rating)
                                         </p> */}
-                                    </div>
-                                    <div className="ps-block__divider"></div>
-                                    <div className="ps-block__content">
-                                        <p>
-                                           
-                                            {this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc.aboutUs}
-                                        </p>
-                                        <span className="ps-block__divider"></span>
-                                        <p>
-                                            {this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc
-                                                    .address && (
-                                                    <strong>Address</strong>
-                                                )}{' '}
-                                            {this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc
-                                                    .address && (
-                                                    <>
-                                                        {' '}
-                                                        {
-                                                            this.props.vendor
-                                                                .doc.address
-                                                        }
-                                                        ,
-                                                    </>
-                                                )}{' '}
-                                            {this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc.city && (
-                                                    <>
-                                                        {' '}
-                                                        {
-                                                            this.props.vendor
-                                                                .doc.city
-                                                        }
-                                                        ,
-                                                    </>
-                                                )}{' '}
-                                            {this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc
-                                                    .postalCode && (
-                                                    <>
-                                                        {' '}
-                                                        {
-                                                            this.props.vendor
-                                                                .doc.postalCode
-                                                        }
-                                                        ,
-                                                    </>
-                                                )}{' '}
-                                            {this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc.country}
-                                        </p>
-                                        <figure>
-                                            {(this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc
-                                                    .facebookLink) ||
-                                            (this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc
-                                                    .instagramLink) ? (
-                                                <figcaption>
-                                                    Follow us on social
-                                                </figcaption>
-                                            ) : null}
-                                            <ul className="ps-list--social-color">
+                                        </div>
+                                        <div className="ps-block__divider"></div>
+                                        <div className="ps-block__content">
+                                            <p>
                                                 {this.props.vendor &&
                                                     this.props.vendor.doc &&
                                                     this.props.vendor.doc
-                                                        .facebookLink && (
-                                                        <li>
-                                                            <>
+                                                        .aboutUs}
+                                            </p>
+                                            <span className="ps-block__divider"></span>
+                                            <p>
+                                                {this.props.vendor &&
+                                                    this.props.vendor.doc &&
+                                                    this.props.vendor.doc
+                                                        .address && (
+                                                        <strong>Address</strong>
+                                                    )}{' '}
+                                                {this.props.vendor &&
+                                                    this.props.vendor.doc &&
+                                                    this.props.vendor.doc
+                                                        .address && (
+                                                        <>
+                                                            {' '}
+                                                            {
+                                                                this.props
+                                                                    .vendor.doc
+                                                                    .address
+                                                            }
+                                                            ,
+                                                        </>
+                                                    )}{' '}
+                                                {this.props.vendor &&
+                                                    this.props.vendor.doc &&
+                                                    this.props.vendor.doc
+                                                        .city && (
+                                                        <>
+                                                            {' '}
+                                                            {
+                                                                this.props
+                                                                    .vendor.doc
+                                                                    .city
+                                                            }
+                                                            ,
+                                                        </>
+                                                    )}{' '}
+                                                {this.props.vendor &&
+                                                    this.props.vendor.doc &&
+                                                    this.props.vendor.doc
+                                                        .postalCode && (
+                                                        <>
+                                                            {' '}
+                                                            {
+                                                                this.props
+                                                                    .vendor.doc
+                                                                    .postalCode
+                                                            }
+                                                            ,
+                                                        </>
+                                                    )}{' '}
+                                                {this.props.vendor &&
+                                                    this.props.vendor.doc &&
+                                                    this.props.vendor.doc
+                                                        .country}
+                                            </p>
+                                            <figure>
+                                                {(this.props.vendor &&
+                                                    this.props.vendor.doc &&
+                                                    this.props.vendor.doc
+                                                        .facebookLink) ||
+                                                (this.props.vendor &&
+                                                    this.props.vendor.doc &&
+                                                    this.props.vendor.doc
+                                                        .instagramLink) ? (
+                                                    <figcaption>
+                                                        Follow us on social
+                                                    </figcaption>
+                                                ) : null}
+                                                <ul className="ps-list--social-color">
+                                                    {this.props.vendor &&
+                                                        this.props.vendor.doc &&
+                                                        this.props.vendor.doc
+                                                            .facebookLink && (
+                                                            <li>
                                                                 <>
-                                                                    <a
-                                                                        className="facebook"
+                                                                    <>
+                                                                        <a
+                                                                            className="facebook"
+                                                                            style={{
+                                                                                fontSize:
+                                                                                    '12px',
+                                                                            }}
+                                                                            href={`www.facebook.com/${
+                                                                                this
+                                                                                    .props
+                                                                                    .vendor &&
+                                                                                this
+                                                                                    .props
+                                                                                    .vendor
+                                                                                    .doc &&
+                                                                                this
+                                                                                    .props
+                                                                                    .vendor
+                                                                                    .doc
+                                                                                    .facebookLink
+                                                                            }`}
+                                                                            target="_blank"
+                                                                            rel="noopener noreferrer">
+                                                                            <i className="fa fa-facebook"></i>{' '}
+                                                                        </a>
+                                                                    </>
+                                                                </>
+                                                            </li>
+                                                        )}
+                                                    {this.props.vendor &&
+                                                        this.props.vendor.doc &&
+                                                        this.props.vendor.doc
+                                                            .instagramLink && (
+                                                            <li>
+                                                                <a
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="instagram"
+                                                                    href="https://www.instagram.com/suppli_sa/">
+                                                                    <i
+                                                                        className="fa fa-instagram"
                                                                         style={{
                                                                             fontSize:
-                                                                                '12px',
-                                                                        }}
-                                                                        href={`www.facebook.com/${
-                                                                            this
-                                                                                .props
-                                                                                .vendor &&
-                                                                            this
-                                                                                .props
-                                                                                .vendor
-                                                                                .doc &&
-                                                                            this
-                                                                                .props
-                                                                                .vendor
-                                                                                .doc
-                                                                                .facebookLink
-                                                                        }`}
-                                                                        target="_blank"
-                                                                        rel="noopener noreferrer">
-                                                                        <i className="fa fa-facebook"></i>{' '}
-                                                                    </a>
-                                                                </>
-                                                            </>
-                                                        </li>
-                                                    )}
-                                                {this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
-                                                        .instagramLink && (
-                                                        <li>
-                                                            <a
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                className="instagram"
-                                                                href="https://www.instagram.com/suppli_sa/">
-                                                                <i
-                                                                    className="fa fa-instagram"
-                                                                    style={{
-                                                                        fontSize:
-                                                                            '30px',
-                                                                    }}></i>
-                                                            </a>
-                                                        </li>
-                                                    )}
+                                                                                '30px',
+                                                                        }}></i>
+                                                                </a>
+                                                            </li>
+                                                        )}
 
-                                                {/* <li>
+                                                    {/* <li>
                                                     <a
                                                         className="linkedin"
                                                         href="#">
                                                         <i className="fa fa-linkedin"></i>
                                                     </a>
                                                 </li> */}
-                                                {/* <li>
+                                                    {/* <li>
                                                     <a
                                                         className="feed"
                                                         href="#">
                                                         <i className="fa fa-feed"></i>
                                                     </a>
                                                 </li> */}
-                                            </ul>
-                                        </figure>
-                                    </div>
-                                    <div className="ps-block__footer">
-                                        <p>
-                                            Call us directly
-                                            <strong>
-                                                {' '}
-                                                {this.props.vendor &&
+                                                </ul>
+                                            </figure>
+                                        </div>
+                                        <div className="ps-block__footer">
+                                            <p>
+                                                Call us directly
+                                                <strong>
+                                                    {' '}
+                                                    {this.props.vendor &&
+                                                        this.props.vendor.doc &&
+                                                        this.props.vendor.doc
+                                                            .phone}
+                                                </strong>
+                                            </p>
+                                            <p>
+                                                or Or if you have any question
+                                            </p>
+                                            <a
+                                                className="ps-btn ps-btn--fullwidth"
+                                                href={`mailto:${
+                                                    this.props.vendor &&
                                                     this.props.vendor.doc &&
-                                                    this.props.vendor.doc.phone}
-                                            </strong>
-                                        </p>
-                                        <p>or Or if you have any question</p>
-                                        <a
-                                            className="ps-btn ps-btn--fullwidth"
-                                            href={`mailto:${
-                                                this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc
-                                                    .companyEmail
-                                            }
+                                                    this.props.vendor.doc
+                                                        .companyEmail
+                                                }
                                             `}>
-                                            Contact Seller
-                                        </a>
+                                                Contact Seller
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="ps-section__right">
-                            <VendorProducts
-                                products={
-                                    this.props.vendor &&
-                                    this.props.vendor.doc &&
-                                    this.props.vendor.doc.products
-                                }
-                            />
+                            <div className="ps-section__right">
+                                <VendorProducts
+                                    products={
+                                        this.props.vendor &&
+                                        this.props.vendor.doc &&
+                                        this.props.vendor.doc.products
+                                    }
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 }
@@ -292,6 +322,7 @@ const mapStateToProps = (state) => ({
     isAuthenticated: state.auth,
     loading: state.auth.loading,
     createdPlugLoading: state.createdPlug,
+    vendorLoading: state.vendor.loading,
     // catergories: state.catergories.catergories,
 });
 
