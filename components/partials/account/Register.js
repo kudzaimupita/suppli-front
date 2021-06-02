@@ -85,12 +85,12 @@ class Register extends Component {
                         <ul className="ps-tab-list">
                             <li>
                                 <Link href="/account/login">
-                                    <a>Login</a>
+                                    <a href="/account/login">Login</a>
                                 </Link>
                             </li>
                             <li className="active">
                                 <Link href="/account/register">
-                                    <a>Register</a>
+                                    <a href="/account/register">Register</a>
                                 </Link>
                             </li>
                         </ul>
