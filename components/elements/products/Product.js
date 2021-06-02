@@ -98,7 +98,7 @@ class Product extends Component {
                                 href="#"
                                 data-toggle="tooltip"
                                 data-placement="top"
-                                title="Read More"
+                                title="Add to cart"
                                 onClick={this.handleAddItemToCart.bind(this)}>
                                 <i className="icon-bag2"></i>
                             </a>
