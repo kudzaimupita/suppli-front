@@ -294,7 +294,7 @@ class FAQs extends Component {
                                 header="What should I do if my order is missing?"
                                 key="4">
                                 <p>
-                                    If you are in SAand have not received your
+                                    If you are in SA and have not received your
                                     order within the allotted delivery time
                                     frame, please notify us by email at
                                     info@suppl-i.com within 21 days of the date
@@ -373,7 +373,7 @@ class FAQs extends Component {
                                     If your item is faulty, please do not
                                     dispose or amend your item(s). Please
                                     contact Customer Care on
-                                    info@suppl-i.comwithin 30 days of receipt
+                                    info@suppl-i.com within 30 days of receipt
                                     along with your name, order number, and any
                                     images you can provide of the faulty
                                     item(s).
