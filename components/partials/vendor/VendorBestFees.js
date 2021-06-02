@@ -44,7 +44,11 @@ deliveries.
                     </figure>
                 </div>
                 <div className="ps-section__highlight">
-//                     <img src="img/icons/vendor-4.png" alt="Suppl-i" />
+                     <img
+                                style={{ height: '40px', width: '40px' }}
+                                src="/static/img/payment-method/2.png"
+                                alt="Suppl-i"
+                            />
                     <figure>
                         <p>
                           We process payment with Peach Payments, an external
