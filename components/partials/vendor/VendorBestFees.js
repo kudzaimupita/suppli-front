@@ -44,9 +44,9 @@ deliveries.
                     </figure>
                 </div>
                 <div className="ps-section__highlight">
-                     <img
-                                style={{ height: '40px', width: '40px' }}
-                                src="/static/img/payment-method/2.png"
+                      <img
+                                style={{ height: '25px', width: '120px' }}
+                                src="/static/img/payment-method/1.png"
                                 alt="Suppl-i"
                             />
                     <figure>
