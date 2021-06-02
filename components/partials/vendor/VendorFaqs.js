@@ -71,14 +71,15 @@ account once payments have been cleared and confirmed by Suppl-i.
                         </figure>
                         <figure>
                             <figcaption>What can I sell on Suppl-i?</figcaption>
-                        </figure>
-                        <p>
+                            <p>
                           Suppl-i provides a marketplace for small, local business owners, product
 crafters, artists and entrepreneurs to sell their handmade creations,
 groceries, clothing, accessories, collector items and more...
                         </p>
     <p>No second hands or used goods can be sold on Suppl-i, as it is a
 marketplace for new items only.</p>
+                        </figure>
+
                     </div>
                 </div>
             </div>
