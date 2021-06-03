@@ -5,7 +5,7 @@ import ProductWide from '../../elements/products/ProductWide';
 import ShopWidget from './modules/ShopWidget';
 import { getSpecials, getNewArrivals } from '../../../actions/products';
 import { getVendors } from '../../../actions/vendors';
-
+import { Spin } from 'antd';
 class LayoutShopSidebarWithoutBanner extends Component {
     state = {
         listView: true,
@@ -23,22 +23,47 @@ class LayoutShopSidebarWithoutBanner extends Component {
     render() {
         const viewMode = this.state.listView;
         return (
-            <div className="ps-layout--shop">
-                <ShopWidget />
-                <div className="ps-layout__right">
-                    <div className="ps-shopping">
-                        <div className="ps-shopping__header">
-                            <p>
-                                <strong>
-                                    {' '}
-                                    {this.props.products && this.props.products
-                                        ? this.props.products.length
-                                        : 0}
-                                </strong>{' '}
-                                Products found
-                            </p>
-                            <div className="ps-shopping__actions">
-                                {/* <select
+            <>
+                {' '}
+                {this.props.popularProductsLoading &&
+                    this.props.popularProductsLoading && (
+                        <div
+                            className="example"
+                            style={{
+                                borderRadius: ' 4px',
+                                textAlign: 'center',
+                                // margin: ' 20px 0',
+                                marginBottom: '20px',
+                                padding: '300px 500px',
+                                right: '50px',
+                                background: '#fff',
+                                zIndex: '99',
+                                width: '100%',
+                                height: '100%',
+                                margin: 'auto',
+                                display: 'block',
+                                position: 'fixed',
+                            }}>
+                            <Spin size="large" />
+                        </div>
+                    )}{' '}
+                <div className="ps-layout--shop">
+                    <ShopWidget />
+                    <div className="ps-layout__right">
+                        <div className="ps-shopping">
+                            <div className="ps-shopping__header">
+                                <p>
+                                    <strong>
+                                        {' '}
+                                        {this.props.products &&
+                                        this.props.products
+                                            ? this.props.products.length
+                                            : 0}
+                                    </strong>{' '}
+                                    Products found
+                                </p>
+                                <div className="ps-shopping__actions">
+                                    {/* <select
                                     className="ps-select form-control"
                                     data-placeholder="Sort Items">
                                     <option>Sort by latest</option>
@@ -47,25 +72,25 @@ class LayoutShopSidebarWithoutBanner extends Component {
                                     <option>Sort by price: low to high</option>
                                     <option>Sort by price: high to low</option>
                                 </select> */}
-                                <div className="ps-shopping__view">
-                                    <p>View</p>
-                                    <ul className="ps-tab-list">
-                                        <li
-                                            className={
-                                                viewMode === true
-                                                    ? 'active'
-                                                    : ''
-                                            }>
-                                            <a
-                                                href="#"
-                                                // onClick={
-                                                //     this.handleChangeViewMode
-                                                // }
-                                            >
-                                                <i className="icon-grid"></i>
-                                            </a>
-                                        </li>
-                                        {/* <li
+                                    <div className="ps-shopping__view">
+                                        <p>View</p>
+                                        <ul className="ps-tab-list">
+                                            <li
+                                                className={
+                                                    viewMode === true
+                                                        ? 'active'
+                                                        : ''
+                                                }>
+                                                <a
+                                                    href="#"
+                                                    // onClick={
+                                                    //     this.handleChangeViewMode
+                                                    // }
+                                                >
+                                                    <i className="icon-grid"></i>
+                                                </a>
+                                            </li>
+                                            {/* <li
                                             className={
                                                 viewMode !== true
                                                     ? 'active'
@@ -79,45 +104,47 @@ class LayoutShopSidebarWithoutBanner extends Component {
                                                 <i className="icon-list4"></i>
                                             </a>
                                         </li> */}
-                                    </ul>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="ps-shopping__content">
-                            {viewMode === true ? (
-                                <div className="ps-shopping-product">
-                                    <div className="row">
+                            <div className="ps-shopping__content">
+                                {viewMode === true ? (
+                                    <div className="ps-shopping-product">
+                                        <div className="row">
+                                            {this.props.products &&
+                                            this.props.products.length > 0
+                                                ? this.props.products.map(
+                                                      (item) => (
+                                                          <div
+                                                              className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 "
+                                                              key={item.id}>
+                                                              <Product
+                                                                  product={item}
+                                                              />
+                                                          </div>
+                                                      )
+                                                  )
+                                                : ''}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="ps-shopping-product">
                                         {this.props.products &&
                                         this.props.products.length > 0
                                             ? this.props.products.map(
                                                   (item) => (
-                                                      <div
-                                                          className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 "
-                                                          key={item.id}>
-                                                          <Product
-                                                              product={item}
-                                                          />
-                                                      </div>
+                                                      <ProductWide
+                                                          product={item}
+                                                          key={item.id}
+                                                      />
                                                   )
                                               )
                                             : ''}
                                     </div>
-                                </div>
-                            ) : (
-                                <div className="ps-shopping-product">
-                                    {this.props.products &&
-                                    this.props.products.length > 0
-                                        ? this.props.products.map((item) => (
-                                              <ProductWide
-                                                  product={item}
-                                                  key={item.id}
-                                              />
-                                          ))
-                                        : ''}
-                                </div>
-                            )}
-                        </div>
-                        {/* <div className="ps-shopping__footer">
+                                )}
+                            </div>
+                            {/* <div className="ps-shopping__footer">
                             <div className="ps-pagination">
                                 <ul className="pagination">
                                     <li className="active">
@@ -138,14 +165,16 @@ class LayoutShopSidebarWithoutBanner extends Component {
                                 </ul>
                             </div>
                         </div> */}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 }
 const mapStateToProps = (state) => ({
     products: state.newArrivals.products,
+    popularProductsLoading: state.newArrivals.loading,
     // newArrivals: state.newArrivals.products,
     randomProducts: state.randomProducts.products,
     vendors: state.allVendors.vendors,
