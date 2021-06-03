@@ -37,7 +37,7 @@ class PanelCartMobile extends Component {
                                                 as={`/product/${product._id}`}>
                                                 <a>
                                                     <img
-                                                        src={`https://suppli-api.herokuapp.com/img/products/${
+                                                        src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
                                                             product.imageCover &&
                                                             product.imageCover
                                                         }`}
@@ -84,11 +84,23 @@ class PanelCartMobile extends Component {
                                 Sub Total:<strong>R {amount}</strong>
                             </h3>
                             <figure>
-                                <Link href="/account/shopping-cart">
-                                    <a className="ps-btn">View Cart</a>
+                                <Link
+                                    href="/account/shopping-cart"
+                                    style={{ color: 'white' }}>
+                                    <a
+                                        style={{ color: 'white' }}
+                                        className="ps-btn">
+                                        View Cart
+                                    </a>
                                 </Link>
-                                <Link href="/account/shopping-cart">
-                                    <a className="ps-btn">Checkout</a>
+                                <Link
+                                    href="/account/shopping-cart"
+                                    style={{ color: 'white' }}>
+                                    <a
+                                        style={{ color: 'white' }}
+                                        className="ps-btn">
+                                        Checkout
+                                    </a>
                                 </Link>
                             </figure>
                         </div>
