@@ -487,7 +487,7 @@ const BlankContent = () => (
                     other website;
                 </p>
                 <hr />
-                <h4>
+                <p>
                     8. When we receive a complaint, we record all the
                     information you have given to us. we use that information to
                     resolve your complaint. If your complaint reasonably
@@ -499,15 +499,15 @@ const BlankContent = () => (
                     information obtained from this source to assess the level of
                     service we provide, but not in a way that could identify you
                     or any other person.
-                </h4>
+                </p>
                 <hr />
-                <h4>
+                <p>
                     9. When we obtain information from you specifically to
                     enable you to buy a Product offered on our Sites by a
                     Seller, we share your information with the Seller.
-                </h4>
+                </p>
                 <hr />
-                <h4>
+                <p>
                     10. Your Personal Information will also be used by us or
                     shared with our sponsors, advertisers, advertising networks,
                     advertising servers, social media networks, and analytics
@@ -515,40 +515,40 @@ const BlankContent = () => (
                     marketing, promotional, data enrichment and other offers, as
                     well as product information, product development and
                     development and expansion of our Services.
-                </h4>
+                </p>
                 <hr />
-                <h4>
+                <p>
                     11. Your Personal Information will be used by us or shared
                     within our group of companies for internal reasons,
                     primarily for business and operational purposes.
-                </h4>
+                </p>
                 <hr />
-                <h4>
+                <p>
                     12. As we continue to develop our business, we may sell or
                     purchase assets, subsidiaries or business units. In such
                     transactions, your Personal Information generally is one of
                     the transferred business assets but remains subject to the
                     promises made in any pre-existing Privacy Notice.
-                </h4>
+                </p>
                 <hr />
-                <h4>
+                <p>
                     13. If another entity acquires us, our businesses or
                     substantially all or part of our assets, or assets related
                     to our Sites and/ or Services, your Personal Information
                     will be disclosed to such entity as part of the due
                     diligence process and will be transferred to such entity as
                     one of the transferred assets.
-                </h4>
+                </p>
                 <hr />
-                <h4>
+                <p>
                     14. In the event of insolvency, business rescue or
                     reorganization proceedings being brought by or against us,
                     all such Personal Information will be considered an asset of
                     ours and as such it is possible, they will be sold or
                     transferred to third-parties.
-                </h4>
+                </p>
                 <hr />
-                <h4>
+                <p>
                     15. We will ensure that all of our employees, Sellers,
                     Delivery Agents, third party service providers, divisions,
                     affiliates and third party business partners (including
@@ -558,7 +558,7 @@ const BlankContent = () => (
                     confidentiality and security of your Personal Information
                     and are restricted in their processing thereof as per this
                     Privacy Notice.
-                </h4>
+                </p>
                 <hr />
                 <h4>16. Financial information relating to your credit cards</h4>
                 <p>
