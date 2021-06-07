@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { Form, Input, Radio, DatePicker } from 'antd';
 import { updateMe, updateMyPassword } from './../../../actions/auth';
 import { setAlert } from './../../../actions/alert';
+import { logOut } from '../../../store/auth/action';
 
 import { connect } from 'react-redux';
 class UserInformation extends Component {
@@ -36,16 +37,10 @@ class UserInformation extends Component {
         e.preventDefault();
         this.props.updateMyPassword(formData);
     };
-
-    // push =()=>({
-    //     Router.
-    // })
-    // static getDerivedStateFromProps(props) {
-    //     if (props.isLoggedIn === false) {
-    //         Router.push('/');
-    //     }
-    //     return false;
-    // }
+    handleLogout = (e) => {
+        e.preventDefault();
+        this.props.dispatch(logOut());
+    };
 
     render() {
         const accountLinks = [
@@ -128,12 +123,13 @@ class UserInformation extends Component {
                                                 </li>
                                             ))}
                                             <li>
-                                                <Link href="/account/my-account">
-                                                    <a>
+                                            <a
+                                                        onClick={this.handleLogout.bind(
+                                                            this
+                                                        )}>
                                                         <i className="icon-power-switch"></i>
                                                         Logout
                                                     </a>
-                                                </Link>
                                             </li>
                                         </ul>
                                     </div>
