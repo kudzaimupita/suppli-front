@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import { logOut } from '../../../store/auth/action';
 
 class Addresses extends Component {
     constructor(props) {
         super(props);
         this.state = {};
     }
+    
+        handleLogout = (e) => {
+        e.preventDefault();
+        this.props.dispatch(logOut());
+    };
 
     render() {
         const accountLinks = [
@@ -77,12 +83,14 @@ class Addresses extends Component {
                                                 </li>
                                             ))}
                                             <li>
-                                                <Link href="/account/my-account">
-                                                    <a>
+                                             
+                                                    <a onClick={this.handleLogout.bind(
+                                                            this
+                                                        )}>
                                                         <i className="icon-power-switch"></i>
                                                         Logout
                                                     </a>
-                                                </Link>
+                                           
                                             </li>
                                         </ul>
                                     </div>
