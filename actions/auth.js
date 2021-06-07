@@ -28,7 +28,10 @@ import // GET_MY_PLUG_REQUEST,
 import { GET_CATERGORIES_FAIL } from '../constants/catergoryConstants';
 // import { GET_UNBALANCED_SALES_FAIL } from '../constants/orderConstants';
 
-export const updateMe = (formData) => async (dispatch) => {
+export const updateMe = (formData) => async (dispatch, getState) => {
+    api.defaults.headers.common['authorization'] = `Bearer ${
+        getState().auth1.token
+    }`;
     dispatch({
         type: UPDATE_ME_REQUEST,
     });
@@ -58,7 +61,10 @@ export const updateMe = (formData) => async (dispatch) => {
         });
     }
 };
-export const updateMyPassword = (formData) => async (dispatch) => {
+export const updateMyPassword = (formData) => async (dispatch, getState) => {
+    api.defaults.headers.common['authorization'] = `Bearer ${
+        getState().auth1.token
+    }`;
     dispatch({
         type: UPDATE_MY_PASSWORD_REQUEST,
     });
@@ -124,7 +130,7 @@ export const updateMyPassword = (formData) => async (dispatch) => {
 //     }
 // };
 // // Register User
-export const register = (formData) => async (dispatch) => {
+export const register = (formData) => async (dispatch, getState) => {
     dispatch({
         type: REGISTER_REQUEST,
     });
@@ -139,7 +145,7 @@ export const register = (formData) => async (dispatch) => {
         dispatch(authLogin());
         localStorage.setItem('token', res.data.token);
 
-//         dispatch(setAlert('Welcome!', 'success'));
+        //         dispatch(setAlert('Welcome!', 'success'));
     } catch (err) {
         console.log(err);
 
@@ -157,7 +163,8 @@ export const register = (formData) => async (dispatch) => {
     }
 };
 
-export const login = (formData) => async (dispatch) => {
+export const login = (formData) => async (dispatch, getState) => {
+    console.log(getState());
     dispatch({
         type: LOGIN_REQUEST,
     });
@@ -170,9 +177,12 @@ export const login = (formData) => async (dispatch) => {
             payload: res.data,
         });
         console.log(res.data);
+        api.defaults.headers.common[
+            'authorization'
+        ] = `Bearer ${res.data.token}`;
         localStorage.setItem('token', res.data.token);
-
-//         dispatch(setAlert('Welcome!', 'success'));
+        dispatch(loadUser());
+        //         dispatch(setAlert('Welcome!', 'success'));
     } catch (err) {
         console.log(err);
 
@@ -190,7 +200,11 @@ export const login = (formData) => async (dispatch) => {
     }
 };
 
-export const loadUser = () => async (dispatch) => {
+export const loadUser = () => async (dispatch, getState) => {
+    console.log(getState().auth1.token);
+    api.defaults.headers.common['authorization'] = `Bearer ${
+        getState().auth1.token
+    }`;
     dispatch({
         type: REGISTER_REQUEST,
     });
