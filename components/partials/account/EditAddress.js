@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Router from 'next/router';
 import FormEditAddress from './modules/FormEditAddress';
 import { connect } from 'react-redux';
+import { logOut } from '../../../store/auth/action';
 
 class EditAddress extends Component {
     constructor(props) {
@@ -15,6 +16,10 @@ class EditAddress extends Component {
         }
         return false;
     }
+      handleLogout = (e) => {
+        e.preventDefault();
+        this.props.dispatch(logOut());
+    };
 
     render() {
         const accountLinks = [
@@ -93,12 +98,15 @@ class EditAddress extends Component {
                                                 </li>
                                             ))}
                                             <li>
-                                                <Link href="/account/my-account">
-                                                    <a>
+                                    
+                                          <a
+                                                        onClick={this.handleLogout.bind(
+                                                            this
+                                                        )}>
                                                         <i className="icon-power-switch"></i>
                                                         Logout
                                                     </a>
-                                                </Link>
+                                         
                                             </li>
                                         </ul>
                                     </div>
