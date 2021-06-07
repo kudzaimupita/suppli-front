@@ -199,28 +199,18 @@ class PlugApplication extends React.Component {
         );
         return (
             <>
-                <Row style={{ marginTop: '35px' }}>
-                    <Col
-                        span={12}
-                        offset={6}
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={12}
-                        xl={12}>
-                        <Card
-                            className="bg-grey shadow site-layout-content"
-                            style={{ marginBottom: 20 }}>
-                            <Row className="align-items-center justify-center">
-                                <Col xs="8">
-                                    <h3
-                                        style={{ marginBottom: '20px' }}
-                                        className="mb-0">
-                                        Suggest A Vendor
-                                    </h3>
-                                </Col>
-                                <Col className="text-right" xs="4">
-                                    {/* <Modal
+                <div
+                    className=" ps-form--account"
+                    style={{ maxWidth: '900px', paddingTop: '20px' }}>
+                    {' '}
+                    <Card
+                        className="bg-grey shadow "
+                        style={{ marginBottom: 20 }}>
+                        <h3 style={{ marginBottom: '20px' }} className="mb-0">
+                            Suggest A Store
+                        </h3>
+
+                        {/* <Modal
                                         title="Vendor Terms Of Use"
                                         visible={this.state.isModalVisible}
                                         width={600}
@@ -259,234 +249,245 @@ class PlugApplication extends React.Component {
                                             read and accepted the terms of use.
                                         </p>
                                     </Modal> */}
+
+                        <>
+                            <Form style={{ marginTop: '30px' }}>
+                                <div className="pl-sm-4">
+                                    <Row>
+                                        <Col lg="6">
+                                            <>
+                                                <label
+                                                    className="form-control-label"
+                                                    htmlFor="input-username"
+                                                    size="sm">
+                                                    Your Name*{' '}
+                                                    <span
+                                                        style={{
+                                                            fontSize: '8px',
+                                                            color: 'red',
+                                                        }}>
+                                                        required
+                                                    </span>
+                                                </label>
+                                                <Input
+                                                    id="input-username"
+                                                    placeholder="eg Nike Holdings"
+                                                    type="text"
+                                                    prefix={
+                                                        <i class="fa fa-user"></i>
+                                                    }
+                                                    name="name"
+                                                    value={this.state.suggestor}
+                                                    onChange={
+                                                        this.handleSuggestor
+                                                    }
+                                                />
+                                            </>
+                                        </Col>
+                                        <Col lg="6">
+                                            <>
+                                                <label
+                                                    className="form-control-label"
+                                                    htmlFor="input-username"
+                                                    size="sm">
+                                                    Store Name*{' '}
+                                                    <span
+                                                        style={{
+                                                            fontSize: '8px',
+                                                            color: 'red',
+                                                        }}>
+                                                        required
+                                                    </span>
+                                                </label>
+                                                <Input
+                                                    id="input-username"
+                                                    placeholder="eg Nike Holdings"
+                                                    type="text"
+                                                    prefix={
+                                                        <i class="fa fa-shopping-bag"></i>
+                                                    }
+                                                    name="name"
+                                                    value={
+                                                        this.state.vendorName
+                                                    }
+                                                    onChange={
+                                                        this
+                                                            .handleVendorNameChange
+                                                    }
+                                                />
+                                            </>
+                                        </Col>
+                                        <Col lg="6">
+                                            <>
+                                                <label
+                                                    className="form-control-label"
+                                                    htmlFor="input-email">
+                                                    Store Email*{' '}
+                                                    <span
+                                                        style={{
+                                                            fontSize: '8px',
+                                                            color: 'red',
+                                                        }}>
+                                                        required
+                                                    </span>
+                                                </label>
+                                                <Input
+                                                    id="input-email"
+                                                    placeholder="eg contact@nikeholdings.com"
+                                                    type="email"
+                                                    name="email"
+                                                    value={
+                                                        this.state.vendorEmail
+                                                    }
+                                                    onChange={
+                                                        this
+                                                            .handleVendorEmailChange
+                                                    }
+                                                    prefix={
+                                                        <i class="fa fa-envelope"></i>
+                                                    }
+                                                />
+                                            </>
+                                        </Col>
+                                        <Col lg="6">
+                                            <>
+                                                <label
+                                                    className="form-control-label"
+                                                    htmlFor="input-email">
+                                                    Store Phone*{' '}
+                                                    <span
+                                                        style={{
+                                                            fontSize: '8px',
+                                                            color: 'red',
+                                                        }}>
+                                                        required
+                                                    </span>
+                                                </label>
+                                                <Input
+                                                    id="input-email"
+                                                    placeholder="eg 0315655565"
+                                                    type="tel"
+                                                    size="sm"
+                                                    name="phone"
+                                                    value={
+                                                        this.state.vendorPhone
+                                                    }
+                                                    onChange={
+                                                        this
+                                                            .handleVendorPhoneChange
+                                                    }
+                                                    prefix={
+                                                        <i class="fa fa-phone"></i>
+                                                    }
+                                                />
+                                            </>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </Form>
+                        </>
+                    </Card>
+                    <Card
+                        className="bg-white shadow"
+                        style={{ marginBottom: 20 }}>
+                        <div className="pl-lg-4">
+                            <Row>
+                                <Col md="12">
+                                    <>
+                                        <label htmlFor="input-address">
+                                            Address*
+                                        </label>
+                                        <Input
+                                            id="input-address"
+                                            placeholder="89 Smitch Avenue, building 4, floor 45"
+                                            type="text"
+                                            size="sm"
+                                            name="address"
+                                            value={this.state.vendorAddress}
+                                            onChange={
+                                                this.handleVendorAddressChange
+                                            }
+                                            prefix={
+                                                <i class="fa fa-map-marker"></i>
+                                            }
+                                        />
+                                    </>
                                 </Col>
                             </Row>
-
-                            <>
-                                <Form>
-                                    <div className="pl-sm-4">
-                                        <Row>
-                                            <Col lg="6">
-                                                <>
-                                                    <label
-                                                        className="form-control-label"
-                                                        htmlFor="input-username"
-                                                        size="sm">
-                                                        Your Name*
-                                                    </label>
-                                                    <Input
-                                                        id="input-username"
-                                                        placeholder="eg Nike Holdings"
-                                                        type="text"
-                                                        prefix={
-                                                            <i class="fa fa-user"></i>
-                                                        }
-                                                        name="name"
-                                                        value={
-                                                            this.state.suggestor
-                                                        }
-                                                        onChange={
-                                                            this.handleSuggestor
-                                                        }
-                                                    />
-                                                </>
-                                            </Col>
-                                            <Col lg="6">
-                                                <>
-                                                    <label
-                                                        className="form-control-label"
-                                                        htmlFor="input-username"
-                                                        size="sm">
-                                                        Vendor Name*
-                                                    </label>
-                                                    <Input
-                                                        id="input-username"
-                                                        placeholder="eg Nike Holdings"
-                                                        type="text"
-                                                        prefix={
-                                                            <i class="fa fa-shopping-bag"></i>
-                                                        }
-                                                        name="name"
-                                                        value={
-                                                            this.state
-                                                                .vendorName
-                                                        }
-                                                        onChange={
-                                                            this
-                                                                .handleVendorNameChange
-                                                        }
-                                                    />
-                                                </>
-                                            </Col>
-                                            <Col lg="6">
-                                                <>
-                                                    <label
-                                                        className="form-control-label"
-                                                        htmlFor="input-email">
-                                                        Vendor Email*
-                                                    </label>
-                                                    <Input
-                                                        id="input-email"
-                                                        placeholder="eg contact@nikeholdings.com"
-                                                        type="email"
-                                                        name="email"
-                                                        value={
-                                                            this.state
-                                                                .vendorEmail
-                                                        }
-                                                        onChange={
-                                                            this
-                                                                .handleVendorEmailChange
-                                                        }
-                                                        prefix={
-                                                            <i class="fa fa-envelope"></i>
-                                                        }
-                                                    />
-                                                </>
-                                            </Col>
-                                            <Col lg="6">
-                                                <>
-                                                    <label
-                                                        className="form-control-label"
-                                                        htmlFor="input-email">
-                                                        Vendor Phone*
-                                                    </label>
-                                                    <Input
-                                                        id="input-email"
-                                                        placeholder="eg 0315655565"
-                                                        type="tel"
-                                                        size="sm"
-                                                        name="phone"
-                                                        value={
-                                                            this.state
-                                                                .vendorPhone
-                                                        }
-                                                        onChange={
-                                                            this
-                                                                .handleVendorPhoneChange
-                                                        }
-                                                        prefix={
-                                                            <i class="fa fa-phone"></i>
-                                                        }
-                                                    />
-                                                </>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                </Form>
-                            </>
-                        </Card>
-
-                        <Card
-                            className="bg-white shadow"
-                            style={{ marginBottom: 20 }}>
-                            <div className="pl-lg-4">
-                                <Row>
-                                    <Col md="12">
-                                        <>
-                                            <label htmlFor="input-address">
-                                                Address*
-                                            </label>
-                                            <Input
-                                                id="input-address"
-                                                placeholder="89 Smitch Avenue, building 4, floor 45"
-                                                type="text"
-                                                size="sm"
-                                                name="address"
-                                                value={this.state.vendorAddress}
-                                                onChange={
-                                                    this
-                                                        .handleVendorAddressChange
-                                                }
-                                                prefix={
-                                                    <i class="fa fa-map-marker"></i>
-                                                }
-                                            />
-                                        </>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col lg="4">
-                                        <>
-                                            <label
-                                                className="form-control-label"
-                                                htmlFor="input-city">
-                                                City*
-                                            </label>
-                                            <Input
-                                                id="input-city"
-                                                placeholder="Cape Town"
-                                                type="text"
-                                                size="sm"
-                                                name="city"
-                                                value={this.state.vendorCity}
-                                                onChange={
-                                                    this.handleVendorCityChange
-                                                }
-                                                prefix={
-                                                    <i class="fa fa-building"></i>
-                                                }
-                                            />
-                                        </>
-                                    </Col>
-                                    <Col lg="4">
-                                        <>
-                                            <label
-                                                className="form-control-label"
-                                                htmlFor="input-country">
-                                                Country*
-                                            </label>
-                                            <Input
-                                                defaultValue="South Africa"
-                                                id="input-country"
-                                                placeholder="South Africa"
-                                                type="text"
-                                                size="sm"
-                                                disabled
-                                                name="country"
-                                                value={this.state.vendorCountry}
-                                                onChange={
-                                                    this
-                                                        .handleVendorCountryChange
-                                                }
-                                                prefix={
-                                                    <i class="fa fa-globe"></i>
-                                                }
-                                            />
-                                        </>
-                                    </Col>
-                                    <Col lg="4">
-                                        <>
-                                            <label
-                                                className="form-control-label"
-                                                htmlFor="input-country">
-                                                Province
-                                            </label>
-                                            <Input
-                                                placeholder="eg Gauteng"
-                                                type="text"
-                                                size="sm"
-                                                // disabled
-                                                name="country"
-                                                value={
-                                                    this.state.vendorProvince
-                                                }
-                                                onChange={
-                                                    this
-                                                        .handleVendorProvinceChange
-                                                }
-                                                prefix={
-                                                    <i class="fa fa-globe"></i>
-                                                }
-                                            />
-                                        </>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md="3">
-                                        {' '}
-                                        <>
-                                            {/* <UncontrolledDropdown group>
+                            <Row>
+                                <Col lg="4">
+                                    <>
+                                        <label
+                                            className="form-control-label"
+                                            htmlFor="input-city">
+                                            City*
+                                        </label>
+                                        <Input
+                                            id="input-city"
+                                            placeholder="Cape Town"
+                                            type="text"
+                                            size="sm"
+                                            name="city"
+                                            value={this.state.vendorCity}
+                                            onChange={
+                                                this.handleVendorCityChange
+                                            }
+                                            prefix={
+                                                <i class="fa fa-building"></i>
+                                            }
+                                        />
+                                    </>
+                                </Col>
+                                <Col lg="4">
+                                    <>
+                                        <label
+                                            className="form-control-label"
+                                            htmlFor="input-country">
+                                            Country*
+                                        </label>
+                                        <Input
+                                            defaultValue="South Africa"
+                                            id="input-country"
+                                            placeholder="South Africa"
+                                            type="text"
+                                            size="sm"
+                                            disabled
+                                            name="country"
+                                            value={this.state.vendorCountry}
+                                            onChange={
+                                                this.handleVendorCountryChange
+                                            }
+                                            prefix={<i class="fa fa-globe"></i>}
+                                        />
+                                    </>
+                                </Col>
+                                <Col lg="4">
+                                    <>
+                                        <label
+                                            className="form-control-label"
+                                            htmlFor="input-country">
+                                            Province
+                                        </label>
+                                        <Input
+                                            placeholder="eg Gauteng"
+                                            type="text"
+                                            size="sm"
+                                            // disabled
+                                            name="country"
+                                            value={this.state.vendorProvince}
+                                            onChange={
+                                                this.handleVendorProvinceChange
+                                            }
+                                            prefix={<i class="fa fa-globe"></i>}
+                                        />
+                                    </>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md="3">
+                                    {' '}
+                                    <>
+                                        {/* <UncontrolledDropdown group>
                   <DropdownToggle caret color="secondary">
                     Choose
                   </DropdownToggle>
@@ -504,85 +505,77 @@ class PlugApplication extends React.Component {
                     ))}
                   </DropdownMenu>
                 </UncontrolledDropdown> */}
-                                        </>
-                                    </Col>
-                                </Row>
-                            </div>
-                        </Card>
-
-                        <Card
-                            className="bg-white shadow"
-                            style={{ marginBottom: 30 }}>
-                            <Col md="9">
-                                <>
-                                    <label
-                                        className="form-control-label"
-                                        htmlFor="input-country">
-                                        Facebook handle
-                                    </label>
-                                    <Input
-                                        rows="4"
-                                        placeholder="eg nikeholding"
-                                        type="text"
-                                        name="aboutUs"
-                                        value={this.state.vendorFacebookLink}
-                                        onChange={this.handleFacebookChange}
-                                        prefix={
-                                            <i class="fa fa-facebook-f"></i>
-                                        }
-                                    />
-                                </>
-                            </Col>{' '}
-                            <Col md="9">
-                                <>
-                                    <label
-                                        className="form-control-label"
-                                        htmlFor="input-country">
-                                        Instagram handle
-                                    </label>
-                                    <Input
-                                        rows="4"
-                                        placeholder="eg nikeholding"
-                                        type="text"
-                                        name="aboutUs"
-                                        value={this.state.vendorInstagramLink}
-                                        onChange={this.handleInstagramChange}
-                                        prefix={<i class="fa fa-instagram"></i>}
-                                    />
-                                </>
-                            </Col>{' '}
-                            <Col md="9">
-                                <>
-                                    <label
-                                        className="form-control-label"
-                                        htmlFor="input-country">
-                                        Website Url*
-                                    </label>
-                                    <Input
-                                        rows="4"
-                                        placeholder="www.nikeholding.com"
-                                        type="text"
-                                        name="website"
-                                        value={this.state.vendorWebsite}
-                                        onChange={
-                                            this.handleVendorWebsiteChange
-                                        }
-                                        prefix={
-                                            <i class="fa fa-map-marker"></i>
-                                        }
-                                    />
-                                </>
-                            </Col>{' '}
-                            <Button
-                                style={{ marginTop: '20px' }}
-                                type="primary"
-                                block
-                                onClick={(e) => this.onSubmit(e)}>
-                                Confirm
-                            </Button>
-                        </Card>
-                    </Col>{' '}
-                </Row>
+                                    </>
+                                </Col>
+                            </Row>
+                        </div>
+                    </Card>
+                    <Card
+                        className="bg-white shadow"
+                        style={{ marginBottom: 30 }}>
+                        <Col md="9">
+                            <>
+                                <label
+                                    className="form-control-label"
+                                    htmlFor="input-country">
+                                    Facebook handle
+                                </label>
+                                <Input
+                                    rows="4"
+                                    placeholder="eg nikeholding"
+                                    type="text"
+                                    name="aboutUs"
+                                    value={this.state.vendorFacebookLink}
+                                    onChange={this.handleFacebookChange}
+                                    prefix={<i class="fa fa-facebook-f"></i>}
+                                />
+                            </>
+                        </Col>{' '}
+                        <Col md="9">
+                            <>
+                                <label
+                                    className="form-control-label"
+                                    htmlFor="input-country">
+                                    Instagram handle
+                                </label>
+                                <Input
+                                    rows="4"
+                                    placeholder="eg nikeholding"
+                                    type="text"
+                                    name="aboutUs"
+                                    value={this.state.vendorInstagramLink}
+                                    onChange={this.handleInstagramChange}
+                                    prefix={<i class="fa fa-instagram"></i>}
+                                />
+                            </>
+                        </Col>{' '}
+                        <Col md="9">
+                            <>
+                                <label
+                                    className="form-control-label"
+                                    htmlFor="input-country">
+                                    Website Url*
+                                </label>
+                                <Input
+                                    rows="4"
+                                    placeholder="www.nikeholding.com"
+                                    type="text"
+                                    name="website"
+                                    value={this.state.vendorWebsite}
+                                    onChange={this.handleVendorWebsiteChange}
+                                    prefix={<i class="fa fa-map-marker"></i>}
+                                />
+                            </>
+                        </Col>{' '}
+                        <Button
+                            style={{ marginTop: '20px' }}
+                            type="primary"
+                            block
+                            onClick={(e) => this.onSubmit(e)}>
+                            Confirm
+                        </Button>
+                    </Card>
+                </div>
             </>
         );
     }
