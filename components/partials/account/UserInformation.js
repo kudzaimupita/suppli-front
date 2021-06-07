@@ -5,6 +5,7 @@ import { Form, Input, Radio, DatePicker } from 'antd';
 import { updateMe } from './../../../actions/auth';
 import { setAlert } from './../../../actions/alert';
 import { connect } from 'react-redux';
+import { logOut } from '../../../store/auth/action';
 // import { useRouter } from 'next/router';
 
 class UserInformation extends Component {
@@ -28,6 +29,12 @@ class UserInformation extends Component {
         // }
         return false;
     }
+
+    handleLogout = (e) => {
+        e.preventDefault();
+        this.props.dispatch(logOut());
+    };
+
     handleNameChange = (e) => {
         this.setState({ name: e.target.value });
     };
@@ -132,12 +139,13 @@ class UserInformation extends Component {
                                                 </li>
                                             ))}
                                             <li>
-                                                <Link href="/account/my-account">
-                                                    <a>
-                                                        <i className="icon-power-switch"></i>
-                                                        Logout
-                                                    </a>
-                                                </Link>
+                                                <a
+                                                    onClick={this.handleLogout.bind(
+                                                        this
+                                                    )}>
+                                                    <i className="icon-power-switch"></i>
+                                                    Logout
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
