@@ -120,52 +120,6 @@ class AboutAwards extends Component {
                             delivery costs
                         </p>
                     </div>
-                    <div
-                        className="ps-section__content"
-                        style={{ marginTop: '40px' }}>
-                        <Slider {...carouselSetting} className="ps-carousel">
-                            <div className="item">
-                                <a>
-                                    <img
-                                        src="/static/img/picture1.png"
-                                        alt="Suppl-i"
-                                    />
-                                </a>
-                            </div>
-                            <div>
-                                <a>
-                                    <img
-                                        src="/static/img/picture2.png"
-                                        alt="Suppl-i"
-                                    />
-                                </a>
-                            </div>
-                            <div className="item">
-                                <a>
-                                    <img
-                                        src="/static/img/picture3.png"
-                                        alt="Suppl-i"
-                                    />
-                                </a>
-                            </div>
-                            <div className="item">
-                                <a>
-                                    <img
-                                        src="/static/img/picture4.png"
-                                        alt="Suppl-i"
-                                    />
-                                </a>
-                            </div>
-                            <div className="item">
-                                <a>
-                                    <img
-                                        src="/static/img/picture5.png"
-                                        alt="Suppl-i"
-                                    />
-                                </a>
-                            </div>
-                        </Slider>
-                    </div>
                 </div>
             </div>
         );
