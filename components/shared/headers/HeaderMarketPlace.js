@@ -228,7 +228,7 @@ class HeaderAutoPart extends Component {
                                     <img
                                         style={{
                                             height: '40px',
-                                            width: '200px',
+                                            width: '150px',
                                         }}
                                         src="/static/img/Suppli.png"
                                         alt="Suppl-i"
