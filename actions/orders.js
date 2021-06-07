@@ -8,7 +8,11 @@ import {
 
 // Register User
 
-export const getMyOrders = () => async (dispatch) => {
+export const getMyOrders = () => async (dispatch, getState) => {
+  console.log(getState().auth1.token);
+  api.defaults.headers.common['authorization'] = `Bearer ${
+      getState().auth1.token
+  }`;
   dispatch({
     type: GET_MY_ORDERS_REQUEST,
   });
