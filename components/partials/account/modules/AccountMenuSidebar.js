@@ -1,8 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
+import { logOut } from '../../../../store/auth/action';
 
-const AccountMenuSidebar = ({ data, user }) => (
+const AccountMenuSidebar = (props) => (
     <aside className="ps-widget--account-dashboard">
         <div className="ps-widget__header">
             <img src="/static/img/users/3.jpg" />
@@ -24,9 +25,10 @@ const AccountMenuSidebar = ({ data, user }) => (
                     </li>
                 ))}
                 <li>
-                    <Link href="/account/my-account">
-                        <a>Logout</a>
-                    </Link>
+                    <a onClick={() => props.logOut()}>
+                        <i className="icon-power-switch"></i>
+                        Logout
+                    </a>
                 </li>
             </ul>
         </div>
@@ -38,4 +40,4 @@ const mapStateToProps = (state) => ({
     createdPlugLoading: state.createdPlug,
 });
 
-export default connect(mapStateToProps, {})(AccountMenuSidebar);
+export default connect(mapStateToProps, { logOut })(AccountMenuSidebar);
