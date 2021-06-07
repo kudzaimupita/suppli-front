@@ -24,9 +24,9 @@ class Invoices extends Component {
     // }
 
     render() {
-        // if (this.props.isLoggedIn !== true) {
-        //     Router.push('/');
-        // }
+        if (this.props.isLoggedIn !== true) {
+            Router.push('/');
+        }
         const accountLinks = [
             {
                 text: 'Account Information',
