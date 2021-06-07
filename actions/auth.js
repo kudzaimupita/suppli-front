@@ -76,7 +76,7 @@ export const updateMyPassword = (formData) => async (dispatch, getState) => {
             type: UPDATE_MY_PASSWORD_SUCCESS,
             payload: res.data,
         });
-        dispatch(setAlert('Password updated', 'success'));
+//         dispatch(setAlert('Password updated', 'success'));
         dispatch(logout());
         dispatch(signOut());
     } catch (err) {
