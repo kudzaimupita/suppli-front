@@ -77,7 +77,7 @@ class HeaderAutoPart extends Component {
                 ),
             },
             {
-                text: 'Suggest A Vendor',
+                text: 'Suggest A Store',
                 url: '/vendor/suggest-a-vendor',
                 icon: (
                     <i
