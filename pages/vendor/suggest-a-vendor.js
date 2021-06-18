@@ -14,7 +14,7 @@ const LoginPage = () => {
             url: '/',
         },
         {
-            text: 'Suggest A Vendor',
+            text: 'Suggest A Store',
         },
     ];
     return (
