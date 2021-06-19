@@ -77,16 +77,14 @@ class AccountQuickLinks extends Component {
                     className="ps-block--user-header"
                     style={{ color: 'black' }}>
                     <div className="ps-block__left">
-                        <i className="icon-user"></i>
-                    </div>
-                    <div className="ps-block__right" style={{ color: 'black' }}>
                         <Link href="/account/login">
-                            <a style={{ fontSize: '12px' }}>Login</a>
+                            <a href="/account/login">    <i className="icon-user"></i>    <a style={{ fontSize: '12px',marginRight:'20px' }}>Login</a></a>
                         </Link>
                         <Link href="/account/register">
-                            <a style={{ fontSize: '12px' }}>Register</a>
+                            <a href="/account/login">    <i className="icon-user"></i>    <a style={{ fontSize: '12px', marginRight: '20px' }}>Register</a></a>
                         </Link>
                     </div>
+                 
                 </div>
             );
         }
