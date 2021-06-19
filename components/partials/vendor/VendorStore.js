@@ -92,14 +92,23 @@ class VendorStore extends Component {
                             <div className="ps-section__left">
                                 <div className="ps-block--vendor">
                                     <div className="ps-block__thumbnail">
-                                        <img
-                                            src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
-                                                this.props.vendor &&
+                                        {this.props.vendor &&
+                                            this.props.vendor.doc &&
+                                            this.props.vendor.doc.logo ? <img
+                                            src={`https://suppli-images.s3.af-south-1.amazonaws.com/${this.props.vendor &&
                                                 this.props.vendor.doc &&
                                                 this.props.vendor.doc.logo
-                                            }`}
+                                                }`}
                                             alt="Suppl-i"
-                                        />
+                                        /> : <img
+                                            style={{
+                                                borderRadius:
+                                                    '50px',
+                                            }}
+                                            src="/static/img/555.jpg"
+                                            alt="Suppl-i"
+                                        />}
+                                        
                                     </div>
                                     <div className="ps-block__container">
                                         <div className="ps-block__header">
