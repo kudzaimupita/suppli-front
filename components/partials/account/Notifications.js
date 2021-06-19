@@ -12,17 +12,22 @@ class Notifications extends Component {
         this.state = {};
     }
 
-    // static getDerivedStateFromProps(props) {
-    //     if (props.isLoggedIn === false) {
-    //         Router.push('/');
-    //     }
-    //     return false;
-    // }
-
-    render() {
-        if (this.props.isLoggedIn !== true) {
+    static getDerivedStateFromProps(props) {
+        if (props.isLoggedIn === false) {
             Router.push('/');
         }
+        return false;
+    }
+    static getInitialProps(props) {
+        if (props.isLoggedIn !== true) {
+            Router.push('/');
+        }
+    }
+
+    render() {
+        // if (this.props.isLoggedIn !== true) {
+        //     Router.push('/');
+        // }
         const accountLinks = [
             {
                 text: 'Account Information',
