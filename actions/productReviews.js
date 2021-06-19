@@ -11,12 +11,15 @@ import {
 
 // Register User
 
-export const createProductReview = (formData, id) => async (dispatch) => {
+export const createProductReview = (formData, id) => async (dispatch,getState) => {
+    api.defaults.headers.common['authorization'] = `Bearer ${getState().auth1.token
+        }`;
   dispatch({
     type: CREATE_PRODUCT_REVIEW_REQUEST,
   });
 
   try {
+ 
     const res = await api.post(`/products/${id}/reviews`, formData);
 
     dispatch({
@@ -24,7 +27,8 @@ export const createProductReview = (formData, id) => async (dispatch) => {
       payload: res.data.data,
     });
 
-    dispatch(setAlert("Successfully rated this product", "success"));
+    dispatch(setAlert("Success", "success"));
+    dispatch(getProduct(id))
     console.log(res.data.data);
   } catch (err) {
     const errors = err.response.data.error;
@@ -32,7 +36,7 @@ export const createProductReview = (formData, id) => async (dispatch) => {
     const errorArray = errors.split(",");
 
     if (errorArray) {
-      errorArray.map((error) => dispatch(setAlert(error, "danger")));
+      errorArray.map((error) => dispatch(setAlert(error, "warning")));
     }
 
     dispatch({
