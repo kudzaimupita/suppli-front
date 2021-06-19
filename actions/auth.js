@@ -142,6 +142,10 @@ export const register = (formData) => async (dispatch, getState) => {
             type: REGISTER_SUCCESS,
             payload: res.data,
         });
+        dispatch({
+            type: LOGIN_SUCCESS,
+            payload: res.data,
+        });
         dispatch(authLogin());
         localStorage.setItem('token', res.data.token);
 
