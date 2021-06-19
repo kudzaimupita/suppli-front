@@ -85,29 +85,14 @@ class ThumbnailBox extends Component {
                             ref={(slider) => (this.slider1 = slider)}
                             asNavFor={this.state.variantCarousel}
                             className="ps-product__gallery ps-carousel inside">
-                            {this.props.product &&
-                                this.props.product.images &&
-                                this.props.product.images.map(
-                                    (image, index) => (
-                                        <div className="item" key={index}>
-                                            <a
-                                                href="#"
-                                                onClick={(e) =>
-                                                    this.handleOpenLightbox(
-                                                        e,
-                                                        index
-                                                    )
-                                                }>
-                                                <img
-                                                    src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
-                                                        image && image
-                                                    }`}
-                                                    alt="Suppl-i"
-                                                />
-                                            </a>
-                                        </div>
-                                    )
-                                )}
+                     
+
+                            <img
+                                src={`https://suppli-images.s3.af-south-1.amazonaws.com/${this.props.product &&
+                                    this.props.product.imageCover
+                                    }`}
+                                alt="Suppl-i"
+                            />
                         </Slider>
                     </div>
                 </figure>
@@ -122,18 +107,13 @@ class ThumbnailBox extends Component {
                     infinite={false}
                     {...variantSetting}
                     className="ps-product__variants">
-                    {this.props.product &&
-                        this.props.product.images &&
-                        this.props.product.images.map((image) => (
-                            <div className="item" key={image}>
-                                <img
-                                    src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
-                                        image && image
-                                    }`}
-                                    alt="Suppl-i"
-                                />
-                            </div>
-                        ))}
+
+                    <img
+                        src={`https://suppli-images.s3.af-south-1.amazonaws.com/${this.props.product &&
+                            this.props.product.imageCover
+                            }`}
+                        alt="Suppl-i"
+                    />
                 </Slider>
                 {isOpen && (
                     <Lightbox
