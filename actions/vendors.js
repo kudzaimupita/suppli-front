@@ -1,5 +1,6 @@
 import api from '../utils/api';
 import { setAlert } from './alert';
+import Router from 'next/router';
 import {
     GET_PLUG_SALES_LIST_FAIL,
     GET_PLUG_SALES_LIST_REQUEST,
@@ -100,7 +101,7 @@ export const inviteAFriendAction = (formData) => async (dispatch) => {
     }
 };
 
-export const createVendorAction = (formData) => async (dispatch) => {
+export const createVendorAction = (formData,history) => async (dispatch) => {
     dispatch({
         type: CREATE_VENDOR_REQUEST,
     });
@@ -112,6 +113,7 @@ export const createVendorAction = (formData) => async (dispatch) => {
             type: CREATE_VENDOR_SUCCESS,
             payload: res.data.data.data,
         });
+        Router.push('/vendor/success')
     } catch (err) {
         console.log(err);
         const errors = err.response.data.error;
