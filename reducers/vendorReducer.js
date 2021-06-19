@@ -152,13 +152,14 @@ export const getVENDORSByCatergoryReducer = (
 };
 
 export const getVendorsReducer = (state = { vendors: [] }, action) => {
+    
     switch (action.type) {
         case GET_VENDORS_REQUEST:
             return {
                 loading: true,
             };
         case GET_VENDORS_SUCCESS:
-            return { ...state, loading: false, vendors: action.payload };
+            return { ...state, loading: false, vendors: action.payload.filter(vendor=>vendor.approved===true) };
         case GET_VENDORS_FAIL:
             return {
                 loading: false,
