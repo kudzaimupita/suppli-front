@@ -70,9 +70,11 @@ function* removeItemSaga(payload) {
         let localCart = JSON.parse(
             JSON.parse(localStorage.getItem('persist:Suppl-i')).cart
         );
+        console.log(index)
         let index = localCart.cartItems.indexOf(product);
+        console.log(index)
         localCart.cartTotal = localCart.cartTotal - product.quantity;
-        localCart.cartItems.splice(index, 1);
+        localCart.cartItems = localCart.cartItems.filter(el=>el._id!==product._id);
         localCart.amount = calculateAmount(localCart.cartItems);
         if (localCart.cartItems.length === 0) {
             localCart.cartItems = [];
