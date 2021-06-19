@@ -16,17 +16,20 @@ class Invoices extends Component {
             this.props.getMyOrders();
         }
     }
-    // static getDerivedStateFromProps(props) {
-    //     if (props.isLoggedIn === false) {
-    //         Router.push('/');
-    //     }
-    //     return false;
-    // }
-
-    render() {
-        if (this.props.isLoggedIn !== true) {
+    static getDerivedStateFromProps(props) {
+        if (props.isLoggedIn === false) {
             Router.push('/');
         }
+        return false;
+    }
+    static getInitialProps(props) {
+        if (props.isLoggedIn !== true) {
+            Router.push('/');
+        }
+    }
+
+    render() {
+
         const accountLinks = [
             {
                 text: 'Account Information',
