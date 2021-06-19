@@ -44,8 +44,9 @@ function* addItemSaga(payload) {
             .cart;
         let currentCart = JSON.parse(localCart);
         let existItem = currentCart.cartItems.find(
-            item => item.id === product.id
+            item => item._id === product._id
         );
+        console.log(existItem)
         if (existItem) {
             existItem.quantity += product.quantity;
         } else {
@@ -92,8 +93,9 @@ function* increaseQtySaga(payload) {
             JSON.parse(localStorage.getItem('persist:Suppl-i')).cart
         );
         let selectedItem = localCart.cartItems.find(
-            item => item.id === product.id
+            item => item._id === product._id
         );
+        console.log(selectedItem)
         if (selectedItem) {
             selectedItem.quantity++;
             localCart.cartTotal++;
@@ -112,7 +114,7 @@ function* decreaseItemQtySaga(payload) {
             JSON.parse(localStorage.getItem('persist:Suppl-i')).cart
         );
         let selectedItem = localCart.cartItems.find(
-            item => item.id === product.id
+            item => item._id === product._id
         );
 
         if (selectedItem) {
