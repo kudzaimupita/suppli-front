@@ -80,14 +80,21 @@ class FurnitureCategories extends Component {
                                                         as={`/vendor/${vendor._id}`}>
                                                         <a className="ps-product__title"></a>
                                                     </Link>
-                                                    <img
+                                                    {vendor.logo ? <img
                                                         style={{
                                                             borderRadius:
                                                                 '50px',
                                                         }}
                                                         src={`https://suppli-images.s3.af-south-1.amazonaws.com/${vendor.logo}`}
                                                         alt="Suppl-i"
-                                                    />
+                                                    /> : <img
+                                                        style={{
+                                                            borderRadius:
+                                                                '50px',
+                                                        }}
+                                                        src="/static/img/555.jpg"
+                                                        alt="Suppl-i"
+                                                    />}
                                                     <p>{vendor.name}</p>
                                                 </div>
                                             </div>
