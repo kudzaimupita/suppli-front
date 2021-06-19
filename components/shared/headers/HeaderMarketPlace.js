@@ -186,6 +186,16 @@ class HeaderAutoPart extends Component {
                         </div>
                         <div className="header__right">
                             <ul className="header__top-links">
+                                   <li>
+                                    <Link href="https://suppli-vendor.herokuapp.com/login">
+                                        <a
+                                            style={{ fontSize: '12px' }}
+                                            target="_blank"
+                                            rel="noopener noreferrer">
+                                           Vendor Login
+                                        </a>
+                                    </Link>
+                                </li>
                                 <li>
                                     <Link href="https://sacoronavirus.co.za/">
                                         <a
