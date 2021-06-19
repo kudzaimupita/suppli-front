@@ -74,6 +74,7 @@ class VendorApplication extends React.Component {
         facebookLink: '',
         instagramLink: '',
         isModalVisible: false,
+        websiteLink:''
     };
 
     handleChange = (info) => {
@@ -99,6 +100,11 @@ class VendorApplication extends React.Component {
     handleInstagramChange = (e) => {
         this.setState({ instagramLink: e.target.value });
     };
+
+    handleWebsiteChange = (e) => {
+        this.setState({ websiteLink: e.target.value });
+    };
+
 
     handleShowModalChange = (e) => {
         this.setState({ isModalVisible: true });
@@ -171,25 +177,22 @@ class VendorApplication extends React.Component {
         //   });
         this.props.createVendorAction(
             {
-                catergory: this.state.catergory,
+                // website: this.state.catergory,
+                // catergory: this.state.catergory,
                 facebookLinnk: this.state.facebookLink,
                 instagramLink: this.state.instagramLink,
-                sampleProductImages: [
-                    this.state.productImage1,
-                    this.state.productImage2,
-                    this.state.productImage3,
-                ],
+           
                 logo: this.state.image1,
                 companyEmail: this.state.companyEmail,
                 name: this.state.name,
                 phone: this.state.phone,
                 aboutUs: this.state.aboutUs,
-                vendorAddress: {
+           
                     city: this.state.city,
                     country: this.state.country,
                     address: this.state.address,
                     postalCode: this.state.postalCode,
-                },
+                
             },
             this.props.history
         );
@@ -206,21 +209,16 @@ class VendorApplication extends React.Component {
         );
         return (
             <>
-                <LoadingOutlined />
-                <Row style={{ marginTop: '35px' }}>
-                    <Col
-                        span={12}
-                        offset={6}
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={12}
-                        xl={12}>
+         
+                <div
+                    className=" ps-form--account"
+                    style={{ maxWidth: '900px', paddingTop: '20px' }}>
+                 
                         <Card
                             className="bg-grey shadow site-layout-content"
                             style={{ marginBottom: 20 }}>
                             <Row className="align-items-center justify-center">
-                                <Col xs="8">
+                                <Col xs="8" style={{marginBottom:'30px'}}>
                                     <h3 className="mb-0">Vendor Application</h3>
                                 </Col>
                                 <Col className="text-right" xs="4">
@@ -1054,15 +1052,7 @@ class VendorApplication extends React.Component {
                                             read and accepted the terms of use.
                                         </p>
                                     </Modal>
-                                    <Button
-                                        color="primary"
-                                        href="#pablo"
-                                        onClick={() =>
-                                            this.handleShowModalChange()
-                                        }
-                                        size="sm">
-                                        Vendor T&Cs
-                                    </Button>
+                             
                                 </Col>
                             </Row>
 
@@ -1340,7 +1330,7 @@ class VendorApplication extends React.Component {
                                     />
                                 </>
                             </Col>{' '}
-                            <Col md="9">
+                            {/* <Col md="9">
                                 <>
                                     <label
                                         className="form-control-label"
@@ -1353,13 +1343,13 @@ class VendorApplication extends React.Component {
                                         type="text"
                                         name="website"
                                         value={this.state.aboutUs}
-                                        onChange={this.handleAboutUsChange}
+                                        onChange={this.handleWebsiteChange}
                                         prefix={
                                             <i class="fa fa-map-marker"></i>
                                         }
                                     />
                                 </>
-                            </Col>{' '}
+                            </Col>{' '} */}
                             <Button
                                 style={{ marginTop: '20px' }}
                                 type="primary"
@@ -1368,8 +1358,8 @@ class VendorApplication extends React.Component {
                                 Register Vendor
                             </Button>
                         </Card>
-                    </Col>{' '}
-                </Row>
+                  
+                </div>
             </>
         );
     }
