@@ -94,7 +94,7 @@ class PanelCartMobile extends Component {
                                     </a>
                                 </Link>
                                 <Link
-                                    href="/account/shopping-cart"
+                                    href="/checkout"
                                     style={{ color: 'white' }}>
                                     <a
                                         style={{ color: 'white' }}
