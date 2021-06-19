@@ -36,18 +36,12 @@ class ThumbnailQuickView extends Component {
                         <Slider
                             {...gallerySetting}
                             className="ps-product__gallery ps-carousel inside">
-                            {this.props.product &&
-                                this.props.product.images &&
-                                this.props.product.images.map((variant) => (
-                                    <div className="item" key={variant}>
-                                        <img
-                                            src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
-                                                variant && variant
-                                            }`}
-                                            alt="Suppl-i"
-                                        />
-                                    </div>
-                                ))}
+                            <img
+                                src={`https://suppli-images.s3.af-south-1.amazonaws.com/${this.props.product &&
+                                    this.props.product.imageCover
+                                    }`}
+                                alt="Suppl-i"
+                            />
                         </Slider>
                     </div>
                 </figure>
