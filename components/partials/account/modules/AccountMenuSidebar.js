@@ -8,13 +8,13 @@ const AccountMenuSidebar = (props) => (
         <div className="ps-widget__header">
             <img src="/static/img/users/3.jpg" />
             <figure>
-                <figcaption>Hello {user && user.name}</figcaption>
-                <p>{user && user.email}</p>
+                <figcaption>Hello {props.user && props.user.name}</figcaption>
+                <p>{props.user && props.user.email}</p>
             </figure>
         </div>
         <div className="ps-widget__content">
             <ul>
-                {data.map((link) => (
+                {props.data && props.data.map((link) => (
                     <li key={link.text} className={link.active ? 'active' : ''}>
                         <Link href={link.url}>
                             <a>
