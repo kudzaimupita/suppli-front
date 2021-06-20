@@ -42,15 +42,13 @@ export default function (state = initialState, action) {
     const { type, payload } = action;
 
     switch (type) {
-        case RESET_PASSWORD_REQUEST:
-        case FORGOT_PASSWORD_REQUEST:
-        case UPDATE_MY_PASSWORD_REQUEST:
-        case DELETE_ME_REQUEST:
-        case RESET_PASSWORD_FAIL:
-        case UPDATE_ME_REQUEST:
-        case RESET_PASSWORD_REQUEST:
-        case GOOGLE_AUTH_SIGNIN_REQUEST:
-        case FACEBOOK_AUTH_SIGNIN_REQUEST:
+        // case RESET_PASSWORD_REQUEST:
+        // case FORGOT_PASSWORD_REQUEST:
+        // case UPDATE_MY_PASSWORD_REQUEST:
+        // case DELETE_ME_REQUEST:
+        // case RESET_PASSWORD_FAIL:
+        // case UPDATE_ME_REQUEST:
+        // case RESET_PASSWORD_REQUEST:
         case LOGIN_REQUEST:
         case REGISTER_REQUEST:
             return {
@@ -89,7 +87,11 @@ export default function (state = initialState, action) {
                 loading: false,
                 user: null,
             };
-
+        case REGISTER_FAIL:
+        case LOGIN_FAIL:
+            return {
+                ...state, loading: false
+            }
         case FORGOT_PASSWORD_SUCCESS:
             return { loading: false, success: true, message: action.payload };
         case FORGOT_PASSWORD_FAIL:
