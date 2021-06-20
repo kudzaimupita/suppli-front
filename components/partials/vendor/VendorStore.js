@@ -108,7 +108,7 @@ class VendorStore extends Component {
                                             src="/static/img/555.jpg"
                                             alt="Suppl-i"
                                         />}
-                                        
+
                                     </div>
                                     <div className="ps-block__container">
                                         <div className="ps-block__header">
@@ -196,50 +196,16 @@ class VendorStore extends Component {
                                                     this.props.vendor.doc &&
                                                     this.props.vendor.doc
                                                         .facebookLink) ||
-                                                (this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
-                                                        .instagramLink) ? (
+                                                    (this.props.vendor &&
+                                                        this.props.vendor.doc &&
+                                                        this.props.vendor.doc
+                                                            .instagramLink) ? (
                                                     <figcaption>
                                                         Follow us on social
                                                     </figcaption>
                                                 ) : null}
                                                 <ul className="ps-list--social-color">
-                                                    {this.props.vendor &&
-                                                        this.props.vendor.doc &&
-                                                        this.props.vendor.doc
-                                                            .facebookLink && (
-                                                            <li>
-                                                                <>
-                                                                    <>
-                                                                        <a
-                                                                            className="facebook"
-                                                                            style={{
-                                                                                fontSize:
-                                                                                    '12px',
-                                                                            }}
-                                                                            href={`www.facebook.com/${
-                                                                                this
-                                                                                    .props
-                                                                                    .vendor &&
-                                                                                this
-                                                                                    .props
-                                                                                    .vendor
-                                                                                    .doc &&
-                                                                                this
-                                                                                    .props
-                                                                                    .vendor
-                                                                                    .doc
-                                                                                    .facebookLink
-                                                                            }`}
-                                                                            target="_blank"
-                                                                            rel="noopener noreferrer">
-                                                                            <i className="fa fa-facebook"></i>{' '}
-                                                                        </a>
-                                                                    </>
-                                                                </>
-                                                            </li>
-                                                        )}
+
                                                     {this.props.vendor &&
                                                         this.props.vendor.doc &&
                                                         this.props.vendor.doc
@@ -249,13 +215,30 @@ class VendorStore extends Component {
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
                                                                     className="instagram"
-                                                                    href="https://www.instagram.com/suppli_sa/">
+                                                                    href={"https://www.instagram.com/" + this.props.vendor.doc
+                                                                        .instagramLink}>
                                                                     <i
                                                                         className="fa fa-instagram"
                                                                         style={{
                                                                             fontSize:
                                                                                 '30px',
+                                                                            color: 'brown'
                                                                         }}></i>
+                                                                </a>
+                                                            </li>
+                                                        )}
+                                                    {this.props.vendor &&
+                                                        this.props.vendor.doc &&
+                                                        this.props.vendor.doc
+                                                            .facebookLink && (
+                                                            <li>
+                                                                <a
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="facebook"
+                                                                    href={"https://www.facebook.com/" + this.props.vendor.doc
+                                                                        .facebookLink}>
+                                                                    <i className="fa fa-facebook"></i>
                                                                 </a>
                                                             </li>
                                                         )}
@@ -293,13 +276,12 @@ class VendorStore extends Component {
                                             </p>
                                             <a
                                                 className="ps-btn ps-btn--fullwidth"
-                                                href={`mailto:${
-                                                    this.props.vendor &&
+                                                href={`mailto:${this.props.vendor &&
                                                     this.props.vendor.doc &&
                                                     this.props.vendor.doc
                                                         .companyEmail
-                                                }
-                                            `}>
+                                                    }
+                                            `} style={{ color: 'white' }}>
                                                 Contact Seller
                                             </a>
                                         </div>
