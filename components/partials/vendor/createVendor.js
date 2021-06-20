@@ -1305,7 +1305,7 @@ class VendorApplication extends React.Component {
                                 <label
                                     className="form-control-label"
                                     htmlFor="input-country">
-                                    Facebook
+                                    Facebook Handle
                                 </label>
                                 <Input
                                     rows="4"
@@ -1325,7 +1325,7 @@ class VendorApplication extends React.Component {
                                 <label
                                     className="form-control-label"
                                     htmlFor="input-country">
-                                    Instagram
+                                    Instagram Handle
                                 </label>
                                 <Input
                                     rows="4"
