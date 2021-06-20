@@ -64,7 +64,7 @@ class Login extends Component {
         return (
 
             <Form
-                className="ps-form--account"
+                
                 onSubmit={this.handleLoginSubmit}>
 
                 <div className="ps-tab active" id="sign-in">
