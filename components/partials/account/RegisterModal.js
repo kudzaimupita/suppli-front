@@ -75,7 +75,7 @@ class Register extends Component {
         return (
 
             <Form
-                className="ps-form--account"
+             
                 onSubmit={this.handleSubmit}>
 
                 <div className="ps-tab active" id="register">
