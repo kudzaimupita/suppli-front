@@ -50,7 +50,7 @@ class HeaderAutoPart extends Component {
 
     render() {
         const menuAutopart = [
-             {
+            {
                 text: 'Home',
                 url: '/',
                 icon: (
@@ -102,6 +102,7 @@ class HeaderAutoPart extends Component {
                         class="fa fa-street-view"></i>
                 ),
             },
+
             {
                 text: 'Invite A Friend',
                 url: '/invite-a-friend',
@@ -130,16 +131,16 @@ class HeaderAutoPart extends Component {
                 ),
             },
             {
-                text: 'New Arrivals',
-                url: '/new-arrivals',
+                text: 'Stores',
+                url: '/stores',
                 icon: (
                     <i
-                        class="fa fa-shopping-bag"
                         style={{
                             fontSize: '17px',
                             marginRight: '8px',
                             color: 'white',
-                        }}></i>
+                        }}
+                        class="fa fa-street-view"></i>
                 ),
             },
             {
@@ -186,13 +187,13 @@ class HeaderAutoPart extends Component {
                         </div>
                         <div className="header__right">
                             <ul className="header__top-links">
-                                   <li>
+                                <li>
                                     <Link href="https://suppli-vendor.herokuapp.com/login">
                                         <a
                                             style={{ fontSize: '12px' }}
                                             target="_blank"
                                             rel="noopener noreferrer">
-                                           Vendor Login
+                                            Vendor Login
                                         </a>
                                     </Link>
                                 </li>
@@ -220,7 +221,7 @@ class HeaderAutoPart extends Component {
                                 </li> */}
                                 <li>
                                     {this.props.isLoggedIn &&
-                                    this.props.isLoggedIn === true ? (
+                                        this.props.isLoggedIn === true ? (
                                         <AccountQuickLinks isLoggedIn={true} />
                                     ) : (
                                         <AccountQuickLinks isLoggedIn={false} />
