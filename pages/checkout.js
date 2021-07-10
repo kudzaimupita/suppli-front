@@ -21,11 +21,11 @@ const OrderTrackingPage = () => {
         },
     ];
     return (
-        <div className="site-content">
+        <div className="site-content" >
             <HeaderDefault />
             <HeaderMobile />
             <NavigationList />
-            <div className="ps-page--simple">
+            <div className="ps-page--simple" style={{ backgroundColor: '#eeeeee' }}>
                 <BreadCrumb breacrumb={breadCrumb} />
                 <Checkout />
             </div>
