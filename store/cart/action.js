@@ -70,3 +70,10 @@ export function updateCartError(payload) {
         payload,
     };
 }
+
+export function clearCart(payload) {
+    return {
+        type: 'CLEAR_CART',
+        payload,
+    };
+}
