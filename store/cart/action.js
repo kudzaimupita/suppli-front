@@ -1,3 +1,4 @@
+import { setAlert } from './../../actions/alert'
 export const actionTypes = {
     GET_CART: 'GET_CART',
     GET_CART_SUCCESS: 'GET_CART_SUCCESS',
@@ -42,6 +43,11 @@ export function getCartError(error) {
 }
 
 export function addItem(product) {
+    const localCart = JSON.parse(localStorage.getItem('persist:Suppl-i'))
+        .cart;
+    console.log(JSON.parse(localCart))
+    const newcart = JSON.parse(localCart)
+    if (newcart?.cartItems?.length > 0 && product.plug !== newcart.cartItems[0].plug) return setAlert('An order can only have products from the same store', 'warning')
     return { type: actionTypes.ADD_ITEM, product };
 }
 
