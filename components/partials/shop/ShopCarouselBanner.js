@@ -23,27 +23,29 @@ class ShopCarouselBanner extends Component {
             <div className="ps-shop-banner" style={{ marginBottom: '20px' }}>
                 {/* <img src="/static/img/slider/shop-default/1.jpg" alt="Suppl-i" style={{height:'300px'}} className='faded faded-wide faded-right'/> */}
                 <Slider {...carouselSetting} className="ps-carousel inside">
+
                     <div className="item">
                         <img src="/static/img/1.png" alt="Suppl-i" />
                     </div>
-                    <div className="item">
+                    <Link to='/vendor/60d09136f76e6c0017f3f43c'>    <div className="item">
                         <img src="/static/img/2.png" alt="Suppl-i" />
-                    </div>
-                    <div className="item">
+                    </div></Link>
+                    <Link to='/vendor/60d05beaf76e6c0017f3f41f'>    <div className="item">
                         <img src="/static/img/3.png" alt="Suppl-i" />
-                    </div>
-                    <div className="item">
+                    </div></Link>
+                    <Link to='/vendor/60d0a9b9f76e6c0017f3f47b'>    <div className="item">
                         <img src="/static/img/4.png" alt="Suppl-i" />
-                    </div>
-                    <div className="item">
+                    </div></Link>
+
+                    <Link to='/contact'>    <div className="item">
                         <img src="/static/img/5.png" alt="Suppl-i" />
-                    </div>
+                    </div></Link>
                     <div className="item">
                         <img src="/static/img/6.png" alt="Suppl-i" />
                     </div>
-                    <div className="item">
+                    <Link to='/vendor/60cf5532a0347100171bdeb9'>    <div className="item">
                         <img src="/static/img/7.png" alt="Suppl-i" />
-                    </div>
+                    </div></Link>
                 </Slider>
             </div>
         );
