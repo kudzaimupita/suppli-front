@@ -1,4 +1,4 @@
-import api, { api2 } from "../utils/api";
+import api from "../utils/api";
 import { setAlert } from "./alert";
 import Router from 'next/router';
 import axios from 'axios'
@@ -46,13 +46,14 @@ export const getMyOrders = () => async (dispatch, getState) => {
 
 
 export const createOrderAction = (formData) => async (dispatch, getState) => {
-    api2.defaults.headers.common['authorization'] = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwY2Y0MjQ0YTQ4MDMwMmUxMDE2ZDE1YSIsImlhdCI6MTYyNDE5NTY1NiwiZXhwIjoxNjMxOTcxNjU2fQ.2C6T_EuQU9apD6E4hIVAZqETScEJkGJQ8mdrUzaL2Hg`;
+    api.defaults.headers.common['authorization'] = `Bearer ${getState().auth1.token
+        }`;
     dispatch({
         type: CREATE_ORDER_REQUEST,
     });
 
     try {
-        const res = await api2.post('/orders/create-session', formData);
+        const res = await api.post('/orders/create-session', formData);
 
         dispatch({
             type: CREATE_ORDER_SUCCESS,
