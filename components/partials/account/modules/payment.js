@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import {} from '../../../../store/cart'
 
 export const Checkout = (props) => {
     useEffect(() => {
