@@ -32,6 +32,7 @@
         "react-custom-scrollbars": "^4.2.1",
         "react-custom-share": "^0.4.8",
         "react-dom": "16.9.0",
+        "react-google-autocomplete": "^2.4.0",
         "react-image-lightbox": "^5.1.1",
         "react-images": "^1.1.0-beta.3",
         "react-notification-alert": "0.0.13",
