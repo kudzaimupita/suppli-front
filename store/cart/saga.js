@@ -12,14 +12,14 @@ import {
 const modalSuccess = type => {
     notification[type]({
         message: 'Success',
-        description: 'This product has been added to your cart!',
+        description: 'Added to cart',
         duration: 1,
     });
 };
 const modalWarning = type => {
     notification[type]({
         message: 'Remove A Item',
-        description: 'This product has been removed from your cart!',
+        description: 'Removed from cart!',
         duration: 1,
     });
 };
@@ -74,7 +74,7 @@ function* removeItemSaga(payload) {
         let index = localCart.cartItems.indexOf(product);
         console.log(index)
         localCart.cartTotal = localCart.cartTotal - product.quantity;
-        localCart.cartItems = localCart.cartItems.filter(el=>el._id!==product._id);
+        localCart.cartItems = localCart.cartItems.filter(el => el._id !== product._id);
         localCart.amount = calculateAmount(localCart.cartItems);
         if (localCart.cartItems.length === 0) {
             localCart.cartItems = [];
