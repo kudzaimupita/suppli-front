@@ -100,6 +100,7 @@ export const inviteAFriendAction = (formData) => async (dispatch) => {
         });
     }
 };
+
 export const createVendorAction = (formData, history) => async (dispatch, getState) => {
     api.defaults.headers.common['authorization'] = `Bearer ${getState().auth1.token
         }`;
@@ -130,7 +131,6 @@ export const createVendorAction = (formData, history) => async (dispatch, getSta
         });
     }
 };
-
 
 export const getVendors = () => async (dispatch) => {
     dispatch({
