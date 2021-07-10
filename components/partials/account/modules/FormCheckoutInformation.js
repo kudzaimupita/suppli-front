@@ -1,44 +1,285 @@
 import React, { Component } from 'react';
+import Link from 'next/link';
+import Payment from './Payment';
+import Autocomplete, { usePlacesWidget } from "react-google-autocomplete";
+import { Form, Input, Card, Row } from 'antd';
+import { createOrderAction } from '../../../../actions/orders';
+import { getVendor } from '../../../../actions/vendors';
 import { connect } from 'react-redux';
+import { createCompleteBooking } from './calculate';
 
-import FormCheckoutInformation from './modules/FormCheckoutInformation';
-
-class Checkout extends Component {
+class FormCheckoutInformation extends Component {
     constructor(props) {
         super(props);
     }
+    state = {
+        address: '',
+        name: '',
+        phone: '',
+        price: ''
+    }
     componentDidMount() {
-        const script = document.createElement("script");
-        script.src = "https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=" + 'B63C8819FE0D3495FA877CBC494FAEDD.uat01-vm-tx02'
-        script.async = true;
-        document.body.appendChild(script)
 
+        this.props.cartItems[0]?.plug && this.props.getVendor(this.props?.cartItems[0]?.plug)
 
     }
 
+
+    onSubmit = e => {
+        e.preventDefault();
+
+        const body = {
+            name: this.state.name,
+            phone: this.state.phone,
+            products: this.props.cartItems,
+            amount: this.props.amount,
+            address: this.state.address
+        }
+
+        this.props.createOrderAction(body)
+
+    };
+
+    handleAddressChange = async (place) => {
+
+        this.setState({ address: place?.formatted_address });
+        this.setState({ price: await createCompleteBooking(this.props.vendor && this.props.vendor?.postalCode, this.state.address.split(',')[3]) })
+
+    };
+
+    handleNameChange = (e) => {
+        this.setState({ name: e.target.value });
+    };
+    handlePhoneChange = async (e) => {
+        this.setState({ phone: e.target.value });
+    };
+
+
+
     render() {
-        const { amount, cartTotal, cartItems } = this.props;
+
+
+        console.log(this.props.vendor && this.props.vendor?.postalCode, this.state.address.split(',')[3])
+        const { getFieldDecorator } = this.props.form;
+        const { amount, cartItems, cartTotal } = this.props;
+        // const vendorAddress = cartItems[0]._id
+
+
         return (
-            <div className="ps-checkout ps-section--shopping">
-                <div className="container">
-                    <div className="ps-section__header">
-                        <h1>Checkout </h1>
-                    </div>
-                    {/* <form style={{ backgroundColor: 'blue' }} action="{shopperResultUrl}" className="paymentWidgets" data-brands="VISA MASTER AMEX"></form> */}
-                    <div className="ps-section__content">
-                        <FormCheckoutInformation
-                            amount={amount}
-                            cartTotal={cartTotal}
-                            cartItems={cartItems}
-                        />
+            <Form
+                className="ps-form--checkout"
+                onSubmit={this.handleLoginSubmit}>
+                <div className="ps-form__content ">
+                    <div className="row" >
+                        {/* <Row></Row> */}
+                        <Card className="col-xl-7 col-lg-7 col-md-12 col-sm-12" style={{ marginRight: '15px' }}>
+                            <div className="ps-form__billing-info">
+                                <h3 className="ps-form__heading">
+                                    Contact information
+                                </h3>
+
+                                {/* <div className="form-group">
+                                    <Form.Item>
+                                        {getFieldDecorator('text', {
+                                            rules: [
+                                                {
+                                                    required: true,
+                                                    message:
+                                                        'Enter an email or mobile phone number!',
+                                                },
+                                            ],
+                                        })(
+                                            <Input
+                                                className="form-control"
+                                                type="text"
+                                                placeholder="Email or phone number"
+                                            />,
+                                        )}
+                                    </Form.Item>
+                                </div> */}
+
+                                {/* <h3 className="ps-form__heading">
+                                    Shipping address
+                                </h3> */}
+                                {/* <input ref={ref} style={{ width: "90%" }} defaultValue="Amsterdam" /> */}
+
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
+                                            <Form.Item>
+                                                {getFieldDecorator(
+                                                    'name',
+                                                    {
+                                                        rules: [
+                                                            {
+                                                                required: true,
+                                                                message:
+                                                                    'Enter your name!',
+                                                            },
+                                                        ],
+                                                    },
+                                                )(
+                                                    <Input
+                                                        className="form-control"
+                                                        type="text"
+                                                        placeholder="Name"
+                                                        value={this.state.name}
+                                                        onChange={this.handleNameChange}
+                                                    />,
+                                                )}
+                                            </Form.Item>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <div className="form-group">
+                                            <Form.Item>
+                                                {getFieldDecorator('phone', {
+                                                    rules: [
+                                                        {
+                                                            required: true,
+                                                            message:
+                                                                'Enter your phone number!',
+                                                        },
+                                                    ],
+                                                })(
+                                                    <Input
+                                                        className="form-control"
+                                                        type="text"
+                                                        placeholder="Phone"
+                                                        value={this.state.phone}
+                                                        onChange={this.handlePhoneChange}
+                                                    />,
+                                                )}
+                                            </Form.Item>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <Autocomplete
+                                    apiKey='AIzaSyDdkpFLrMBAYzzMZg699Yr-lQJ1ksyfN2Q'
+
+                                    style={{ width: "100%", height: '50px', marginBottom: '20px' }}
+                                    onPlaceSelected={(place) => {
+                                        this.handleAddressChange(place)
+                                    }}
+                                    options={{
+                                        types: ["address"],
+                                        componentRestrictions: { country: "za" },
+                                    }}
+
+                                />
+                                <div className="form-group">
+                                    <div className="ps-checkbox">
+                                        <input
+                                            className="form-control"
+                                            type="checkbox"
+                                            id="keep-update"
+                                        />
+                                        <label htmlFor="keep-update">
+                                            Save this information for next time
+                                        </label>
+                                    </div>
+                                </div>
+                                <div className="ps-form__submit">
+                                    <a href="/account/shopping-cart">
+
+                                        <i className="icon-arrow-left mr-2"></i>
+                                        Return to shopping cart
+
+                                    </a>
+                                    <div className="ps-block__footer">
+
+                                        {!this.props.orderId && <button className="ps-btn " onClick={(e) => this.onSubmit(e)} style={{ color: 'white' }}>
+                                            Continue to payment
+                                        </button>}
+                                    </div>
+                                </div>
+                                <div style={{ marginTop: '30px' }}>   </div>
+
+                            </div>
+                            <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                <div className="ps-block--shipping">
+
+                                    {/* <h4>Shipping Method</h4>
+                                    <div className="ps-block__panel">
+                                        <figure>
+                                            <small>
+                                                Droppa Shipping
+                                            </small>
+                                            <strong>R20.00</strong>
+                                        </figure>
+                                    </div>
+                                    <h4>Payment Details</h4> */}
+                                    <Payment orderId={this.props.orderId} />
+
+
+
+                                </div>
+                            </div>
+
+                        </Card>
+
+                        <Card className="col-xl-4 col-lg-4 col-md-12 col-sm-12  ps-block--checkout-order" >
+                            <div className="ps-form__orders">
+                                <h3>Your order</h3>
+                                <div className="ps-block--checkout-order">
+                                    <div className="ps-block__content">
+                                        <figure>
+                                            <figcaption>
+                                                <strong>Product</strong>
+                                                <strong>total</strong>
+                                            </figcaption>
+                                        </figure>
+                                        <figure className="ps-block__items">
+                                            {cartItems &&
+                                                cartItems.map(product => (
+
+                                                    <a>
+                                                        <strong>
+                                                            {product.name}
+                                                            <span>
+                                                                x
+                                                                {
+                                                                    product.quantity
+                                                                }
+                                                            </span>
+                                                        </strong>
+                                                        <small>
+                                                            R
+                                                            {product.quantity *
+                                                                product.price}
+                                                        </small>
+                                                    </a>
+
+                                                ))}
+                                        </figure>
+                                        <figure>
+                                            <figcaption>
+                                                <strong>Subtotal</strong>
+                                                <small>R{amount}</small>
+                                            </figcaption>
+                                        </figure>
+                                        <figure className="ps-block__shipping">
+                                            <h3>Shipping</h3>
+
+                                            <p>{this.state.price}</p>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </Card>
                     </div>
                 </div>
-            </div>
+            </Form>
         );
     }
 }
 
-const mapStateToProps = state => {
-    return state.cart;
-};
-export default connect(mapStateToProps)(Checkout);
+const WrapForm = Form.create()(FormCheckoutInformation);
+
+const mapStateToProps = (state) => ({
+    isLoggedIn: state.auth.isLoggedIn,
+    orderId: state.createdOrder?.order,
+    vendor: state.vendor?.vendor?.doc
+});
+export default connect(mapStateToProps, { createOrderAction, getVendor })(WrapForm);
