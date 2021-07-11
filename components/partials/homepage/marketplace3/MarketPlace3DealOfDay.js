@@ -79,7 +79,7 @@ class MarketPlaceDealOfDay extends Component {
                             {...carouselSetting}
                             className="ps-carousel outside">
                             {this.props.products &&
-                                this.props.products.map((product) => (
+                                this.props.products.slice(0, 16).map((product) => (
                                     <Product
                                         product={product}
                                         key={product._id}
