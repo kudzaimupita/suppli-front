@@ -70,10 +70,9 @@ class ShoppingCart extends Component {
                                                                 as={`/product/${product._id}`}>
                                                                 <a>
                                                                     <img
-                                                                        src={`https://suppli-api.herokuapp.com/img/products/${
-                                                                            product.imageCover &&
+                                                                        src={`https://suppli-api.herokuapp.com/${product.imageCover &&
                                                                             product.imageCover
-                                                                        }`}
+                                                                            }`}
                                                                         alt="Suppl-i"
                                                                     />
                                                                 </a>
@@ -186,34 +185,34 @@ class ShoppingCart extends Component {
                                         <ul className="ps-block__product">
                                             {cartItems.length > 0
                                                 ? cartItems.map(
-                                                      (product, index) => {
-                                                          if (index < 3) {
-                                                              return (
-                                                                  <li
-                                                                      key={
-                                                                          product._id
-                                                                      }>
-                                                                      <span className="ps-block__estimate">
-                                                                          <Link
-                                                                              href="/product/[pid]"
-                                                                              as={`/product/${product._id}`}>
-                                                                              <a className="ps-product__title">
-                                                                                  {
-                                                                                      product.name
-                                                                                  }
-                                                                                  <br />{' '}
-                                                                                  x{' '}
-                                                                                  {
-                                                                                      product.quantity
-                                                                                  }
-                                                                              </a>
-                                                                          </Link>
-                                                                      </span>
-                                                                  </li>
-                                                              );
-                                                          }
-                                                      }
-                                                  )
+                                                    (product, index) => {
+                                                        if (index < 3) {
+                                                            return (
+                                                                <li
+                                                                    key={
+                                                                        product._id
+                                                                    }>
+                                                                    <span className="ps-block__estimate">
+                                                                        <Link
+                                                                            href="/product/[pid]"
+                                                                            as={`/product/${product._id}`}>
+                                                                            <a className="ps-product__title">
+                                                                                {
+                                                                                    product.name
+                                                                                }
+                                                                                <br />{' '}
+                                                                                x{' '}
+                                                                                {
+                                                                                    product.quantity
+                                                                                }
+                                                                            </a>
+                                                                        </Link>
+                                                                    </span>
+                                                                </li>
+                                                            );
+                                                        }
+                                                    }
+                                                )
                                                 : ''}
                                         </ul>
                                         <h3>
@@ -222,7 +221,7 @@ class ShoppingCart extends Component {
                                     </div>
                                 </div>
                                 {cartItems.length > 0 && (
-                                    <Link href="/account/checkout">
+                                    <Link href="/checkout">
                                         <a className="ps-btn ps-btn--fullwidth">
                                             Proceed to checkout
                                         </a>
