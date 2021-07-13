@@ -87,7 +87,7 @@ class MiniCart extends Component {
                                 <strong>R{amount ? amount : 0}</strong>
                             </h3>
                             <figure>
-                                <Link href="/account/shopping-cart" as="/cart">
+                                <Link href="/account/shopping-cart">
                                     <a
                                         style={{
                                             color: 'white',
