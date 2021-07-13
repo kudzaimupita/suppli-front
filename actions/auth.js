@@ -1,6 +1,7 @@
 import api from '../utils/api';
 import { setAlert } from './alert';
 import { getUserFeedProducts } from './products';
+import Router from 'next/router';
 import { login as authLogin, logOut as signOut } from '../store/auth/action';
 
 import {
