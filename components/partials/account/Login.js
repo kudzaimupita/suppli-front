@@ -139,15 +139,10 @@ class Login extends Component {
                                 </div>
                                 <div className="form-group">
                                     <div className="ps-checkbox">
-                                        <input
-                                            className="form-control"
-                                            type="checkbox"
-                                            id="remember-me"
-                                            name="remember-me"
-                                        />
-                                        <label htmlFor="remember-me">
-                                            Rememeber me
-                                        </label>
+
+                                        <a href='/' >
+                                            Forgot your password?
+                                        </a>
                                     </div>
                                 </div>
                                 <div className="form-group submit">
