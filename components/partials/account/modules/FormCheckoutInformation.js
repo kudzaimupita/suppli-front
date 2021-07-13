@@ -20,7 +20,7 @@ class FormCheckoutInformation extends Component {
     }
     componentDidMount() {
 
-        this.props.cartItems[0]?.plug && this.props.getVendor(this.props?.cartItems[0]?.plug)
+        this.props.isLoggedIn && this.props.cartItems[0]?.plug && this.props.getVendor(this.props?.cartItems[0]?.plug)
 
     }
 
@@ -32,7 +32,7 @@ class FormCheckoutInformation extends Component {
             name: this.state.name,
             phone: this.state.phone,
             products: this.props.cartItems,
-            amount: this.props.amount,
+            amount: (this.props.amount * 1) + (this.state.price * 1),
             address: this.state.address
         }
 
@@ -245,9 +245,12 @@ class FormCheckoutInformation extends Component {
                                                             </span>
                                                         </strong>
                                                         <small>
-                                                            R
-                                                            {product.quantity *
-                                                                product.price}
+                                                            {new Intl.NumberFormat("de-ZA", {
+                                                                style: "currency",
+                                                                currency: "ZAR",
+                                                            }).format(product.quantity *
+                                                                product.price)}
+                                                            {/* {}.00 */}
                                                         </small>
                                                     </a>
 
@@ -256,15 +259,30 @@ class FormCheckoutInformation extends Component {
                                         <figure>
                                             <figcaption>
                                                 <strong>Subtotal</strong>
-                                                <small>R{amount}</small>
+                                                <small>       {new Intl.NumberFormat("de-ZA", {
+                                                    style: "currency",
+                                                    currency: "ZAR",
+                                                }).format(amount)}</small>
                                             </figcaption>
                                         </figure>
+                                        {this.state.price && <figure className="ps-block__shipping">
+                                            <h5>Shipping</h5>
+                                            {new Intl.NumberFormat("de-ZA", {
+                                                style: "currency",
+                                                currency: "ZAR",
+                                            }).format(this.state.price)}
+                                            {/* <p>R{this.state.price}</p> */}
+                                        </figure>}
                                         <figure className="ps-block__shipping">
-                                            <h3>Shipping</h3>
+                                            <h3>Total</h3>
+                                            {this.state.price ? new Intl.NumberFormat("de-ZA", {
+                                                style: "currency",
+                                                currency: "ZAR",
+                                            }).format((this.state.price * 1) + (amount * 1)) : 'Calculated after shipping address is provided'}
 
-                                            <p>{this.state.price}</p>
                                         </figure>
                                     </div>
+
                                 </div>
                             </div>
                         </Card>
