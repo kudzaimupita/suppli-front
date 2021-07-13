@@ -23,9 +23,9 @@ class ShopCarouselBanner extends Component {
             <div className="ps-shop-banner" style={{ marginBottom: '20px' }}>
                 <Slider {...carouselSetting} className="ps-carousel inside">
 
-                    <div className="item">
+                    <a href='/vendor/60cf3fb9a0347100171bde9f' className="item">
                         <img src="/static/img/1.png" alt="Suppl-i" />
-                    </div>
+                    </a>
                     <a href='/vendor/60d09136f76e6c0017f3f43c'>    <div className="item">
                         <img src="/static/img/2.png" alt="Suppl-i" />
                     </div></a>
@@ -39,9 +39,9 @@ class ShopCarouselBanner extends Component {
                     <a href='/contact'>    <div className="item">
                         <img src="/static/img/5.png" alt="Suppl-i" />
                     </div></a>
-                    <div className="item">
+                    <a href='vendor/60d18d766c7c79001716ec2c' className="item">
                         <img src="/static/img/6.png" alt="Suppl-i" />
-                    </div>
+                    </a>
                     <a href='/vendor/60cf5532a0347100171bdeb9'>    <div className="item">
                         <img src="/static/img/7.png" alt="Suppl-i" />
                     </div></a>
