@@ -36,6 +36,13 @@ function reducer(state = initCart, action) {
                 ...state,
                 ...{ error: action.error },
             };
+        case 'CLEAR_CART':
+            return {
+                ...state,
+                ...{ cartItems: [] },
+                ...{ amount: null },
+                ...{ cartTotal: null },
+            };
         default:
             return state;
     }
