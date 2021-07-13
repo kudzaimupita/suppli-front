@@ -20,7 +20,7 @@ class InformationBox extends Component {
         const { product } = this.props;
         let tempProduct = product;
         tempProduct.quantity = this.state.quantity;
-        this.props.dispatch(addItem(product));
+            this.props.dispatch(addItem({ ...product, plug: product.plug._id }));
     };
 
     handleAddItemToCompare = (e) => {
