@@ -140,7 +140,7 @@ class Login extends Component {
                                 <div className="form-group">
                                     <div className="ps-checkbox">
 
-                                        <a href='/' >
+                                        <a href='/account/forgot-password' >
                                             Forgot your password?
                                         </a>
                                     </div>
