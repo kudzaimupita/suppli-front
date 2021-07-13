@@ -28,13 +28,15 @@ class FormCheckoutInformation extends Component {
     onSubmit = e => {
         e.preventDefault();
 
+     const price = parseFloat((this.props.amount * 1) + (this.state.price * 1)).toFixed(2);
         const body = {
             name: this.state.name,
             phone: this.state.phone,
             products: this.props.cartItems,
-            amount: (this.props.amount * 1) + (this.state.price * 1),
+            amount: price,
             address: this.state.address
         }
+
 
         this.props.createOrderAction(body)
 
