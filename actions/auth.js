@@ -19,6 +19,9 @@ import {
     UPDATE_MY_PASSWORD_FAIL,
     UPDATE_MY_PASSWORD_REQUEST,
     UPDATE_MY_PASSWORD_SUCCESS,
+        FORGOT_PASSWORD_FAIL,
+    FORGOT_PASSWORD_REQUEST,
+    FORGOT_PASSWORD_SUCCESS
 } from '../constants/authConstants';
 
 import // GET_MY_PLUG_REQUEST,
@@ -251,6 +254,38 @@ export const loadUser = () => async (dispatch, getState) => {
 //         });
 //     }
 // };
+
+export const forgotPassword = (formData) => async (dispatch) => {
+    dispatch({
+        type: FORGOT_PASSWORD_REQUEST,
+    });
+
+    try {
+        const res = await api.post('/users/forgotpassword', formData);
+        // if(!res.data.data.vendor){
+        //     return dispatch(setAlert('Sorry you dont have a shop', 'danger'))
+        //   }
+        dispatch({
+            type: FORGOT_PASSWORD_SUCCESS,
+            payload: res.data.data,
+        });
+        Router.push('/forgot-password-success')
+    } catch (err) {
+        console.log(err);
+
+        const errors = err.response.data.error;
+
+        const errorArray = errors.split(',');
+
+        if (errorArray) {
+            errorArray.map((error) => dispatch(setAlert(error, 'warning')));
+        }
+
+        dispatch({
+            type: FORGOT_PASSWORD_FAIL,
+        });
+    }
+};
 
 export const logout = () => async (dispatch) => {
     dispatch({
