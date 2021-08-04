@@ -6,7 +6,7 @@ import { Form, Input, Card, Row } from 'antd';
 import { createOrderAction } from '../../../../actions/orders';
 import { getVendor } from '../../../../actions/vendors';
 import { connect } from 'react-redux';
-import { createCompleteBooking } from './calculate';
+import { createCompleteBooking, CreateExpressBooking } from './calculate';
 
 class FormCheckoutInformation extends Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class FormCheckoutInformation extends Component {
     onSubmit = e => {
         e.preventDefault();
 
-     const price = parseFloat((this.props.amount * 1) + (this.state.price * 1)).toFixed(2);
+        const price = parseFloat((this.props.amount * 1) + (this.state.price * 1)).toFixed(2);
         const body = {
             name: this.state.name,
             phone: this.state.phone,
@@ -46,7 +46,8 @@ class FormCheckoutInformation extends Component {
 
         this.setState({ address: place?.formatted_address });
         this.setState({ price: await createCompleteBooking(this.props.vendor && this.props.vendor?.postalCode, this.state.address.split(',')[3]) })
-
+        await CreateExpressBooking()
+        // console.log(await CreateExpressBooking())
     };
 
     handleNameChange = (e) => {
