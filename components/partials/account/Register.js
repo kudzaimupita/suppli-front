@@ -82,7 +82,7 @@ class Register extends Component {
             Router.push('/');
         }
         return (
-            <div className="ps-my-account">
+            <div className="py-5 bg-gray-100">
                 <div className="container">
                     <Form
 

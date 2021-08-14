@@ -71,7 +71,7 @@ class Login extends Component {
         }
         const { getFieldDecorator } = this.props.form;
         return (
-            <div className="ps-my-account">
+            <div className="py-5 bg-gray-100">
                 <div className="container">
                     <Form
                         className="ps-form--account"
