@@ -6,6 +6,10 @@ import ShopWidget from './modules/ShopWidget';
 import { getSpecials, getNewArrivals } from '../../../actions/products';
 import { getVendors } from '../../../actions/vendors';
 import { Spin } from 'antd';
+import Modal from 'react-modal'
+// import { getVendors, getVendor } from './../../../../actions/vendors';
+import '../../../components/tailwind.scss'
+import { Spinner } from 'react-activity';
 class LayoutShopSidebarWithoutBanner extends Component {
     state = {
         listView: true,
@@ -27,25 +31,14 @@ class LayoutShopSidebarWithoutBanner extends Component {
                 {' '}
                 {this.props.popularProductsLoading &&
                     this.props.popularProductsLoading && (
-                        <div
-                            className="example"
-                            style={{
-                                borderRadius: ' 4px',
-                                textAlign: 'center',
-                                // margin: ' 20px 0',
-                                marginBottom: '20px',
-                                padding: '300px 500px',
-                                right: '50px',
-                                background: '#fff',
-                                zIndex: '99',
-                                width: '100%',
-                                height: '100%',
-                                margin: 'auto',
-                                display: 'block',
-                                position: 'fixed',
-                            }}>
-                            <Spin size="large" />
-                        </div>
+                        <Modal style={{ zIndex: 99999 }} isOpen={true} ariaHideApp={false}
+                            overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
+                            className={`border-none m-auto select-none outline-none w-content z-50`}>
+                            <Spinner
+                                color="black"
+                                size={32}
+                                speed={1}
+                                animating={true} /></Modal>
                     )}{' '}
                 <div className="ps-layout--shop">
                     <ShopWidget />
@@ -56,7 +49,7 @@ class LayoutShopSidebarWithoutBanner extends Component {
                                     <strong>
                                         {' '}
                                         {this.props.products &&
-                                        this.props.products
+                                            this.props.products
                                             ? this.props.products.length
                                             : 0}
                                     </strong>{' '}
@@ -83,9 +76,9 @@ class LayoutShopSidebarWithoutBanner extends Component {
                                                 }>
                                                 <a
                                                     href="#"
-                                                    // onClick={
-                                                    //     this.handleChangeViewMode
-                                                    // }
+                                                // onClick={
+                                                //     this.handleChangeViewMode
+                                                // }
                                                 >
                                                     <i className="icon-grid"></i>
                                                 </a>
@@ -113,33 +106,33 @@ class LayoutShopSidebarWithoutBanner extends Component {
                                     <div className="ps-shopping-product">
                                         <div className="row">
                                             {this.props.products &&
-                                            this.props.products.length > 0
+                                                this.props.products.length > 0
                                                 ? this.props.products.map(
-                                                      (item) => (
-                                                          <div
-                                                              className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 "
-                                                              key={item.id}>
-                                                              <Product
-                                                                  product={item}
-                                                              />
-                                                          </div>
-                                                      )
-                                                  )
+                                                    (item) => (
+                                                        <div
+                                                            className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 "
+                                                            key={item.id}>
+                                                            <Product
+                                                                product={item}
+                                                            />
+                                                        </div>
+                                                    )
+                                                )
                                                 : ''}
                                         </div>
                                     </div>
                                 ) : (
                                     <div className="ps-shopping-product">
                                         {this.props.products &&
-                                        this.props.products.length > 0
+                                            this.props.products.length > 0
                                             ? this.props.products.map(
-                                                  (item) => (
-                                                      <ProductWide
-                                                          product={item}
-                                                          key={item.id}
-                                                      />
-                                                  )
-                                              )
+                                                (item) => (
+                                                    <ProductWide
+                                                        product={item}
+                                                        key={item.id}
+                                                    />
+                                                )
+                                            )
                                             : ''}
                                     </div>
                                 )}
