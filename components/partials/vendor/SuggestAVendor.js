@@ -31,6 +31,10 @@ const { Panel } = Collapse;
 import { Upload, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { setAlert } from './../../../actions/alert';
+import '../../tailwind.scss'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import '../../../components/tailwind.scss'
+import { Spinner } from 'react-activity';
 const { TextArea } = Input;
 function getBase64(img, callback) {
     const reader = new FileReader();
@@ -201,14 +205,27 @@ class PlugApplication extends React.Component {
             <>
                 <div
                     className=" ps-form--account"
-                    style={{ maxWidth: '900px', paddingTop: '20px' }}>
+                    style={{ maxWidth: '700px', paddingTop: '20px' }}>
                     {' '}
-                    <Card
-                        className="bg-grey shadow "
+                    <div className="sm:mx-auto sm:w-full sm:max-w-md">
+                        <img
+                            className="mx-auto h-12 w-auto"
+                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                            alt="Workflow"
+                        />
+                        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+                        <p className="mt-2 text-center text-sm text-gray-600">
+                            Or{' '}
+                            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                start your 14-day free trial
+                            </a>
+                        </p>
+                    </div>
+
+                    <div
+                        className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg"
                         style={{ marginBottom: 20 }}>
-                        <h3 style={{ marginBottom: '20px' }} className="mb-0">
-                            Suggest A Store
-                        </h3>
+
 
                         {/* <Modal
                                         title="Vendor Terms Of Use"
@@ -251,27 +268,22 @@ class PlugApplication extends React.Component {
                                     </Modal> */}
 
                         <>
-                            <Form style={{ marginTop: '30px' }}>
+                            <Form style={{ marginTop: '30px', marginBottom: '30px', marginRight: '20px' }}>
+                                {/* <h3 style={{ marginBottom: '20px' }} className="mb-0">
+                                    Suggest A Store
+                                </h3> */}
+
                                 <div className="pl-sm-4">
                                     <Row>
                                         <Col lg="6">
                                             <>
-                                                <label
-                                                    className="form-control-label"
-                                                    htmlFor="input-username"
-                                                    size="sm">
-                                                    Your Name*{' '}
-                                                    <span
-                                                        style={{
-                                                            fontSize: '8px',
-                                                            color: 'red',
-                                                        }}>
-                                                        required
-                                                    </span>
+                                                <label htmlFor="name" className="text-sm font-medium text-gray-700">
+                                                    Your  Name<span style={{ color: 'red' }}>*</span>
                                                 </label>
                                                 <Input
+                                                    size={'large'}
                                                     id="input-username"
-                                                    placeholder="eg Nike Holdings"
+                                                    placeholder="Your name"
                                                     type="text"
                                                     prefix={
                                                         <i class="fa fa-user"></i>
@@ -286,22 +298,13 @@ class PlugApplication extends React.Component {
                                         </Col>
                                         <Col lg="6">
                                             <>
-                                                <label
-                                                    className="form-control-label"
-                                                    htmlFor="input-username"
-                                                    size="sm">
-                                                    Store Name*{' '}
-                                                    <span
-                                                        style={{
-                                                            fontSize: '8px',
-                                                            color: 'red',
-                                                        }}>
-                                                        required
-                                                    </span>
+                                                <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                                    Store  Name<span style={{ color: 'red' }}>*</span>
                                                 </label>
                                                 <Input
+                                                    size={'large'}
                                                     id="input-username"
-                                                    placeholder="eg Nike Holdings"
+                                                    placeholder="Store Name"
                                                     type="text"
                                                     prefix={
                                                         <i class="fa fa-shopping-bag"></i>
@@ -319,21 +322,13 @@ class PlugApplication extends React.Component {
                                         </Col>
                                         <Col lg="6">
                                             <>
-                                                <label
-                                                    className="form-control-label"
-                                                    htmlFor="input-email">
-                                                    Store Email*{' '}
-                                                    <span
-                                                        style={{
-                                                            fontSize: '8px',
-                                                            color: 'red',
-                                                        }}>
-                                                        required
-                                                    </span>
+                                                <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                                    Store Email<span style={{ color: 'red' }}>*</span>
                                                 </label>
                                                 <Input
+                                                    size={'large'}
                                                     id="input-email"
-                                                    placeholder="eg contact@nikeholdings.com"
+                                                    placeholder="Email"
                                                     type="email"
                                                     name="email"
                                                     value={
@@ -351,22 +346,14 @@ class PlugApplication extends React.Component {
                                         </Col>
                                         <Col lg="6">
                                             <>
-                                                <label
-                                                    className="form-control-label"
-                                                    htmlFor="input-email">
-                                                    Store Phone*{' '}
-                                                    <span
-                                                        style={{
-                                                            fontSize: '8px',
-                                                            color: 'red',
-                                                        }}>
-                                                        required
-                                                    </span>
+                                                <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                                    Store Phone<span style={{ color: 'red' }}>*</span>
                                                 </label>
                                                 <Input
-                                                    id="input-email"
-                                                    placeholder="eg 0315655565"
-                                                    type="tel"
+                                                    size={'large'}
+                                                    // id="input-email"
+                                                    placeholder="Phone"
+                                                    // type="tel"
                                                     size="sm"
                                                     name="phone"
                                                     value={
@@ -386,7 +373,7 @@ class PlugApplication extends React.Component {
                                 </div>
                             </Form>
                         </>
-                    </Card>
+                    </div>
                     <Card
                         className="bg-white shadow"
                         style={{ marginBottom: 20 }}>
@@ -398,6 +385,7 @@ class PlugApplication extends React.Component {
                                             Address*
                                         </label>
                                         <Input
+                                            size={'large'}
                                             id="input-address"
                                             placeholder="89 Smitch Avenue, building 4, floor 45"
                                             type="text"
@@ -423,6 +411,7 @@ class PlugApplication extends React.Component {
                                             City*
                                         </label>
                                         <Input
+                                            size={'large'}
                                             id="input-city"
                                             placeholder="Cape Town"
                                             type="text"
@@ -446,6 +435,7 @@ class PlugApplication extends React.Component {
                                             Country*
                                         </label>
                                         <Input
+                                            size={'large'}
                                             defaultValue="South Africa"
                                             id="input-country"
                                             placeholder="South Africa"
@@ -469,6 +459,7 @@ class PlugApplication extends React.Component {
                                             Province
                                         </label>
                                         <Input
+                                            size={'large'}
                                             placeholder="eg Gauteng"
                                             type="text"
                                             size="sm"
@@ -521,6 +512,7 @@ class PlugApplication extends React.Component {
                                     Facebook handle
                                 </label>
                                 <Input
+                                    size={'large'}
                                     rows="4"
                                     placeholder="eg nikeholding"
                                     type="text"
@@ -539,6 +531,7 @@ class PlugApplication extends React.Component {
                                     Instagram handle
                                 </label>
                                 <Input
+                                    size={'large'}
                                     rows="4"
                                     placeholder="eg nikeholding"
                                     type="text"
@@ -557,6 +550,7 @@ class PlugApplication extends React.Component {
                                     Website Url*
                                 </label>
                                 <Input
+                                    size={'large'}
                                     rows="4"
                                     placeholder="www.nikeholding.com"
                                     type="text"

@@ -88,18 +88,20 @@ class Register extends Component {
 
                         className="ps-form--account"
                         onSubmit={this.handleRegisterSubmit}>
-                        <ul className="ps-tab-list">
-                            <li>
-                                <Link href="/account/login">
-                                    <a href="/account/login">Login</a>
-                                </Link>
-                            </li>
-                            <li className="active">
-                                <Link href="/account/register">
-                                    <a href="/account/register">Register</a>
-                                </Link>
-                            </li>
-                        </ul>
+                        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+                            <img
+                                className="mx-auto h-12 w-auto"
+                                src='/static/img/suppli-logo.png'
+                                alt="Workflow"
+                            />
+                            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Register your account</h2>
+                            <p className="mt-2 text-center text-sm text-gray-600">
+                                Or{' '}
+                                <a href='/account/login' className="font-medium text-indigo-600 hover:text-indigo-500">
+                                    Already have an account? Sign in
+                                </a>
+                            </p>
+                        </div>
                         <div className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg" id="register">
                             <div className="ps-form__content">
                                 <h5>Register An Account</h5>

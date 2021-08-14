@@ -10,6 +10,7 @@ import '../../tailwind.scss'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import '../../../components/tailwind.scss'
 import { Spinner } from 'react-activity';
+// import Logo from '../../../public/static/img/suppli-logo.png'
 class Login extends Component {
     state = {
         password: '',
@@ -75,7 +76,7 @@ class Login extends Component {
                     <Form
                         className="ps-form--account"
                         onSubmit={this.handleLoginSubmit}>
-                        <ul className="ps-tab-list">
+                        {/* <ul className="ps-tab-list">
                             <li className="active">
                                 <Link href="/account/login">
                                     <a>Login</a>
@@ -86,7 +87,22 @@ class Login extends Component {
                                     <a>Register</a>
                                 </Link>
                             </li>
-                        </ul>
+                        </ul> */}
+                        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+                            <img
+                                className="mx-auto h-12 w-auto"
+                                src='/static/img/suppli-logo.png'
+                                alt="Workflow"
+                            />
+                            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+                            <p className="mt-2 text-center text-sm text-gray-600">
+                                Or{' '}
+                                <a href="/account/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                    Don't have an account? Register
+                                </a>
+                            </p>
+                        </div>
+
                         <div className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg" id="sign-in">
                             <div className="ps-form__content">
                                 <h5>Log In Your Account</h5>
