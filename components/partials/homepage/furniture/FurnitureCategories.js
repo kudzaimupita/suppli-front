@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
 import Link from 'next/link';
+import Modal from 'react-modal'
 import { getVendors, getVendor } from './../../../../actions/vendors';
-
+import '../../../tailwind.scss'
 class FurnitureCategories extends Component {
     componentDidMount() {
         this.props.getVendors();
@@ -12,45 +13,18 @@ class FurnitureCategories extends Component {
         return (
             <>
                 {' '}
+
                 {this.props.vendorsLoading && this.props.vendorsLoading && (
-                    <div
-                        style={{
-                            borderRadius: ' 4px',
-                            textAlign: 'center',
-                            // left: ' 20px',
-                            // top: '60px',
-                            marginBottom: '20px',
-                            padding: '300px 100px',
-                            background: '#fff',
-                            zIndex: '99',
-                            width: '100%',
-                            height: '100%',
-                            margin: 'auto',
-                            display: 'block',
-                            position: 'fixed',
-                        }}>
-                        <Spin size="large" />
-                    </div>
+                    <Modal isOpen={true} ariaHideApp={false}
+                        overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
+                        className={`z-index-90  border-none m-auto select-none outline-none w-content z-50`}>
+                        <Spin size="large" /></Modal>
                 )}
                 {this.props.productsLoading && this.props.productsLoading && (
-                    <div
-                        style={{
-                            borderRadius: ' 4px',
-                            textAlign: 'center',
-                            // left: ' 20px',
-                            // top: '60px',
-                            marginBottom: '20px',
-                            padding: '300px 100px',
-                            background: '#fff',
-                            zIndex: '99',
-                            width: '100%',
-                            height: '100%',
-                            margin: 'auto',
-                            display: 'block',
-                            position: 'fixed',
-                        }}>
-                        <Spin size="large" />
-                    </div>
+                    <Modal isOpen={true} ariaHideApp={false}
+                        overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
+                        className={` border-none m-auto select-none outline-none w-content z-50`}>
+                        <Spin size="large" /></Modal>
                 )}
                 <div className="ps-home-categories ps-section--furniture">
                     <div className="container">

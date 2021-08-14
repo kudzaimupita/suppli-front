@@ -17,9 +17,10 @@ import HeaderDefault from '../../components/shared/headers/HeaderMarketPlace';
 import FurnitureCategories from '../../components/partials/homepage/furniture/FurnitureCategories';
 import ShopBrands from '../../components/partials/shop/ShopBrands';
 import ShopBanner from '../../components/partials/shop/ShopCarouselBanner';
-
+import Modal from 'react-modal'
+import './../../components/tailwind.scss'
 const HomeMarketPlace3Page = (props) => (
-    <div className="site-content">
+    <div className="site-content"  >
         <>
             {/* {props.productsLoading && props.productsLoading && (
                 <div
@@ -48,25 +49,10 @@ const HomeMarketPlace3Page = (props) => (
             <main id="homepage-5">
                 <ShopBanner />{' '}
                 {props.productsLoading || props.vendorsLoading ? (
-                    <div
-                        style={{
-                            borderRadius: ' 4px',
-                            textAlign: 'center',
-                            // left: ' 20px',
-                            // top: '60px',
-                            marginBottom: '20px',
-                            padding: '300px 100px',
-                            paddingBottom: '3000x',
-                            background: '#fff',
-                            zIndex: '99',
-                            width: '100%',
-                            height: '1000px',
-                            margin: 'auto',
-                            display: 'block',
-                            position: 'fixed',
-                        }}>
-                        <Spin size="large" />
-                    </div>
+                    <Modal style={{ zIndex: 99999 }} isOpen={true} ariaHideApp={false}
+                        overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
+                        className={`border-none m-auto select-none outline-none w-content z-50`}>
+                        <Spin size="large" /></Modal>
                 ) : null}
                 {/* <MarketPlace3SearchTrending /> */}
                 {/* <ShopBanner /> */}
