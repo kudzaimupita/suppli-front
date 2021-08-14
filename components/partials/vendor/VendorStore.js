@@ -255,16 +255,26 @@ class VendorStore extends Component {
                                         <div className="ps-block__footer">
                                             <p>
                                                 Call us directly
-                                                <strong>
+                                                {/* <strong>
                                                     {' '}
                                                     {this.props.vendor &&
                                                         this.props.vendor.doc &&
                                                         this.props.vendor.doc
                                                             .phone}
-                                                </strong>
+                                                </strong> */}
+                                                <a href={`tel:${this.props.vendor &&
+                                                    this.props.vendor.doc &&
+                                                    this.props.vendor.doc
+                                                        .phone
+                                                    }
+                                            `} >   <strong>{this.props.vendor &&
+                                                        this.props.vendor.doc &&
+                                                        this.props.vendor.doc
+                                                            .phone
+                                                    }</strong> </a>
                                             </p>
                                             <p>
-                                                or Or if you have any question
+                                                Or email the store if you have any queries
                                             </p>
                                             <a
                                                 className="ps-btn ps-btn--fullwidth"
@@ -274,7 +284,7 @@ class VendorStore extends Component {
                                                         .companyEmail
                                                     }
                                             `} style={{ color: 'white' }}>
-                                                Contact Seller
+                                                Email Store
                                             </a>
                                         </div>
                                     </div>
