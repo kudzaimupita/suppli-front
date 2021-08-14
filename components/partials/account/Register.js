@@ -6,6 +6,11 @@ import { login } from '../../../actions/auth';
 
 import { Form, Input } from 'antd';
 import { connect } from 'react-redux';
+import { LockClosedIcon } from '@heroicons/react/solid'
+import '../../tailwind.scss'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import '../../../components/tailwind.scss'
+import { Spinner } from 'react-activity';
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -80,8 +85,9 @@ class Register extends Component {
             <div className="ps-my-account">
                 <div className="container">
                     <Form
+
                         className="ps-form--account"
-                        onSubmit={this.handleSubmit}>
+                        onSubmit={this.handleRegisterSubmit}>
                         <ul className="ps-tab-list">
                             <li>
                                 <Link href="/account/login">
@@ -94,10 +100,13 @@ class Register extends Component {
                                 </Link>
                             </li>
                         </ul>
-                        <div className="ps-tab active" id="register">
+                        <div className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg" id="register">
                             <div className="ps-form__content">
                                 <h5>Register An Account</h5>
-                                <div className="form-group">
+                                <label htmlFor="name" className="text-sm font-medium text-gray-700">
+                                    Name<span style={{ color: 'red' }}>*</span>
+                                </label>
+                                <div>
                                     <Form.Item>
                                         {getFieldDecorator('name', {
                                             rules: [
@@ -109,7 +118,8 @@ class Register extends Component {
                                             ],
                                         })(
                                             <Input
-                                                className="form-control"
+                                                required
+                                                size={'large'}
                                                 type="name"
                                                 placeholder="name"
                                                 value={this.state.name}
@@ -118,7 +128,10 @@ class Register extends Component {
                                         )}
                                     </Form.Item>
                                 </div>
-                                <div className="form-group form-forgot">
+                                <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                                    Email<span style={{ color: 'red' }}>*</span>
+                                </label>
+                                <div className=" form-forgot">
                                     <Form.Item>
                                         {getFieldDecorator('email', {
                                             rules: [
@@ -130,7 +143,8 @@ class Register extends Component {
                                             ],
                                         })(
                                             <Input
-                                                className="form-control"
+                                                required
+                                                size={'large'}
                                                 type="email"
                                                 placeholder="email"
                                                 value={this.state.email}
@@ -141,7 +155,10 @@ class Register extends Component {
                                         )}
                                     </Form.Item>
                                 </div>
-                                <div className="form-group form-forgot">
+                                <label htmlFor="password" className="text-sm font-medium text-gray-700">
+                                    Password<span style={{ color: 'red' }}>*</span>
+                                </label>
+                                <div className=" form-forgot">
                                     <Form.Item>
                                         {getFieldDecorator('password', {
                                             rules: [
@@ -152,8 +169,10 @@ class Register extends Component {
                                                 },
                                             ],
                                         })(
-                                            <Input
-                                                className="form-control"
+                                            <Input.Password
+                                                minLength={8}
+                                                required
+                                                size={'large'}
                                                 type="password"
                                                 placeholder="Password"
                                                 value={this.state.password}
@@ -164,7 +183,10 @@ class Register extends Component {
                                         )}
                                     </Form.Item>
                                 </div>
-                                <div className="form-group form-forgot">
+                                <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                                    Confirm Password<span style={{ color: 'red' }}>*</span>
+                                </label>
+                                <div className=" form-forgot">
                                     <Form.Item>
                                         {getFieldDecorator('passwordConfirm', {
                                             rules: [
@@ -175,8 +197,10 @@ class Register extends Component {
                                                 },
                                             ],
                                         })(
-                                            <Input
-                                                className="form-control"
+                                            <Input.Password
+
+                                                required
+                                                size={'large'}
                                                 type="password"
                                                 placeholder="Password Confirm"
                                                 value={
@@ -190,8 +214,8 @@ class Register extends Component {
                                         )}
                                     </Form.Item>
                                 </div>
-                                <div className="form-group submit">
-                                    <button
+                                {/* <div className=" submit"> */}
+                                {/* <button
                                         style={{
                                             backgroundColor: '#62c4b0',
                                             color: 'white',
@@ -202,8 +226,26 @@ class Register extends Component {
                                         type="submit"
                                         className="ps-btn ps-btn--fullwidth">
                                         Register
-                                    </button>
-                                </div>
+                                    </button> */}
+                                <button
+                                    // onClick={(e) =>
+                                    //     this.handleRegisterSubmit(e)
+                                    // }
+                                    type="submit"
+                                    className="submit group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >
+                                    <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                        <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
+                                    </span>
+                                    <span style={{ marginRight: 10 }}> {this.props.loading ? <Spinner
+
+                                        color="white"
+                                        size={12}
+                                        speed={1}
+                                        animating={true} /> : null}</span>
+                                    Register
+                                </button>
+                                {/* </div> */}
                             </div>
                             <div className="ps-form__footer">
                                 {/* <p>Connect with:</p>
@@ -233,12 +275,13 @@ class Register extends Component {
                         </div>
                     </Form>
                 </div>
-            </div>
+            </div >
         );
     }
 }
 const WrapFormRegister = Form.create()(Register);
 const mapStateToProps = (state) => ({
     isLoggedIn: state.auth.isLoggedIn,
+    loading: state.auth1.loading
 });
 export default connect(mapStateToProps, { register, login })(WrapFormRegister);
