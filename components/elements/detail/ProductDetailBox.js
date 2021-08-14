@@ -8,6 +8,9 @@ import { getProduct } from '../../../actions/products';
 import Widgets from '../../partials/product/ProductWidgets';
 import React, { Component } from 'react';
 import { Spin } from 'antd';
+import '../../../components/tailwind.scss'
+import { Spinner } from 'react-activity';
+import Modal from 'react-modal'
 export class ProductDetailBox extends Component {
     componentDidMount() {
         this.props.getProduct(this.props.pid);
@@ -18,24 +21,14 @@ export class ProductDetailBox extends Component {
         return (
             <>
                 {this.props.productLoading && this.props.productLoading && (
-                    <div
-                        style={{
-                            borderRadius: ' 4px',
-                            textAlign: 'center',
-                            left: ' 20px',
-                            tbottom: '40px',
-                            marginBottom: '20px',
-                            padding: '30px 50px',
-                            background: '#fff',
-                            zIndex: '99',
-                            width: '100%',
-                            height: '100%',
-                            margin: 'auto',
-                            display: 'block',
-                            position: 'fixed',
-                        }}>
-                        <Spin size="large" />
-                    </div>
+                    <Modal style={{ zIndex: 99999 }} isOpen={true} ariaHideApp={false}
+                        overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
+                        className={`border-none m-auto select-none outline-none w-content z-50`}>
+                        <Spinner
+                            color="black"
+                            size={32}
+                            speed={1}
+                            animating={true} /></Modal>
                 )}
                 <div>
                     <div className="ps-product--detail ps-product--box">
