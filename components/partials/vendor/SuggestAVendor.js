@@ -354,7 +354,7 @@ class PlugApplication extends React.Component {
                                                     // id="input-email"
                                                     placeholder="Phone"
                                                     // type="tel"
-                                                    size="sm"
+
                                                     name="phone"
                                                     value={
                                                         this.state.vendorPhone
@@ -374,22 +374,23 @@ class PlugApplication extends React.Component {
                             </Form>
                         </>
                     </div>
-                    <Card
-                        className="bg-white shadow"
+                    <div
+                        className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg"
                         style={{ marginBottom: 20 }}>
-                        <div className="pl-lg-4">
+                        <div className=" my-4 mx-4" >
                             <Row>
                                 <Col md="12">
                                     <>
-                                        <label htmlFor="input-address">
-                                            Address*
-                                        </label>
+                                        <labe htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                            Address<span style={{ color: 'red' }}>*</span>
+                                        </labe>
+
                                         <Input
                                             size={'large'}
                                             id="input-address"
                                             placeholder="89 Smitch Avenue, building 4, floor 45"
                                             type="text"
-                                            size="sm"
+
                                             name="address"
                                             value={this.state.vendorAddress}
                                             onChange={
@@ -405,17 +406,15 @@ class PlugApplication extends React.Component {
                             <Row>
                                 <Col lg="4">
                                     <>
-                                        <label
-                                            className="form-control-label"
-                                            htmlFor="input-city">
-                                            City*
+                                        <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                            City<span style={{ color: 'red' }}>*</span>
                                         </label>
                                         <Input
                                             size={'large'}
                                             id="input-city"
                                             placeholder="Cape Town"
                                             type="text"
-                                            size="sm"
+
                                             name="city"
                                             value={this.state.vendorCity}
                                             onChange={
@@ -429,10 +428,8 @@ class PlugApplication extends React.Component {
                                 </Col>
                                 <Col lg="4">
                                     <>
-                                        <label
-                                            className="form-control-label"
-                                            htmlFor="input-country">
-                                            Country*
+                                        <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                            Country<span style={{ color: 'red' }}>*</span>
                                         </label>
                                         <Input
                                             size={'large'}
@@ -440,7 +437,7 @@ class PlugApplication extends React.Component {
                                             id="input-country"
                                             placeholder="South Africa"
                                             type="text"
-                                            size="sm"
+
                                             disabled
                                             name="country"
                                             value={this.state.vendorCountry}
@@ -453,16 +450,14 @@ class PlugApplication extends React.Component {
                                 </Col>
                                 <Col lg="4">
                                     <>
-                                        <label
-                                            className="form-control-label"
-                                            htmlFor="input-country">
-                                            Province
+                                        <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                            Province<span style={{ color: 'red' }}>*</span>
                                         </label>
                                         <Input
                                             size={'large'}
                                             placeholder="eg Gauteng"
                                             type="text"
-                                            size="sm"
+
                                             // disabled
                                             name="country"
                                             value={this.state.vendorProvince}
@@ -500,11 +495,11 @@ class PlugApplication extends React.Component {
                                 </Col>
                             </Row>
                         </div>
-                    </Card>
-                    <Card
-                        className="bg-white shadow"
-                        style={{ marginBottom: 30 }}>
-                        <Col md="9">
+                    </div>
+                    <div
+                        className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg"
+                    >
+                        <div className=" my-4 mx-4" >   <Col md="9">
                             <>
                                 <label
                                     className="form-control-label"
@@ -523,44 +518,45 @@ class PlugApplication extends React.Component {
                                 />
                             </>
                         </Col>{' '}
-                        <Col md="9">
-                            <>
-                                <label
-                                    className="form-control-label"
-                                    htmlFor="input-country">
-                                    Instagram handle
-                                </label>
-                                <Input
-                                    size={'large'}
-                                    rows="4"
-                                    placeholder="eg nikeholding"
-                                    type="text"
-                                    name="aboutUs"
-                                    value={this.state.vendorInstagramLink}
-                                    onChange={this.handleInstagramChange}
-                                    prefix={<i class="fa fa-instagram"></i>}
-                                />
-                            </>
-                        </Col>{' '}
-                        <Col md="9">
-                            <>
-                                <label
-                                    className="form-control-label"
-                                    htmlFor="input-country">
-                                    Website Url*
-                                </label>
-                                <Input
-                                    size={'large'}
-                                    rows="4"
-                                    placeholder="www.nikeholding.com"
-                                    type="text"
-                                    name="website"
-                                    value={this.state.vendorWebsite}
-                                    onChange={this.handleVendorWebsiteChange}
-                                    prefix={<i class="fa fa-map-marker"></i>}
-                                />
-                            </>
-                        </Col>{' '}
+                            <Col md="9">
+                                <>
+                                    <label
+                                        className="form-control-label"
+                                        htmlFor="input-country">
+                                        Instagram handle
+                                    </label>
+                                    <Input
+                                        size={'large'}
+                                        rows="4"
+                                        placeholder="eg nikeholding"
+                                        type="text"
+                                        name="aboutUs"
+                                        value={this.state.vendorInstagramLink}
+                                        onChange={this.handleInstagramChange}
+                                        prefix={<i class="fa fa-instagram"></i>}
+                                    />
+                                </>
+                            </Col>{' '}
+                            <Col md="9">
+                                <>
+                                    <label
+                                        className="form-control-label"
+                                        htmlFor="input-country">
+                                        Website Url*
+                                    </label>
+                                    <Input
+                                        size={'large'}
+                                        rows="4"
+                                        placeholder="www.nikeholding.com"
+                                        type="text"
+                                        name="website"
+                                        value={this.state.vendorWebsite}
+                                        onChange={this.handleVendorWebsiteChange}
+                                        prefix={<i class="fa fa-map-marker"></i>}
+                                    />
+                                </>
+                            </Col>{' '}</div>
+
                         <Button
                             style={{ marginTop: '20px' }}
                             type="primary"
@@ -568,7 +564,7 @@ class PlugApplication extends React.Component {
                             onClick={(e) => this.onSubmit(e)}>
                             Confirm
                         </Button>
-                    </Card>
+                    </div>
                 </div>
             </>
         );

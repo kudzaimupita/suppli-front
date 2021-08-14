@@ -88,7 +88,7 @@ class Login extends Component {
                                 </Link>
                             </li>
                         </ul> */}
-                        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+                        <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4">
                             <img
                                 className="mx-auto h-12 w-auto"
                                 src='/static/img/suppli-logo.png'
