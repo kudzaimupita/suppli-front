@@ -5,7 +5,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import alertReducer from './alertReducer';
-import authtReducer from './authReducer';
+import authtReducer, { forgotPasswordReducer } from './authReducer';
 import cartReducer from './cartReducer';
 import productsReducer from './productReducer';
 
@@ -107,6 +107,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
+    forgotPassword: forgotPasswordReducer,
     removedFromwishlist: removeFromWishlistReducer,
     addedToWishlist: addToWishlistReducer,
     createdRefund: createRefundReducer,

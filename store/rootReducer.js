@@ -7,7 +7,7 @@ import compare from './compare/reducer';
 import auth from './auth/reducer';
 import wishlist from './wishlist/reducer';
 import { sendMessageReducer } from './../reducers/contactFormReducer';
-import auth1 from './../reducers/authReducer';
+import auth1, { forgotPasswordReducer } from './../reducers/authReducer';
 
 import {
     addToWishlistReducer,
@@ -105,6 +105,7 @@ import {
 import alertReducer from './../reducers/alertReducer';
 export default combineReducers({
     auth1: auth1,
+    forgotPassword: forgotPasswordReducer,
     createdVendor: createVendorReducer,
     auth,
     post,

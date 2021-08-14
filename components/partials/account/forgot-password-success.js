@@ -12,7 +12,7 @@ const Success = () => {
                 <Result
                     status="success"
                     title="Success!"
-                    subTitle="We've sent an password link to your email address. Thank you."
+                    subTitle="Please check your email address! We've sent you a password reset token. If you don't see the link in the inbox then check your spam folder. Thank you."
                     extra={[
                         <a href='/'><Button type="primary" key="console">
                             Home

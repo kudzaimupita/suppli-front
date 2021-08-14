@@ -92,10 +92,6 @@ export default function (state = initialState, action) {
             return {
                 ...state, loading: false
             }
-        case FORGOT_PASSWORD_SUCCESS:
-            return { loading: false, success: true, message: action.payload };
-        case FORGOT_PASSWORD_FAIL:
-            return { loading: false, error: action.payload };
         case UPDATE_ME_SUCCESS:
             return {
                 ...state,
@@ -113,3 +109,19 @@ export default function (state = initialState, action) {
             return state;
     }
 }
+
+
+export const forgotPasswordReducer = (state = { loading: false }, action) => {
+    switch (action.type) {
+        case FORGOT_PASSWORD_REQUEST:
+            return { loading: true };
+        case FORGOT_PASSWORD_SUCCESS:
+            return { loading: false, success: true };
+        case FORGOT_PASSWORD_FAIL:
+            return { loading: false, error: action.payload };
+        // case PRODUCT_CREATE_RESET:
+        //   return {};
+        default:
+            return state;
+    }
+};

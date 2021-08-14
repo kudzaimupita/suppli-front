@@ -6,7 +6,11 @@ import { login, forgotPassword } from '../../../actions/auth';
 
 import { Form, Input, notification } from 'antd';
 import { connect } from 'react-redux';
-
+import { LockClosedIcon } from '@heroicons/react/solid'
+import '../../tailwind.scss'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import '../../../components/tailwind.scss'
+import { Spinner } from 'react-activity';
 class Login extends Component {
     state = {
         password: '',
@@ -71,21 +75,26 @@ class Login extends Component {
                     <Form
                         className="ps-form--account"
                         onSubmit={this.handleLoginSubmit}>
-                        <ul className="ps-tab-list">
-                            <li >
-                                <Link href="/account/login">
-                                    <a>Login</a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/account/register">
-                                    <a>Register</a>
-                                </Link>
-                            </li>
-                        </ul>
-                        <div className="ps-tab active" id="sign-in">
+                        <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4">
+                            <img
+                                className="mx-auto h-12 w-auto"
+                                src='/static/img/suppli-logo.png'
+                                alt="suppl-i"
+                            />
+                            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Forgot Password</h2>
+                            {/* <p className="mt-2 text-center text-sm text-gray-600">
+                                Or{' '}
+                                <a href="/account/register" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                    Fina
+                                </a>
+                            </p> */}
+                        </div>
+                        <div className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg" id="sign-in">
                             <div className="ps-form__content">
-                                <h5>Forgot Password</h5>
+                                <h5>Forgot Your Password?</h5>
+                                <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                                    Current Email<span style={{ color: 'red' }}>*</span>
+                                </label>
                                 <div className="form-group">
                                     <Form.Item>
                                         {getFieldDecorator('username', {
@@ -98,7 +107,7 @@ class Login extends Component {
                                             ],
                                         })(
                                             <Input
-                                                className="form-control"
+                                                size={'large'}
                                                 type="text"
                                                 placeholder="Enter Email"
                                                 required
@@ -112,17 +121,21 @@ class Login extends Component {
                                     </Form.Item>
                                 </div>
 
-                                <div className="form-group submit">
-                                    <button
-                                        style={{
-                                            backgroundColor: '#62c4b0',
-                                            color: 'white',
-                                        }}
-                                        type="submit"
-                                        className="ps-btn ps-btn--fullwidth">
-                                        Submit
-                                    </button>
-                                </div>
+                                <button
+                                    type="submit"
+                                    className="submit group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >
+                                    <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                        <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
+                                    </span>
+                                    <span style={{ marginRight: 10 }}> {this.props.loading ? <Spinner
+
+                                        color="white"
+                                        size={12}
+                                        speed={1}
+                                        animating={true} /> : null}</span>
+                                    Send Reset Token
+                                </button>
                             </div>
                             <div className="ps-form__footer">
                                 {/* <p>Connect with:</p> */}
@@ -171,5 +184,7 @@ class Login extends Component {
 const WrapFormLogin = Form.create()(Login);
 const mapStateToProps = (state) => ({
     isLoggedIn: state.auth.isLoggedIn,
+    loading: state.forgotPassword.loading
+
 });
 export default connect(mapStateToProps)(WrapFormLogin);
