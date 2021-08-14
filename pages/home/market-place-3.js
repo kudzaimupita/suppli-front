@@ -57,7 +57,7 @@ const HomeMarketPlace3Page = (props) => (
                         <Spinner
                             color="black"
                             size={32}
-                            speed={2}
+                            speed={1}
                             animating={true} /></Modal>
                 ) : null}
                 {/* <MarketPlace3SearchTrending /> */}

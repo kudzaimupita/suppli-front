@@ -24,7 +24,7 @@ class FurnitureCategories extends Component {
                         <Spinner
                             color="black"
                             size={32}
-                            speed={2}
+                            speed={1}
                             animating={true} /></Modal>
                 )}
                 {this.props.productsLoading && this.props.productsLoading && (
@@ -34,7 +34,7 @@ class FurnitureCategories extends Component {
                         <Spinner
                             color="black"
                             size={32}
-                            speed={2}
+                            speed={1}
                             animating={true} /></Modal>
                 )}
                 <div className="ps-home-categories ps-section--furniture">
