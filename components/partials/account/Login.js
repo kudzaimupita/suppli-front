@@ -92,7 +92,7 @@ class Login extends Component {
                             <img
                                 className="mx-auto h-12 w-auto"
                                 src='/static/img/suppli-logo.png'
-                                alt="Workflow"
+                                alt="suppl-i"
                             />
                             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
                             <p className="mt-2 text-center text-sm text-gray-600">
@@ -120,7 +120,9 @@ class Login extends Component {
                                                 },
                                             ],
                                         })(
+
                                             <Input
+
                                                 size={'large'}
                                                 type="text"
                                                 placeholder="Email address"

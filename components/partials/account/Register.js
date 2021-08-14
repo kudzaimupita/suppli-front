@@ -92,7 +92,7 @@ class Register extends Component {
                             <img
                                 className="mx-auto h-12 w-auto"
                                 src='/static/img/suppli-logo.png'
-                                alt="Workflow"
+                                alt="supl-i"
                             />
                             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Register your account</h2>
                             <p className="mt-2 text-center text-sm text-gray-600">

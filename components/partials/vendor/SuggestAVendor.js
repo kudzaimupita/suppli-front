@@ -31,8 +31,10 @@ const { Panel } = Collapse;
 import { Upload, message } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { setAlert } from './../../../actions/alert';
+
 import '../../tailwind.scss'
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { LockClosedIcon } from '@heroicons/react/solid'
 import '../../../components/tailwind.scss'
 import { Spinner } from 'react-activity';
 const { TextArea } = Input;
@@ -203,31 +205,32 @@ class PlugApplication extends React.Component {
         );
         return (
             <>
-                <div
-                    className=" ps-form--account"
-                    style={{ maxWidth: '700px', paddingTop: '20px' }}>
-                    {' '}
-                    <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                        <img
-                            className="mx-auto h-12 w-auto"
-                            src='/static/img/suppli-logo.png'
-                            alt="Workflow"
-                        />
-                        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Suggest A Store</h2>
-                        <p className="mt-2 text-center text-sm text-gray-600">
-                            Or{' '}
-                            <a href="/vendor/become-a-vendor" className=" font-medium text-indigo-600 hover:text-indigo-500">
-                                Start selling with us
-                            </a>
-                        </p>
-                    </div>
-
+                <Form onSubmit={this.onSubmit}>
                     <div
-                        className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg"
-                        style={{ marginBottom: 20 }}>
+                        className=" ps-form--account"
+                        style={{ maxWidth: '700px', paddingTop: '20px' }}>
+                        {' '}
+                        <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4">
+                            <img
+                                className="mx-auto h-12 w-auto"
+                                src='/static/img/suppli-logo.png'
+                                alt="Workflow"
+                            />
+                            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Suggest A Store</h2>
+                            <p className="mt-2 text-center text-sm text-gray-600">
+                                Or{' '}
+                                <a href="/vendor/become-a-vendor" className=" font-medium text-indigo-600 hover:text-indigo-500">
+                                    Start selling with us
+                                </a>
+                            </p>
+                        </div>
+
+                        <div
+                            className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg"
+                            style={{ marginBottom: 20 }}>
 
 
-                        {/* <Modal
+                            {/* <Modal
                                         title="Vendor Terms Of Use"
                                         visible={this.state.isModalVisible}
                                         width={600}
@@ -267,213 +270,217 @@ class PlugApplication extends React.Component {
                                         </p>
                                     </Modal> */}
 
-                        <>
-                            <Form style={{ marginTop: '30px', marginBottom: '30px', marginRight: '20px' }}>
-                                {/* <h3 style={{ marginBottom: '20px' }} className="mb-0">
+                            <>
+                                <div onSubmit={this.onSubmit} style={{ marginTop: '30px', marginBottom: '30px' }}>
+                                    {/* <h3 style={{ marginBottom: '20px' }} className="mb-0">
                                     Suggest A Store
                                 </h3> */}
 
-                                <div className="pl-sm-4">
-                                    <Row>
-                                        <Col lg="6">
-                                            <>
-                                                <label htmlFor="name" className="text-sm font-medium text-gray-700">
-                                                    Your  Name<span style={{ color: 'red' }}>*</span>
-                                                </label>
-                                                <Input
-                                                    size={'large'}
-                                                    id="input-username"
-                                                    placeholder="Your name"
-                                                    type="text"
-                                                    prefix={
-                                                        <i class="fa fa-user"></i>
-                                                    }
-                                                    name="name"
-                                                    value={this.state.suggestor}
-                                                    onChange={
-                                                        this.handleSuggestor
-                                                    }
-                                                />
-                                            </>
-                                        </Col>
-                                        <Col lg="6">
-                                            <>
-                                                <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
-                                                    Store  Name<span style={{ color: 'red' }}>*</span>
-                                                </label>
-                                                <Input
-                                                    size={'large'}
-                                                    id="input-username"
-                                                    placeholder="Store Name"
-                                                    type="text"
-                                                    prefix={
-                                                        <i class="fa fa-shopping-bag"></i>
-                                                    }
-                                                    name="name"
-                                                    value={
-                                                        this.state.vendorName
-                                                    }
-                                                    onChange={
-                                                        this
-                                                            .handleVendorNameChange
-                                                    }
-                                                />
-                                            </>
-                                        </Col>
-                                        <Col lg="6">
-                                            <>
-                                                <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
-                                                    Store Email<span style={{ color: 'red' }}>*</span>
-                                                </label>
-                                                <Input
-                                                    size={'large'}
-                                                    id="input-email"
-                                                    placeholder="Email"
-                                                    type="email"
-                                                    name="email"
-                                                    value={
-                                                        this.state.vendorEmail
-                                                    }
-                                                    onChange={
-                                                        this
-                                                            .handleVendorEmailChange
-                                                    }
-                                                    prefix={
-                                                        <i class="fa fa-envelope"></i>
-                                                    }
-                                                />
-                                            </>
-                                        </Col>
-                                        <Col lg="6">
-                                            <>
-                                                <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
-                                                    Store Phone<span style={{ color: 'red' }}>*</span>
-                                                </label>
-                                                <Input
-                                                    size={'large'}
-                                                    // id="input-email"
-                                                    placeholder="Phone"
-                                                    // type="tel"
+                                    <div className="mx-4">
+                                        <Row>
+                                            <Col lg="6">
+                                                <>
+                                                    <label htmlFor="name" className="text-sm font-medium text-gray-700">
+                                                        Your  Name<span style={{ color: 'red' }}>*</span>
+                                                    </label>
+                                                    <Input
+                                                        required
+                                                        size={'large'}
+                                                        id="input-username"
+                                                        placeholder="Your name"
+                                                        type="text"
+                                                        prefix={
+                                                            <i class="fa fa-user"></i>
+                                                        }
+                                                        name="name"
+                                                        value={this.state.suggestor}
+                                                        onChange={
+                                                            this.handleSuggestor
+                                                        }
+                                                    />
+                                                </>
+                                            </Col>
+                                            <Col lg="6">
+                                                <>
+                                                    <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                                        Store  Name<span style={{ color: 'red' }}>*</span>
+                                                    </label>
+                                                    <Input
+                                                        required
+                                                        size={'large'}
+                                                        id="input-username"
+                                                        placeholder="Store Name"
+                                                        type="text"
+                                                        prefix={
+                                                            <i class="fa fa-shopping-bag"></i>
+                                                        }
+                                                        name="name"
+                                                        value={
+                                                            this.state.vendorName
+                                                        }
+                                                        onChange={
+                                                            this
+                                                                .handleVendorNameChange
+                                                        }
+                                                    />
+                                                </>
+                                            </Col>
+                                            <Col lg="6">
+                                                <>
+                                                    <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                                        Store Email<span style={{ color: 'red' }}>*</span>
+                                                    </label>
+                                                    <Input
+                                                        size={'large'}
+                                                        id="input-email"
+                                                        placeholder="Email"
+                                                        type="email"
+                                                        name="email"
+                                                        value={
+                                                            this.state.vendorEmail
+                                                        }
+                                                        onChange={
+                                                            this
+                                                                .handleVendorEmailChange
+                                                        }
+                                                        prefix={
+                                                            <i class="fa fa-envelope"></i>
+                                                        }
+                                                    />
+                                                </>
+                                            </Col>
+                                            <Col lg="6">
+                                                <>
+                                                    <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                                        Store Phone<span style={{ color: 'red' }}>*</span>
+                                                    </label>
+                                                    <Input
+                                                        required
+                                                        size={'large'}
+                                                        // id="input-email"
+                                                        placeholder="Phone"
+                                                        // type="tel"
 
-                                                    name="phone"
-                                                    value={
-                                                        this.state.vendorPhone
-                                                    }
-                                                    onChange={
-                                                        this
-                                                            .handleVendorPhoneChange
-                                                    }
-                                                    prefix={
-                                                        <i class="fa fa-phone"></i>
-                                                    }
-                                                />
-                                            </>
-                                        </Col>
-                                    </Row>
+                                                        name="phone"
+                                                        value={
+                                                            this.state.vendorPhone
+                                                        }
+                                                        onChange={
+                                                            this
+                                                                .handleVendorPhoneChange
+                                                        }
+                                                        prefix={
+                                                            <i class="fa fa-phone"></i>
+                                                        }
+                                                    />
+                                                </>
+                                            </Col>
+                                        </Row>
+                                    </div>
                                 </div>
-                            </Form>
-                        </>
-                    </div>
-                    <div
-                        className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg"
-                        style={{ marginBottom: 20 }}>
-                        <div className=" my-4 mx-4" >
-                            <Row>
-                                <Col md="12">
-                                    <>
-                                        <labe htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
-                                            Address<span style={{ color: 'red' }}>*</span>
-                                        </labe>
+                            </>
+                        </div>
+                        <div
+                            className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg"
+                            style={{ marginBottom: 20 }}>
+                            <div className=" my-4 mx-4" >
+                                <Row>
+                                    <Col md="12">
+                                        <>
+                                            <labe htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                                Address
+                                            </labe>
 
-                                        <Input
-                                            size={'large'}
-                                            id="input-address"
-                                            placeholder="89 Smitch Avenue, building 4, floor 45"
-                                            type="text"
+                                            <Input
+                                                required
+                                                size={'large'}
+                                                id="input-address"
+                                                placeholder="Address"
+                                                type="text"
 
-                                            name="address"
-                                            value={this.state.vendorAddress}
-                                            onChange={
-                                                this.handleVendorAddressChange
-                                            }
-                                            prefix={
-                                                <i class="fa fa-map-marker"></i>
-                                            }
-                                        />
-                                    </>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col lg="4">
-                                    <>
-                                        <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
-                                            City<span style={{ color: 'red' }}>*</span>
-                                        </label>
-                                        <Input
-                                            size={'large'}
-                                            id="input-city"
-                                            placeholder="Cape Town"
-                                            type="text"
+                                                name="address"
+                                                value={this.state.vendorAddress}
+                                                onChange={
+                                                    this.handleVendorAddressChange
+                                                }
+                                                prefix={
+                                                    <i class="fa fa-map-marker"></i>
+                                                }
+                                            />
+                                        </>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col lg="4">
+                                        <>
+                                            <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                                City
+                                            </label>
+                                            <Input
+                                                size={'large'}
+                                                id="input-city"
+                                                placeholder="City"
+                                                type="text"
 
-                                            name="city"
-                                            value={this.state.vendorCity}
-                                            onChange={
-                                                this.handleVendorCityChange
-                                            }
-                                            prefix={
-                                                <i class="fa fa-building"></i>
-                                            }
-                                        />
-                                    </>
-                                </Col>
-                                <Col lg="4">
-                                    <>
-                                        <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
-                                            Country<span style={{ color: 'red' }}>*</span>
-                                        </label>
-                                        <Input
-                                            size={'large'}
-                                            defaultValue="South Africa"
-                                            id="input-country"
-                                            placeholder="South Africa"
-                                            type="text"
+                                                name="city"
+                                                value={this.state.vendorCity}
+                                                onChange={
+                                                    this.handleVendorCityChange
+                                                }
+                                                prefix={
+                                                    <i class="fa fa-building"></i>
+                                                }
+                                            />
+                                        </>
+                                    </Col>
+                                    <Col lg="4">
+                                        <>
+                                            <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                                Country
+                                            </label>
+                                            <Input
+                                                size={'large'}
+                                                defaultValue="South Africa"
+                                                id="input-country"
+                                                placeholder="South Africa"
+                                                type="text"
 
-                                            disabled
-                                            name="country"
-                                            value={this.state.vendorCountry}
-                                            onChange={
-                                                this.handleVendorCountryChange
-                                            }
-                                            prefix={<i class="fa fa-globe"></i>}
-                                        />
-                                    </>
-                                </Col>
-                                <Col lg="4">
-                                    <>
-                                        <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
-                                            Province<span style={{ color: 'red' }}>*</span>
-                                        </label>
-                                        <Input
-                                            size={'large'}
-                                            placeholder="eg Gauteng"
-                                            type="text"
+                                                disabled
+                                                name="country"
+                                                value={this.state.vendorCountry}
+                                                onChange={
+                                                    this.handleVendorCountryChange
+                                                }
+                                                prefix={<i class="fa fa-globe"></i>}
+                                            />
+                                        </>
+                                    </Col>
+                                    <Col lg="4">
+                                        <>
+                                            <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                                Province
+                                            </label>
+                                            <Input
+                                                size={'large'}
+                                                placeholder="Province"
+                                                type="text"
 
-                                            // disabled
-                                            name="country"
-                                            value={this.state.vendorProvince}
-                                            onChange={
-                                                this.handleVendorProvinceChange
-                                            }
-                                            prefix={<i class="fa fa-globe"></i>}
-                                        />
-                                    </>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col md="3">
-                                    {' '}
-                                    <>
-                                        {/* <UncontrolledDropdown group>
+                                                // disabled
+                                                name="country"
+                                                value={this.state.vendorProvince}
+                                                onChange={
+                                                    this.handleVendorProvinceChange
+                                                }
+                                                prefix={<i class="fa fa-globe"></i>}
+                                            />
+                                        </>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md="3">
+                                        {' '}
+                                        <>
+                                            {/* <UncontrolledDropdown group>
                   <DropdownToggle caret color="secondary">
                     Choose
                   </DropdownToggle>
@@ -491,81 +498,83 @@ class PlugApplication extends React.Component {
                     ))}
                   </DropdownMenu>
                 </UncontrolledDropdown> */}
-                                    </>
-                                </Col>
-                            </Row>
+                                        </>
+                                    </Col>
+                                </Row>
+                            </div>
                         </div>
-                    </div>
-                    <div
-                        className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg"
-                    >
-                        <div className=" my-4 mx-4" >   <Col md="9">
-                            <>
-                                <label
-                                    className="form-control-label"
-                                    htmlFor="input-country">
-                                    Facebook handle
-                                </label>
-                                <Input
-                                    size={'large'}
-                                    rows="4"
-                                    placeholder="eg nikeholding"
-                                    type="text"
-                                    name="aboutUs"
-                                    value={this.state.vendorFacebookLink}
-                                    onChange={this.handleFacebookChange}
-                                    prefix={<i class="fa fa-facebook-f"></i>}
-                                />
-                            </>
-                        </Col>{' '}
-                            <Col md="9">
+                        <div
+                            className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg"
+                        >
+                            <div className=" my-4 mx-4" >   <Col md="9">
                                 <>
-                                    <label
-                                        className="form-control-label"
-                                        htmlFor="input-country">
-                                        Instagram handle
+                                    <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                        Facebook Handle
                                     </label>
                                     <Input
                                         size={'large'}
                                         rows="4"
-                                        placeholder="eg nikeholding"
+                                        placeholder="Handle"
                                         type="text"
                                         name="aboutUs"
-                                        value={this.state.vendorInstagramLink}
-                                        onChange={this.handleInstagramChange}
-                                        prefix={<i class="fa fa-instagram"></i>}
+                                        value={this.state.vendorFacebookLink}
+                                        onChange={this.handleFacebookChange}
+                                        prefix={<i class="fa fa-at"></i>}
                                     />
                                 </>
                             </Col>{' '}
-                            <Col md="9">
-                                <>
-                                    <label
-                                        className="form-control-label"
-                                        htmlFor="input-country">
-                                        Website Url*
-                                    </label>
-                                    <Input
-                                        size={'large'}
-                                        rows="4"
-                                        placeholder="www.nikeholding.com"
-                                        type="text"
-                                        name="website"
-                                        value={this.state.vendorWebsite}
-                                        onChange={this.handleVendorWebsiteChange}
-                                        prefix={<i class="fa fa-map-marker"></i>}
-                                    />
-                                </>
-                            </Col>{' '}</div>
+                                <Col md="9">
+                                    <>
+                                        <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
+                                            Instagram Handle
+                                        </label>
+                                        <Input
+                                            size={'large'}
+                                            rows="4"
+                                            placeholder="Handle"
+                                            type="text"
+                                            name="aboutUs"
+                                            value={this.state.vendorInstagramLink}
+                                            onChange={this.handleInstagramChange}
+                                            prefix={<i class="fa fa-at"></i>}
+                                        />
+                                    </>
+                                </Col>{' '}
+                                <Col md="9">
+                                    <>
+                                        Website Url
+                                        <Input
+                                            size={'large'}
+                                            rows="4"
+                                            placeholder="Url"
+                                            type="text"
+                                            name="website"
+                                            value={this.state.vendorWebsite}
+                                            onChange={this.handleVendorWebsiteChange}
+                                            prefix={<i class="fa fa-www"></i>}
+                                        />
+                                    </>
+                                </Col>{' '}</div>
+                            <div className="mx-4 mb-4">
+                                <button
+                                    type="submit"
+                                    className="submit group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                >
+                                    <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                        <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
+                                    </span>
+                                    <span style={{ marginRight: 10 }}> {this.props.loading ? <Spinner
 
-                        <Button
-                            style={{ marginTop: '20px' }}
-                            type="primary"
-                            block
-                            onClick={(e) => this.onSubmit(e)}>
-                            Confirm
-                        </Button>
-                    </div>
-                </div>
+                                        color="white"
+                                        size={12}
+                                        speed={1}
+                                        animating={true} /> : null}</span>
+                                    Confirm
+                                </button></div>
+
+                        </div>
+                    </div></Form>
+
             </>
         );
     }
