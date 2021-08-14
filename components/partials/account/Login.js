@@ -7,7 +7,9 @@ import { Form, Input, notification } from 'antd';
 import { connect } from 'react-redux';
 import { LockClosedIcon } from '@heroicons/react/solid'
 import '../../tailwind.scss'
-
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import '../../../components/tailwind.scss'
+import { Spinner } from 'react-activity';
 class Login extends Component {
     state = {
         password: '',
@@ -85,10 +87,13 @@ class Login extends Component {
                                 </Link>
                             </li>
                         </ul>
-                        <div className="ps-tab active" id="sign-in">
+                        <div className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg" id="sign-in">
                             <div className="ps-form__content">
                                 <h5>Log In Your Account</h5>
-                                <div className="form-group">
+                                <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                                    Email<span style={{ color: 'red' }}>*</span>
+                                </label>
+                                <div className="">
                                     <Form.Item>
                                         {getFieldDecorator('username', {
                                             rules: [
@@ -100,7 +105,7 @@ class Login extends Component {
                                             ],
                                         })(
                                             <Input
-                                                className="form-control"
+                                                size={'large'}
                                                 type="text"
                                                 placeholder="Email address"
                                                 required
@@ -113,7 +118,10 @@ class Login extends Component {
                                         )}
                                     </Form.Item>
                                 </div>
-                                <div className="form-group form-forgot">
+                                <label htmlFor="password" className="text-sm font-medium text-gray-700">
+                                    Password<span style={{ color: 'red' }}>*</span>
+                                </label>
+                                <div className="form-forgot">
                                     <Form.Item>
                                         {getFieldDecorator('password', {
                                             rules: [
@@ -124,8 +132,9 @@ class Login extends Component {
                                                 },
                                             ],
                                         })(
-                                            <Input
-                                                className="form-control"
+                                            <Input.Password
+                                                className=""
+                                                size={'large'}
                                                 type="password"
                                                 placeholder="Password..."
                                                 required
@@ -183,6 +192,12 @@ class Login extends Component {
                                     <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                                         <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
                                     </span>
+                                    <span style={{ marginRight: 10 }}> {this.props.loading ? <Spinner
+
+                                        color="white"
+                                        size={12}
+                                        speed={1}
+                                        animating={true} /> : null}</span>
                                     Login
                                 </button>
                             </div>
@@ -233,5 +248,6 @@ class Login extends Component {
 const WrapFormLogin = Form.create()(Login);
 const mapStateToProps = (state) => ({
     isLoggedIn: state.auth.isLoggedIn,
+    loading: state.auth1.loading
 });
 export default connect(mapStateToProps)(WrapFormLogin);
