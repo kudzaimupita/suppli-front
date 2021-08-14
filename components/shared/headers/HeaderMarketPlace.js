@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
 import { notification } from 'antd';
@@ -8,6 +8,21 @@ import MiniCart from './modules/MiniCart';
 import AccountQuickLinks from './modules/AccountQuickLinks';
 import { logOut } from '../../../store/auth/action';
 import { getCatergories } from '../../../actions/catergories';
+import { LockClosedIcon } from '@heroicons/react/solid'
+import '../../tailwind.scss'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import '../../../components/tailwind.scss'
+import { Spinner } from 'react-activity';
+import { Popover, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/solid'
+import {
+    ChartBarIcon,
+    CursorClickIcon,
+    DocumentReportIcon,
+    RefreshIcon,
+    ShieldCheckIcon,
+    ViewGridIcon,
+} from '@heroicons/react/outline'
 
 class HeaderAutoPart extends Component {
     constructor({ props }) {
@@ -49,6 +64,43 @@ class HeaderAutoPart extends Component {
     }
 
     render() {
+        const solutions = [
+            {
+                name: 'Analytics',
+                description: 'Get a better understanding of where your traffic is coming from.',
+                href: '#',
+                icon: ChartBarIcon,
+            },
+            {
+                name: 'Engagement',
+                description: 'Speak directly to your customers in a more meaningful way.',
+                href: '#',
+                icon: CursorClickIcon,
+            },
+            { name: 'Security', description: "Your customers' data will be safe and secure.", href: '#', icon: ShieldCheckIcon },
+            {
+                name: 'Integrations',
+                description: "Connect with third-party tools that you're already using.",
+                href: '#',
+                icon: ViewGridIcon,
+            },
+            {
+                name: 'Automations',
+                description: 'Build strategic funnels that will drive your customers to convert',
+                href: '#',
+                icon: RefreshIcon,
+            },
+            {
+                name: 'Reports',
+                description: 'Get detailed reports that will help you make more informed decisions',
+                href: '#',
+                icon: DocumentReportIcon,
+            },
+        ]
+
+        function classNames(...classes) {
+            return classes.filter(Boolean).join(' ')
+        }
         const menuAutopart = [
             {
                 text: 'Home',
@@ -247,24 +299,62 @@ class HeaderAutoPart extends Component {
                                 </a>
                             </Link>
                             <div className="menu--product-categories">
-                                <div className="menu__toggle">
+                                <Popover className="relative">
+                                    {({ open }) => (
+                                        <>
+                                            <Popover.Button
+                                                className={classNames(
+                                                    open ? 'text-gray-900' : 'text-gray-500',
+                                                    'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                                                )}
+                                            >
+                                                <span>Shop By Catergory</span>
+                                                <ChevronDownIcon
+                                                    className={classNames(
+                                                        open ? 'text-gray-600' : 'text-gray-400',
+                                                        'ml-2 h-5 w-5 group-hover:text-gray-500 transition ease-in-out duration-150'
+                                                    )}
+                                                    aria-hidden="true"
+                                                />
+                                            </Popover.Button>
+
+                                            <Transition
+                                                show={open}
+                                                as={Fragment}
+                                                enter="transition ease-out duration-200"
+                                                enterFrom="opacity-0 translate-y-1"
+                                                enterTo="opacity-100 translate-y-0"
+                                                leave="transition ease-in duration-150"
+                                                leaveFrom="opacity-100 translate-y-0"
+                                                leaveTo="opacity-0 translate-y-1"
+                                            >
+                                                <Popover.Panel
+                                                    static
+                                                    className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 sm:px-0 lg:max-w-3xl"
+                                                >
+                                                    <div className="">
+                                                        <ul className="menu--dropdown  z-17 ">
+                                                            {this.props.categories &&
+                                                                this.props.categories.map((cat) => (
+                                                                    <li>
+                                                                        <a
+                                                                            href={`/category/${cat._id}`}>
+                                                                            <a>{cat.name}</a>
+                                                                        </a>
+                                                                    </li>
+                                                                ))}
+                                                        </ul>
+                                                    </div>
+                                                </Popover.Panel>
+                                            </Transition>
+                                        </>
+                                    )}
+                                </Popover>
+                                {/* <div className="menu__toggle">
                                     <i className="icon-menu"></i>
                                     <span>Shop By Category</span>
-                                </div>
-                                <div className="menu__content">
-                                    <ul className="menu--dropdown">
-                                        {this.props.categories &&
-                                            this.props.categories.map((cat) => (
-                                                <li>
-                                                    <Link
-                                                        href="/category/[cid]"
-                                                        as={`/category/${cat._id}`}>
-                                                        <a>{cat.name}</a>
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                    </ul>
-                                </div>
+                                </div> */}
+
                             </div>
                         </div>
                         <div className="header__content-center">
