@@ -75,7 +75,7 @@ class Login extends Component {
                     <Form
                         className="ps-form--account"
                         onSubmit={this.handleLoginSubmit}>
-                        <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4">
+                        <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4 ">
                             <img
                                 className="mx-auto h-12 w-auto"
                                 src='/static/img/suppli-logo.png'

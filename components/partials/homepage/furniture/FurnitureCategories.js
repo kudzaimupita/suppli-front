@@ -111,6 +111,7 @@ class FurnitureCategories extends Component {
                         </div>
                     </div>
                 </div>
+
             </>
         );
     }
