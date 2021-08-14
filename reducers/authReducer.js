@@ -49,12 +49,7 @@ export default function (state = initialState, action) {
         // case RESET_PASSWORD_FAIL:
         // case UPDATE_ME_REQUEST:
         // case RESET_PASSWORD_REQUEST:
-        case LOGIN_REQUEST:
-        case REGISTER_REQUEST:
-            return {
-                ...state,
-                loading: true,
-            };
+
         case RESET_PASSWORD_SUCCESS:
         case RESET_PASSWORD_SUCCESS:
         case UPDATE_ME_SUCCESS:
@@ -87,11 +82,7 @@ export default function (state = initialState, action) {
                 loading: false,
                 user: null,
             };
-        case REGISTER_FAIL:
-        case LOGIN_FAIL:
-            return {
-                ...state, loading: false
-            }
+
         case UPDATE_ME_SUCCESS:
             return {
                 ...state,
@@ -123,5 +114,22 @@ export const forgotPasswordReducer = (state = { loading: false }, action) => {
         //   return {};
         default:
             return state;
+    }
+};
+export const authLoadingReducer = (state = { loading: false }, action) => {
+    switch (action.type) {
+        case LOGIN_REQUEST:
+        case REGISTER_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            };
+        default:
+            return state;
+        case REGISTER_FAIL:
+        case LOGIN_FAIL:
+            return {
+                ...state, loading: false
+            }
     }
 };

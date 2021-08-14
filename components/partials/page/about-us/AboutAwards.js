@@ -99,7 +99,7 @@ class AboutAwards extends Component {
                             <div className="absolute inset-0 bg-gray-800 mix-blend-multiply" aria-hidden="true" />
                         </div>
                         <div className="relative max-w-7xl mx-auto py-20 px-4 sm:py-32 sm:px-6 lg:px-8">
-                            <h1 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">Suppl-i</h1>
+                            <h1 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">Suppl-i Online Shopping</h1>
                             <p className="mt-4 max-w-3xl text-xl text-gray-300">
                                 “Your Favorite Local Stores…
                                 Delivered Safely And Efficiently.”
@@ -262,7 +262,7 @@ class AboutAwards extends Component {
                 </div>
                 <div className="bg-white container my-5">
                     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
+                        <div className="grid grid-cols-2 gap-8 md:grid-cols-6 md:grid-cols-6 lg:grid-cols-5">
                             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
                                 <img className="" src="/static/img/12.png" alt="Suppl-i" />
                             </div>
@@ -275,9 +275,10 @@ class AboutAwards extends Component {
                             <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
                                 <img className='' src="/static/img/15.png" alt="Suppl-i" />
                             </div>
-                            <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
+                            <div className="col-span-2 flex justify-center sm:col-span-6 md:col-span-3 lg:col-span-1">
                                 <img className='' src="/static/img/16.png" alt="Suppl-i" />
                             </div>
+
                         </div>
                     </div>
                 </div>

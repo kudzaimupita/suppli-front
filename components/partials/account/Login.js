@@ -72,7 +72,7 @@ class Login extends Component {
         const { getFieldDecorator } = this.props.form;
         return (
             <div className="py-5 bg-gray-100">
-                <div className="container">
+                <div className="">
                     <Form
                         className="ps-form--account"
                         onSubmit={this.handleLoginSubmit}>
@@ -266,6 +266,6 @@ class Login extends Component {
 const WrapFormLogin = Form.create()(Login);
 const mapStateToProps = (state) => ({
     isLoggedIn: state.auth.isLoggedIn,
-    loading: state.auth1.loading
+    loading: state.authLoading.loading,
 });
 export default connect(mapStateToProps)(WrapFormLogin);
