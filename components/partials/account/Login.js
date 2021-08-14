@@ -105,7 +105,7 @@ class Login extends Component {
 
                         <div className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg" id="sign-in">
                             <div className="ps-form__content">
-                                <h5>Log In Your Account</h5>
+                                {/* <h5>Log In Your Account</h5> */}
                                 <label htmlFor="email" className="text-sm font-medium text-gray-700">
                                     Email<span style={{ color: 'red' }}>*</span>
                                 </label>

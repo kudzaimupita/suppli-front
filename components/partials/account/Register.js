@@ -104,7 +104,7 @@ class Register extends Component {
                         </div>
                         <div className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg" id="register">
                             <div className="ps-form__content">
-                                <h5>Register An Account</h5>
+                                {/* <h5>Register An Account</h5> */}
                                 <label htmlFor="name" className="text-sm font-medium text-gray-700">
                                     Name<span style={{ color: 'red' }}>*</span>
                                 </label>
