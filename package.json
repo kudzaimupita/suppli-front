@@ -33,6 +33,7 @@
         "postcss": "7",
         "prop-types": "^15.7.2",
         "react": "16.9.0",
+        "react-activity": "^2.1.1",
         "react-custom-scrollbars": "^4.2.1",
         "react-custom-share": "^0.4.8",
         "react-dom": "16.9.0",

@@ -18,7 +18,9 @@ import FurnitureCategories from '../../components/partials/homepage/furniture/Fu
 import ShopBrands from '../../components/partials/shop/ShopBrands';
 import ShopBanner from '../../components/partials/shop/ShopCarouselBanner';
 import Modal from 'react-modal'
+import { Spinner } from 'react-activity';
 import './../../components/tailwind.scss'
+import "react-activity/dist/Spinner.scss";
 const HomeMarketPlace3Page = (props) => (
     <div className="site-content"  >
         <>
@@ -52,7 +54,11 @@ const HomeMarketPlace3Page = (props) => (
                     <Modal style={{ zIndex: 99999 }} isOpen={true} ariaHideApp={false}
                         overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
                         className={`border-none m-auto select-none outline-none w-content z-50`}>
-                        <Spin size="large" /></Modal>
+                        <Spinner
+                            color="black"
+                            size={32}
+                            speed={2}
+                            animating={true} /></Modal>
                 ) : null}
                 {/* <MarketPlace3SearchTrending /> */}
                 {/* <ShopBanner /> */}

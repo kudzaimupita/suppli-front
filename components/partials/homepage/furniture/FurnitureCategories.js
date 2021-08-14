@@ -5,6 +5,9 @@ import Link from 'next/link';
 import Modal from 'react-modal'
 import { getVendors, getVendor } from './../../../../actions/vendors';
 import '../../../tailwind.scss'
+import { Spinner } from 'react-activity';
+// import './../../components/tailwind.scss'
+import "react-activity/dist/Spinner.scss";
 class FurnitureCategories extends Component {
     componentDidMount() {
         this.props.getVendors();
@@ -15,16 +18,24 @@ class FurnitureCategories extends Component {
                 {' '}
 
                 {this.props.vendorsLoading && this.props.vendorsLoading && (
-                    <Modal isOpen={true} ariaHideApp={false}
+                    <Modal style={{ zIndex: 99999 }} isOpen={true} ariaHideApp={false}
                         overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
-                        className={`z-index-90  border-none m-auto select-none outline-none w-content z-50`}>
-                        <Spin size="large" /></Modal>
+                        className={`border-none m-auto select-none outline-none w-content z-50`}>
+                        <Spinner
+                            color="black"
+                            size={32}
+                            speed={2}
+                            animating={true} /></Modal>
                 )}
                 {this.props.productsLoading && this.props.productsLoading && (
-                    <Modal isOpen={true} ariaHideApp={false}
+                    <Modal style={{ zIndex: 99999 }} isOpen={true} ariaHideApp={false}
                         overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
-                        className={` border-none m-auto select-none outline-none w-content z-50`}>
-                        <Spin size="large" /></Modal>
+                        className={`border-none m-auto select-none outline-none w-content z-50`}>
+                        <Spinner
+                            color="black"
+                            size={32}
+                            speed={2}
+                            animating={true} /></Modal>
                 )}
                 <div className="ps-home-categories ps-section--furniture">
                     <div className="container">
