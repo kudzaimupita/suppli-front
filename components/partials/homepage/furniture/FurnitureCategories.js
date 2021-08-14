@@ -7,7 +7,7 @@ import { getVendors, getVendor } from './../../../../actions/vendors';
 import '../../../tailwind.scss'
 import { Spinner } from 'react-activity';
 // import './../../components/tailwind.scss'
-import "react-activity/dist/Spinner.scss";
+// import "react-activity/dist/Spinner.scss";
 class FurnitureCategories extends Component {
     componentDidMount() {
         this.props.getVendors();

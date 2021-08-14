@@ -20,7 +20,7 @@ import ShopBanner from '../../components/partials/shop/ShopCarouselBanner';
 import Modal from 'react-modal'
 import { Spinner } from 'react-activity';
 import './../../components/tailwind.scss'
-import "react-activity/dist/Spinner.scss";
+// import "react-activity/dist/Spinner.scss";
 const HomeMarketPlace3Page = (props) => (
     <div className="site-content"  >
         <>

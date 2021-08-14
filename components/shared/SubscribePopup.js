@@ -50,9 +50,8 @@ class SubscribePopup extends Component {
             <>
                 {this.props.isLoggedIn !== true ? (
                     <div
-                        className={`ps-popup ${
-                            isSubscribeShow ? 'active' : ''
-                        }`}
+                        className={`ps-popup ${isSubscribeShow ? 'active' : ''
+                            }`}
                         id="subscribe">
                         <div
                             className="ps-popup__content bg--cover"
@@ -96,6 +95,7 @@ class SubscribePopup extends Component {
                                             className="ps-btn"
                                             style={{
                                                 backgroundColor: '#62c4b0',
+                                                color: 'white'
                                             }}>
                                             Subscribe
                                         </button>
