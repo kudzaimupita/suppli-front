@@ -6,7 +6,10 @@ import ProductWide from '../../elements/products/ProductWide';
 import { Spin } from 'antd';
 import { getSpecials, getNewArrivals } from '../../../actions/products';
 import { getCatergory } from '../../../actions/catergories';
-
+import Modal from 'react-modal'
+// import { getVendors, getVendor } from './../../../../actions/vendors';
+import '../../tailwind.scss'
+import { Spinner } from 'react-activity';
 class LayoutShopSidebarWithoutBanner extends Component {
     state = {
         listView: true,
@@ -27,25 +30,14 @@ class LayoutShopSidebarWithoutBanner extends Component {
             <>
                 {' '}
                 {this.props.subCatLoading && this.props.subCatLoading && (
-                    <div
-                        className="example"
-                        style={{
-                            borderRadius: ' 4px',
-                            textAlign: 'center',
-                            // margin: ' 20px 0',
-                            marginBottom: '20px',
-                            padding: '300px 500px',
-                            right: '50px',
-                            background: '#fff',
-                            zIndex: '99',
-                            width: '100%',
-                            height: '100%',
-                            margin: 'auto',
-                            display: 'block',
-                            position: 'fixed',
-                        }}>
-                        <Spin size="large" />
-                    </div>
+                    <Modal style={{ zIndex: 99999 }} isOpen={true} ariaHideApp={false}
+                        overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
+                        className={`border-none m-auto select-none outline-none w-content z-50`}>
+                        <Spinner
+                            color="black"
+                            size={32}
+                            speed={1}
+                            animating={true} /></Modal>
                 )}{' '}
                 <div className="ps-home-categories ps-section--furniture">
                     <div className="container">
