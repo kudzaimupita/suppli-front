@@ -331,6 +331,7 @@ class PlugApplication extends React.Component {
                                                         Store Email<span style={{ color: 'red' }}>*</span>
                                                     </label>
                                                     <Input
+                                                        required
                                                         size={'large'}
                                                         id="input-email"
                                                         placeholder="Email"

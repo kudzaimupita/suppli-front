@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
 import { getVendors } from './../../../actions/vendors';
-import { Spin } from 'antd';
+import { Spin } from 'antd'
+import '../../tailwind.scss'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { LockClosedIcon } from '@heroicons/react/solid'
+import '../../../components/tailwind.scss'
+import { Spinner } from 'react-activity';
+import Modal from 'react-modal'
+import { PlusSmIcon } from '@heroicons/react/solid'
 class FurnitureCategories extends Component {
     componentDidMount() {
         this.props.getVendors();
@@ -11,35 +18,33 @@ class FurnitureCategories extends Component {
         return (
             <>
                 {this.props.vendorsLoading && this.props.vendorsLoading && (
-                    <div
-                        style={{
-                            borderRadius: ' 4px',
-                            textAlign: 'center',
-                            // left: ' 20px',
-                            // top: '60px',
-                            marginBottom: '20px',
-                            padding: '300px 100px',
-                            background: '#fff',
-                            zIndex: '99',
-                            width: '100%',
-                            height: '100%',
-                            margin: 'auto',
-                            display: 'block',
-                            position: 'fixed',
-                        }}>
-                        <Spin size="large" />
-                    </div>
+                    <Modal style={{ zIndex: 99999 }} isOpen={true} ariaHideApp={false}
+                        overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
+                        className={`border-none m-auto select-none outline-none w-content z-50`}>
+                        <Spinner
+                            color="black"
+                            size={32}
+                            speed={1}
+                            animating={true} /></Modal>
                 )}
-                <div className="ps-home-categories ps-section--furniture">
-                    <div className="container">
+                <div className="ps-home-categories ps-section--furniture bg-gray-100" style={{ backgroundColor: '#eeeeee' }}>
+                    <div className="container ">
                         <div className="ps-section__content">
-                            <div
+                            {/* <div
                                 className="ps-section__header center"
                                 style={{
                                     textAlign: 'center',
                                     marginTop: '30px',
                                 }}>
                                 <h3>Our stores</h3>
+                            </div> */}
+                            <div className="relative mb-6 mt-4" >
+                                <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                                    <div className="w-full border-t border-gray-500" />
+                                </div>
+                                <div className="relative flex justify-center">
+                                    <span className="px-3  text-2xl font-medium text-gray-900" style={{ backgroundColor: '#eeeeee' }}>Our Stores</span>
+                                </div>
                             </div>
                             <div className="row">
                                 {this.props.vendors &&

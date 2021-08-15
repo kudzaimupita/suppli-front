@@ -3,6 +3,11 @@ import React from 'react';
 import { Select, Rate } from 'antd';
 import Rating from '../../elements/Rating';
 
+import '../../tailwind.scss'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { LockClosedIcon } from '@heroicons/react/solid'
+import '../../../components/tailwind.scss'
+import { Spinner } from 'react-activity';
 const { Option } = Select;
 
 const StoreList2 = () => (

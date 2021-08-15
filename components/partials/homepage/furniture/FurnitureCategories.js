@@ -40,17 +40,18 @@ class FurnitureCategories extends Component {
                 <div className="ps-home-categories ps-section--furniture">
                     <div className="container">
                         <div className="ps-section__content">
-                            <div
-                                className="ps-section__header center"
-                                style={{ textAlign: 'center' }}>
-                                <h3>
-                                    <strong>Our stores</strong>
-                                </h3>
+                            <div className="relative mb-6 mt-6" >
+                                <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                                    <div className="w-full border-t border-gray-500" />
+                                </div>
+                                <div className="relative flex justify-center">
+                                    <span className="px-3  text-2xl font-medium text-gray-900" style={{ backgroundColor: '#eeeeee' }}>Our Stores</span>
+                                </div>
                             </div>
                             <div className="row">
                                 {this.props.vendors &&
                                     this.props.vendors
-                                        .slice(0, 8)
+                                        .slice(0, 5)
                                         .map((vendor) => (
                                             <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 ">
                                                 <div

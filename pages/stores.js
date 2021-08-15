@@ -24,7 +24,8 @@ const StoreListPage = () => {
             <HeaderDefault />
             <HeaderMobile />
             <NavigationList />
-            <div className="ps-page--single ps-page--vendor">
+            <div className="ps-page--single ps-page--vendor"
+                style={{ backgroundColor: '#eeeeee' }}>
                 <BreadCrumb breacrumb={breadCrumb} />
                 <StoreList />
             </div>

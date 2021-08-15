@@ -7,7 +7,10 @@ import { createOrderAction } from '../../../../actions/orders';
 import { getVendor } from '../../../../actions/vendors';
 import { connect } from 'react-redux';
 import { createCompleteBooking, CreateExpressBooking } from './calculate';
-
+import { Fragment, useState } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
+import { XIcon } from '@heroicons/react/outline'
+import '../../../tailwind.scss'
 class FormCheckoutInformation extends Component {
     constructor(props) {
         super(props);
@@ -67,7 +70,30 @@ class FormCheckoutInformation extends Component {
         const { amount, cartItems, cartTotal } = this.props;
         // const vendorAddress = cartItems[0]._id
 
-
+        const products = [
+            {
+                id: 1,
+                name: 'Throwback Hip Bag',
+                href: '#',
+                color: 'Salmon',
+                price: '$90.00',
+                quantity: 1,
+                imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+                imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+            },
+            {
+                id: 2,
+                name: 'Medium Stuff Satchel',
+                href: '#',
+                color: 'Blue',
+                price: '$32.00',
+                quantity: 1,
+                imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+                imageAlt:
+                    'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+            },
+            // More products...
+        ]
         return (
             <Form
                 className="ps-form--checkout"
@@ -222,11 +248,12 @@ class FormCheckoutInformation extends Component {
 
                         </Card>
 
-                        <Card className="col-xl-4 col-lg-4 col-md-12 col-sm-12  ps-block--checkout-order" >
-                            <div className="ps-form__orders">
-                                <h3>Your order</h3>
-                                <div className="ps-block--checkout-order">
-                                    <div className="ps-block__content">
+                        <Card className="col-xl-4 col-lg-4 col-md-12 col-sm-12  ps-block--checkout-order shadow bg-white overflow-hidden border-b border-gray-200 rounded-lg" >
+                            <div className="">
+                                <h3>Order Summary</h3>
+                                {/* <hr></hr> */}
+                                <div className="">
+                                    <div className="">
                                         <figure>
                                             <figcaption>
                                                 <strong>Product</strong>
@@ -234,31 +261,54 @@ class FormCheckoutInformation extends Component {
                                             </figcaption>
                                         </figure>
                                         <figure className="ps-block__items">
-                                            {cartItems &&
-                                                cartItems.map(product => (
 
-                                                    <a>
-                                                        <strong>
-                                                            {product.name}
-                                                            <span>
-                                                                x
-                                                                {
-                                                                    product.quantity
-                                                                }
-                                                            </span>
-                                                        </strong>
-                                                        <small>
-                                                            {new Intl.NumberFormat("de-ZA", {
-                                                                style: "currency",
-                                                                currency: "ZAR",
-                                                            }).format(product.quantity *
-                                                                product.price)}
-                                                            {/* {}.00 */}
-                                                        </small>
-                                                    </a>
+                                            <div className="mt-2">
+                                                <div className="flow-root">
+                                                    <ul role="list" className="-my-6 divide-y divide-gray-200">
+                                                        {cartItems &&
+                                                            cartItems.map((product) => (
+                                                                <li key={product._id} className="py-6 flex">
+                                                                    <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
+                                                                        <img
+                                                                            src={`https://suppli-images.s3.af-south-1.amazonaws.com/${product.imageCover &&
+                                                                                product.imageCover
+                                                                                }`}
+                                                                            alt='suppl-i'
+                                                                            className="w-full h-full object-center object-cover"
+                                                                        />
+                                                                    </div>
 
-                                                ))}
+                                                                    <div className="ml-4 flex-1 flex flex-col">
+                                                                        <div>
+                                                                            <div className="flex justify-between text-base font-medium text-gray-900">
+                                                                                <h3>
+                                                                                    <a href={product.href}>{product.name}</a>
+                                                                                </h3>
+                                                                                <p className="ml-4">      {new Intl.NumberFormat("de-ZA", {
+                                                                                    style: "currency",
+                                                                                    currency: "ZAR",
+                                                                                }).format(product.quantity *
+                                                                                    product.price)}</p>
+                                                                            </div>
+                                                                            {/* <p className="mt-1 text-sm text-gray-500">{product.brandName}</p> */}
+                                                                        </div>
+                                                                        <div className="flex-1 flex items-end justify-between text-sm">
+                                                                            <p className="text-gray-500">Qty {product.quantity}</p>
+                                                                            {/* 
+                                                                            <div className="flex">
+                                                                                <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                                                                    Remove
+                                                                                </button>
+                                                                            </div> */}
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            ))}
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </figure>
+
                                         <figure>
                                             <figcaption>
                                                 <strong>Subtotal</strong>
@@ -290,8 +340,8 @@ class FormCheckoutInformation extends Component {
                             </div>
                         </Card>
                     </div>
-                </div>
-            </Form>
+                </div >
+            </Form >
         );
     }
 }

@@ -74,9 +74,8 @@ class Product extends Component {
                     <Link href="/product/[pid]" as={`/product/${product._id}`}>
                         <a>
                             <img
-                                src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
-                                    product.imageCover && product.imageCover
-                                }`}
+                                src={`https://suppli-images.s3.af-south-1.amazonaws.com/${product.imageCover && product.imageCover
+                                    }`}
                                 alt="Suppl-i"
                             />
                         </a>
@@ -140,11 +139,11 @@ class Product extends Component {
                     </ul>
                 </div>
                 <div className="ps-product__container">
-          
-                        <a className="ps-product__vendor">
-                             {product.brandName && product.brandName}
-                        </a>
-             
+
+                    <a className="ps-product__vendor">
+                        {product.brandName && product.brandName}
+                    </a>
+
                     <div className="ps-product__content">
                         <Link
                             href="/product/[pid]"
