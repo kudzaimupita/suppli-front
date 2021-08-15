@@ -82,26 +82,27 @@ class Register extends Component {
             Router.push('/');
         }
         return (
-            <div className="py-5 bg-gray-100">
-                <div className="">
+            <div className="ps-my-account pt-5 bg-gray-100">
+                <div className="container">
+                    <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4">
+                        <img
+                            className="mx-auto h-12 w-auto"
+                            src='/static/img/suppli-logo.png'
+                            alt="supl-i"
+                        />
+                        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Register your account</h2>
+                        <p className="mt-2 text-center text-sm text-gray-600">
+                            Or{' '}
+                            <a href='/account/login' className="font-medium text-indigo-600 hover:text-indigo-500">
+                                Already have an account? Sign in
+                            </a>
+                        </p>
+                    </div>
                     <Form
 
                         className="ps-form--account"
                         onSubmit={this.handleRegisterSubmit}>
-                        <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4">
-                            <img
-                                className="mx-auto h-12 w-auto"
-                                src='/static/img/suppli-logo.png'
-                                alt="supl-i"
-                            />
-                            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Register your account</h2>
-                            <p className="mt-2 text-center text-sm text-gray-600">
-                                Or{' '}
-                                <a href='/account/login' className="font-medium text-indigo-600 hover:text-indigo-500">
-                                    Already have an account? Sign in
-                                </a>
-                            </p>
-                        </div>
+
                         <div className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg" id="register">
                             <div className="ps-form__content">
                                 {/* <h5>Register An Account</h5> */}

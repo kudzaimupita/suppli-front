@@ -283,50 +283,8 @@ class PlugApplication extends React.Component {
                         <div
                             className="shadow bg-white overflow-hidden border-b border-gray-200 sm:rounded-lg"
                             style={{ marginBottom: 20 }}>
-
-
-                            {/* <Modal
-                                        title="Vendor Terms Of Use"
-                                        visible={this.state.isModalVisible}
-                                        width={600}
-                                        onCancel={this.handleCancelModal}
-                                        footer={[
-                                            <Button
-                                                key="back"
-                                                onClick={
-                                                    this.handleCancelModal
-                                                }>
-                                                Cancel
-                                            </Button>,
-
-                                            <Button
-                                                style={{ marginLeft: '20px' }}
-                                                type="primary"
-                                                loading={loading}
-                                                onClick={this.onSubmit}>
-                                                {this.props
-                                                    .createdPlugLoading ? (
-                                                    <Spin />
-                                                ) : null}{' '}
-                                                I Agree
-                                            </Button>,
-                                        ]}>
-                                        <Collapse accordion>
-                                            <Panel
-                                                header="Vendor Terms Of Use"
-                                                key="1"></Panel>
-                                        </Collapse>
-                                        ,
-                                        <p>
-                                            {' '}
-                                            * Important * By clicking the I
-                                            agree button you accept that you've
-                                            read and accepted the terms of use.
-                                        </p>
-                                    </Modal> */}
-
                             <>
-                                <div onSubmit={this.onSubmit} style={{ marginTop: '30px', marginBottom: '30px' }}>
+                                <div style={{ marginTop: '30px', marginBottom: '30px' }}>
                                     {/* <h3 style={{ marginBottom: '20px' }} className="mb-0">
                                     Suggest A Store
                                 </h3> */}
