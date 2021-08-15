@@ -4,7 +4,7 @@
     .ps-product {
         margin-right: 6px;
         margin-bottom: 5px;
-        background:#ffffff;
+        background: #ffffff;
     }
 
     .slick-arrow {
@@ -94,7 +94,7 @@
 
     &.blur {
         .slick-arrow {
-            background-color: rgba(#ccc, .5);
+            background-color: rgba(#ccc, 0.5);
             &:hover {
                 background-color: $color-1st;
             }

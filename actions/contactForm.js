@@ -19,9 +19,9 @@ export const sendMessageAction = (formData) => async (dispatch) => {
             type: SEND_MESSAGE_SUCCESS,
             payload: res.data.data,
         });
-        dispatch(
-            setAlert('Successfully sent message. :)', 'success')
-        );
+        // dispatch(
+        //     setAlert('Successfully sent message. :)', 'success')
+        // );
     } catch (err) {
         const errors = err.response.data.error;
 
