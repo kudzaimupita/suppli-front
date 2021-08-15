@@ -25,7 +25,7 @@ class Checkout extends Component {
                         <h1>Checkout </h1>
                     </div>
                     {/* <form style={{ backgroundColor: 'blue' }} action="{shopperResultUrl}" className="paymentWidgets" data-brands="VISA MASTER AMEX"></form> */}
-                    <div className="ps-section__content">
+                    <div className="">
                         <FormCheckoutInformation
                             amount={amount}
                             cartTotal={cartTotal}

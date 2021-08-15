@@ -107,36 +107,6 @@ class Login extends Component {
                             <div className="ps-form__content">
                                 {/* <h5>Invite Your Friend</h5> */}
                                 <label htmlFor="email" className="text-sm font-medium text-gray-700">
-                                    Your Name<span style={{ color: 'red' }}>*</span>
-                                </label>
-                                <div className="">
-                                    <Form.Item>
-                                        <Input
-                                            required
-                                            size={'large'}
-                                            type="text"
-                                            placeholder="Your Name*"
-                                            onChange={this.handleNameChange}
-                                            value={this.state.name}
-                                        />
-                                    </Form.Item>
-                                </div>
-                                <label htmlFor="email" className="text-sm font-medium text-gray-700">
-                                    Your Email<span style={{ color: 'red' }}>*</span>
-                                </label>
-                                <div className="">
-                                    <Form.Item>
-                                        <Input
-                                            required
-                                            size={'large'}
-                                            type="email"
-                                            placeholder="Your Email*"
-                                            onChange={this.handleEmailChange}
-                                            value={this.state.email}
-                                        />
-                                    </Form.Item>
-                                </div>
-                                <label htmlFor="email" className="text-sm font-medium text-gray-700">
                                     Friend Name<span style={{ color: 'red' }}>*</span>
                                 </label>
                                 <div className="">
@@ -146,6 +116,36 @@ class Login extends Component {
                                             size={'large'}
                                             type="text"
                                             placeholder="Friend Name*"
+                                            onChange={this.handleNameChange}
+                                            value={this.state.name}
+                                        />
+                                    </Form.Item>
+                                </div>
+                                <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                                    Friend Email<span style={{ color: 'red' }}>*</span>
+                                </label>
+                                <div className="">
+                                    <Form.Item>
+                                        <Input
+                                            required
+                                            size={'large'}
+                                            type="email"
+                                            placeholder="Friend Email*"
+                                            onChange={this.handleEmailChange}
+                                            value={this.state.email}
+                                        />
+                                    </Form.Item>
+                                </div>
+                                <label htmlFor="email" className="text-sm font-medium text-gray-700">
+                                    Your Name<span style={{ color: 'red' }}>*</span>
+                                </label>
+                                <div className="">
+                                    <Form.Item>
+                                        <Input
+                                            required
+                                            size={'large'}
+                                            type="text"
+                                            placeholder="Your Name*"
                                             onChange={
                                                 this.handleFriendNameChange
                                             }
@@ -154,7 +154,7 @@ class Login extends Component {
                                     </Form.Item>
                                 </div>
                                 <label htmlFor="email" className="text-sm font-medium text-gray-700">
-                                    Friend Email<span style={{ color: 'red' }}>*</span>
+                                    Your Email<span style={{ color: 'red' }}>*</span>
                                 </label>
                                 <div className=" form-forgot">
                                     <Form.Item>
@@ -162,7 +162,7 @@ class Login extends Component {
                                             required
                                             size={'large'}
                                             type="email"
-                                            placeholder="Friend Email*"
+                                            placeholder="Your Email*"
                                             onChange={
                                                 this.handleFriendEmailChange
                                             }
@@ -174,10 +174,10 @@ class Login extends Component {
                                 <div className=" submit mb-6" >
                                     <button
                                         type="submit"
-                                        className="submit group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                        className="submit group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                                     >
                                         <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                                            <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
+                                            <LockClosedIcon className="h-5 w-5 text-gray-500 group-hover:text-grayu-400" aria-hidden="true" />
                                         </span>
                                         <span style={{ marginRight: 10 }}> {this.props.loading ? <Spinner
 
@@ -185,7 +185,7 @@ class Login extends Component {
                                             size={12}
                                             speed={1}
                                             animating={true} /> : null}</span>
-                                        Login
+                                        Send Invite
                                     </button>
                                 </div>
                             </div>

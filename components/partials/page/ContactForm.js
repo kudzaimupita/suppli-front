@@ -361,8 +361,11 @@ class Login extends Component {
                                             <div className="form-group submit mx-6">
                                                 <button
                                                     type="submit"
-                                                    className="submit group relative w-full flex justify-center py-2 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                    className="submit group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                                                 >
+                                                    {/* <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                                        <LockClosedIcon className="h-5 w-5 text-gray-500 group-hover:text-grayu-400" aria-hidden="true" />
+                                                    </span> */}
 
                                                     <span style={{ marginRight: 10 }}> {this.props.loading ? <Spinner
 
@@ -370,7 +373,7 @@ class Login extends Component {
                                                         size={12}
                                                         speed={1}
                                                         animating={true} /> : null}</span>
-                                                    Send Nessage
+                                                    Send Message
                                                 </button>
                                             </div>
                                         </form>

@@ -173,7 +173,7 @@ class ShoppingCart extends Component {
                                                                     this,
                                                                     product
                                                                 )}>
-                                                                <TrashIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
+                                                                <TrashIcon className="h-5 w-5 text-red-500 group-hover:text-indigo-400" aria-hidden="true" />
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -219,18 +219,17 @@ class ShoppingCart extends Component {
                                                 {cartItems.length > 0
                                                     ? cartItems.map(
                                                         (product, index) => {
-                                                            if (index < 3) {
-                                                                return (
-                                                                    <li
-                                                                        key={
-                                                                            product._id
-                                                                        }>
-                                                                        <span className="ps-block__estimate">
-                                                                            <Link
-                                                                                href="/product/[pid]"
-                                                                                as={`/product/${product._id}`}>
-                                                                                <a className="ps-product__title">
-                                                                                    {/* 
+
+                                                            <li
+                                                                key={
+                                                                    product._id
+                                                                }>
+                                                                <span className="ps-block__estimate">
+                                                                    <Link
+                                                                        href="/product/[pid]"
+                                                                        as={`/product/${product._id}`}>
+                                                                        <a className="ps-product__title">
+                                                                            {/* 
                                                                                     <img
                                                                                         src={`https://suppli-images.s3.af-south-1.amazonaws.com/${product.imageCover &&
                                                                                             product.imageCover
@@ -239,20 +238,19 @@ class ShoppingCart extends Component {
                                                                                     // className="w-full h-full object-center object-cover"
                                                                                     /> */}
 
-                                                                                    {
-                                                                                        product.name
-                                                                                    }
-                                                                                    {"   "}
-                                                                                    x{' '}
-                                                                                    {
-                                                                                        product.quantity
-                                                                                    }
-                                                                                </a>
-                                                                            </Link>
-                                                                        </span>
-                                                                    </li>
-                                                                );
-                                                            }
+                                                                            {
+                                                                                product.name
+                                                                            }
+                                                                            {"   "}
+                                                                            x{' '}
+                                                                            {
+                                                                                product.quantity
+                                                                            }
+                                                                        </a>
+                                                                    </Link>
+                                                                </span>
+                                                            </li>
+
                                                         }
                                                     )
                                                     : ''}
@@ -266,7 +264,7 @@ class ShoppingCart extends Component {
                                     </div>
                                     {cartItems.length > 0 && (
                                         <Link href="/checkout">
-                                            <a className="ps-btn bg-indigo-700 ps-btn--fullwidth text-white">
+                                            <a className="ps-btn bg-gray-700 ps-btn--fullwidth text-white">
                                                 Proceed to checkout
                                             </a>
                                         </Link>

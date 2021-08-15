@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getCart, removeItem } from '../../../../store/cart/action';
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { XIcon, ShoppingCartIcon } from '@heroicons/react/outline'
+import { XIcon, ShoppingCartIcon, TrashIcon } from '@heroicons/react/outline'
 import './../../../tailwind.scss'
 // import { Fragment, useState } from 'react'
 // import { Dialog, Transition } from '@headlessui/react'
@@ -120,7 +120,7 @@ class MiniCart extends Component {
                                                     this,
                                                     product
                                                 )}>
-                                                <i className="icon-cross"></i>
+                                                <TrashIcon className="h-5 w-5 text-red-500 group-hover:text-indigo-400" aria-hidden="true" />
                                             </a>
                                             <Link
                                                 href="/product/[pid]"
@@ -154,10 +154,10 @@ class MiniCart extends Component {
 
                                     <a
                                         href="/checkout" as="/checkout"
-                                        className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                                        className="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-700 hover:bg-gray-800"
                                     >
-                                        <span className="left-0 inset-y-0 flex items-center pr-3">
-                                            <ShoppingCartIcon className="h-5 w-5 text-indigo-300 group-hover:text-indigo-400" aria-hidden="true" />
+                                        <span className="left-0 inset-y-0 flex  items-center pr-3">
+                                            <ShoppingCartIcon className="h-5 w-5 text-gray-300 group-hover:text-gray-400" aria-hidden="true" />
                                         </span>   Checkout
                                     </a>
                                 </div>
@@ -174,7 +174,7 @@ class MiniCart extends Component {
                                         or{' '}
                                         <button
                                             type="button"
-                                            className="text-indigo-600 font-medium hover:text-indigo-500"
+                                            className="text-gray-700 font-medium hover:text-indigo-500"
                                         // onClick={() => setOpen(false)}
                                         >
                                             Shopping Cart <span aria-hidden="true"> &rarr;</span>
