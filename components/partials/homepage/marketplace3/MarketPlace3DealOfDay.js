@@ -64,7 +64,7 @@ class MarketPlaceDealOfDay extends Component {
         };
 
         return (
-            <div className="ps-deal-of-day">
+            <div className="ps-deal-of-day" >
                 <div className="container">
                     <div className="ps-section__header">
                         <div className="ps-block--countdown-deal">

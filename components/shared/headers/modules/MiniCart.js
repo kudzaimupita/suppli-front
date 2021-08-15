@@ -143,31 +143,8 @@ class MiniCart extends Component {
                                 : ''}
                         </div>
                         <div className="ps-cart__footer">
-                            {/* <h3>
-                                Sub Total:
-                                <strong>R{amount ? amount : 0}</strong>
-                            </h3>
-                            <figure>
-                                <Link href="/account/shopping-cart">
-                                    <a
-                                        style={{
-                                            color: 'white',
-                                        }}
-                                        className="ps-btn">
-                                        View Cart
-                                    </a>
-                                </Link>
-                                <Link href="/account/checkout" as="/checkout">
-                                    <a
-                                        style={{
-                                            color: 'white',
-                                        }}
-                                        className="ps-btn">
-                                        Checkoutsss
-                                    </a>
-                                </Link>
-                            </figure> */}
-                            <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
+
+                            <div className="border-t border-gray-200 py-2 px-4 sm:px-6">
                                 <div className="flex justify-between text-base font-medium text-gray-900">
                                     <p>Subtotal</p>
                                     <p>   <strong>R{amount ? amount : 0}</strong></p>

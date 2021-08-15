@@ -3,7 +3,7 @@
 
     .ps-cart__items {
         position: relative;
-        padding: 20px;
+        padding: 10px;
         background-color: #fff;
         border: 1px solid #e1e1e1;
         border-bottom: none;
@@ -24,7 +24,7 @@
         }
 
         .ps-product--cart-mobile {
-            margin-bottom: 30px;
+            margin-bottom: 5px;
         }
     }
 
@@ -40,7 +40,7 @@
     }
 
     .ps-cart__footer {
-        padding: 10px 20px 20px;
+        // padding: 10px 20px 20px;
         background-color: #ffffff;
         border: 1px solid #e1e1e1;
         border-top: 0;
@@ -86,7 +86,6 @@
     }
 
     .ps-cart__footer {
-
         h3 {
             display: block;
             margin-bottom: 20px;
