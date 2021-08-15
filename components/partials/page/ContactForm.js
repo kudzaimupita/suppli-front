@@ -101,7 +101,7 @@ class Login extends Component {
                                         </Dialog.Title>
                                         <div className="mt-2">
                                             <p className="text-sm text-gray-500">
-                                                Your message wass successfully sent to our team. We'll get back at you shortly.
+                                                Your message was successfully sent to our team. We'll get back at you shortly.
                                             </p>
                                         </div>
                                     </div>
