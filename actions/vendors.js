@@ -52,9 +52,9 @@ export const suggestAVendorAction = (formData) => async (dispatch) => {
             type: SUGGEST_A_STORE_SUCCESS,
             payload: res.data.data,
         });
-        dispatch(
-            setAlert('Successfully suggested vendor. Thank you :)', 'success')
-        );
+        // dispatch(
+        //     setAlert('Successfully suggested vendor. Thank you :)', 'success')
+        // );
     } catch (err) {
         console.log(err);
         const errors = err.response.data.error;
