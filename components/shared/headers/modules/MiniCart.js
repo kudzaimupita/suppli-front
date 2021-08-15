@@ -169,7 +169,7 @@ class MiniCart extends Component {
                                         Close<span aria-hidden="true"> &rarr;</span>
                                     </a>
                                 </div> */}
-                                <div className="mt- flex justify-center text-sm text-center text-gray-500 mt-2">
+                                <div className="mb-3 mt-1 flex justify-center text-sm text-center text-gray-500 mt-2">
                                     <a href="/account/shopping-cart">
                                         or{' '}
                                         <button

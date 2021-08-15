@@ -6,6 +6,7 @@ import BreadCrumb from '../../components/elements/BreadCrumb';
 import ShoppingCart from '../../components/partials/account/ShoppingCart';
 import HeaderMobile from '../../components/shared/headers/HeaderMobile';
 import NavigationList from '../../components/shared/navigation/NavigationList';
+import '../../components/tailwind.scss'
 
 const ShoppingCartPage = () => {
     const breadCrumb = [
@@ -22,7 +23,7 @@ const ShoppingCartPage = () => {
             <HeaderDefault />
             <HeaderMobile />
             <NavigationList />
-            <div className="ps-page--simple">
+            <div className="ps-page--simple bg-gray-100" >
                 <BreadCrumb breacrumb={breadCrumb} />
                 <ShoppingCart />
             </div>

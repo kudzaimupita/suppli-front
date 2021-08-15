@@ -67,38 +67,7 @@ class ShopWidget extends Component {
                             animating={true} /></Modal>
                 )}
                 <div className="ps-layout__left">
-                    <div className="bg-white py-5 border-b border-gray-200 sm:px-6 ">
-                        <div className="-ml-4 -mt-4 flex justify-between items-center flex-wrap sm:flex-nowrap">
-                            <div className="ml-4 ">
-                                <div className="flex items-center">
-                                    <div className="flex-shrink-0">
-                                        <img
-                                            className="h-12 w-12 rounded-lg"
-                                            src="/static/img/555.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="ml-4">
-                                        <h3 className="text-lg leading-6 font-medium text-gray-900">Stores</h3>
-                                        {/* <p className="text-sm text-gray-500">
-                                        <a href="#">@tom_cook</a>
-                                    </p> */}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="ml-2 my-3 mt-1 flex-shrink-0 flex">
-                                <button
-                                    type="button"
-                                    className="relative inline-flex items-center px-1 py-2 border border-gray-300 shadow-xs text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                >
 
-                                    <span>View All</span>  <ArrowRightIcon className="ml-2 mr-2 h-4 w-4 text-gray-400" aria-hidden="true" />
-
-                                </button>
-
-                            </div>
-                        </div>
-                    </div>
                     <aside className="widget widget_shop">
                         {/* <h4 className="widget-title">Shop By Store</h4>
                     <ul className="ps-list--categories">
@@ -121,7 +90,7 @@ class ShopWidget extends Component {
                                 this.props.vendors.slice(0, 12).map((item) => (
                                     <a
                                         key={item.name}
-                                        href={`/vendor/${item._id}`}
+                                        as={`/vendor/${item._id}`}
                                         className={classNames(
                                             item.current ? 'bg-gray-200 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                                             'flex items-center px-3 py-2 text-sm font-medium rounded-md'
