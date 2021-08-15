@@ -6,11 +6,7 @@ import BreadCrumb from '../components/elements/BreadCrumb';
 import Checkout from '../components/partials/account/Checkout';
 import HeaderMobile from '../components/shared/headers/HeaderMobile';
 import NavigationList from '../components/shared/navigation/NavigationList';
-import { connect } from 'react-redux';
-
-import FormCheckoutInformation from '../components/partials/account/modules/FormCheckoutInformation';
-
-const OrderTrackingPage = (props) => {
+const OrderTrackingPage = () => {
     const breadCrumb = [
         {
             text: 'Home',
@@ -24,7 +20,6 @@ const OrderTrackingPage = (props) => {
             text: 'Checkout Information',
         },
     ];
-    const { amount, cartTotal, cartItems } = props;
     return (
         <div className="site-content" >
             <HeaderDefault />
@@ -32,11 +27,7 @@ const OrderTrackingPage = (props) => {
             <NavigationList />
             <div className="ps-page--simple" style={{ backgroundColor: '#eeeeee' }}>
                 <BreadCrumb breacrumb={breadCrumb} />
-                <FormCheckoutInformation
-                    amount={amount}
-                    cartTotal={cartTotal}
-                    cartItems={cartItems}
-                />
+                <Checkout />
             </div>
             {/* <Newsletters layout="container" /> */}
             <FooterDefault />
@@ -44,7 +35,4 @@ const OrderTrackingPage = (props) => {
     );
 };
 
-const mapStateToProps = state => {
-    return state.cart;
-};
-export default connect(mapStateToProps)(OrderTrackingPage);
+export default OrderTrackingPage;
