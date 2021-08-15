@@ -78,9 +78,9 @@ export const inviteAFriendAction = (formData) => async (dispatch) => {
 
     try {
         const res = await api.post('/users/inviteAFriend', formData);
-        dispatch(
-            setAlert('Invite successfully sent your friend. :)', 'success')
-        );
+        // dispatch(
+        //     setAlert('Invite successfully sent your friend. :)', 'success')
+        // );
         dispatch({
             type: INVITE_A_FRIEND_SUCCESS,
             payload: res.data.data,
