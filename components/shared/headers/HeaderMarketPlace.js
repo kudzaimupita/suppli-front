@@ -370,7 +370,7 @@ class HeaderAutoPart extends Component {
                                         <p>
                                             Tel
                                             <strong>
-                                            <a href="tel:0665178403">+47 333 78 901</a>
+                                            <a href="tel:0665178403">066 517 8403</a>
                                             
                                             </strong>
                                         </p>
