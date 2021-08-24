@@ -369,7 +369,10 @@ class HeaderAutoPart extends Component {
                                     <div className="ps-block__right">
                                         <p>
                                             Tel
-                                            <strong>066 517 8403</strong>
+                                            <strong>
+                                            <a href="tel:0665178403">+47 333 78 901</a>
+                                            
+                                            </strong>
                                         </p>
                                     </div>
                                 </div>
