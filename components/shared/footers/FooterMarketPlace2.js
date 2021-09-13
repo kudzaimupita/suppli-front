@@ -126,7 +126,7 @@ const FooterTechnology = () => {
                                                         style={{
                                                             color: 'white',
                                                         }}>
-                                                        Suggest A Vendor
+                                                        Suggest A Store
                                                     </a>
                                                 </Link>
                                             </li>
