@@ -59,33 +59,49 @@ class Market3ConsumerElectronics extends Component {
                             {...carouselSetting}
                             className="ps-carousel inside">
                             <div className="item">
-                                <a>
+                                <a href='/vendor/60cf5532a0347100171bdeb9'>
                                     <img
-                                        src="/static/img/9.png"
+                                        src="/static/img/1111.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
                             </div>
                             <div className="item">
-                                <a>
+                                <a href="/vendor/60d05beaf76e6c0017f3f41f">
                                     <img
-                                        src="/static/img/21.png"
+                                        src="/static/img/2222.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
                             </div>
                             <div className="item">
-                                <a>
+                                <a href='/vendor/60d074d1f76e6c0017f3f42f'>
                                     <img
-                                        src="/static/img/8.png"
+                                        src="/static/img/3333.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
                             </div>
                             <div className="item">
-                                <a>
+                                <a href='/vendor/60cf3fb9a0347100171bde9f'>
                                     <img
-                                        src="/static/img/22.png"
+                                        src="/static/img/4444.png"
+                                        alt="Suppl-i"
+                                    />
+                                </a>
+                            </div>
+                            <div className="item">
+                                <a href='/vendor/60d335222395500017a7a74d'>
+                                    <img
+                                        src="/static/img/5555.png"
+                                        alt="Suppl-i"
+                                    />
+                                </a>
+                            </div>
+                            <div className="item">
+                                <a href='https://live.insure/livecover/pa?schemecode=zivikele&referredby=suppli'>
+                                    <img
+                                        src="/static/img/6666.png"
                                         alt="Suppl-i"
                                     />
                                 </a>

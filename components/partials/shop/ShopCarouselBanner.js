@@ -45,6 +45,9 @@ class ShopCarouselBanner extends Component {
                     <a href='/vendor/60cf5532a0347100171bdeb9'>    <div className="item">
                         <img src="/static/img/7.png" alt="Suppl-i" />
                     </div></a>
+                    <a href='https://live.insure/livecover/pa?schemecode=zivikele&referredby=suppli'>    <div className="item">
+                        <img src="/static/img/45.png" alt="Suppl-i" />
+                    </div></a>
                 </Slider>
             </div>
         );

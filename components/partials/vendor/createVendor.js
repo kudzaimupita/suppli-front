@@ -26,6 +26,17 @@ import { setAlert } from './../../../actions/alert';
 const { Panel } = Collapse;
 import { Upload, message, Tabs } from 'antd';
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+
+import '../../tailwind.scss'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { LockClosedIcon } from '@heroicons/react/solid'
+import '../../../components/tailwind.scss'
+import { Spinner } from 'react-activity';
+import { MailIcon, PhoneIcon } from '@heroicons/react/outline'
+import { Fragment, useState } from 'react'
+import { Dialog, Transition } from '@headlessui/react'
+import { CheckIcon } from '@heroicons/react/outline'
+
 const { TextArea } = Input;
 function getBase64(img, callback) {
     const reader = new FileReader();
@@ -103,6 +114,7 @@ class VendorApplication extends React.Component {
 
 
     handleShowModalChange = (e) => {
+        e.preventDefault()
         this.setState({ isModalVisible: true });
     };
     handleCancelModal = (e) => {
@@ -162,6 +174,7 @@ class VendorApplication extends React.Component {
         this.setState({ catergory: e.target.value });
     };
     onSubmit = async (e) => {
+        e.preventDefault()
         // if (!this.state.name)
         //     return this.props.setAlert('hello nigga', 'danger');
         //   console.log('This is our state', this.state)
@@ -205,23 +218,36 @@ class VendorApplication extends React.Component {
         );
         return (
             <>
-
-                <div
-                    className=" ps-form--account"
-                    style={{ maxWidth: '900px', paddingTop: '20px' }}>
+                <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4">
+                    <img
+                        className="mx-auto h-12 w-auto"
+                        src='/static/img/suppli-logo.png'
+                        alt="Workflow"
+                    />
+                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Become A Vendor</h2>
+                    <p className="mt-2 text-center text-sm text-gray-600">
+                        Or{' '}
+                        <a href="/vendor/suggest-a-vendor" className=" font-medium text-indigo-600 hover:text-indigo-500">
+                            Refer us to your favourite local stores
+                        </a>
+                    </p>
+                </div>
+                <Form
+                    onSubmit={this.handleShowModalChange}
+                    className="submit ps-form--account"
+                    style={{ maxWidth: '700px', paddingTop: '20px' }}>
 
                     <Card
                         className="bg-grey shadow site-layout-content"
                         style={{ marginBottom: 20 }}>
                         <Row className="align-items-center justify-center">
-                            <Col xs="8" style={{ marginBottom: '30px' }}>
-                                <h3 className="mb-0">Vendor Application</h3>
-                            </Col>
+
                             <Col className="text-right" xs="4">
                                 <Modal
                                     title="Vendor Terms Of Use"
                                     visible={this.state.isModalVisible}
-                                    width={600}
+                                    // visible={true}
+                                    width={400}
                                     onCancel={this.handleCancelModal}
                                     footer={[
                                         <Button
@@ -246,7 +272,7 @@ class VendorApplication extends React.Component {
 
 
                                     ]}>
-                                    {!this.props.isLoggedIn && <Tabs defaultActiveKey="1" >
+                                    <Tabs defaultActiveKey="1" >
                                         <TabPane tab="Register" key="1">
                                             {!this.props.isLoggedIn && <Register />}
                                         </TabPane>
@@ -254,8 +280,8 @@ class VendorApplication extends React.Component {
                                             {!this.props.isLoggedIn && <Login />}
                                         </TabPane>
 
-                                    </Tabs>}
-                                    {this.props.isLoggedIn && <Collapse accordion>
+                                    </Tabs>
+                                    <Collapse accordion className='my-3'>
                                         <Panel
                                             header="Vendor Terms Of Use"
                                             key="1">
@@ -1050,14 +1076,14 @@ class VendorApplication extends React.Component {
                                                 and condition noted herein.
                                             </p>
                                         </Panel>
-                                    </Collapse>}
+                                    </Collapse>
 
-                                    {this.props.isLoggedIn && <p>
+                                    <p>
                                         {' '}
                                         * Important * By clicking the I
                                         agree button you accept that you've
                                         read and accepted the terms of use.
-                                    </p>}
+                                    </p>
 
                                 </Modal>
 
@@ -1065,20 +1091,22 @@ class VendorApplication extends React.Component {
                         </Row>
 
                         <>
-                            <Form>
+                            <div >
                                 <div className="pl-sm-4">
                                     <Row>
                                         <Col lg="6">
                                             <>
                                                 <label
-                                                    className="form-control-label"
+                                                    className="text-sm font-medium text-gray-700 mt-3"
                                                     htmlFor="input-username"
-                                                    size="sm">
-                                                    Vendor Name*
+                                                >
+                                                    Vendor Name<span style={{ color: 'red' }}>*</span>
                                                 </label>
                                                 <Input
+                                                    required={true}
+                                                    size={'large'}
                                                     id="input-username"
-                                                    placeholder="eg Nike Holdings"
+                                                    placeholder="Name"
                                                     type="text"
                                                     prefix={
                                                         <i class="fa fa-shopping-bag"></i>
@@ -1095,13 +1123,15 @@ class VendorApplication extends React.Component {
                                         <Col lg="6">
                                             <>
                                                 <label
-                                                    className="form-control-label"
+                                                    className="text-sm font-medium text-gray-700 mt-3"
                                                     htmlFor="input-email">
-                                                    Vendor Email*
+                                                    Vendor Email<span style={{ color: 'red' }}>*</span>
                                                 </label>
                                                 <Input
+                                                    required={true}
+                                                    size={'large'}
                                                     id="input-email"
-                                                    placeholder="eg contact@nikeholdings.com"
+                                                    placeholder="Email"
                                                     type="email"
                                                     name="email"
                                                     value={
@@ -1121,15 +1151,17 @@ class VendorApplication extends React.Component {
                                         <Col lg="6">
                                             <>
                                                 <label
-                                                    className="form-control-label"
+                                                    className="text-sm font-medium text-gray-700 mt-3"
                                                     htmlFor="input-email">
-                                                    Vendor Phone*
+                                                    Vendor Phone<span style={{ color: 'red' }}>*</span>
                                                 </label>
                                                 <Input
+                                                    required={true}
+                                                    size={'large'}
                                                     id="input-email"
-                                                    placeholder="eg 0315655565"
+                                                    placeholder="Phone"
                                                     type="tel"
-                                                    size="sm"
+
                                                     name="phone"
                                                     value={this.state.phone}
                                                     onChange={
@@ -1145,14 +1177,15 @@ class VendorApplication extends React.Component {
                                         <Col md="9">
                                             <>
                                                 <label
-                                                    className="form-control-label"
+                                                    className="text-sm font-medium text-gray-700 mt-3"
                                                     htmlFor="input-country">
-                                                    About us*
+                                                    About us<span style={{ color: 'red' }}>*</span>
                                                 </label>
                                                 <TextArea
+                                                    required
                                                     rows={4}
                                                     rows="4"
-                                                    placeholder="eg Nike holding is an NYC based apparel company keeping up with the latest fashion trends, both traditional and modern etc"
+                                                    placeholder="About Us"
                                                     type="textarea"
                                                     name="aboutUs"
                                                     value={
@@ -1167,7 +1200,7 @@ class VendorApplication extends React.Component {
                                         </Col>{' '}
                                     </Row>
                                 </div>
-                            </Form>
+                            </div>
                         </>
                     </Card>
 
@@ -1179,13 +1212,15 @@ class VendorApplication extends React.Component {
                                 <Col md="12">
                                     <>
                                         <label htmlFor="input-address">
-                                            Address*
+                                            Address<span style={{ color: 'red' }}>*</span>
                                         </label>
                                         <Input
+                                            required={true}
+                                            size={'large'}
                                             id="input-address"
-                                            placeholder="89 Smitch Avenue, building 4, floor 45"
+                                            placeholder="Address"
                                             type="text"
-                                            size="sm"
+
                                             name="address"
                                             value={this.state.address}
                                             onChange={
@@ -1202,15 +1237,17 @@ class VendorApplication extends React.Component {
                                 <Col lg="4">
                                     <>
                                         <label
-                                            className="form-control-label"
+                                            className="text-sm font-medium text-gray-700 mt-3"
                                             htmlFor="input-city">
-                                            City*
+                                            City<span style={{ color: 'red' }}>*</span>
                                         </label>
                                         <Input
+                                            required={true}
+                                            size={'large'}
                                             id="input-city"
-                                            placeholder="Cape Town"
+                                            placeholder="City"
                                             type="text"
-                                            size="sm"
+
                                             name="city"
                                             value={this.state.city}
                                             onChange={this.handleCityChange}
@@ -1223,16 +1260,18 @@ class VendorApplication extends React.Component {
                                 <Col lg="4">
                                     <>
                                         <label
-                                            className="form-control-label"
+                                            className="text-sm font-medium text-gray-700 mt-3"
                                             htmlFor="input-country">
-                                            Country*
+                                            Country<span style={{ color: 'red' }}>*</span>
                                         </label>
                                         <Input
+                                            required={true}
+                                            size={'large'}
                                             defaultValue="South Africa"
                                             id="input-country"
-                                            placeholder="South Africa"
+                                            placeholder="Country"
                                             type="text"
-                                            size="sm"
+
                                             disabled
                                             name="country"
                                             value={this.state.country}
@@ -1248,15 +1287,17 @@ class VendorApplication extends React.Component {
                                 <Col lg="4">
                                     <>
                                         <label
-                                            className="form-control-label"
+                                            className="text-sm font-medium text-gray-700 mt-3"
                                             htmlFor="input-country">
-                                            Postal code*
+                                            Postal code<span style={{ color: 'red' }}>*</span>
                                         </label>
                                         <Input
+                                            required={true}
+                                            size={'large'}
                                             id="input-postal-code"
-                                            placeholder="eg 2001"
+                                            placeholder="Postal Code"
                                             type="number"
-                                            size="sm"
+
                                             name="postalCode"
                                             value={this.state.postalCode}
                                             onChange={
@@ -1273,24 +1314,7 @@ class VendorApplication extends React.Component {
                                 <Col md="3">
                                     {' '}
                                     <>
-                                        {/* <UncontrolledDropdown group>
-                  <DropdownToggle caret color="secondary">
-                    Choose
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    {this.props.catergories.map((catergory) => (
-                      <li>
-                        <DropdownItem
-                          href="#pablo"
-                          onClick={this.handleCatergoryChange}
-                          name=""
-                        >
-                          {catergory.name}
-                        </DropdownItem>
-                      </li>
-                    ))}
-                  </DropdownMenu>
-                </UncontrolledDropdown> */}
+
                                     </>
                                 </Col>
                             </Row>
@@ -1303,11 +1327,13 @@ class VendorApplication extends React.Component {
                         <Col md="9">
                             <>
                                 <label
-                                    className="form-control-label"
+                                    className="text-sm font-medium text-gray-700 mt-3"
                                     htmlFor="input-country">
                                     Facebook Handle
                                 </label>
                                 <Input
+
+                                    size={'large'}
                                     rows="4"
                                     placeholder="eg nikeholding"
                                     type="text"
@@ -1323,11 +1349,13 @@ class VendorApplication extends React.Component {
                         <Col md="9">
                             <>
                                 <label
-                                    className="form-control-label"
+                                    className="text-sm font-medium text-gray-700 mt-3"
                                     htmlFor="input-country">
                                     Instagram Handle
                                 </label>
                                 <Input
+
+                                    size={'large'}
                                     rows="4"
                                     placeholder="eg nikeholding"
                                     type="text"
@@ -1341,11 +1369,13 @@ class VendorApplication extends React.Component {
                         {/* <Col md="9">
                                 <>
                                     <label
-                                        className="form-control-label"
+                                        className="text-sm font-medium text-gray-700 mt-3"
                                         htmlFor="input-country">
                                         Website Url*
                                     </label>
                                     <Input
+                                    required={true}
+                                    size={'large'}
                                         rows="4"
                                         placeholder="www.nikeholding.com"
                                         type="text"
@@ -1358,16 +1388,28 @@ class VendorApplication extends React.Component {
                                     />
                                 </>
                             </Col>{' '} */}
-                        <Button
-                            style={{ marginTop: '20px' }}
-                            type="primary"
-                            block
-                            onClick={this.handleShowModalChange}>
-                            Register Vendor
-                        </Button>
+
+                        <div className=" my-4">
+                            <button
+                                type="submit"
+                                className="submit group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gray-700 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                            >
+                                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                    <LockClosedIcon className="h-5 w-5 text-gray-500 group-hover:text-grayu-400" aria-hidden="true" />
+                                </span>
+                                <span style={{ marginRight: 10 }}> {this.props.loading ? <Spinner
+
+                                    color="white"
+                                    size={12}
+                                    speed={1}
+                                    animating={true} /> : null}</span>
+                                Confirm
+                            </button>
+                        </div>
+
                     </Card>
 
-                </div>
+                </Form>
             </>
         );
     }
@@ -1379,8 +1421,8 @@ class VendorApplication extends React.Component {
 
 const mapStateToProps = (state) => ({
     auth: state.auth.isAuthenticated,
-    isAuthenticated: state.auth,
-    loading: state.auth.loading,
+    isAuthenticated: state.auth1.isAuthenticated,
+    loading: state.createdVendor?.loading,
     createdPlugLoading: state.createdPlug,
     isLoggedIn: state.auth.isLoggedIn,
 });
