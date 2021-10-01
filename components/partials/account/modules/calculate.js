@@ -4,24 +4,44 @@ import axios from 'axios';
 export const createCompleteBooking = async (pick, drop) => {
     const object = {
 
+        mass: 1,
+        pickUpProvince: "GAUTENG",
+        parcelDimensions: [
+
+            {
+                "parcel_length": 14,
+
+                "parcel_breadth": 45,
+
+                "parcel_height": 12,
+
+                "parcel_mass": 14
+            }
+
+        ],
+
+        dropOffProvince: "GAUTENG",
+        // distance: 125,
         pickUpCode: pick,
         dropOffCode: drop,
-        mass: 3,
-        storeName: null,
+        // storeName: null,
     };
 
-
-
-    const daaaa = await axios.post("https://droppergroup.co.za/droppa/services/plugins/quotes", object, {
+    const daaaa = await axios.post("https://droppergroup.co.za/droppa/services/plugins/courier/quotes", object, {
         headers: {
-            // "Access-Control-Allow-Origin": "*",
-            "accept": "application/json",
+            "Access-Control-Allow-Credentials": "true",
+            "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",
+            "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+            // "origin": "www.suppl-i.com",
+
+            "accept": "*",
+            "Origin": "X-Requested-With, Content-Type, Accept, Authorization",
             'Content-Type': 'application/json',
             'Authorization': 'Bearer 66de47e2-9193-44e5-9bd5-55bb87564339:60f8012b2114cc00724765b4',
         }
     })
-
-    return daaaa.data.amount
+    console.log(daaaa)
+    return daaaa.data
 }
 
 

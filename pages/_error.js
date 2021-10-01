@@ -26,7 +26,10 @@ function Error({ statusCode }) {
                             </figure>
                         ) : (
                             <figure>
-                                <h3>An error occurred on the client</h3>
+                                <h3>Oops, this page doesn't exist</h3>
+                                <Link href="/">
+                                    <a> Homepage</a>
+                                </Link>
                             </figure>
                         )}
                         {/* <form

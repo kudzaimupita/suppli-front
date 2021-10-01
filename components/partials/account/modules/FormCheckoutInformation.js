@@ -11,6 +11,8 @@ import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import '../../../tailwind.scss'
+import { Badge, Radio, Tooltip } from 'antd';
+const wrap = Badge.Ribbon
 class FormCheckoutInformation extends Component {
     constructor(props) {
         super(props);
@@ -196,9 +198,18 @@ class FormCheckoutInformation extends Component {
                                         componentRestrictions: { country: "za" },
                                     }}
 
-                                />
-                                <div className="form-group">
-                                    <div className="ps-checkbox">
+                                />  <wrap text="Hippies" color="cyan">
+                                    {this.state.address && <div className="form-group ml-12">
+                                        <Radio.Group defaultValue="a" size="large">
+
+                                            <Radio.Button value="a">Budget Shipping R 30</Radio.Button>
+
+
+                                            <Radio.Button value="b">Express Shipping R60</Radio.Button>
+                                            <Radio.Button value="c">Dash Shipping R40</Radio.Button>
+                                            {/* <Radio.Button value="d"></Radio.Button> */}
+                                        </Radio.Group>
+                                        {/* <div className="ps-checkbox">
                                         <input
                                             className="form-control"
                                             type="checkbox"
@@ -207,8 +218,9 @@ class FormCheckoutInformation extends Component {
                                         <label htmlFor="keep-update">
                                             Save this information for next time
                                         </label>
-                                    </div>
-                                </div>
+                                    </div> */}
+                                    </div>} </wrap>
+
                                 <div className="ps-form__submit">
                                     <a href="/account/shopping-cart">
 

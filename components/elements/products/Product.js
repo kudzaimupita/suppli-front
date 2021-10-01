@@ -124,7 +124,7 @@ class Product extends Component {
                                 <i className="icon-heart"></i>
                             </a>
                         </li>
-                        <li>
+                        {/* <li>
                             <a
                                 href="#"
                                 data-toggle="tooltip"
@@ -135,7 +135,7 @@ class Product extends Component {
                                 )}>
                                 <i className="icon-chart-bars"></i>
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 <div className="ps-product__container">
