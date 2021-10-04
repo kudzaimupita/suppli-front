@@ -12,6 +12,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import '../../../tailwind.scss'
 import { Badge, Radio, Tooltip } from 'antd';
+import Radioo from './radioGroup'
 const wrap = Badge.Ribbon
 class FormCheckoutInformation extends Component {
     constructor(props) {
@@ -62,7 +63,10 @@ class FormCheckoutInformation extends Component {
         this.setState({ phone: e.target.value });
     };
 
-
+    handleSubmit = async (e) => {
+        e.preventDefault()
+        this.onSubmit(e)
+    };
 
     render() {
 
@@ -96,10 +100,24 @@ class FormCheckoutInformation extends Component {
             },
             // More products...
         ]
-        return (
+        return (<>
+            <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4">
+                <img
+                    className="mx-auto h-12 w-auto"
+                    src='/static/img/suppli-logo.png'
+                    alt="supl-i"
+                />
+                <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Checkout</h2>
+                <p className="mt-2 text-center text-sm text-gray-600">
+                    Or{' '}
+                    <a href='/account/shopping-cart' className="font-medium text-indigo-600 hover:text-indigo-500">
+                        Continue Shipping
+                    </a>
+                </p>
+            </div>
             <Form
                 className="ps-form--checkout"
-                onSubmit={this.handleLoginSubmit}>
+                onSubmit={this.handleSubmit}>
                 <div className="ps-form__content ">
                     <div className="row" >
                         {/* <Row></Row> */}
@@ -133,83 +151,82 @@ class FormCheckoutInformation extends Component {
                                     Shipping address
                                 </h3> */}
                                 {/* <input ref={ref} style={{ width: "90%" }} defaultValue="Amsterdam" /> */}
-
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <div className="form-group">
-                                            <Form.Item>
-                                                {getFieldDecorator(
-                                                    'name',
-                                                    {
+                                {this.props.orderId ? null : <>
+                                    <div className="row">
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <Form.Item>
+                                                    {getFieldDecorator(
+                                                        'name',
+                                                        {
+                                                            rules: [
+                                                                {
+                                                                    required: true,
+                                                                    message:
+                                                                        'Enter your name!',
+                                                                },
+                                                            ],
+                                                        },
+                                                    )(
+                                                        <Input
+                                                            required='true'
+                                                            className="form-control"
+                                                            type="text"
+                                                            placeholder="Name"
+                                                            value={this.state.name}
+                                                            onChange={this.handleNameChange}
+                                                        />,
+                                                    )}
+                                                </Form.Item>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-6">
+                                            <div className="form-group">
+                                                <Form.Item>
+                                                    {getFieldDecorator('phone', {
                                                         rules: [
                                                             {
                                                                 required: true,
                                                                 message:
-                                                                    'Enter your name!',
+                                                                    'Enter your phone number!',
                                                             },
                                                         ],
-                                                    },
-                                                )(
-                                                    <Input
-                                                        className="form-control"
-                                                        type="text"
-                                                        placeholder="Name"
-                                                        value={this.state.name}
-                                                        onChange={this.handleNameChange}
-                                                    />,
-                                                )}
-                                            </Form.Item>
+                                                    })(
+
+                                                        <Input
+                                                            required='true'
+                                                            className="form-control"
+                                                            type="number" id="phone" name="phone"
+                                                            // pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                                                            placeholder="Phone"
+                                                            value={this.state.phone}
+                                                            onChange={this.handlePhoneChange}
+                                                        />,
+                                                    )}
+                                                </Form.Item>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="col-sm-6">
-                                        <div className="form-group">
-                                            <Form.Item>
-                                                {getFieldDecorator('phone', {
-                                                    rules: [
-                                                        {
-                                                            required: true,
-                                                            message:
-                                                                'Enter your phone number!',
-                                                        },
-                                                    ],
-                                                })(
-                                                    <Input
-                                                        className="form-control"
-                                                        type="text"
-                                                        placeholder="Phone"
-                                                        value={this.state.phone}
-                                                        onChange={this.handlePhoneChange}
-                                                    />,
-                                                )}
-                                            </Form.Item>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <Autocomplete
-                                    apiKey='AIzaSyDdkpFLrMBAYzzMZg699Yr-lQJ1ksyfN2Q'
+                                    <Autocomplete
+                                        required='true'
+                                        apiKey='AIzaSyDdkpFLrMBAYzzMZg699Yr-lQJ1ksyfN2Q'
+                                        className="form-control"
+                                        style={{ width: "100%", height: '50px', marginBottom: '20px' }}
+                                        onPlaceSelected={(place) => {
+                                            this.handleAddressChange(place)
+                                        }}
+                                        options={{
+                                            types: ["address"],
+                                            componentRestrictions: { country: "za" },
+                                        }}
 
-                                    style={{ width: "100%", height: '50px', marginBottom: '20px' }}
-                                    onPlaceSelected={(place) => {
-                                        this.handleAddressChange(place)
-                                    }}
-                                    options={{
-                                        types: ["address"],
-                                        componentRestrictions: { country: "za" },
-                                    }}
+                                    />
+                                    <wrap text="Hippies" color="cyan">
 
-                                />  <wrap text="Hippies" color="cyan">
-                                    {this.state.address && <div className="form-group ml-12">
-                                        <Radio.Group defaultValue="a" size="large">
-
-                                            <Radio.Button value="a">Budget Shipping R 30</Radio.Button>
-
-
-                                            <Radio.Button value="b">Express Shipping R60</Radio.Button>
-                                            <Radio.Button value="c">Dash Shipping R40</Radio.Button>
-                                            {/* <Radio.Button value="d"></Radio.Button> */}
-                                        </Radio.Group>
-                                        {/* <div className="ps-checkbox">
+                                        {this.state.address && <div className="form-group ml-12">
+                                            <Radioo />
+                                            {/* <div className="ps-checkbox">
                                         <input
                                             className="form-control"
                                             type="checkbox"
@@ -219,18 +236,18 @@ class FormCheckoutInformation extends Component {
                                             Save this information for next time
                                         </label>
                                     </div> */}
-                                    </div>} </wrap>
+                                        </div>} </wrap>  </>}
 
                                 <div className="ps-form__submit">
-                                    <a href="/account/shopping-cart">
+                                    {/* <a href="/account/shopping-cart">
 
                                         <i className="icon-arrow-left mr-2"></i>
                                         Return to shopping cart
 
-                                    </a>
-                                    <div className="ps-block__footer">
+                                    </a> */}
+                                    <div className="ps-block__footer"  >
 
-                                        {!this.props.orderId && <button className="ps-btn " onClick={(e) => this.onSubmit(e)} style={{ color: 'white' }}>
+                                        {!this.props.orderId && <button type="submit" className="ps-btn " style={{ color: 'white' }}>
                                             Continue to payment
                                         </button>}
                                     </div>
@@ -353,7 +370,8 @@ class FormCheckoutInformation extends Component {
                         </Card>
                     </div>
                 </div >
-            </Form >
+
+            </Form ></>
         );
     }
 }

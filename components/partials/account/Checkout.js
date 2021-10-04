@@ -21,9 +21,9 @@ class Checkout extends Component {
         return (
             <div className="ps-checkout ps-section--shopping">
                 <div className="container">
-                    <div className="ps-section__header">
+                    {/* <div className="ps-section__header">
                         <h1>Checkout </h1>
-                    </div>
+                    </div> */}
                     {/* <form style={{ backgroundColor: 'blue' }} action="{shopperResultUrl}" className="paymentWidgets" data-brands="VISA MASTER AMEX"></form> */}
                     <div className="">
                         <FormCheckoutInformation

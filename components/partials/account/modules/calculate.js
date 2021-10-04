@@ -45,7 +45,7 @@ export const createCompleteBooking = async (pick, drop) => {
 }
 
 
-export const CreateExpressBooking = async () => {
+export const CreateExpressBooking = async (person, store) => {
     const dropTime = 2021 + '-' + 12 + '-' + 17 + 'T' + 17 + ':' + 10 + ':' + 50;
 
     const object = {
@@ -91,8 +91,72 @@ export const CreateExpressBooking = async () => {
         dropOffPCode: "0169"
     }
 
+    const order = {
+        dropOff: {
+            "firstName": person.name,
+            "lastName": "Not specified",
+            "phone": person.phone,
+            "email": person.email
+        },
 
-    const daaaa = await axios.post("https://droppergroup.co.za/droppa/services/v1/create/express/booking", object, {
+        pickUp: {
+            "firstName": store.name,
+            "lastName": "Not Specified",
+            "phone": store.phone,
+            "email": store.companyEmail
+        },
+
+        vehicleType: "DROPPA_EXPRESS",
+
+        pickUpAddress: "13 Esdoring Nook, Highveld Techno Park, Centurion, 0157",
+
+        date: "2021-10-17T17:10:50",
+
+        dropOffAddress: "13 Esdoring Nook, Highveld Techno Park, Centurion, 0157",
+
+        price: 87,
+
+        comment: "Hello guys",
+
+        province: "GAUTENG",
+
+        destinationProvince: "GAUTENG",
+
+        serviceId: "60f8012b2114cc00724765b4",
+
+        transportMode: "ROAD",
+
+        type: "DASH",
+
+        isExpress: true,
+
+        itemMass: 12,
+
+        parcelDimensions: [
+
+            {
+                "parcel_length": 20,
+
+                "parcel_breadth": 20,
+
+                "parcel_height": 20,
+
+                "parcel_mass": 1
+            }
+
+        ],
+
+        fromSuburb: "Centurion",
+
+        toSuburb: "Centurion",
+
+        pickUpPCode: "0157",
+
+        dropOffPCode: "0157"
+    }
+
+
+    const daaaa = await axios.post("https://droppergroup.co.za/droppa/services/v1/book", object, {
         headers: {
             "accept": "application/json",
             'Content-Type': 'application/json',
