@@ -83,6 +83,7 @@ import {
     getUnbalancedSales,
     deleteOrderReducer,
     updateOrderReducer,
+    setCurrentOrder
 } from './../reducers/orderReducer';
 
 import { updateUserReducer } from './../reducers/authReducer';
@@ -104,6 +105,7 @@ import {
 
 import alertReducer from './../reducers/alertReducer';
 export default combineReducers({
+    currentOrder: setCurrentOrder,
     auth1: auth1,
     authLoading: authLoadingReducer,
     forgotPassword: forgotPasswordReducer,

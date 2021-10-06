@@ -8,7 +8,7 @@ import {
     GET_MY_ORDERS_SUCCESS,
     CREATE_ORDER_FAIL,
     CREATE_ORDER_SUCCESS,
-    CREATE_ORDER_REQUEST
+    CREATE_ORDER_REQUEST, SET_CURRENT_ORDER
 } from "../constants/orderConstants";
 
 // Register User
@@ -73,4 +73,11 @@ export const createOrderAction = (formData) => async (dispatch, getState) => {
             type: CREATE_ORDER_FAIL,
         });
     }
+};
+
+export const setCurrentOrder = (order) => async (dispatch, getState) => {
+    dispatch({
+        type: SET_CURRENT_ORDER,
+        payload: order
+    });
 };

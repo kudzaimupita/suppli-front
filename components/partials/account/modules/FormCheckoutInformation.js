@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Payment from './Payment';
 import Autocomplete, { usePlacesWidget } from "react-google-autocomplete";
 import { Form, Input, Card, Row } from 'antd';
-import { createOrderAction } from '../../../../actions/orders';
+import { createOrderAction, setCurrentOrder } from '../../../../actions/orders';
 import { getVendor } from '../../../../actions/vendors';
 import { connect } from 'react-redux';
 import { createCompleteBooking, CreateExpressBooking } from './calculate';
@@ -13,6 +13,7 @@ import { XIcon } from '@heroicons/react/outline'
 import '../../../tailwind.scss'
 import { Badge, Radio, Tooltip } from 'antd';
 import Radioo from './radioGroup'
+import { setAlert } from '../../../../actions/alert';
 const wrap = Badge.Ribbon
 class FormCheckoutInformation extends Component {
     constructor(props) {
@@ -22,7 +23,10 @@ class FormCheckoutInformation extends Component {
         address: '',
         name: '',
         phone: '',
-        price: ''
+        price: '',
+        prices: {},
+        province: '',
+        type: ''
     }
     componentDidMount() {
 
@@ -34,6 +38,7 @@ class FormCheckoutInformation extends Component {
     onSubmit = e => {
         e.preventDefault();
 
+
         const price = parseFloat((this.props.amount * 1) + (this.state.price * 1)).toFixed(2);
         const body = {
             name: this.state.name,
@@ -42,6 +47,7 @@ class FormCheckoutInformation extends Component {
             amount: price,
             address: this.state.address
         }
+        this.props.setCurrentOrder({ ...body, store: this.props.vendor && this.props.vendor, type: this.state.type })
 
 
         this.props.createOrderAction(body)
@@ -51,8 +57,11 @@ class FormCheckoutInformation extends Component {
     handleAddressChange = async (place) => {
 
         this.setState({ address: place?.formatted_address });
-        this.setState({ price: await createCompleteBooking(this.props.vendor && this.props.vendor?.postalCode, this.state.address.split(',')[3]) })
-        await CreateExpressBooking()
+
+        this.setState({ province: place.address_components[5].long_name })
+        // this.setState({ price: await createCompleteBooking(this.props.vendor && this.props.vendor?.postalCode, this.state.address.split(',')[3]) })
+        this.setState({ prices: await createCompleteBooking(this.props.vendor && this.props.vendor?.postalCode, this.state.address.split(',')[3], { dropOffProvince: place.address_components[5].long_name.toUpperCase(), pickUpProvince: this.props.vendor && this.props.vendor?.province || 'GAUTENG' }) })
+        // await CreateExpressBooking()
         // console.log(await CreateExpressBooking())
     };
 
@@ -62,10 +71,33 @@ class FormCheckoutInformation extends Component {
     handlePhoneChange = async (e) => {
         this.setState({ phone: e.target.value });
     };
+    handleProvinceChange = async (e) => {
+        this.setState({ province: e.target.value });
+    };
+    setSelectedPrice = (e) => {
+        this.setState({ price: e })
+    }
 
     handleSubmit = async (e) => {
         e.preventDefault()
+        // const province = this.state.province.toLower()
+        // const provinces = ['eastern cape',
+        //     'free state',
+        //     'gauteng',
+        //     'kwaZulu natal',
+        //     'limpopo',
+        //     'mpumalanga',
+        //     'northern cape',
+        //     'north west',
+        //     'kzn',
+        //     'western cape']
+
+        // if (provinces.some((e) => e === province)) {
         this.onSubmit(e)
+        // } else {
+        //     return setAlert('Please provide a valid province', 'province')
+        // }
+
     };
 
     render() {
@@ -76,30 +108,6 @@ class FormCheckoutInformation extends Component {
         const { amount, cartItems, cartTotal } = this.props;
         // const vendorAddress = cartItems[0]._id
 
-        const products = [
-            {
-                id: 1,
-                name: 'Throwback Hip Bag',
-                href: '#',
-                color: 'Salmon',
-                price: '$90.00',
-                quantity: 1,
-                imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-                imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-            },
-            {
-                id: 2,
-                name: 'Medium Stuff Satchel',
-                href: '#',
-                color: 'Blue',
-                price: '$32.00',
-                quantity: 1,
-                imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-                imageAlt:
-                    'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-            },
-            // More products...
-        ]
         return (<>
             <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4">
                 <img
@@ -180,6 +188,7 @@ class FormCheckoutInformation extends Component {
                                                 </Form.Item>
                                             </div>
                                         </div>
+
                                         <div className="col-sm-6">
                                             <div className="form-group">
                                                 <Form.Item>
@@ -206,6 +215,7 @@ class FormCheckoutInformation extends Component {
                                                 </Form.Item>
                                             </div>
                                         </div>
+
                                     </div>
 
                                     <Autocomplete
@@ -225,7 +235,7 @@ class FormCheckoutInformation extends Component {
                                     <wrap text="Hippies" color="cyan">
 
                                         {this.state.address && <div className="form-group ml-12">
-                                            <Radioo />
+                                            <Radioo setSelectedPrice={this.setSelectedPrice} prices={this.state.prices} />
                                             {/* <div className="ps-checkbox">
                                         <input
                                             className="form-control"
@@ -245,12 +255,16 @@ class FormCheckoutInformation extends Component {
                                         Return to shopping cart
 
                                     </a> */}
-                                    <div className="ps-block__footer"  >
+                                    {this.state.price && <div className="ps-block__footer"  >
 
                                         {!this.props.orderId && <button type="submit" className="ps-btn " style={{ color: 'white' }}>
-                                            Continue to payment
+                                            Pay {this.state.price && new Intl.NumberFormat("de-ZA", {
+                                                style: "currency",
+                                                currency: "ZAR",
+                                            }).format((this.state.price * 1) + (amount * 1))}
                                         </button>}
-                                    </div>
+                                    </div>}
+
                                 </div>
                                 <div style={{ marginTop: '30px' }}>   </div>
 
@@ -356,7 +370,7 @@ class FormCheckoutInformation extends Component {
                                             {/* <p>R{this.state.price}</p> */}
                                         </figure>}
                                         <figure className="ps-block__shipping">
-                                            <h3>Total</h3>
+                                            <h2>Total</h2>
                                             {this.state.price ? new Intl.NumberFormat("de-ZA", {
                                                 style: "currency",
                                                 currency: "ZAR",
@@ -383,4 +397,4 @@ const mapStateToProps = (state) => ({
     orderId: state.createdOrder?.order,
     vendor: state.vendor?.vendor?.doc
 });
-export default connect(mapStateToProps, { createOrderAction, getVendor })(WrapForm);
+export default connect(mapStateToProps, { createOrderAction, getVendor, setCurrentOrder })(WrapForm);

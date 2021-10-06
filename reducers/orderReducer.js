@@ -29,7 +29,7 @@ import {
     GET_PLUG_DAILY_STATS_FAIL,
     GET_PLUG_DAILY_STATS_REQUEST,
     GET_PLUG_DAILY_STATS_SUCCESS,
-
+    SET_CURRENT_ORDER
 } from '../constants/orderConstants';
 
 export const createOrderReducer = (state = {}, action) => {
@@ -202,6 +202,17 @@ export const getPlugWeeklyStats = (state = { plugWeeklyStats: {} }, action) => {
             return {
                 loading: false,
                 error: action.payload,
+            };
+        default:
+            return state;
+    }
+};
+
+export const setCurrentOrder = (state = { currentOrder: {} }, action) => {
+    switch (action.type) {
+        case SET_CURRENT_ORDER:
+            return {
+                currentOrder: action.payload,
             };
         default:
             return state;

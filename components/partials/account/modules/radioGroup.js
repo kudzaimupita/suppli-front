@@ -1,37 +1,45 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import '../../../tailwind.scss'
-const plans = [
-    {
-        price: 46, name: 'Budget',
-        ram: '4 Day Delivery',
-        cpus: '6 CPUs',
-        disk: '160 GB SSD disk',
-    },
-    {
-        price: 93, name: 'Express',
-        ram: 'Fast Shipping, 1-2 days',
-        cpus: '8 CPUs',
-        disk: '512 GB SSD disk',
-    },
-    {
-        price: 67, name: 'Dash (Same Day Delivery)',
-        ram: 'Limited to Gauteng/Western Cape',
-        cpus: '12 CPUs',
-        disk: '1024 GB SSD disk',
-    },
-]
 
-export default function Example() {
+
+export default function Example({ prices, setSelectedPrice }) {
+
+    const plans = [
+        {
+            price: prices.expressBudgetAmt, name: 'Budget',
+            ram: '4 Day Delivery',
+            cpus: '6 CPUs',
+            disk: '160 GB SSD disk',
+        },
+        {
+            price: prices.expressCourier, name: 'Express',
+            ram: 'Fast Shipping, 1-2 days',
+            cpus: '8 CPUs',
+            disk: '512 GB SSD disk',
+        },
+        {
+            price: prices.dashAmount, name: 'Dash (Same Day Delivery)',
+            ram: 'Limited to Gauteng/Western Cape',
+            cpus: '12 CPUs',
+            disk: '1024 GB SSD disk',
+        },
+    ]
+    useEffect(() => {
+        setSelectedPrice(prices.expressBudgetAmt)
+    }, [prices])
+    const handleSelected = (e) => {
+        setSelected(e)
+        setSelectedPrice(e.price)
+    }
     const [selected, setSelected] = useState(plans[0])
-
     return (
         <div className="w-full px-4 py-16">
             <div className="w-full max-w-md mx-auto">
-                <RadioGroup value={selected} onChange={setSelected}>
+                <RadioGroup value={plans[0]} onChange={(e) => handleSelected(e)}>
                     <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
                     <div className="space-y-2">
-                        {plans.map((plan) => (
+                        {prices && plans.map((plan) => (
                             <RadioGroup.Option
                                 key={plan.name}
                                 value={plan}

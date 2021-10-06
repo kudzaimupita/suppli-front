@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { Result, Button } from 'antd';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { clearCart } from '../../../store/cart/action'
 
 const Success = () => {
     const dispatch = useDispatch()
+    const currentOrder = useSelector((state) => state.currentOrder.currentOrder)
+    // const apiCalls = useSelector((state: IAppState) => state.apiCalls);
     useEffect(() => {
+        console.log(currentOrder)
         dispatch(clearCart())
     }, [])
     return (
