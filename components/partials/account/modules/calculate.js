@@ -5,7 +5,7 @@ export const createCompleteBooking = async (pick, drop, province) => {
 
     const object = {
 
-        mass: 1,
+        mass: 3,
         pickUpProvince: province.pickUpProvince,
         parcelDimensions: [
 
@@ -16,7 +16,7 @@ export const createCompleteBooking = async (pick, drop, province) => {
 
                 "parcel_height": 10,
 
-                "parcel_mass": 11
+                "parcel_mass": 3
             }
 
         ],
@@ -72,36 +72,40 @@ export const CreateExpressBooking = async (person, store) => {
             email: store.companyEmail
         },
         vehicleType: "DROPPA_EXPRESS",
-        pickUpAddress: "13 Esdoring Nook, Highveld Techno Park, Centurion, 0157",
+        pickUpAddress: store.address,
         date: "2021-10-17T17:10:50",
-        dropOffAddress: "13 Esdoring Nook, Highveld Techno Park, Centurion, 0157",
-        province: store.province,
-        destinationProvince: person.province,
+        dropOffAddress: person.address,
+        province: store.province || "GAUTENG",
+        destinationProvince: person.province || "GAUTENG",
         serviceId: "60f8012b2114cc00724765b4",
         transportMode: "ROAD",
         type: "DASH",
         isExpress: true,
-        itemMass: 12,
+        itemMass: 3,
         parcelDimensions: [
             {
                 parcel_length: 20,
                 parcel_breadth: 20,
                 parcel_height: 20,
-                parcel_mass: 1
+                parcel_mass: 3
             }
         ],
         pickUpPCode: store.code,
         dropOffPCode: person.code
     }
 
+    const rawResponse = await fetch('https://droppergroup.co.za/droppa/services/v1/book', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer 66de47e2-9193-44e5-9bd5-55bb87564339:60f8012b2114cc00724765b4',
+        },
+        body: JSON.stringify(order)
+    });
+    const content = await rawResponse.json();
+    console.log(content)
+    return content
 
-    // const daaaa = await axios.post("https://droppergroup.co.za/droppa/services/v1/book", object, {
-    //     headers: {
-    //         "accept": "application/json",
-    //         'Content-Type': 'application/json',
-    //         'Authorization': 'Bearer 66de47e2-9193-44e5-9bd5-55bb87564339:60f8012b2114cc00724765b4',
-    //     }
-    // })
-    // console.log(daaaa
-    // )
+
 }

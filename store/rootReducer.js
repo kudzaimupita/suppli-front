@@ -77,6 +77,7 @@ import {
 } from './../reducers/productReducer';
 
 import {
+    getOrderReducer,
     getMyOrdersReducer,
     createOrderReducer,
     getOrdersList,
@@ -105,6 +106,7 @@ import {
 
 import alertReducer from './../reducers/alertReducer';
 export default combineReducers({
+    order: getOrderReducer,
     currentOrder: setCurrentOrder,
     auth1: auth1,
     authLoading: authLoadingReducer,

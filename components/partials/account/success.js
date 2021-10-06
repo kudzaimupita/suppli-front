@@ -3,13 +3,30 @@ import { Result, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux'
 import { clearCart } from '../../../store/cart/action'
 
+import { useRouter } from "next/router";
+import { createCompleteBooking, CreateExpressBooking } from './modules/calculate'
+import { getOrder } from './../../../actions/orders';
 const Success = () => {
     const dispatch = useDispatch()
-    const currentOrder = useSelector((state) => state.currentOrder.currentOrder)
-    // const apiCalls = useSelector((state: IAppState) => state.apiCalls);
+    const router = useRouter();
+    const currentOrder = useSelector((state) => state.currentOrder?.currentOrder)
+    //   g
     useEffect(() => {
-        console.log(currentOrder)
+        (async function () {
+            if (currentOrder.store) {
+                dispatch(getOrder())
+                await CreateExpressBooking(
+                    { name: currentOrder?.name, phone: currentOrder?.phone, address: currentOrder.address, code: currentOrder.code, provice: currentOrder.province },
+                    {
+                        name: currentOrder?.store.name, phone: currentOrder?.store.phone,
+                        companyEmail: currentOrder?.store.companyEmail, code: currentOrder?.store.postalCode, address: currentOrder?.store.address + ', ' + currentOrder?.store.address
+                    })
+            }
+        })();
+        const query = router.query;
         dispatch(clearCart())
+        console.log(currentOrder)
+
     }, [])
     return (
         <div className="ps-section--vendor ps-vendor-about">

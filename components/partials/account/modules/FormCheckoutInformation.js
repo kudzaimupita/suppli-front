@@ -26,7 +26,9 @@ class FormCheckoutInformation extends Component {
         price: '',
         prices: {},
         province: '',
-        type: ''
+        type: '',
+        code: '',
+        province: ''
     }
     componentDidMount() {
 
@@ -41,13 +43,19 @@ class FormCheckoutInformation extends Component {
 
         const price = parseFloat((this.props.amount * 1) + (this.state.price * 1)).toFixed(2);
         const body = {
+
             name: this.state.name,
             phone: this.state.phone,
             products: this.props.cartItems,
             amount: price,
-            address: this.state.address
+            address: this.state.address,
+            paymentID: this.props.orderId,
         }
-        this.props.setCurrentOrder({ ...body, store: this.props.vendor && this.props.vendor, type: this.state.type })
+        console.log(this.state.paymentID, this.props.orderId)
+        this.props.setCurrentOrder({
+            ...body, store: this.props.vendor && this.props.vendor, type: this.state.type, code: this.state.code,
+            province: this.state.province,
+        })
 
 
         this.props.createOrderAction(body)
@@ -60,8 +68,10 @@ class FormCheckoutInformation extends Component {
 
         this.setState({ province: place.address_components[5].long_name })
         // this.setState({ price: await createCompleteBooking(this.props.vendor && this.props.vendor?.postalCode, this.state.address.split(',')[3]) })
-        this.setState({ prices: await createCompleteBooking(this.props.vendor && this.props.vendor?.postalCode, this.state.address.split(',')[3], { dropOffProvince: place.address_components[5].long_name.toUpperCase(), pickUpProvince: this.props.vendor && this.props.vendor?.province || 'GAUTENG' }) })
+        this.setState({ prices: await createCompleteBooking(this.props.vendor && this.props.vendor?.postalCode, place.address_components[7].long_name, { dropOffProvince: place.address_components[5].long_name.toUpperCase(), pickUpProvince: this.props.vendor && this.props.vendor?.province || 'GAUTENG' }) })
         // await CreateExpressBooking()
+        this.setState({ code: place.address_components[7].long_name })
+        this.setState({ province: place.address_components[5].long_name })
         // console.log(await CreateExpressBooking())
     };
 
@@ -99,6 +109,10 @@ class FormCheckoutInformation extends Component {
         // }
 
     };
+    setPaymentId = (id) => {
+        console.log(id)
+        this.setState({ paymentID: id })
+    }
 
     render() {
 
@@ -282,7 +296,7 @@ class FormCheckoutInformation extends Component {
                                         </figure>
                                     </div>
                                     <h4>Payment Details</h4> */}
-                                    <Payment orderId={this.props.orderId} />
+                                    <Payment setPaymentId={this.setPaymentId} orderId={this.props.orderId} />
 
 
 
@@ -395,6 +409,7 @@ const WrapForm = Form.create()(FormCheckoutInformation);
 const mapStateToProps = (state) => ({
     isLoggedIn: state.auth.isLoggedIn,
     orderId: state.createdOrder?.order,
-    vendor: state.vendor?.vendor?.doc
+    vendor: state.vendor?.vendor?.doc,
+    // vcreatedorder: state.
 });
 export default connect(mapStateToProps, { createOrderAction, getVendor, setCurrentOrder })(WrapForm);

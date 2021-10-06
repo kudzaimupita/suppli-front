@@ -8,7 +8,10 @@ import {
     GET_MY_ORDERS_SUCCESS,
     CREATE_ORDER_FAIL,
     CREATE_ORDER_SUCCESS,
-    CREATE_ORDER_REQUEST, SET_CURRENT_ORDER
+    CREATE_ORDER_REQUEST, SET_CURRENT_ORDER,
+    GET_ORDER_FAIL,
+    GET_ORDER_REQUEST,
+    GET_ORDER_SUCCESS
 } from "../constants/orderConstants";
 
 // Register User
@@ -44,6 +47,36 @@ export const getMyOrders = () => async (dispatch, getState) => {
     }
 };
 
+export const getOrder = (id) => async (dispatch, getState) => {
+    console.log(getState().auth1.token);
+    api.defaults.headers.common['authorization'] = `Bearer ${getState().auth1.token
+        }`;
+    dispatch({
+        type: GET_ORDER_REQUEST,
+    });
+
+    try {
+        const res = await api.get(`orders/${id}`);
+
+        dispatch({
+            type: GET_ORDER_SUCCESS,
+            payload: res.data.data,
+        });
+        console.log(res.data.data);
+    } catch (err) {
+        const errors = err.response.data.error;
+
+        const errorArray = errors.split(",");
+
+        if (errorArray) {
+            errorArray.map((error) => dispatch(setAlert(error, "error")));
+        }
+
+        dispatch({
+            type: GET_ORDER_FAIL,
+        });
+    }
+};
 
 export const createOrderAction = (formData) => async (dispatch, getState) => {
     api.defaults.headers.common['authorization'] = `Bearer ${getState().auth1.token
