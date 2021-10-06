@@ -114,3 +114,10 @@ export const setCurrentOrder = (order) => async (dispatch, getState) => {
         payload: order
     });
 };
+
+export const setSelectedType = (type) => async (dispatch, getState) => {
+    dispatch({
+        type: "SET_CURRENT_TYPE",
+        payload: type
+    });
+};

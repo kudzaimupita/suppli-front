@@ -59,7 +59,7 @@ export const createCompleteBooking = async (pick, drop, province) => {
 }
 
 
-export const CreateExpressBooking = async (person, store) => {
+export const CreateExpressBooking = async (person, store, type) => {
     const order = {
         dropOff: {
             firstName: person.name,
@@ -79,7 +79,7 @@ export const CreateExpressBooking = async (person, store) => {
         destinationProvince: person.province || "GAUTENG",
         serviceId: "60f8012b2114cc00724765b4",
         transportMode: "ROAD",
-        type: "DASH",
+        type: type,
         isExpress: true,
         itemMass: 3,
         parcelDimensions: [
@@ -99,7 +99,7 @@ export const CreateExpressBooking = async (person, store) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 66de47e2-9193-44e5-9bd5-55bb87564339:60f8012b2114cc00724765b4',
+            'Authorization': 'Bearer 24b3124f-77b6-4bf6-87ce-07c63b7a2644:5fc74d192874347c7d1f796c',
         },
         body: JSON.stringify(order)
     });

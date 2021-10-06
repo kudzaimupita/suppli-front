@@ -219,6 +219,17 @@ export const setCurrentOrder = (state = { currentOrder: {} }, action) => {
     }
 };
 
+export const setSelectedType = (state = { currentType: {} }, action) => {
+    switch (action.type) {
+        case "SET_CURRENT_TYPE":
+            return {
+                currentType: action.payload,
+            };
+        default:
+            return state;
+    }
+};
+
 export const getPlugDailyStats = (state = { plugDailyStats: {} }, action) => {
     switch (action.type) {
         case GET_PLUG_DAILY_STATS_REQUEST:

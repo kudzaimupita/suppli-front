@@ -17,7 +17,7 @@ const bindMiddleware = (middleware) => {
 const persistConfig = {
     key: 'Suppl-i',
     storage,
-    whitelist: ['cart', 'compare', 'auth', 'wishlist', 'auth1', 'currentOrder', 'createdOrder'],
+    whitelist: ['cart', 'compare', 'auth', 'wishlist', 'auth1', 'currentOrder'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

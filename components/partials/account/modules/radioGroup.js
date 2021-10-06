@@ -1,34 +1,44 @@
 import React, { useState, useEffect } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import '../../../tailwind.scss'
+import { useDispatch, useSelector } from 'react-redux'
+
+// import { createCompleteBooking, CreateExpressBooking } from './modules/calculate'
+import { getOrder, setCurrentOrder, createOrderAction, setSelectedType } from '../../../../actions/orders';
 
 
-export default function Example({ prices, setSelectedPrice }) {
-
+export default function Example({ prices, setSelectedPrice, setSelectedType }) {
+    const dispatch = useDispatch()
     const plans = [
         {
             price: prices.expressBudgetAmt, name: 'Budget',
             ram: '4 Day Delivery',
             cpus: '6 CPUs',
             disk: '160 GB SSD disk',
+            type: 'EXPRESS_COURIER'
         },
         {
             price: prices.expressCourier, name: 'Express',
             ram: 'Fast Shipping, 1-2 days',
             cpus: '8 CPUs',
             disk: '512 GB SSD disk',
+            type: 'BUDGET_COURIER'
         },
         {
             price: prices.dashAmount, name: 'Dash (Same Day Delivery)',
             ram: 'Limited to Gauteng/Western Cape',
             cpus: '12 CPUs',
             disk: '1024 GB SSD disk',
+            type: 'DASH'
         },
     ]
     useEffect(() => {
         setSelectedPrice(prices.expressBudgetAmt)
     }, [prices])
-    const handleSelected = (e) => {
+    const handleSelected = async (e) => {
+        // await dispatch(setSelectedType(e.type))
+        setSelectedType(e.type)
+        console.log(e)
         setSelected(e)
         setSelectedPrice(e.price)
     }

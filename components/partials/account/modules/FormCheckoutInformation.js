@@ -28,7 +28,8 @@ class FormCheckoutInformation extends Component {
         province: '',
         type: '',
         code: '',
-        province: ''
+        province: '',
+
     }
     componentDidMount() {
 
@@ -39,8 +40,6 @@ class FormCheckoutInformation extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-
-
         const price = parseFloat((this.props.amount * 1) + (this.state.price * 1)).toFixed(2);
         const body = {
 
@@ -49,23 +48,18 @@ class FormCheckoutInformation extends Component {
             products: this.props.cartItems,
             amount: price,
             address: this.state.address,
-            paymentID: this.props.orderId,
+            paymentID: this.props.orderId, type: this.state.type || 'BUDGET_COURIER'
         }
-        console.log(this.state.paymentID, this.props.orderId)
+        console.log(this.state.type)
         this.props.setCurrentOrder({
             ...body, store: this.props.vendor && this.props.vendor, type: this.state.type, code: this.state.code,
             province: this.state.province,
         })
-
-
         this.props.createOrderAction(body)
-
     };
 
     handleAddressChange = async (place) => {
-
         this.setState({ address: place?.formatted_address });
-
         this.setState({ province: place.address_components[5].long_name })
         // this.setState({ price: await createCompleteBooking(this.props.vendor && this.props.vendor?.postalCode, this.state.address.split(',')[3]) })
         this.setState({ prices: await createCompleteBooking(this.props.vendor && this.props.vendor?.postalCode, place.address_components[7].long_name, { dropOffProvince: place.address_components[5].long_name.toUpperCase(), pickUpProvince: this.props.vendor && this.props.vendor?.province || 'GAUTENG' }) })
@@ -74,6 +68,9 @@ class FormCheckoutInformation extends Component {
         this.setState({ province: place.address_components[5].long_name })
         // console.log(await CreateExpressBooking())
     };
+    handleSelectedType = (e) => {
+        this.setState({ type: e })
+    }
 
     handleNameChange = (e) => {
         this.setState({ name: e.target.value });
@@ -249,7 +246,7 @@ class FormCheckoutInformation extends Component {
                                     <wrap text="Hippies" color="cyan">
 
                                         {this.state.address && <div className="form-group ml-12">
-                                            <Radioo setSelectedPrice={this.setSelectedPrice} prices={this.state.prices} />
+                                            <Radioo setSelectedType={this.handleSelectedType} setSelectedPrice={this.setSelectedPrice} prices={this.state.prices} />
                                             {/* <div className="ps-checkbox">
                                         <input
                                             className="form-control"
