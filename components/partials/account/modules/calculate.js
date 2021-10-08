@@ -120,7 +120,7 @@ export const CreateExpressBooking = async (person, store, type) => {
         "canopy": true,
         "load": 1,
         "province": person.provice,
-        "serviceId": "60f8012b2114cc00724765b4",
+        "serviceId": "5fc74d192874347c7d1f796c",
         "transportMode": "ROAD",
         "type": type,
         "isExpress": false,
@@ -145,7 +145,7 @@ export const CreateExpressBooking = async (person, store, type) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 66de47e2-9193-44e5-9bd5-55bb87564339:60f8012b2114cc00724765b4',
+            'Authorization': 'Bearer 24b3124f-77b6-4bf6-87ce-07c63b7a2644:5fc74d192874347c7d1f796c',
         },
         body: JSON.stringify(order)
     });
