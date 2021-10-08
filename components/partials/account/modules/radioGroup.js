@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import '../../../tailwind.scss'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { Radio } from 'antd';
+import '../../../tailwind.scss'
 // import { createCompleteBooking, CreateExpressBooking } from './modules/calculate'
 import { getOrder, setCurrentOrder, createOrderAction, setSelectedType } from '../../../../actions/orders';
 
@@ -11,21 +12,21 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
     const dispatch = useDispatch()
     const plans = [
         {
-            price: prices.expressBudgetAmt, name: 'Budget',
+            price: prices.expressBudgetAmt || 0, name: 'Budget',
             ram: '4 Day Delivery',
             cpus: '6 CPUs',
             disk: '160 GB SSD disk',
-            type: 'EXPRESS_COURIER'
-        },
-        {
-            price: prices.expressCourier, name: 'Express',
-            ram: 'Fast Shipping, 1-2 days',
-            cpus: '8 CPUs',
-            disk: '512 GB SSD disk',
             type: 'BUDGET_COURIER'
         },
         {
-            price: prices.dashAmount, name: 'Dash (Same Day Delivery)',
+            price: prices.expressCourier || 0, name: 'Express',
+            ram: 'Fast Shipping, 1-2 days',
+            cpus: '8 CPUs',
+            disk: '512 GB SSD disk',
+            type: 'EXPRESS_COURIER'
+        },
+        {
+            price: prices.dashAmount || 0, name: 'Dash (Same Day Delivery)',
             ram: 'Limited to Gauteng/Western Cape',
             cpus: '12 CPUs',
             disk: '1024 GB SSD disk',
@@ -34,80 +35,68 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
     ]
     useEffect(() => {
         setSelectedPrice(prices.expressBudgetAmt)
+        setSelectedType('BUDGET_COURIER')
     }, [prices])
     const handleSelected = async (e) => {
-        // await dispatch(setSelectedType(e.type))
+        if (e.type === 'BUDGET_COURIER') {
+            setDefaultSelect(true)
+        } else {
+            setDefaultSelect(false)
+        }
         setSelectedType(e.type)
         console.log(e)
         setSelected(e)
         setSelectedPrice(e.price)
+console.log(e)
     }
+    const [defaultSelect, setDefaultSelect] = useState(true)
     const [selected, setSelected] = useState(plans[0])
     return (
-        <div className="w-full px-4 py-16">
-            <div className="w-full max-w-md mx-auto">
-                <RadioGroup value={plans[0]} onChange={(e) => handleSelected(e)}>
-                    <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
-                    <div className="space-y-2">
-                        {prices && plans.map((plan) => (
-                            <RadioGroup.Option
-                                key={plan.name}
-                                value={plan}
-                                className={({ active, checked }) =>
-                                    `${active
-                                        ? 'ring-2 ring-offset-2 ring-offset-green-300 ring-white ring-opacity-60'
-                                        : ''
-                                    }
-                  ${checked ? 'bg-blue-800 bg-opacity-75 text-white' : 'bg-blue-400'
-                                    }
-                    relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
-                                }
-                            >
-                                {({ active, checked }) => (
-                                    <>
-                                        <div className="flex items-center justify-between w-full">
-                                            <div className="flex items-center">
-                                                <div className="text-sm">
-                                                    <RadioGroup.Label
-                                                        as="p"
-                                                        className={`font-medium  ${checked ? 'text-white' : 'text-white'
-                                                            }`}
-                                                    >
-                                                        {plan.name}    {!checked ? (
-                                                            null
-                                                        ) : <span className="inline-flex items-center ml-1 px-3 py-2.5 rounded-full text-sm font-medium bg-red-300 text-gray-600">
-                                                            R {plan.price}
-                                                        </span>}
-                                                    </RadioGroup.Label>
-                                                    <RadioGroup.Description
-                                                        as="span"
-                                                        className={`inline ${checked ? 'text-green-100' : 'text-white'
-                                                            }`}
-                                                    >
-                                                        <span>
-                                                            {plan.ram}
-                                                        </span>{' '}
-                                                        {/* <span aria-hidden="true">&middot;</span>{' '}
-                                                        <span>{plan.disk}</span> */}
-                                                    </RadioGroup.Description>
-                                                </div>
-                                            </div>
-                                            {checked ? (
-                                                <div className="flex-shrink-0 text-white">
-                                                    <CheckIcon className="w-6 h-6" />
-                                                </div>
-                                            ) : <span className="inline-flex items-center px-3 py-2.5 rounded-full text-sm font-medium bg-green-300 text-gray-600">
-                                                R {plan.price}
-                                            </span>}
-                                        </div>
-                                    </>
-                                )}
-                            </RadioGroup.Option>
-                        ))}
+
+        <div className="p-4 md:p-6 xl:p-10 bg-gray-100 w-full flex flex-col justify-start items-start">
+            <p className="text-xl md:text-2xl font-medium leading-normal text-gray-800">Shipping Method</p>
+            <div className="flex justify-start items-start flex-col mt-9 space-y-4 md:space-y-6">
+                <div className="flex items-center space-x-4">
+                    <div className="bg-white dark:bg-gray-100 rounded-full w-4 h-4 flex flex-shrink-0 justify-center items-center relative">
+                        <input checked={defaultSelect?true:false}  onClick={() => handleSelected(plans[0])} aria-labelledby="label2" type="radio" name="radio" className="checkbox appearance-none focus:opacity-100 focus:border-gray-400 border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
+                        <div className="check-icon hidden border-4 border-gray-100 bg-gray-800 rounded-full w-full h-full z-1"></div>
                     </div>
-                </RadioGroup>
+                    <label id="label2" className="text-base leading-normal md:leading-4 text-gray-800">
+                        Budget Delivery(3 - 5 business days)
+                        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-200 text-gray-800">
+                            {" ZAR " + plans[0].price}
+                        </span>
+                    </label>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                    <div className="bg-white dark:bg-gray-100 rounded-full w-4 h-4 flex flex-shrink-0 justify-center items-center relative">
+                        <input onClick={() => handleSelected(plans[1])} aria-labelledby="label2" type="radio" name="radio" className="checkbox appearance-none focus:opacity-100 focus:border-gray-400 border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
+                        <div className="check-icon hidden border-4 border-gray-100 bg-gray-800 rounded-full w-full h-full z-1"></div>
+                    </div>
+                    <label id="label2" className="text-base leading-normal md:leading-4 text-gray-800">
+                        Express Delivery(1 - 3 business days)  <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-200 text-gray-800">
+                            {" ZAR " + plans[1].price}
+                        </span>
+                    </label>
+                </div>
+
+                {plans[2].price !== 0 && <div className="flex items-center space-x-4">
+                    <div className="bg-white dark:bg-gray-100 rounded-full w-4 h-4 flex flex-shrink-0 justify-center items-center relative">
+                        <input onClick={() => handleSelected(plans[2])} aria-labelledby="label2" type="radio" name="radio" className="checkbox appearance-none focus:opacity-100 focus:border-gray-400 border rounded-full border-gray-400 absolute cursor-pointer w-full h-full checked:border-none" />
+                        <div className="check-icon hidden border-4 border-gray-100 bg-gray-800 rounded-full w-full h-full z-1"></div>
+                    </div>
+                    <label id="label2" className="text-base leading-normal md:leading-4 text-gray-800">
+                        Dash Delivery(Same day delivery) <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-200 text-gray-800">
+                            {" ZAR " + plans[2].price}
+                        </span>
+                    </label>
+                </div>}
             </div>
         </div>
+
+
+
     )
 }
 

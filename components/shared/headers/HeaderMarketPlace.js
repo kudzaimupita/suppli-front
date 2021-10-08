@@ -287,7 +287,7 @@ class HeaderAutoPart extends Component {
                     <div className="container">
                         <div className="header__content-left">
                             <Link href="/">
-                                <a className="ps-logo">
+                                <a className="">
                                     <img
                                         style={{
                                             height: '40px',
@@ -370,8 +370,8 @@ class HeaderAutoPart extends Component {
                                         <p>
                                             Tel
                                             <strong>
-                                            <a href="tel:0665178403">066 517 8403</a>
-                                            
+                                                <a href="tel:0665178403">066 517 8403</a>
+
                                             </strong>
                                         </p>
                                     </div>

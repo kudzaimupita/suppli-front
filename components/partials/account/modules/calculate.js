@@ -60,7 +60,47 @@ export const createCompleteBooking = async (pick, drop, province) => {
 
 
 export const CreateExpressBooking = async (person, store, type) => {
+    console.log(person, store,type)
     const order = {
+        // dropOff: {
+        //     firstName: person.name,
+        //     phone: person.phone,
+        //     email: person.email
+        // },
+        // pickUp: {
+        //     firstName: store.name,
+        //     phone: store.phone,
+        //     email: store.companyEmail
+        // },
+        // vehicleType: "DROPPA_EXPRESS",
+        // pickUpAddress: store.address,
+        // date: "2021-05-27T13:00:30.934Z",
+        // dropOffAddress: person.address,
+        // province: store.province || "GAUTENG",
+        // // destinationProvince: person.provice || "GAUTENG",
+        // serviceId: "60f8012b2114cc00724765b4",
+        // transportMode: "ROAD",
+        // type: type,
+        // isExpress: false,
+        // itemMass: 3,
+        // parcelDimensions: [
+        //     {
+        //         parcel_length: 20,
+        //         parcel_breadth: 20,
+        //         parcel_height: 20,
+        //         parcel_mass: 3
+        //     }
+        // ],
+        // pickUpPCode: store.code,
+        // dropOffPCode: person.code,
+        // // price: 300,
+        // status: "BUCKET",
+        // labour: 0,
+        // canopy: true,
+        // load: 1,
+
+
+
         dropOff: {
             firstName: person.name,
             phone: person.phone,
@@ -71,18 +111,21 @@ export const CreateExpressBooking = async (person, store, type) => {
             phone: store.phone,
             email: store.companyEmail
         },
-        vehicleType: "DROPPA_EXPRESS",
-        pickUpAddress: store.address,
-        date: "2021-10-17T17:10:50",
-        dropOffAddress: person.address,
-        province: store.province || "GAUTENG",
-        destinationProvince: person.province || "GAUTENG",
-        serviceId: "60f8012b2114cc00724765b4",
-        transportMode: "ROAD",
-        type: type,
-        isExpress: true,
-        itemMass: 3,
-        parcelDimensions: [
+        "vehicleType": "DROPPA_EXPRESS",
+        "pickUpAddress": store.address,
+        "date": "2021-05-27T13:00:30.934Z",
+        "dropOffAddress": person.address,
+        "labour": 0,
+        "comment": "Testing test",
+        "canopy": true,
+        "load": 1,
+        "province": person.provice,
+        "serviceId": "60f8012b2114cc00724765b4",
+        "transportMode": "ROAD",
+        "type": type,
+        "isExpress": false,
+        "itemMass": 3,
+      parcelDimensions: [
             {
                 parcel_length: 20,
                 parcel_breadth: 20,
@@ -90,22 +133,26 @@ export const CreateExpressBooking = async (person, store, type) => {
                 parcel_mass: 3
             }
         ],
-        pickUpPCode: store.code,
-        dropOffPCode: person.code
+        "pickUpPCode": store.code,
+        "dropOffPCode": person.code
     }
 
-    const rawResponse = await fetch('https://droppergroup.co.za/droppa/services/v1/book', {
+
+    
+
+    const rawResponse = await fetch('https://droppergroup.co.za/droppa/services/v1/create/express/booking', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer 24b3124f-77b6-4bf6-87ce-07c63b7a2644:5fc74d192874347c7d1f796c',
+            'Authorization': 'Bearer 66de47e2-9193-44e5-9bd5-55bb87564339:60f8012b2114cc00724765b4',
         },
         body: JSON.stringify(order)
     });
-    const content = await rawResponse.json();
+    const content = await rawResponse.json();   
     console.log(content)
     return content
+ 
 
 
 }

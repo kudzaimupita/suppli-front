@@ -19,7 +19,13 @@ class Product extends Component {
     handleAddItemToCart = (e) => {
         e.preventDefault();
         const { product } = this.props;
-        this.props.dispatch(addItem(product));
+
+        if (product?.plug?.name) {
+            this.props.dispatch(addItem({ ...product, plug: product.plug.id }));
+        } else {
+            this.props.dispatch(addItem(product));
+        }
+
     };
 
     handleAddItemToCompare = (e) => {
