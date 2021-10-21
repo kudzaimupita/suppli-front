@@ -42,12 +42,12 @@ export const createCompleteBooking = async (pick, drop, province) => {
     //     }
     // })
     if (pick && drop && province) {
-        const rawResponse = await fetch('https://droppergroup.co.za/droppa/services/plugins/courier/quotes', {
+        const rawResponse = await fetch('https://www.droppa.co.za/droppa/services/plugins/courier/quotes', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer 66de47e2-9193-44e5-9bd5-55bb87564339:60f8012b2114cc00724765b4',
+                'Authorization': 'Bearer 24b3124f-77b6-4bf6-87ce-07c63b7a2644:5fc74d192874347c7d1f796c',
             },
             body: JSON.stringify(object)
         });
@@ -59,8 +59,11 @@ export const createCompleteBooking = async (pick, drop, province) => {
 }
 
 
-export const CreateExpressBooking = async (person, store, type) => {
-    console.log(person, store,type)
+export const CreateExpressBooking = async (person, store, type, shippingAmount) => {
+
+    const myDate = new Date();
+    myDate.setHours(myDate.getHours() + 2);
+
     const order = {
         // dropOff: {
         //     firstName: person.name,
@@ -113,7 +116,7 @@ export const CreateExpressBooking = async (person, store, type) => {
         },
         "vehicleType": "DROPPA_EXPRESS",
         "pickUpAddress": store.address,
-        "date": "2021-05-27T13:00:30.934Z",
+        "date": myDate.toISOString(),
         "dropOffAddress": person.address,
         "labour": 0,
         "comment": "Testing test",
@@ -134,13 +137,14 @@ export const CreateExpressBooking = async (person, store, type) => {
             }
         ],
         "pickUpPCode": store.code,
-        "dropOffPCode": person.code
+        "dropOffPCode": person.code,
+        "price": shippingAmount,
     }
 
 
     
 
-    const rawResponse = await fetch('https://droppergroup.co.za/droppa/services/v1/create/express/booking', {
+    const rawResponse = await fetch('https://www.droppa.co.za/droppa/services/v1/create/express/booking', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

@@ -53,14 +53,14 @@ class FormCheckoutInformation extends Component {
         console.log(this.state.type)
         this.props.setCurrentOrder({
             ...body, store: this.props.vendor && this.props.vendor, type: this.state.type, code: this.state.code,
-            province: this.state.province,
+            province: this.state.province, shippingAmount: (this.state.price * 1).toFixed(2)
         })
         this.props.createOrderAction(body)
     };
 
     handleAddressChange = async (place) => {
-        if (!this.props.isLoggedIn){
-           return this.props.setAlert('Please log in to continue','error')
+        if (!this.props.isLoggedIn) {
+            return this.props.setAlert('Please log in to continue', 'error')
         }
         if (place) {
             console.log(place)
@@ -447,4 +447,4 @@ const mapStateToProps = (state) => ({
     vendor: state.vendor?.vendor?.doc,
     // vcreatedorder: state.
 });
-export default connect(mapStateToProps, { createOrderAction, getVendor, setCurrentOrder,setAlert })(WrapForm);
+export default connect(mapStateToProps, { createOrderAction, getVendor, setCurrentOrder, setAlert })(WrapForm);

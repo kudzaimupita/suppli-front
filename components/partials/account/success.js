@@ -5,18 +5,22 @@ import { clearCart } from '../../../store/cart/action'
 import '../../tailwind.scss'
 import { useRouter } from "next/router";
 import { createCompleteBooking, CreateExpressBooking } from './modules/calculate'
-import { getOrder, setCurrentOrder, createOrderAction } from './../../../actions/orders';
+import { getOrder, setCurrentOrder, createOrderAction, confirmOrderAction, clearCreatedOrder } from './../../../actions/orders';
 import '../../../components/tailwind.scss'
 const Success = () => {
     const dispatch = useDispatch()
     const router = useRouter();
     const currentOrder = useSelector((state) => state.currentOrder?.currentOrder)
-    const serverOrder = useSelector((state) => state.createdOrder.order)
+    const plugId = useSelector((state) => state.createdOrder2.order?._doc?.boughtProducts[0]?.plug)
+    // console.log(JSON.parse(localStorage.getItem('orderr')))
+    // console.log(useSelector((state) => state.createdOrder2))
+    const orderId = useSelector((state) => state.createdOrder2.order?._doc?._id)
+    // const serverOrder = useSelector((state) => state.createdOrder2.order)
     //   g
     useEffect(() => {
 
         (async function () {
-            if (currentOrder.store && currentOrder.type) {
+            if (currentOrder?.store && currentOrder?.type) {
                 // dispatch(getOrder()) 
 
                 const booking = await CreateExpressBooking(
@@ -24,16 +28,18 @@ const Success = () => {
                     {
                         name: currentOrder?.store.name, phone: currentOrder?.store.phone,
                         companyEmail: currentOrder?.store.companyEmail, code: currentOrder?.store.postalCode, address: currentOrder?.store.address + ', ' + currentOrder?.store.address
-                    }, currentOrder.type)
-            
-   console.log(booking)  
-  dispatch(setCurrentOrder({}))
+                    }, currentOrder.type, currentOrder.shippingAmount)
+                if (orderId && plugId) {
+                    dispatch(confirmOrderAction({ plugId: plugId }, orderId))
+                }
+                // dispatch(confirmOrderAction({ plugId: plugId }, orderId))
+                // dispatch(clearCreatedOrder())
+
             }
-         
         })();
         const query = router.query;
         dispatch(clearCart())
-    }, [currentOrder])
+    }, [])
     return (<>
         <div className="">
             <div className="container">

@@ -77,6 +77,7 @@ import {
 } from './../reducers/productReducer';
 
 import {
+    createOrderReducer2,
     setSelectedType,
     getOrderReducer,
     getMyOrdersReducer,
@@ -107,6 +108,7 @@ import {
 
 import alertReducer from './../reducers/alertReducer';
 export default combineReducers({
+    createdOrder2: createOrderReducer2,
     order: getOrderReducer,
     selectedType: setSelectedType,
     currentOrder: setCurrentOrder,

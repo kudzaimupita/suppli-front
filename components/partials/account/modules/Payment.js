@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 export const Checkout = (props) => {
     useEffect(() => {
         const script = document.createElement("script");
-        script.src = "https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=" + props.orderId?.id
+        script.src = "https://oppwa.com/v1/paymentWidgets.js?checkoutId=" + props.orderId?.id
         script.async = true;
         document.body.appendChild(script)
         console.log(props.orderId?.id)

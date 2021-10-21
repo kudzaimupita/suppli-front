@@ -94,6 +94,46 @@ export const createOrderAction = (formData) => async (dispatch, getState) => {
         });
         // Router.push('/account/payment')
     } catch (err) {
+        console.log(err)
+        const errors = err?.response?.data?.error;
+
+        const errorArray = errors?.split(',');
+
+        if (errorArray) {
+            errorArray.map((error) => dispatch(setAlert(error, 'warning')));
+        }
+
+        dispatch({
+            type: CREATE_ORDER_FAIL,
+        });
+    }
+};
+
+export const clearCreatedOrder = () => async (dispatch, getState) => {
+    api.defaults.headers.common['authorization'] = `Bearer ${getState().auth1.token
+        }`;
+    dispatch({
+        type: 'CLEAR_ORDER_REQUEST',
+    });
+
+};
+
+export const confirmOrderAction = (formData, orderId) => async (dispatch, getState) => {
+    api.defaults.headers.common['authorization'] = `Bearer ${getState().auth1.token
+        }`;
+    dispatch({
+        type: 'CONFIRM_ORDER_REQUEST',
+    });
+
+    try {
+        const res = await api.patch(`/orders/confirm-order/${orderId}`, formData);
+
+        dispatch({
+            type: 'CONFIRM_ORDER_SUCCESS',
+            payload: res.data.data,
+        });
+        // Router.push('/account/payment')
+    } catch (err) {
         const errors = err.response.data.error;
 
         const errorArray = errors.split(',');
@@ -103,7 +143,7 @@ export const createOrderAction = (formData) => async (dispatch, getState) => {
         }
 
         dispatch({
-            type: CREATE_ORDER_FAIL,
+            type: 'CONFIRM_ORDER_FAIL',
         });
     }
 };

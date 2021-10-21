@@ -34,9 +34,13 @@ import {
 
 export const createOrderReducer = (state = {}, action) => {
     switch (action.type) {
+        case 'CLEAR_ORDER_REQUEST':
+            return { loading: false, order: {} };
         case CREATE_ORDER_REQUEST:
             return { loading: true };
         case CREATE_ORDER_SUCCESS:
+            localStorage.setItem('orderr', JSON.stringify(action.payload))
+            console.log(action.payload)
             return {
                 ...state,
                 loading: false,
@@ -44,6 +48,49 @@ export const createOrderReducer = (state = {}, action) => {
                 order: action.payload,
             };
         case CREATE_ORDER_FAIL:
+            return { loading: false, error: action.payload };
+        // case PRODUCT_CREATE_RESET:
+        //   return {};
+        default:
+            return state;
+    }
+};
+
+export const createOrderReducer2 = (state = {}, action) => {
+    switch (action.type) {
+        case 'CLEAR_ORDER_REQUEST':
+            return { loading: false, order: {} };
+        case CREATE_ORDER_REQUEST:
+            return { loading: true };
+        case CREATE_ORDER_SUCCESS:
+            localStorage.setItem('orderr', JSON.stringify(action.payload))
+            console.log(action.payload)
+            return {
+                ...state,
+                loading: false,
+                success: true,
+                order: action.payload,
+            };
+        case CREATE_ORDER_FAIL:
+            return { loading: false, error: action.payload };
+        // case PRODUCT_CREATE_RESET:
+        //   return {};
+        default:
+            return state;
+    }
+};
+export const confirmOrderReducer = (state = {}, action) => {
+    switch (action.type) {
+        case 'CONFIRM_ORDER_REQUEST':
+            return { loading: true };
+        case 'CONFIRM_ORDER_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                success: true,
+                order: action.payload,
+            };
+        case 'CONFIRM_ORDER_FAIL':
             return { loading: false, error: action.payload };
         // case PRODUCT_CREATE_RESET:
         //   return {};
