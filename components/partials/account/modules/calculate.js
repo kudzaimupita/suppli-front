@@ -119,7 +119,6 @@ export const CreateExpressBooking = async (person, store, type, shippingAmount) 
         "date": myDate.toISOString(),
         "dropOffAddress": person.address,
         "labour": 0,
-        "comment": "Testing test",
         "canopy": true,
         "load": 1,
         "province": person.provice,
@@ -128,7 +127,7 @@ export const CreateExpressBooking = async (person, store, type, shippingAmount) 
         "type": type,
         "isExpress": false,
         "itemMass": 3,
-      parcelDimensions: [
+        parcelDimensions: [
             {
                 parcel_length: 20,
                 parcel_breadth: 20,
@@ -142,7 +141,7 @@ export const CreateExpressBooking = async (person, store, type, shippingAmount) 
     }
 
 
-    
+
 
     const rawResponse = await fetch('https://www.droppa.co.za/droppa/services/v1/create/express/booking', {
         method: 'POST',
@@ -153,10 +152,10 @@ export const CreateExpressBooking = async (person, store, type, shippingAmount) 
         },
         body: JSON.stringify(order)
     });
-    const content = await rawResponse.json();   
+    const content = await rawResponse.json();
     console.log(content)
     return content
- 
+
 
 
 }

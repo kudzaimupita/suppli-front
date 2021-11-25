@@ -37,7 +37,6 @@ class FormCheckoutInformation extends Component {
 
     }
 
-
     onSubmit = e => {
         e.preventDefault();
         const price = parseFloat((this.props.amount * 1) + (this.state.price * 1)).toFixed(2);
@@ -46,7 +45,8 @@ class FormCheckoutInformation extends Component {
             name: this.state.name,
             phone: this.state.phone,
             products: this.props.cartItems,
-            amount: price,
+            amount: '1.00',
+            // amount: parseFloat((this.props.amount * 1)).toFixed(2),
             address: this.state.address,
             paymentID: this.props.orderId, type: this.state.type || 'BUDGET_COURIER'
         }
@@ -159,7 +159,7 @@ class FormCheckoutInformation extends Component {
 
 
 
-
+                                    <Payment setPaymentId={this.setPaymentId} orderId={this.props.orderId} />
 
 
 
@@ -319,9 +319,9 @@ class FormCheckoutInformation extends Component {
 
                                 </div>
                                 <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                    <div className="ps-block--shipping">
+                                    {/* <div className="ps-block--shipping"> */}
 
-                                        {/* <h4>Shipping Method</h4>
+                                    {/* <h4>Shipping Method</h4>
                                     <div className="ps-block__panel">
                                         <figure>
                                             <small>
@@ -331,11 +331,11 @@ class FormCheckoutInformation extends Component {
                                         </figure>
                                     </div>
                                     <h4>Payment Details</h4> */}
-                                        <Payment setPaymentId={this.setPaymentId} orderId={this.props.orderId} />
 
 
 
-                                    </div>
+
+                                    {/* </div> */}
                                 </div>
 
                             </Card>

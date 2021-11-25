@@ -118,6 +118,15 @@ export const clearCreatedOrder = () => async (dispatch, getState) => {
 
 };
 
+export const setOrderSuccess = (payload) => async (dispatch, getState) => {
+
+    dispatch({
+        type: 'ORDER_SUCCESS',
+        payload: payload
+    });
+
+};
+
 export const confirmOrderAction = (formData, orderId) => async (dispatch, getState) => {
     api.defaults.headers.common['authorization'] = `Bearer ${getState().auth1.token
         }`;

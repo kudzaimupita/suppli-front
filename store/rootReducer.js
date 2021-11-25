@@ -83,6 +83,7 @@ import {
     getMyOrdersReducer,
     createOrderReducer,
     getOrdersList,
+    orderSuccessReducer,
     getUnbalancedSales,
     deleteOrderReducer,
     updateOrderReducer,
@@ -108,6 +109,7 @@ import {
 
 import alertReducer from './../reducers/alertReducer';
 export default combineReducers({
+    orderSuccess: orderSuccessReducer,
     createdOrder2: createOrderReducer2,
     order: getOrderReducer,
     selectedType: setSelectedType,

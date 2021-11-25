@@ -1,107 +1,164 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Result, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux'
 import { clearCart } from '../../../store/cart/action'
 import '../../tailwind.scss'
 import { useRouter } from "next/router";
 import { createCompleteBooking, CreateExpressBooking } from './modules/calculate'
-import { getOrder, setCurrentOrder, createOrderAction, confirmOrderAction, clearCreatedOrder } from './../../../actions/orders';
+import { getOrder, setCurrentOrder, createOrderAction, confirmOrderAction, clearCreatedOrder, setOrderSuccess } from './../../../actions/orders';
 import '../../../components/tailwind.scss'
+import Modal from 'react-modal'
+import { Spinner } from 'react-activity';
 const Success = () => {
+
     const dispatch = useDispatch()
     const router = useRouter();
+    const [code, setcode] = useState('')
+    const [busy, setbusy] = useState(false)
+    const [callDroppa, setcallDroppa] = useState(false)
     const currentOrder = useSelector((state) => state.currentOrder?.currentOrder)
     const plugId = useSelector((state) => state.createdOrder2.order?._doc?.boughtProducts[0]?.plug)
-    // console.log(JSON.parse(localStorage.getItem('orderr')))
-    // console.log(useSelector((state) => state.createdOrder2))
+    const token = useSelector((state) => state.auth1?.token)
     const orderId = useSelector((state) => state.createdOrder2.order?._doc?._id)
-    // const serverOrder = useSelector((state) => state.createdOrder2.order)
-    //   g
+    const paymentId = useSelector((state) => state.createdOrder2.order?.id)
+    const orderSuccess = useSelector((state) => state.orderSuccess.orderSuccess)
+    // const createdOrder = useSelector((state) => state.createdOrder2.order?)
+    // const droppa = async () => {
+    //     await CreateExpressBooking(
+    //         { name: currentOrder?.name, phone: currentOrder?.phone, address: currentOrder.address, code: currentOrder.code, provice: currentOrder.province },
+    //         {
+    //             name: currentOrder?.store.name, phone: currentOrder?.store.phone,
+    //             companyEmail: currentOrder?.store.companyEmail, code: currentOrder?.store.postalCode, address: currentOrder?.store.address + ', ' + currentOrder?.store.address
+    //         }, currentOrder.type, currentOrder.shippingAmount)
+    // }
+    const g = async () => {
+        setbusy(true)
+        await fetch(`https://suppli-api.herokuapp.com/api/v1/orders/${orderId}`, {
+            method: 'GET',
+            headers: {
+                // 'Accept': 'application/json',
+                // 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            }
+        }).then(async (res) => {
+            const g = await res.json()
+            setcode(g.data[0].paymentStatus)
+            console.log(g.data[0].paymentStatus)
+        }).finally(() => {
+            setbusy(false)
+        })
+    }
+    useEffect(() => {
+        (async function () {
+            if (callDroppa) {
+                await droppa()
+            }
+            setcallDroppa(false)
+        })();
+    }, [callDroppa])
+
+    useEffect(() => {
+        (async function () {
+            orderId && await g()
+        })();
+    }, [])
+
+    const checkResult = () => {
+        if (orderSuccess || code === 'confirmed') {
+            dispatch(clearCart())
+            if (code !== 'confirmed') {
+                dispatch(confirmOrderAction({ plugId: plugId }, orderId))
+                //  setcallDroppa(true)
+            }
+            return (
+                <div className="">
+                    <div className="container">
+                        <Result
+                            status="success"
+                            title="Successful Order!"
+                            subTitle="Your order is currently being processed by our team. You can track it on your user dashboard. Thank you."
+                            extra={[
+                                <a href='/'>       <div className="mb-4 flex w-full md:w-8/12 lg:w-full justify-center items-center pt-1 md:pt-4  xl:pt-8 space-y-6 md:space-y-8 flex-col">
+                                    <button className="py-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800  w-full text-base font-medium leading-4 text-white bg-gray-800 hover:bg-black">Track Your Order</button>
+                                </div></a>
+                            ]}
+                        />,
+                    </div>
+                </div>
+            )
+        } else {
+            return (<div className="">
+                <div className="container">
+                    <Result
+                        status="error"
+                        title="Failed Order!"
+                        subTitle="Something went wrong with your order. Please try again"
+                        extra={[
+                            <a href='/checkout'>       <div className="mb-4 flex w-full md:w-8/12 lg:w-full justify-center items-center pt-1 md:pt-4  xl:pt-8 space-y-6 md:space-y-8 flex-col">
+                                <button className="py-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800  w-full text-base font-medium leading-4 text-white bg-gray-800 hover:bg-black">Try Again</button>
+                            </div></a>
+                        ]}
+                    />,
+                </div>
+            </div>
+            )
+        }
+    }
+
     useEffect(() => {
 
         (async function () {
-            if (currentOrder?.store && currentOrder?.type) {
-                // dispatch(getOrder()) 
+            setbusy(true)
+            var executed = false;
 
-                const booking = await CreateExpressBooking(
-                    { name: currentOrder?.name, phone: currentOrder?.phone, address: currentOrder.address, code: currentOrder.code, provice: currentOrder.province },
-                    {
-                        name: currentOrder?.store.name, phone: currentOrder?.store.phone,
-                        companyEmail: currentOrder?.store.companyEmail, code: currentOrder?.store.postalCode, address: currentOrder?.store.address + ', ' + currentOrder?.store.address
-                    }, currentOrder.type, currentOrder.shippingAmount)
-                if (orderId && plugId) {
-                    dispatch(confirmOrderAction({ plugId: plugId }, orderId))
-                }
-                // dispatch(confirmOrderAction({ plugId: plugId }, orderId))
-                // dispatch(clearCreatedOrder())
+            if (!executed) {
+                executed = true;
+                paymentId && await fetch(`https://oppwa.com/v1/checkouts/${paymentId}/payment?entityId=${'8ac9a4cb7a7c08be017a7c791606087a'}`, {
+                    method: 'GET',
+                    headers: {
+                        // 'Accept': 'application/json',
+                        // 'Content-Type': 'application/json',
+                        'Authorization': 'Bearer OGFjOWE0Y2U3YTVjMDVlYjAxN2E3YzY4ZWZjZjEyNjJ8Q2JjRXM5NkdDQQ==',
+                    }
+                }).then(async (res) => {
+                    const data = await res.json()
+                    console.log(data)
 
+                    const successPattern = /^(000\.000\.|000\.100\.1|000\.[36])/;
+                    const manuallPattern = /^(000\.400\.0[^3]|000\.400\.100)/;
+
+                    const match1 = successPattern.test(data.result.code);
+                    const match2 = manuallPattern.test(data.result.code);
+
+                    if (match1 || match2) {
+                        // localStorage.setItem('orderSuccess', 'true')
+                        // dispatch(createOrderAction())
+                        dispatch(setOrderSuccess(true))
+                    } else {
+                        dispatch(setOrderSuccess(false))
+                    }
+                    // setcode(data.result.code)
+                }).finally(() => setbusy(false))
             }
+
         })();
-        const query = router.query;
-        dispatch(clearCart())
+
     }, [])
+
+
     return (<>
-        <div className="">
-            <div className="container">
-                <Result
-                    status="success"
-                    title="Successful Order!"
-                    subTitle="Your order is currently being processed by our team. You can track it on your user dashboard. Thank you."
-                    extra={[
-                        <a href='/'>       <div className="mb-4 flex w-full md:w-8/12 lg:w-full justify-center items-center pt-1 md:pt-4  xl:pt-8 space-y-6 md:space-y-8 flex-col">
-                            <button className="py-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800  w-full text-base font-medium leading-4 text-white bg-gray-800 hover:bg-black">Track Your Order</button>
+        {busy ?
+            <Modal style={{ zIndex: 99999 }} isOpen={true} ariaHideApp={false}
+                overlayClassName={`flex w-screen position-float fixed top-0 left-0 h-screen bg-opacity-50 bg-white z-50`}
+                className={`border-none m-auto select-none outline-none w-content z-50`}>
+                <Spinner
+                    color="black"
+                    size={32}
+                    speed={1}
+                    animating={true} />
+            </Modal> : <>   {checkResult()}</>}
 
-                        </div></a>
-
-                    ]}
-                />,
-            </div>
-        </div>
-        {/* <div className="py-14 px-4 md:px-6 xl:px-20 container 2xl:mx-auto">
-            <div className="flex flex-col xl:flex-row justify-center items-center w-full xl:space-x-8 space-y-8 md:space-y-10 xl:space-y-0">
-                <div className="flex justify-start flex-col items-start w-full xl:w-4/12 g-blue-600 ">
-                    <h3 className="text-3xl xl:text-4xl font-semibold leading-7 xl:leading-9 w-full text-center md:text-left text-gray-800">Order Summary</h3>
-                    <div className="flex flex-col md:flex-row xl:flex-col justify-start items-start mt-8 xl:mt-10 xl:space-y-10 w-full space-y-8 md:space-y-0 md:space-x-24 xl:space-x-0 ">
-                        <div className="flex justify-start items-start flex-col space-y-8 w-full md:w-auto lg:w-full">
-                            <div className="flex jusitfy-start items-start flex-col space-y-2">
-                                <p className="text-base font-semibold leading-4  text-gray-800">Order Number</p>
-                                <p className="text-sm leading-5 text-gray-600">Handled By Droppa Couriers</p>
-                            </div>
-                            <div className="flex jusitfy-start items-start flex-col space-y-2">
-                                <p className="text-base font-semibold leading-4  text-gray-800">Shipping Address</p>
-                                <p className="text-sm leading-5 text-gray-600">180 North King Street, Northhampton MA 1060</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col space-y-4 w-full">
-                            <div className="flex justify-center items-center w-full space-y-4 flex-col border-gray-200 border-b pb-4">
-                                <div className="flex justify-between  w-full">
-                                    <p className="text-base leading-4 text-gray-800">Subtotal</p>
-                                    <p className="text-base leading-4 text-gray-600">$56.00</p>
-                                </div>
-                                <div className="flex justify-between  w-full">
-                                    <p className="text-base leading-4 text-gray-800">
-                                        Discount <span className="bg-gray-200 p-1 text-xs font-medium leading-3  text-gray-800">STUDENT</span>
-                                    </p>
-                                    <p className="text-base leading-4 text-gray-600">-$28.00 (50%)</p>
-                                </div>
-                                <div className="flex justify-between  w-full">
-                                    <p className="text-base leading-4 text-gray-800">Shipping</p>
-                                    <p className="text-base leading-4 text-gray-600">$8.00</p>
-                                </div>
-                            </div>
-                            <div className="flex justify-between items-center w-full">
-                                <p className="text-base font-semibold leading-4 text-gray-800">Total</p>
-                                <p className="text-base font-semibold leading-4 text-gray-600">$36.00</p>
-                            </div>
-                            <div className="mb-4 flex w-full md:w-8/12 lg:w-full justify-center items-center pt-1 md:pt-4  xl:pt-8 space-y-6 md:space-y-8 flex-col">
-                                <button className="py-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800  w-full text-base font-medium leading-4 text-white bg-gray-800 hover:bg-black">Home</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> */}
+        {/**/}
     </>
     )
 }

@@ -254,7 +254,16 @@ export const getPlugWeeklyStats = (state = { plugWeeklyStats: {} }, action) => {
             return state;
     }
 };
-
+export const orderSuccessReducer = (state = { orderSuccess: false }, action) => {
+    switch (action.type) {
+        case "ORDER_SUCCESS":
+            return {
+                orderSuccess: action.payload,
+            };
+        default:
+            return state;
+    }
+};
 export const setCurrentOrder = (state = { currentOrder: {} }, action) => {
     switch (action.type) {
         case SET_CURRENT_ORDER:
