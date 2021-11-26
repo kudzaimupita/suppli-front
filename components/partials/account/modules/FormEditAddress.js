@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { updateMe } from '../../../../actions/auth';
 import { setAlert } from '../../../../actions/alert';
 import { connect } from 'react-redux';
+import { useState } from 'react';
+import { Modal, Button } from 'antd';
+
 class FormEditAddress extends Component {
     state = {
         city: '',
@@ -69,7 +72,7 @@ class FormEditAddress extends Component {
                                 this.props.user.billingAddress &&
                                 this.props.user.billingAddress.address
                             }
-                            // value={this.state.address}
+                        // value={this.state.address}
                         />
                     </div>
                     <div className="form-group">
@@ -116,11 +119,11 @@ class FormEditAddress extends Component {
                             className="form-control"
                             disabled
                             value={this.state.country}
-                            // defaultValue={
-                            //     this.props.user &&
-                            //     this.props.user.billingAddress &&
-                            //     this.props.user.billingAddress.country
-                            // }
+                        // defaultValue={
+                        //     this.props.user &&
+                        //     this.props.user.billingAddress &&
+                        //     this.props.user.billingAddress.country
+                        // }
                         />
                     </div>
 

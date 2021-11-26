@@ -25,12 +25,12 @@ const OrderTrackingPage = () => {
             <HeaderDefault />
             <HeaderMobile />
             <NavigationList />
-            <div className="ps-page--simple" style={{ backgroundColor: '#eeeeee' }}>
+            <div className="ps-page--simple" >
                 <BreadCrumb breacrumb={breadCrumb} />
                 <Checkout />
             </div>
             {/* <Newsletters layout="container" /> */}
-            <FooterDefault />
+            {/* <FooterDefault /> */}
         </div>
     );
 };

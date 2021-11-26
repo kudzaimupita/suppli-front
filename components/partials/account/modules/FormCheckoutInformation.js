@@ -148,18 +148,19 @@ class FormCheckoutInformation extends Component {
                         </a>
                     </p>
                 </div>
-                <Form
+                {this.props.orderId ? <span className='bg-gray-100' style={{ height: '20px' }}>
+                    <Payment setPaymentId={this.setPaymentId} orderId={this.props.orderId} />
+                </span> : <Form
                     className="ps-form--checkout"
                     onSubmit={this.handleSubmit}>
                     <div className="ps-form__content ">
                         <div className="row" >
                             {/* <Row></Row> */}
-                            <Card className="col-xl-7 col-lg-7 col-md-12 col-sm-12" style={{ marginRight: '15px' }}>
+                            <Card className="col-xl-7 col-lg-7 col-md-12 col-sm-12" style={{ marginRight: '15px' }} style={{ backgroundColor: '#eeeeee' }}>
                                 <div className="ps-form__billing-info">
 
 
 
-                                    <Payment setPaymentId={this.setPaymentId} orderId={this.props.orderId} />
 
 
 
@@ -167,11 +168,12 @@ class FormCheckoutInformation extends Component {
 
 
 
-                                    <div className=" 6 2xl:px-0 2xl:mx-auto 2xl:container">
+
+                                    <div className=" 6 2xl:px-0 2xl:mx-auto 2xl:container " style={{ backgroundColor: '#eeeeee' }}>
                                         <div className="flex flex-col justify-start items-start space-y-9">
 
 
-                                            {this.props.orderId ? null : <> <div className="p-4 md:p-6 xl:p-10 bg-gray-100 w-full flex flex-col ">
+                                            {this.props.orderId ? null : <> <div className="p-4 md:p-6 xl:p-10 bg-gray-100 w-full flex flex-col " style={{ backgroundColor: '#eeeeee' }}>
                                                 <p className="text-xl md:text-2xl font-medium leading-normal text-gray-800">Shipping Details</p>
                                                 <div className="w-full items-start  space-y-6 md:space-y-9">
                                                     <>
@@ -260,6 +262,7 @@ class FormCheckoutInformation extends Component {
                                             Save this information for next time
                                         </label>
                                     </div> */}
+
                                                         </div>} </>
                                                 </div>
                                             </div>
@@ -268,7 +271,7 @@ class FormCheckoutInformation extends Component {
 
                                                 <div className="flex justify-center items-center lg:justify-end lg:items-end w-full">
                                                     <div className="flex flex-col-reverse flex-col md:flex-row space-y-4 lg:space-y-0 md:space-x-6 w-full md:w-auto">
-                                                        <button className="mt-4 lg:mt-0 w-full lg:w-auto py-4 px-8 border border-gray-800 bg-gray-200 text-lg font-medium leading-5 text-gray-800 hover:text-gray-600">Back To Cart</button>
+                                                        <button className="mt-4 lg:mt-0 w-full lg:w-auto py-4 px-8 border border-gray-800 bg-indigo-400 text-lg font-medium leading-5 text-white hover:text-gray-600">Back To Cart</button>
                                                         {this.state.price && <button type="submit" className="mt-4 lg:mt-0 w-full lg:w-auto py-4 px-8 border border-gray-800 text-lg font-medium leading-5 bg-gray-800 text-white hover:bg-gray-900">      Pay {this.state.price && new Intl.NumberFormat("de-ZA", {
                                                             style: "currency",
                                                             currency: "ZAR",
@@ -434,7 +437,9 @@ class FormCheckoutInformation extends Component {
                         </div>
                     </div >
 
-                </Form ></>
+                </Form >}
+
+            </>
         );
     }
 }
