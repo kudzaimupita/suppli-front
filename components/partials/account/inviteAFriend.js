@@ -67,7 +67,7 @@ class Login extends Component {
         e.preventDefault();
         const invite = {
             name: this.state.name,
-            email: this.state.email,
+            email: this.state.friendEmail,
             friendEmail: this.state.email,
             friendName: this.state.friendName,
         };
