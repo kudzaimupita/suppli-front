@@ -15,6 +15,7 @@ const Success = () => {
     const router = useRouter();
     const [code, setcode] = useState('')
     const [busy, setbusy] = useState(false)
+    const [orderUpdated, setOrderUpdated] = useState(false)
     const [callDroppa, setcallDroppa] = useState(false)
     const currentOrder = useSelector((state) => state.currentOrder?.currentOrder)
     const plugId = useSelector((state) => state.createdOrder2.order?._doc?.boughtProducts[0]?.plug)
@@ -66,7 +67,8 @@ const Success = () => {
     const checkResult = () => {
         if (orderSuccess || code === 'confirmed') {
             dispatch(clearCart())
-            if (code !== 'confirmed') {
+            if (code !== 'confirmed' && !orderUpdated) {
+                setOrderUpdated(true)
                 dispatch(confirmOrderAction({ plugId: plugId }, orderId))
                 //  setcallDroppa(true)
             }
