@@ -26,11 +26,11 @@ class SubscribePopup extends Component {
         this.setState({ email: e.target.value });
     };
 
-    componentDidMount() {
-        setTimeout(() => {
-            this.setState({ isSubscribeShow: true });
-        }, 10000);
-    }
+    // componentDidMount() {
+    //     setTimeout(() => {
+    //         this.setState({ isSubscribeShow: true });
+    //     }, 10000);
+    // }
 
     onSubmit = async (e) => {
         if (!this.state.email)
