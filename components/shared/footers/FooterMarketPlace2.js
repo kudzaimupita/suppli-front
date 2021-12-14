@@ -287,7 +287,7 @@ const FooterTechnology = () => {
                 </div>
                 <div className="ps-footer__copyright">
                     <p style={{ color: 'white' }}>
-                        © 2021 Suppl-i. All Rights Reserved
+                        © Online Selling Services (Pty) Ltd t/a Suppl-i
                     </p>
                     <p style={{ color: 'white' }}>
                         <span>Secure Payments:</span>

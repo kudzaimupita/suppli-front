@@ -262,23 +262,25 @@ class AboutAwards extends Component {
                 </div>
                 <div className="bg-white container my-5">
                     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-2 gap-8 md:grid-cols-6 md:grid-cols-6 lg:grid-cols-5">
+                        <div className="grid grid-cols-2 gap-8 md:grid-cols-6 md:grid-cols-6 lg:grid-cols-6">
                             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
                                 <img className="" src="/static/img/12.png" alt="Suppl-i" />
                             </div>
                             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                                <img className='' src="/static/img/13.png" alt="Suppl-i" />
+                                <img className='' src="/static/img/logo 01.png" alt="Suppl-i" />
                             </div>
                             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                                <img className='' src="/static/img/14.png" alt="Suppl-i" />
+                                <img className='' src="/static/img/logo 02.png" alt="Suppl-i" />
                             </div>
                             <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
-                                <img className='' src="/static/img/15.png" alt="Suppl-i" />
+                                <img className='' src="/static/img/logo 03.jpg" alt="Suppl-i" />
                             </div>
                             <div className="col-span-2 flex justify-center sm:col-span-6 md:col-span-3 lg:col-span-1">
-                                <img className='' src="/static/img/16.png" alt="Suppl-i" />
+                                <img className='' src="/static/img/logo 04.jpg" alt="Suppl-i" />
                             </div>
-
+                            <div className="col-span-2 flex justify-center sm:col-span-6 md:col-span-3 lg:col-span-1">
+                                <img className='' src="/static/img/logo 05.png" alt="Suppl-i" />
+                            </div>
                         </div>
                     </div>
                 </div>
