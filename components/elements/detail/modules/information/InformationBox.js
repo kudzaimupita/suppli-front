@@ -20,7 +20,7 @@ class InformationBox extends Component {
         const { product } = this.props;
         let tempProduct = product;
         tempProduct.quantity = this.state.quantity;
-            this.props.dispatch(addItem({ ...product, plug: product.plug._id }));
+        this.props.dispatch(addItem({ ...product, plug: product.plug._id }));
     };
 
     handleAddItemToCompare = (e) => {
@@ -55,9 +55,9 @@ class InformationBox extends Component {
                 <div className="ps-product__meta">
                     <p>
                         Brand:
-                 
-                            {product.brandName && product.brandName}
-                  
+
+                        {product.brandName && product.brandName}
+
                     </p>
                     <div className="ps-product__rating">
                         <Rate
@@ -85,11 +85,10 @@ class InformationBox extends Component {
                     <p>
                         <Link
                             href="/vendor/[vid]"
-                            as={`/vendor/${
-                                product.plug &&
-                                product.plug._id &&
-                                product.plug._id
-                            }`}>
+                            as={`/vendor/${product.plug &&
+                                product.plug.slug &&
+                                product.plug.slug
+                                }`}>
                             <a>
                                 <strong> Visit Store</strong>
                             </a>

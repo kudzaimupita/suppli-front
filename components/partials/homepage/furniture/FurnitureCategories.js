@@ -63,7 +63,7 @@ class FurnitureCategories extends Component {
                                                     }}>
                                                     <Link
                                                         href="/vendor/[vid]"
-                                                        as={`/vendor/${vendor._id}`}>
+                                                        as={`/vendor/${vendor.slug}`}>
                                                         <a className="ps-product__title"></a>
                                                     </Link>
                                                     {vendor.logo ? <img

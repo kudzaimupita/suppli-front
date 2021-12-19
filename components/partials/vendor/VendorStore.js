@@ -9,13 +9,13 @@ import NextArrow from '../../elements/carousel/NextArrow';
 import PrevArrow from '../../elements/carousel/PrevArrow';
 import Rating from '../../elements/Rating';
 import { connect } from 'react-redux';
-import { getVendor } from './../../../actions/vendors';
+import { getVendor, getVendorBySlug } from './../../../actions/vendors';
 import '../../../components/tailwind.scss'
 import { Spinner } from 'react-activity';
 import Modal from 'react-modal'
 class VendorStore extends Component {
     componentDidMount(props) {
-        this.props.getVendor(this.props.vendorId);
+        this.props.getVendorBySlug(this.props.vendorId);
     }
     render() {
         const carouselSetting = {
@@ -85,11 +85,11 @@ class VendorStore extends Component {
                                 <div className="ps-block--vendor">
                                     <div className="ps-block__thumbnail">
                                         {this.props.vendor &&
-                                            this.props.vendor.doc &&
-                                            this.props.vendor.doc.logo ? <img
+                                            this.props.vendor &&
+                                            this.props.vendor.logo ? <img
                                             src={`https://suppli-images.s3.af-south-1.amazonaws.com/${this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc.logo
+                                                this.props.vendor &&
+                                                this.props.vendor.logo
                                                 }`}
                                             alt="Suppl-i"
                                         /> : <img
@@ -106,13 +106,13 @@ class VendorStore extends Component {
                                         <div className="ps-block__header">
                                             <h4>
                                                 {this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc.name}
+                                                    this.props.vendor &&
+                                                    this.props.vendor.name}
                                             </h4>
                                             <Rating />({'    '}
                                             {this.props.vendor &&
-                                                this.props.vendor.doc &&
-                                                this.props.vendor.doc
+                                                this.props.vendor &&
+                                                this.props.vendor
                                                     .ratingsQuantity}{' '}
                                             ) Reviews
                                             {/* <p>
@@ -124,73 +124,73 @@ class VendorStore extends Component {
                                         <div className="ps-block__content">
                                             <p>
                                                 {this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
+                                                    this.props.vendor &&
+                                                    this.props.vendor
                                                         .aboutUs}
                                             </p>
                                             <span className="ps-block__divider"></span>
                                             <p>
                                                 {this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
+                                                    this.props.vendor &&
+                                                    this.props.vendor
                                                         .address && (
                                                         <strong>Address</strong>
                                                     )}{' '}
                                                 {this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
+                                                    this.props.vendor &&
+                                                    this.props.vendor
                                                         .address && (
                                                         <>
                                                             {' '}
                                                             {
                                                                 this.props
-                                                                    .vendor.doc
+                                                                    .vendor
                                                                     .address
                                                             }
                                                             ,
                                                         </>
                                                     )}{' '}
                                                 {this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
+                                                    this.props.vendor &&
+                                                    this.props.vendor
                                                         .city && (
                                                         <>
                                                             {' '}
                                                             {
                                                                 this.props
-                                                                    .vendor.doc
+                                                                    .vendor
                                                                     .city
                                                             }
                                                             ,
                                                         </>
                                                     )}{' '}
                                                 {this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
+                                                    this.props.vendor &&
+                                                    this.props.vendor
                                                         .postalCode && (
                                                         <>
                                                             {' '}
                                                             {
                                                                 this.props
-                                                                    .vendor.doc
+                                                                    .vendor
                                                                     .postalCode
                                                             }
                                                             ,
                                                         </>
                                                     )}{' '}
                                                 {this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
+                                                    this.props.vendor &&
+                                                    this.props.vendor
                                                         .country}
                                             </p>
                                             <figure>
                                                 {(this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
+                                                    this.props.vendor &&
+                                                    this.props.vendor
                                                         .facebookLink) ||
                                                     (this.props.vendor &&
-                                                        this.props.vendor.doc &&
-                                                        this.props.vendor.doc
+                                                        this.props.vendor &&
+                                                        this.props.vendor
                                                             .instagramLink) ? (
                                                     <figcaption>
                                                         Follow us on social
@@ -199,15 +199,15 @@ class VendorStore extends Component {
                                                 <ul className="ps-list--social-color">
 
                                                     {this.props.vendor &&
-                                                        this.props.vendor.doc &&
-                                                        this.props.vendor.doc
+                                                        this.props.vendor &&
+                                                        this.props.vendor
                                                             .instagramLink && (
                                                             <li>
                                                                 <a
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
                                                                     className="instagram"
-                                                                    href={"https://www.instagram.com/" + this.props.vendor.doc
+                                                                    href={"https://www.instagram.com/" + this.props.vendor
                                                                         .instagramLink}>
                                                                     <i
                                                                         className="fa fa-instagram"
@@ -220,15 +220,15 @@ class VendorStore extends Component {
                                                             </li>
                                                         )}
                                                     {this.props.vendor &&
-                                                        this.props.vendor.doc &&
-                                                        this.props.vendor.doc
+                                                        this.props.vendor &&
+                                                        this.props.vendor
                                                             .facebookLink && (
                                                             <li>
                                                                 <a
                                                                     target="_blank"
                                                                     rel="noopener noreferrer"
                                                                     className="facebook"
-                                                                    href={"https://www.facebook.com/" + this.props.vendor.doc
+                                                                    href={"https://www.facebook.com/" + this.props.vendor
                                                                         .facebookLink}>
                                                                     <i className="fa fa-facebook"></i>
                                                                 </a>
@@ -258,18 +258,18 @@ class VendorStore extends Component {
                                                 {/* <strong>
                                                     {' '}
                                                     {this.props.vendor &&
-                                                        this.props.vendor.doc &&
-                                                        this.props.vendor.doc
+                                                        this.props.vendor &&
+                                                        this.props.vendor
                                                             .phone}
                                                 </strong> */}
                                                 <a href={`tel:${this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
+                                                    this.props.vendor &&
+                                                    this.props.vendor
                                                         .phone
                                                     }
                                             `} >   <strong>{this.props.vendor &&
-                                                        this.props.vendor.doc &&
-                                                        this.props.vendor.doc
+                                                        this.props.vendor &&
+                                                        this.props.vendor
                                                             .phone
                                                     }</strong> </a>
                                             </p>
@@ -279,8 +279,8 @@ class VendorStore extends Component {
                                             <a
                                                 className="ps-btn ps-btn--fullwidth"
                                                 href={`mailto:${this.props.vendor &&
-                                                    this.props.vendor.doc &&
-                                                    this.props.vendor.doc
+                                                    this.props.vendor &&
+                                                    this.props.vendor
                                                         .companyEmail
                                                     }
                                             `} style={{ color: 'white' }}>
@@ -294,8 +294,8 @@ class VendorStore extends Component {
                                 <VendorProducts
                                     products={
                                         this.props.vendor &&
-                                        this.props.vendor.doc &&
-                                        this.props.vendor.doc.products
+                                        this.props.vendor &&
+                                        this.props.vendor.products
                                     }
                                 />
                             </div>
@@ -319,4 +319,4 @@ const mapStateToProps = (state) => ({
     // catergories: state.catergories.catergories,
 });
 
-export default connect(mapStateToProps, { getVendor })(VendorStore);
+export default connect(mapStateToProps, { getVendor, getVendorBySlug })(VendorStore);
