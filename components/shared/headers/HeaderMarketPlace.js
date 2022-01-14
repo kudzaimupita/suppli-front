@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
 import { notification } from 'antd';
-
+import { Menu, Dropdown, Button, Space } from 'antd';
 import SearchHeader from './modules/SearchHeader';
 import MiniCart from './modules/MiniCart';
 import AccountQuickLinks from './modules/AccountQuickLinks';
@@ -101,6 +101,26 @@ class HeaderAutoPart extends Component {
         function classNames(...classes) {
             return classes.filter(Boolean).join(' ')
         }
+
+        const menu = (
+            <Menu>
+                <Menu.Item>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+                        1st menu item
+                    </a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
+                        2nd menu item
+                    </a>
+                </Menu.Item>
+                <Menu.Item>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+                        3rd menu item
+                    </a>
+                </Menu.Item>
+            </Menu>
+        );
         const menuAutopart = [
             {
                 text: 'Home',
@@ -302,7 +322,7 @@ class HeaderAutoPart extends Component {
                                 <Popover className="relative">
                                     {({ open }) => (
                                         <>
-                                            <Popover.Button
+                                            {/* <Popover.Button
                                                 className={classNames(
                                                     open ? 'text-gray-900' : 'text-gray-700',
                                                     'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
@@ -316,8 +336,24 @@ class HeaderAutoPart extends Component {
                                                     )}
                                                     aria-hidden="true"
                                                 />
-                                            </Popover.Button>
+                                            </Popover.Button> */}
+                                            <Dropdown overlay={<Menu>
+                                                {this.props.categories &&
+                                                    this.props.categories.map((cat) => (
 
+                                                        <Menu.Item key="0">
+                                                            <a href={`/category/${cat._id}`}>{cat.name}</a>
+                                                        </Menu.Item>
+                                                    ))}
+
+
+
+                                            </Menu>}>
+                                                <span className={classNames(
+                                                    open ? 'text-gray-900' : 'text-gray-700',
+                                                    'ml-2 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                                                )}>Shop By Catergory</span>
+                                            </Dropdown>
                                             <Transition
                                                 show={open}
                                                 as={Fragment}
