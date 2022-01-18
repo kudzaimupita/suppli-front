@@ -68,21 +68,21 @@ class AboutAwards extends Component {
                 href: '#',
                 description:
                     "Our mission is to be South Africa's most trusted and convenient online shopping platform, giving consumers access to groceries and common consumer goods with a safe, secure and affordable shopping platform.",
-                icon: DocumentIcon,
+                icon: "/static/img/mission.png",
             },
             {
                 name: 'Company Vision',
                 href: '#',
                 description:
                     " Our goal is to give all small and medium sizeenterprises an online presence while offering variety, efficiency and affordability to all consumers.We aim to provide the ultimate online shopping experience that gives consumers access to  many small, medium and large retailers in your areas with a single and cost- effective delivery solution.",
-                icon: ViewListIcon,
+                icon: "/static/img/vission.png",
             },
             {
                 name: ' Value Proposition',
                 href: '#',
                 description:
                     '   Suppl-i takes away the need to physically visit oneor several different stores, allowing consumers to save time and effort when purchasing goods.We offer a safe and efficient platform for retailers and consumers with minimized risks of exposure to crowded stores and the generally high associated delivery costs',
-                icon: ViewBoardsIcon,
+                icon: "/static/img/value.png",
             },
         ]
         return (
@@ -93,10 +93,10 @@ class AboutAwards extends Component {
                         <div className="absolute inset-0">
                             <img
                                 className="w-full h-full object-cover"
-                                src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&&sat=-100"
+                                src="/static/img/about.png"
                                 alt=""
                             />
-                            <div className="absolute inset-0 bg-gray-800 mix-blend-multiply" aria-hidden="true" />
+                            <div className="absolute inset-0  mix-blend-multiply" aria-hidden="true" />
                         </div>
                         <div className="relative max-w-7xl mx-auto py-20 px-4 sm:py-32 sm:px-6 lg:px-8">
                             <h1 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">Suppl-i Online Shopping</h1>
@@ -117,8 +117,8 @@ class AboutAwards extends Component {
                             {supportLinks.map((link) => (
                                 <div key={link.name} className="flex flex-col bg-white sm:rounded-lg shadow-xl">
                                     <div className="flex-1 relative pt-16 px-6 pb-8 md:px-8">
-                                        <div style={{ borderRadius: '160px' }} className="absolute top-0 p-5 inline-block bg-indigo-600 rounded-lg shadow-lg transform -translate-y-1/2">
-                                            <link.icon className="h-8 w-8 text-white" aria-hidden="true" />
+                                        <div style={{ borderRadius: '160px' }} className="absolute  top-0  inline-block bg-indigo-600 rounded-lg shadow-lg transform -translate-y-1/2">
+                                            <img src={link.icon} className="h-24 w-24 rounded-lg" aria-hidden="true" />
                                         </div>
                                         <h3 className="text-xl font-medium text-gray-900">{link.name}</h3>
                                         <p className="mt-4 text-base text-gray-500">{link.description}</p>
@@ -261,9 +261,9 @@ class AboutAwards extends Component {
                 <div className="bg-white container my-5">
                     <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
                         <div className="grid grid-cols-2 gap-8 md:grid-cols-6 md:grid-cols-6 lg:grid-cols-6">
-                            <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                            {/* <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
                                 <img className="" src="/static/img/12.png" alt="Suppl-i" />
-                            </div>
+                            </div> */}
                             <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
                                 <img className='' src="/static/img/logo 01.png" alt="Suppl-i" />
                             </div>
