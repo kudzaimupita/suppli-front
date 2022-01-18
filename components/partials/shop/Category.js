@@ -40,20 +40,24 @@ class LayoutShopSidebarWithoutBanner extends Component {
                             animating={true} /></Modal>
                 )}{' '}
                 <div className="ps-home-categories ps-section--furniture">
-                    <div className="container">
-                        <div className="ps-section__content">
-                            <div
-                                className="ps-section__header center"
-                                style={{
-                                    textAlign: 'center',
-                                    marginTop: '30px',
-                                }}>
-                                <h3>
-                                    {this.props.category &&
-                                        this.props.category.name}
-                                </h3>
-                            </div>
-                            <div className="row">
+                    <div className="container divide-y">
+                        <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4">
+                            <img
+                                className="mx-auto mt-2 h-24 w-auto"
+                                src={`https://suppli-images.s3.af-south-1.amazonaws.com/${this.props.category && this.props.category.imageCover
+                                    }`}
+
+                                alt="suppl-i"
+                            />
+                            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">   <h3>
+                                {this.props.category &&
+                                    this.props.category.name}
+                            </h3></h2>
+
+                        </div>
+                        <div className="ps-section__content ">
+
+                            <div className="row mt-4">
                                 {this.props.category &&
                                     this.props.category.subCatergories &&
                                     this.props.category.subCatergories.map(
