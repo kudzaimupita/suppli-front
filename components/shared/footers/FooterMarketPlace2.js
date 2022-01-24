@@ -223,6 +223,11 @@ const FooterTechnology = () => {
                                             Subscribe
                                         </button>
                                     </div>
+                                    <h4
+                                        className="widget-title"
+                                        style={{ color: 'white' }}>
+                                        Follow Us On Social Media
+                                    </h4>
                                     <ul className="ps-list--social">
                                         <li>
                                             <a
