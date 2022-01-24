@@ -24,14 +24,14 @@ const Success = () => {
     const paymentId = useSelector((state) => state.createdOrder2.order?.id)
     const orderSuccess = useSelector((state) => state.orderSuccess.orderSuccess)
     // const createdOrder = useSelector((state) => state.createdOrder2.order?)
-    // const droppa = async () => {
-    //     await CreateExpressBooking(
-    //         { name: currentOrder?.name, phone: currentOrder?.phone, address: currentOrder.address, code: currentOrder.code, provice: currentOrder.province },
-    //         {
-    //             name: currentOrder?.store.name, phone: currentOrder?.store.phone,
-    //             companyEmail: currentOrder?.store.companyEmail, code: currentOrder?.store.postalCode, address: currentOrder?.store.address + ', ' + currentOrder?.store.address
-    //         }, currentOrder.type, currentOrder.shippingAmount)
-    // }
+    const droppa = async () => {
+        await CreateExpressBooking(
+            { name: currentOrder?.name, phone: currentOrder?.phone, address: currentOrder.address, code: currentOrder.code, provice: currentOrder.province },
+            {
+                name: currentOrder?.store.name, phone: currentOrder?.store.phone,
+                companyEmail: currentOrder?.store.companyEmail, code: currentOrder?.store.postalCode, address: currentOrder?.store.address + ', ' + currentOrder?.store.address
+            }, currentOrder.type, currentOrder.shippingAmount)
+    }
     const g = async () => {
         setbusy(true)
         await fetch(`https://suppli-api.herokuapp.com/api/v1/orders/${orderId}`, {
@@ -70,7 +70,7 @@ const Success = () => {
             if (code !== 'confirmed' && !orderUpdated) {
                 setOrderUpdated(true)
                 dispatch(confirmOrderAction({ plugId: plugId }, orderId))
-                //  setcallDroppa(true)
+                setcallDroppa(true)
             }
             return (
                 <div className="">

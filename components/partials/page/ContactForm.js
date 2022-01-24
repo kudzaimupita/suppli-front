@@ -101,7 +101,7 @@ class Login extends Component {
                                         </Dialog.Title>
                                         <div className="mt-2">
                                             <p className="text-sm text-gray-500">
-                                                Your message was successfully sent to our team. We'll get back at you shortly.
+                                                Thanks for getting in touch with Suppl-i. Our friendly team of support staff have received your enquiry and will get back to you as soon as possible! We cherish your business and will make sure that we get back to you within 48 hours
                                             </p>
                                         </div>
                                     </div>

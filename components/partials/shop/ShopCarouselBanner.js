@@ -23,26 +23,26 @@ class ShopCarouselBanner extends Component {
             <div className="ps-shop-banner" style={{ marginBottom: '20px' }}>
                 <Slider {...carouselSetting} className="ps-carousel inside">
 
-                    <a href='/vendor/60cf3fb9a0347100171bde9f' className="item">
+                    <a href='/vendor/creative-stamps' className="item">
                         <img src="/static/img/1.png" alt="Suppl-i" />
                     </a>
-                    <a href='/vendor/60d09136f76e6c0017f3f43c'>    <div className="item">
+                    <a href='/vendor/beit-yosef-kosher-butchery'>    <div className="item">
                         <img src="/static/img/2.png" alt="Suppl-i" />
                     </div></a>
-                    <a href='/vendor/60d05beaf76e6c0017f3f41f'>    <div className="item">
+                    <a href='/vendor/origin-fitness'>    <div className="item">
                         <img src="/static/img/3.png" alt="Suppl-i" />
                     </div></a>
-                    <a href='/vendor/60d0a9b9f76e6c0017f3f47b'>    <div className="item">
+                    <a href='/vendor/nano-life'>    <div className="item">
                         <img src="/static/img/4.png" alt="Suppl-i" />
                     </div></a>
 
                     <a href='/contact'>    <div className="item">
                         <img src="/static/img/5.png" alt="Suppl-i" />
                     </div></a>
-                    <a href='vendor/60d18d766c7c79001716ec2c' className="item">
+                    <a href='vendor/i-sandler-and-co' className="item">
                         <img src="/static/img/6.png" alt="Suppl-i" />
                     </a>
-                    <a href='/vendor/60cf5532a0347100171bdeb9'>    <div className="item">
+                    <a href='/vendor/afrigraphix'>    <div className="item">
                         <img src="/static/img/7.png" alt="Suppl-i" />
                     </div></a>
                     <a href='https://live.insure/livecover/pa?schemecode=zivikele&referredby=suppli'>    <div className="item">
