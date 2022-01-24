@@ -108,11 +108,11 @@ class HeaderMarketPlace2 extends Component {
                         <div className="header__content-left">
                             <Link href="/home/market-place-2">
                                 <a className="ps-logo">
-                                  <img
-                                    style={{ maxWidth: '130px' }}
-                                    src="/static/img/Suppli.png"
-                                    alt="Suppl-i"
-                                />
+                                    <img
+                                        style={{ maxWidth: '130px' }}
+                                        src="/static/img/Suppli.png"
+                                        alt="Suppl-i"
+                                    />
                                 </a>
                             </Link>
                             <div className="menu--product-categories">

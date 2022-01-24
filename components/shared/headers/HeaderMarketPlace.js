@@ -253,8 +253,8 @@ class HeaderAutoPart extends Component {
                     <div className="container">
                         <div className="header__left">
                             <p style={{ fontSize: '12px' }}>
-                                {/* <strong>FREE SHIPPING</strong> for all orders */}
-                                Welcome to Suppl-i Online Shopping Mall !
+                                <strong>  Welcome to Suppl-i Online Shopping Mall !</strong>
+
                             </p>
                         </div>
                         <div className="header__right">
