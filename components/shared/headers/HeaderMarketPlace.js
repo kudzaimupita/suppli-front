@@ -352,7 +352,13 @@ class HeaderAutoPart extends Component {
                                                 <span className={classNames(
                                                     open ? 'text-gray-900' : 'text-gray-700',
                                                     'ml-2 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-                                                )}>Shop By Catergory</span>
+                                                )}>Shop By Catergory     <ChevronDownIcon
+                                                        className={classNames(
+                                                            open ? 'text-gray-700' : 'text-gray-700',
+                                                            'ml-2 h-5 w-5 group-hover:text-gray-700 transition ease-in-out duration-150'
+                                                        )}
+                                                        aria-hidden="true"
+                                                    /></span>
                                             </Dropdown>
                                             <Transition
                                                 show={open}
