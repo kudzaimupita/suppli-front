@@ -37,7 +37,7 @@ const ContactInfo = () => (
                             <p>
                                 <span>Register your store below</span>
                                 <a href="/vendor/become-a-vendor">
-                                    Click here.
+                                    <strong>Click here</strong>
                                 </a>
                             </p>
                         </div>
