@@ -46,7 +46,7 @@ class FormCheckoutInformation extends Component {
             phone: this.state.phone,
             products: this.props.cartItems,
             // amount: '1.00',
-            amount: parseFloat((this.props.amount * 1)).toFixed(2),
+            amount: price,
             address: this.state.address,
             paymentID: this.props.orderId, type: this.state.type || 'BUDGET_COURIER'
         }

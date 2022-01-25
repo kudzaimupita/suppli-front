@@ -341,7 +341,7 @@ class PlugApplication extends React.Component {
                                             <Col lg="6">
                                                 <>
                                                     <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
-                                                        Store Email<span style={{ color: 'red' }}>*</span>
+                                                        Store Email
                                                     </label>
                                                     <Input
                                                         // required
@@ -366,7 +366,7 @@ class PlugApplication extends React.Component {
                                             <Col lg="6">
                                                 <>
                                                     <label htmlFor="name" className="text-sm font-medium text-gray-700 mt-2">
-                                                        Store Phone<span style={{ color: 'red' }}>*</span>
+                                                        Store Phone
                                                     </label>
                                                     <Input
                                                         // required

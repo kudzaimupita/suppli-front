@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Link from 'next/link';
 import SearchHeader from './modules/SearchHeader';
 import menuData from '../../../public/static/data/menu';
