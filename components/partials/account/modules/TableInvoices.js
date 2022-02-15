@@ -306,7 +306,7 @@ class TableInvoices extends Component {
                                                                 <td className="price">
                                                                     R
                                                                     {
-                                                                        product.price.toFixed(2)
+                                                                        product.price?.toFixed(2)
                                                                     }
                                                                 </td>
 

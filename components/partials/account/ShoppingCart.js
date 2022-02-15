@@ -130,7 +130,7 @@ class ShoppingCart extends Component {
                                                             </div>
                                                         </td>
                                                         <td className="price">
-                                                            R {product.price.toFixed(2)}
+                                                            R {product.price?.toFixed(2)}
                                                         </td>
                                                         <td>
                                                             <div className="form-group--number">

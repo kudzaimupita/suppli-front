@@ -135,7 +135,7 @@ class MiniCart extends Component {
                                             </p>
                                             <small>
                                                 {product.quantity} x R
-                                                {product.price.toFixed(2)}
+                                                {product.price?.toFixed(2)}
                                             </small>
                                         </div>
                                     </div>

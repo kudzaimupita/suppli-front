@@ -64,7 +64,7 @@ class Wishlist extends Component {
                                                     />
                                                 </td>
                                                 <td className="price">
-                                                    R {product.price.toFixed(2)}
+                                                    R {product.price?.toFixed(2)}
                                                 </td>
                                                 <td>{product.brandName}</td>
                                                 <td>

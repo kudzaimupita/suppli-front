@@ -28,6 +28,7 @@ class PanelCategories extends Component {
     };
 
     render() {
+        console.log(this.props.categories)
         const shopCategories = [
             {
                 text: 'All Products',
@@ -88,10 +89,10 @@ class PanelCategories extends Component {
                         mode="inline"
                         openKeys={this.state.openKeys}
                         onOpenChange={this.onOpenChange}>
-                        {shopCategories.map(category => (
-                            <Menu.Item key={category.text}>
-                                <Link href={category.url}>
-                                    <a>{category.text}</a>
+                        {this.props?.categories?.length > 1 && this.props?.categories.map(category => (
+                            <Menu.Item key={category?.name}>
+                                <Link href={`/category/${category._id}`}>
+                                    <a>{category.name}</a>
                                 </Link>
                             </Menu.Item>
                         ))}

@@ -44,7 +44,7 @@ class ProductResult extends Component {
                     {product.was && product.was ? (
                         <p className="ps-product__price sale">
                             {'R'}
-                            {product.price && product.price.toFixed(2)}
+                            {product.price && product.price?.toFixed(2)}
                             <del className="ml-1">
                                 {'R'}
                                 {product.was && product.was.toFixed(2)}
@@ -53,7 +53,7 @@ class ProductResult extends Component {
                     ) : (
                         <p className="ps-product__price">
                             {'R'}
-                            {product.price && product.price.toFixed(2)}
+                            {product.price && product.price?.toFixed(2)}
                         </p>
                     )}
                 </div>

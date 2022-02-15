@@ -60,12 +60,12 @@ class InformationQuickView extends Component {
                 </div>
                 {product.was ? (
                     <h4 className="ps-product__price sale">
-                        R{product.price && product.price.toFixed(2)}{' '}
+                        R{product.price && product.price?.toFixed(2)}{' '}
                         <del>R{product.was && product.was.toFixed(2)}</del>
                     </h4>
                 ) : (
                     <h4 className="ps-product__price">
-                        R{product.price && product.price.toFixed(2)}
+                        R{product.price && product.price?.toFixed(2)}
                     </h4>
                 )}
                 <div className="ps-product__desc">

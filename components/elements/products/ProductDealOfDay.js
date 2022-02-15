@@ -132,7 +132,7 @@ class ProductDealOfDay extends Component {
                         {product.sale === true ? (
                             <p className="ps-product__price sale">
                                 {'R'}
-                                {product.price.toFixed(2)}
+                                {product.price?.toFixed(2)}
                                 <del className="ml-2">
                                     {'R'}
                                     {product.salePrice.toFixed(2)}
@@ -142,7 +142,7 @@ class ProductDealOfDay extends Component {
                         ) : (
                             <p className="ps-product__price">
                                 {'R'}
-                                {product.price.toFixed(2)}
+                                {product.price?.toFixed(2)}
                             </p>
                         )}
                         <Link

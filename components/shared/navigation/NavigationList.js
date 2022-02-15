@@ -6,7 +6,7 @@ import PanelMenu from '../panel/PanelMenu';
 import PanelCartMobile from '../panel/PanelCartMobile';
 import PanelSearch from '../panel/PanelSearch';
 import PanelCategories from '../panel/PanelCategories';
-
+import { getCatergories } from '../../../actions/catergories'
 class NavigationList extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +17,9 @@ class NavigationList extends Component {
             categoriesDrawer: false,
         };
     }
-
+    async componentDidMount() {
+        this.props.getCatergories()
+    }
     handleDrawerClose = () => {
         this.setState({
             menuDrawer: false,
@@ -64,7 +66,7 @@ class NavigationList extends Component {
     render() {
         const { menuDrawer, searchDrawer, cartDrawer, categoriesDrawer } =
             this.state;
-
+        console.log(this.props.catergories)
         return (
             <div className="navigation--list">
                 <Drawer
@@ -97,43 +99,40 @@ class NavigationList extends Component {
                     closable={false}
                     onClose={this.handleDrawerClose}
                     visible={this.state.categoriesDrawer}>
-                    <PanelCategories />
+                    <PanelCategories categories={this.props?.catergories || []} />
+                    {/* {(this.props?.catergories?.length > 1 && this.props.catergories.map(cat => )) || []} */}
                 </Drawer>
                 <div className="navigation__content">
                     <a
-                        className={`navigation__item ${
-                            menuDrawer === true ? 'active' : ''
-                        }`}
+                        className={`navigation__item ${menuDrawer === true ? 'active' : ''
+                            }`}
                         onClick={this.handleShowMenuDrawer}>
                         <i className="icon-menu"></i>
                         <span> Menu</span>
                     </a>
                     <a
-                        href="/stores"
-                        className={`navigation__item ${
-                            categoriesDrawer === true ? 'active' : ''
-                        }`}
-                        // onClick={this.handleShowCategoriesDrawer}
+                        // href="/stores"
+                        className={`navigation__item ${categoriesDrawer === true ? 'active' : ''
+                            }`}
+                        onClick={this.handleShowCategoriesDrawer}
                     >
                         <Link>
                             <>
                                 <i className="icon-list4"></i>
-                                <span> Stores</span>
+                                <span> Categories</span>
                             </>
                         </Link>
                     </a>
                     <a
-                        className={`navigation__item ${
-                            searchDrawer === true ? 'active' : ''
-                        }`}
+                        className={`navigation__item ${searchDrawer === true ? 'active' : ''
+                            }`}
                         onClick={this.handleShowSearchDrawer}>
                         <i className="icon-magnifier"></i>
                         <span> Search</span>
                     </a>
                     <a
-                        className={`navigation__item ${
-                            cartDrawer === true ? 'active' : ''
-                        }`}
+                        className={`navigation__item ${cartDrawer === true ? 'active' : ''
+                            }`}
                         onClick={this.handleShowCartDrawer}>
                         <i className="icon-bag2"></i>
                         <span> Cart</span>
@@ -144,7 +143,10 @@ class NavigationList extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return state.setting;
-};
-export default connect(mapStateToProps)(NavigationList);
+const mapStateToProps = (state) => ({
+    vendors: state.allVendors.vendors,
+    // vendorsLoading: state.allVendors.loading,
+    // productsLoading: state.popularProducts.loading,
+    catergories: state.catergories.catergories,
+});
+export default connect(mapStateToProps, { getCatergories })(NavigationList);

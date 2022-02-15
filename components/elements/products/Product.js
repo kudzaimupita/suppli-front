@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Rate, Modal } from 'antd';
 import ProductDetailQuickView from '../detail/ProductDetailQuickView';
 import Rating from '../Rating';
+import { getCatergories } from '../../../actions/catergories'
 
 class Product extends Component {
     constructor(props) {
@@ -16,6 +17,9 @@ class Product extends Component {
         };
     }
 
+    // async componentDidMount() {
+    //     this.props.getCatergories()
+    // }
     handleAddItemToCart = (e) => {
         e.preventDefault();
         const { product } = this.props;
@@ -175,7 +179,7 @@ class Product extends Component {
                         {product.was ? (
                             <p className="ps-product__price sale">
                                 {'R'}
-                                {product.price && product.price.toFixed(2)}
+                                {product.price && product.price?.toFixed(2)}
                                 <del className="ml-2">
                                     {'R'}
                                     {product.was && product.was.toFixed(2)}
@@ -184,7 +188,7 @@ class Product extends Component {
                         ) : (
                             <p className="ps-product__price">
                                 {'R'}
-                                {product.price && product.price.toFixed(2)}
+                                {product.price && product.price?.toFixed(2)}
                             </p>
                         )}
                     </div>
@@ -199,7 +203,7 @@ class Product extends Component {
                         {product.was ? (
                             <p className="ps-product__price sale">
                                 {'R'}
-                                {product.price && product.price.toFixed(2)}{' '}
+                                {product.price && product.price?.toFixed(2)}{' '}
                                 <del className="ml-2">
                                     {'R'}
                                     {product.was && product.was.toFixed(2)}
@@ -208,7 +212,7 @@ class Product extends Component {
                         ) : (
                             <p className="ps-product__price">
                                 {'R'}
-                                {product.price && product.price.toFixed(2)}
+                                {product.price && product.price?.toFixed(2)}
                             </p>
                         )}
                     </div>
@@ -229,4 +233,4 @@ class Product extends Component {
 const mapStateToProps = (state) => {
     return state.setting;
 };
-export default connect(mapStateToProps)(Product);
+export default connect(mapStateToProps, getCatergories)(Product);
