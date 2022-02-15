@@ -32,15 +32,15 @@ class ProductDealHot extends React.Component {
                                 <h4 className="ps-product__price sale">
                                     <del className="mr-2">
                                         {'R'}
-                                        {product.salePrice}
+                                        {product.salePrice.toFixed(2)}
                                     </del>
                                     {'R'}
-                                    {product.price}
+                                    {product.pric.toFixed(2)e}
                                 </h4>
                             ) : (
                                 <h4 className="ps-product__price">
                                     {'R'}
-                                    {product.price}
+                                    {product.price.toFixed(2)}
                                 </h4>
                             )}
                             <div className="ps-product__rating">

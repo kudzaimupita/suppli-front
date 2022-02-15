@@ -132,17 +132,17 @@ class ProductDealOfDay extends Component {
                         {product.sale === true ? (
                             <p className="ps-product__price sale">
                                 {'R'}
-                                {product.price}
+                                {product.price.toFixed(2)}
                                 <del className="ml-2">
                                     {'R'}
-                                    {product.salePrice}
+                                    {product.salePrice.toFixed(2)}
                                 </del>
                                 <small>18% off</small>
                             </p>
                         ) : (
                             <p className="ps-product__price">
                                 {'R'}
-                                {product.price}
+                                {product.price.toFixed(2)}
                             </p>
                         )}
                         <Link
@@ -160,7 +160,7 @@ class ProductDealOfDay extends Component {
                             className="ps-product__progress-bar ps-progress"
                             data-value="97">
                             <div className="ps-progress__value">
-                                <span style={{width: 50+'%'}}></span>
+                                <span style={{ width: 50 + '%' }}></span>
                             </div>
                             <p>Sold:22</p>
                         </div>

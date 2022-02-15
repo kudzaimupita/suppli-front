@@ -37,10 +37,9 @@ class PanelCartMobile extends Component {
                                                 as={`/product/${product._id}`}>
                                                 <a>
                                                     <img
-                                                        src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
-                                                            product.imageCover &&
+                                                        src={`https://suppli-images.s3.af-south-1.amazonaws.com/${product.imageCover &&
                                                             product.imageCover
-                                                        }`}
+                                                            }`}
                                                         alt="Suppl-i"
                                                     />
                                                 </a>
@@ -68,7 +67,7 @@ class PanelCartMobile extends Component {
                                             </p>
                                             <small>
                                                 {product.quantity} x R
-                                                {product.price}
+                                                {product.price.toFixed(2)}
                                             </small>
                                         </div>
                                     </div>

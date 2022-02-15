@@ -31,16 +31,16 @@ class ProductHorizontal extends Component {
                     {product.sale === true ? (
                         <p className="ps-product__price sale">
                             {'R'}
-                            {product.price}
+                            {product.price.toFixed(2)}
                             <del className="ml-2">
                                 {'R'}
-                                {product.was}
+                                {product.was.toFixed(2)}
                             </del>
                         </p>
                     ) : (
                         <p className="ps-product__price">
                             {'R'}
-                            {product.price}
+                            {product.price.toFixed(2)}
                         </p>
                     )}
                 </div>

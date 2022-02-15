@@ -138,16 +138,16 @@ class ProductSimple extends Component {
                         {product.sale === true ? (
                             <p className="ps-product__price sale">
                                 {'R'}
-                                {product.price}{' '}
+                                {product.price.toFixed(2)}{' '}
                                 <del className="ml-1">
                                     {'R'}
-                                    {product.salePrice}
+                                    {product.salePrice.toFixed(2)}
                                 </del>
                             </p>
                         ) : (
                             <p className="ps-product__price">
                                 {'R'}
-                                {product.price}
+                                {product.price.toFixed(2)}
                             </p>
                         )}
                     </div>

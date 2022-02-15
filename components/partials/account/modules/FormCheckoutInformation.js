@@ -383,7 +383,7 @@ class FormCheckoutInformation extends Component {
                                                                                         style: "currency",
                                                                                         currency: "ZAR",
                                                                                     }).format(product.quantity *
-                                                                                        product.price)}</p>
+                                                                                        product.price.toFixed(2))}</p>
                                                                                 </div>
                                                                                 {/* <p className="mt-1 text-sm text-gray-500">{product.brandName}</p> */}
                                                                             </div>

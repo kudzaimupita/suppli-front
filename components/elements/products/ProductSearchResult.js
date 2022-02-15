@@ -17,9 +17,8 @@ class ProductResult extends Component {
                     <Link href="/product/[pid]" as={`/product/${product._id}`}>
                         <a>
                             <img
-                                src={`https://suppli-images.s3.af-south-1.amazonaws.com/${
-                                    product.imageCover && product.imageCover
-                                }`}
+                                src={`https://suppli-images.s3.af-south-1.amazonaws.com/${product.imageCover && product.imageCover
+                                    }`}
                                 alt="Suppl-i"
                             />
                         </a>
@@ -45,16 +44,16 @@ class ProductResult extends Component {
                     {product.was && product.was ? (
                         <p className="ps-product__price sale">
                             {'R'}
-                            {product.price && product.price}
+                            {product.price && product.price.toFixed(2)}
                             <del className="ml-1">
                                 {'R'}
-                                {product.was && product.was}
+                                {product.was && product.was.toFixed(2)}
                             </del>
                         </p>
                     ) : (
                         <p className="ps-product__price">
                             {'R'}
-                            {product.price && product.price}
+                            {product.price && product.price.toFixed(2)}
                         </p>
                     )}
                 </div>

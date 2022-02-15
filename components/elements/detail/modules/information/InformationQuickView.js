@@ -40,11 +40,11 @@ class InformationQuickView extends Component {
                 <div className="ps-product__meta">
                     <p>
                         Brand:
-                      
-                            <a className="ml-2 text-capitalize">
-                                {product.brandName && product.brandName}
-                            </a>
-                      
+
+                        <a className="ml-2 text-capitalize">
+                            {product.brandName && product.brandName}
+                        </a>
+
                     </p>
                     <div className="ps-product__rating">
                         <Rate
@@ -60,12 +60,12 @@ class InformationQuickView extends Component {
                 </div>
                 {product.was ? (
                     <h4 className="ps-product__price sale">
-                        R{product.price && product.price}{' '}
-                        <del>R{product.was && product.was}</del>
+                        R{product.price && product.price.toFixed(2)}{' '}
+                        <del>R{product.was && product.was.toFixed(2)}</del>
                     </h4>
                 ) : (
                     <h4 className="ps-product__price">
-                        R{product.price && product.price}
+                        R{product.price && product.price.toFixed(2)}
                     </h4>
                 )}
                 <div className="ps-product__desc">
