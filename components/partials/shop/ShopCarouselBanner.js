@@ -24,27 +24,27 @@ class ShopCarouselBanner extends Component {
                 <Slider {...carouselSetting} className="ps-carousel inside">
 
                     <a href='/vendor/creative-stamps' className="item">
-                        <img src="/static/img/1.png" alt="Suppl-i" />
+                        <img src="/static/img/banners/Banner 1.png" alt="Suppl-i" />
                     </a>
                     <a href='/vendor/beit-yosef-kosher-butchery'>    <div className="item">
-                        <img src="/static/img/2.png" alt="Suppl-i" />
+                        <img src="/static/img/banners/Banner 2.png" alt="Suppl-i" />
                     </div></a>
                     <a href='/vendor/origin-fitness'>    <div className="item">
-                        <img src="/static/img/3.png" alt="Suppl-i" />
+                        <img src="/static/img/banners/Banner 3.png" alt="Suppl-i" />
                     </div></a>
-                    <a href='/vendor/nano-life'>    <div className="item">
-                        <img src="/static/img/4.png" alt="Suppl-i" />
+                    <a href='/vendor/i-sandler-and-co'>    <div className="item">
+                        <img src="/static/img/banners/Banner 4.png" alt="Suppl-i" />
                     </div></a>
 
-                    <a href='/contact'>    <div className="item">
-                        <img src="/static/img/5.png" alt="Suppl-i" />
+                    <a href="/vendor/jack's-paint-highlands-north">    <div className="item">
+                        <img src="/static/img/banners/Banner 5.png" alt="Suppl-i" />
                     </div></a>
-                    <a href='vendor/i-sandler-and-co' className="item">
-                        <img src="/static/img/6.png" alt="Suppl-i" />
+                    <a href='vendor/the-super' className="item">
+                        <img src="/static/img/banners/Banner 6.png" alt="Suppl-i" />
                     </a>
-                    <a href='/vendor/afrigraphix'>    <div className="item">
+                    {/* <a href='/vendor/afrigraphix'>    <div className="item">
                         <img src="/static/img/7.png" alt="Suppl-i" />
-                    </div></a>
+                    </div></a> */}
                     <a href='https://live.insure/livecover/pa?schemecode=zivikele&referredby=suppli'>    <div className="item">
                         <img src="/static/img/45.png" alt="Suppl-i" />
                     </div></a>

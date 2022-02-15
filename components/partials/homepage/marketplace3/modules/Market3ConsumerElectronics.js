@@ -59,49 +59,57 @@ class Market3ConsumerElectronics extends Component {
                             {...carouselSetting}
                             className="ps-carousel inside">
                             <div className="item">
-                                <a href='/vendor/60cf5532a0347100171bdeb9'>
+                                <a href='/vendor/the-super'>
                                     <img
-                                        src="/static/img/1111.png"
+                                        src="/static/img/Banner 1.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
                             </div>
                             <div className="item">
-                                <a href="/vendor/60d05beaf76e6c0017f3f41f">
+                                <a href="/vendor/origin-fitness">
                                     <img
-                                        src="/static/img/2222.png"
+                                        src="/static/img/Banner 2.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
                             </div>
                             <div className="item">
-                                <a href='/vendor/60d074d1f76e6c0017f3f42f'>
+                                <a href='/vendor/live-streamz'>
                                     <img
-                                        src="/static/img/3333.png"
+                                        src="/static/img/Banner 3.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
                             </div>
                             <div className="item">
-                                <a href='/vendor/60cf3fb9a0347100171bde9f'>
+                                <a href='/vendor/creative-stamps'>
                                     <img
-                                        src="/static/img/4444.png"
+                                        src="/static/img/Banner 4.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
                             </div>
                             <div className="item">
-                                <a href='/vendor/60d335222395500017a7a74d'>
+                                <a href='/vendor/jack%27s-paint-highlands-north'>
+                                    <img
+                                        src="/static/img/Banner 5.png"
+                                        alt="Suppl-i"
+                                    />
+                                </a>
+                            </div>
+                            {/* <div className="item">
+                                <a href='/vendor/Banner 6'>
                                     <img
                                         src="/static/img/5555.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
-                            </div>
+                            </div> */}
                             <div className="item">
                                 <a href='https://live.insure/livecover/pa?schemecode=zivikele&referredby=suppli'>
                                     <img
-                                        src="/static/img/6666.png"
+                                        src="/static/img/Banner 6.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
