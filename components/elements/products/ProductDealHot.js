@@ -35,7 +35,7 @@ class ProductDealHot extends React.Component {
                                         {product.salePrice.toFixed(2)}
                                     </del>
                                     {'R'}
-                                    {product.pric.toFixed(2)e}
+                                    {product.price.toFixed(2)}
                                 </h4>
                             ) : (
                                 <h4 className="ps-product__price">
