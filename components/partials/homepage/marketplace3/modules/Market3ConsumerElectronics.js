@@ -91,7 +91,7 @@ class Market3ConsumerElectronics extends Component {
                                 </a>
                             </div>
                             <div className="item">
-                                <a href='/vendor/jack%27s-paint-highlands-north'>
+                                <a href='/vendor/paint-centre-hn'>
                                     <img
                                         src="/static/img/Banner 5.png"
                                         alt="Suppl-i"
