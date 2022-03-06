@@ -36,7 +36,7 @@ class ShopCarouselBanner extends Component {
                         <img src="/static/img/banners/Banner 4.png" alt="Suppl-i" />
                     </div></a>
 
-                    <a href="/vendor/jack's-paint-highlands-north">    <div className="item">
+                    <a href="/vendor/paint-centre-hn">    <div className="item">
                         <img src="/static/img/banners/Banner 5.png" alt="Suppl-i" />
                     </div></a>
                     <a href='vendor/the-super' className="item">

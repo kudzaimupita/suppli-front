@@ -73,12 +73,12 @@ class InformationBox extends Component {
                 </div>
                 {product.was && product.was ? (
                     <h4 className="ps-product__price sale">
-                        R{product.price && product.price}{' '}
+                        R{product.price && product.price?.toFixed(2)}{' '}
                         <del>R{product.was && product.was}</del>
                     </h4>
                 ) : (
                     <h4 className="ps-product__price">
-                        R{product.price && product.price}
+                        R{product.price && product.price?.toFixed(2)}
                     </h4>
                 )}
                 <div className="ps-product__desc">
@@ -98,7 +98,7 @@ class InformationBox extends Component {
                     <ul className="ps-list--dot">
                         {product.quickPoints &&
                             product.quickPoints.map((point) => (
-                                <li> {point}</li>
+                                <li className='text-xs'> {point}</li>
                             ))}
                     </ul>
                 </div>

@@ -23,7 +23,7 @@ const Success = () => {
     const orderId = useSelector((state) => state.createdOrder2.order?._doc?._id)
     const paymentId = useSelector((state) => state.createdOrder2.order?.id)
     const orderSuccess = useSelector((state) => state.orderSuccess.orderSuccess)
-    // const createdOrder = useSelector((state) => state.createdOrder2.order?)
+
     const droppa = async () => {
         await CreateExpressBooking(
             { name: currentOrder?.name, phone: currentOrder?.phone, address: currentOrder.address, code: currentOrder.code, provice: currentOrder.province },
@@ -68,9 +68,10 @@ const Success = () => {
         if (orderSuccess || code === 'confirmed') {
             dispatch(clearCart())
             if (code !== 'confirmed' && !orderUpdated) {
-                setOrderUpdated(true)
+                console.log(code, !orderUpdated)
+                // setOrderUpdated(true)
                 dispatch(confirmOrderAction({ plugId: plugId }, orderId))
-                setcallDroppa(true)
+                // setcallDroppa(true)
             }
             return (
                 <div className="">
@@ -132,6 +133,7 @@ const Success = () => {
                     const match1 = successPattern.test(data.result.code);
                     const match2 = manuallPattern.test(data.result.code);
 
+                    console.log(match1, match2);
                     if (match1 || match2) {
                         // localStorage.setItem('orderSuccess', 'true')
                         // dispatch(createOrderAction())
