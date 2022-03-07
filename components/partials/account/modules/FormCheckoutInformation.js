@@ -129,7 +129,7 @@ class FormCheckoutInformation extends Component {
         return (
             cartItems && cartItems.length === 0 ? <div className="sm:mx-auto sm:w-full sm:max-w-md mb-4"><Empty description={
                 <span>
-                    Opps, cart is is empty <a href="/">Start Shopping</a>
+                    Oops, cart is is empty<strong><a href="/">Start Shopping</a></strong>
                 </span>} image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
                 imageStyle={{
                     height: 350,
