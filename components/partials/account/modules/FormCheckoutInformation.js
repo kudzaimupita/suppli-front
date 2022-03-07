@@ -272,7 +272,7 @@ class FormCheckoutInformation extends Component {
                                                 <div className="flex justify-center items-center lg:justify-end lg:items-end w-full">
                                                     <div className="flex flex-col-reverse flex-col md:flex-row space-y-4 lg:space-y-0 md:space-x-6 w-full md:w-auto">
                                                         <button className="mt-4 lg:mt-0 w-full lg:w-auto py-4 px-8 border border-gray-800 bg-indigo-400 text-lg font-medium leading-5 text-white hover:text-gray-600">Back To Cart</button>
-                                                        {this.state.price && <button type="submit" className="mt-4 lg:mt-0 w-full lg:w-auto py-4 px-8 border border-gray-800 text-lg font-medium leading-5 bg-gray-800 text-white hover:bg-gray-900">      Pay {this.state.price && new Intl.NumberFormat("de-ZA", {
+                                                        {((this.state.price === 0) || this.state.price) && <button type="submit" className="mt-4 lg:mt-0 w-full lg:w-auto py-4 px-8 border border-gray-800 text-lg font-medium leading-5 bg-gray-800 text-white hover:bg-gray-900">      Pay {((this.state.price === 0) || this.state.price) && new Intl.NumberFormat("de-ZA", {
                                                             style: "currency",
                                                             currency: "ZAR",
                                                         }).format((this.state.price * 1) + (amount * 1))}</button>}
@@ -413,7 +413,8 @@ class FormCheckoutInformation extends Component {
                                                     }).format(amount)}</small>
                                                 </figcaption>
                                             </figure>
-                                            {this.state.price && <figure className="ps-block__shipping">
+
+                                            {((this.state.price === 0) || this.state.price) && <figure className="ps-block__shipping">
                                                 <h5>Shipping</h5>
                                                 {new Intl.NumberFormat("de-ZA", {
                                                     style: "currency",
@@ -423,7 +424,7 @@ class FormCheckoutInformation extends Component {
                                             </figure>}
                                             <figure className="ps-block__shipping">
                                                 <h2>Total</h2>
-                                                {this.state.price ? new Intl.NumberFormat("de-ZA", {
+                                                {((this.state.price === 0) || this.state.price) ? new Intl.NumberFormat("de-ZA", {
                                                     style: "currency",
                                                     currency: "ZAR",
                                                 }).format((this.state.price * 1) + (amount * 1)) : 'Calculated after shipping address is provided'}
