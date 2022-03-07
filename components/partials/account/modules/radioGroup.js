@@ -61,7 +61,7 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
         // }
     }
     useEffect(() => {
-        if (couponCode === 'FREE-D22M3') {
+        if (couponCode === 'FREE-D22M') {
             setIsCodeCorrect(true)
             setSelectedPrice(0)
         } else {
