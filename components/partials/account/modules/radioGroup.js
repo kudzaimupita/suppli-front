@@ -4,6 +4,7 @@ import '../../../tailwind.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { Radio } from 'antd';
 import '../../../tailwind.scss'
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/solid'
 // import { createCompleteBooking, CreateExpressBooking } from './modules/calculate'
 import { getOrder, setCurrentOrder, createOrderAction, setSelectedType } from '../../../../actions/orders';
 
@@ -85,6 +86,33 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
                         <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-200 text-gray-800 ${isCodeCorrect ? 'line-through' : ''}`} >
                             {"ZAR " + plans[0].price}
                         </span>
+                        {isCodeCorrect ? <div className="flex mt-2">
+                            <div className="flex-shrink-0">
+                                <CheckCircleIcon className="h-5 w-5 text-green-400" aria-hidden="true" />
+                            </div>
+                            <div className="ml-3">
+                                <h3 className="text-sm font-medium text-green-800">Discount Applied</h3>
+                                {/* <div className="mt-2 text-sm text-green-700">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam.</p>
+                            </div> */}
+
+                            </div>
+                        </div> : null}
+                        {!isCodeCorrect && couponCode.length > 9 ?
+                            <div className="flex mt-2">
+                                <div className="flex-shrink-0">
+                                    <XCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
+                                </div>
+                                <div className="ml-3">
+                                    <h3 className="text-sm font-medium text-red-800">Invalid Code.</h3>
+                                    {/* <div className="mt-2 text-sm text-green-700">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid pariatur, ipsum similique veniam.</p>
+                            </div> */}
+
+                                </div>
+                            </div> : null
+
+                        }
                     </label>
                 </div>
                 {/* 
@@ -112,7 +140,7 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
                     </label>
                 </div>} */}
             </div>
-            <div className="col-sm-6 mt-4">
+            <div className="col-sm-6 mt-2">
                 <div className="form-group">
 
                     <input
@@ -122,7 +150,7 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
                         placeholder="Free Delivery Coupon Code"
                         // value={this.state.name}
                         onChange={handleCouponCodeChange}
-                    />,
+                    />
 
 
                 </div>
