@@ -82,7 +82,7 @@ const Success = () => {
                             subTitle="Your order is currently being processed by our team. You can track it on your user dashboard. Thank you."
                             extra={[
                                 <a href='/'>       <div className="mb-4 flex w-full md:w-8/12 lg:w-full justify-center items-center pt-1 md:pt-4  xl:pt-8 space-y-6 md:space-y-8 flex-col">
-                                    <button className="py-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800  w-full text-base font-medium leading-4 text-white bg-gray-800 hover:bg-black">Track Your Order</button>
+                                    <button className="py-3 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800  w-full text-base font-medium leading-4 text-white bg-gray-800 hover:bg-black">Return To Home Page</button>
                                 </div></a>
                             ]}
                         />,

@@ -25,9 +25,9 @@ class Product extends Component {
         const { product } = this.props;
 
         if (product?.plug?.name) {
-            this.props.dispatch(addItem({ ...product, plug: product.plug.id }));
+            this.props.addItem({ ...product, plug: product.plug.id });
         } else {
-            this.props.dispatch(addItem(product));
+            this.props.addItem(product);
         }
 
     };
@@ -233,4 +233,4 @@ class Product extends Component {
 const mapStateToProps = (state) => {
     return state.setting;
 };
-export default connect(mapStateToProps, getCatergories)(Product);
+export default connect(mapStateToProps, { getCatergories, addItem })(Product);
