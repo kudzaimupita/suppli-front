@@ -90,20 +90,20 @@ class FurnitureCategories extends Component {
                                     this.props.vendors.length > 8 && (
                                         <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 ">
                                             <div
-                                                className="ps-block--category"
+                                                className="ps-block--category "
                                                 style={{
-                                                    backgroundColor: 'white',
+                                                    backgroundColor: '#594fa1',
                                                     borderRadius: '50px',
                                                 }}>
                                                 <Link href="/stores">
                                                     <a></a>
                                                 </Link>
 
-                                                <p>See All </p>
+                                                <p className="text-white">See All Stores </p>
                                                 <i
-                                                    class="fa fa-arrow-circle-right"
+                                                    class="fa fa-arrow-circle-right text-white"
                                                     style={{
-                                                        fontSize: '30px',
+                                                        fontSize: '60px',
                                                     }}></i>
                                             </div>
                                         </div>
