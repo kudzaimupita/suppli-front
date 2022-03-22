@@ -188,7 +188,7 @@ class VendorApplication extends React.Component {
             {
                 // website: this.state.catergory,
                 // catergory: this.state.catergory,
-                facebookLinnk: this.state.facebookLink,
+                facebookLink: this.state.facebookLink,
                 instagramLink: this.state.instagramLink,
 
                 logo: this.state.image1,
