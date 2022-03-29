@@ -26,6 +26,12 @@ class ShopCarouselBanner extends Component {
                     <a href='/vendor/creative-stamps' className="item">
                         <img src="/static/img/banners/Banner 1.png" alt="Suppl-i" />
                     </a>
+                    <div className="item">
+                        <img src="/static/img/Free Delivery.png" alt="Suppl-i" />
+                    </div>
+                    <a href='/vendor/clean-co'>    <div className="item">
+                        <img src="/static/img/Clean Co.png" alt="Suppl-i" />
+                    </div></a>
                     <a href='/vendor/beit-yosef-kosher-butchery'>    <div className="item">
                         <img src="/static/img/banners/Banner 2.png" alt="Suppl-i" />
                     </div></a>
@@ -42,12 +48,8 @@ class ShopCarouselBanner extends Component {
                     <a href='vendor/the-super' className="item">
                         <img src="/static/img/banners/Banner 6.png" alt="Suppl-i" />
                     </a>
-                    {/* <a href='/vendor/afrigraphix'>    <div className="item">
-                        <img src="/static/img/7.png" alt="Suppl-i" />
-                    </div></a> */}
-                    <a href='https://live.insure/livecover/pa?schemecode=zivikele&referredby=suppli'>    <div className="item">
-                        <img src="/static/img/45.png" alt="Suppl-i" />
-                    </div></a>
+
+
                 </Slider>
             </div>
         );
