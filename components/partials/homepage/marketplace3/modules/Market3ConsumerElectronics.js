@@ -74,14 +74,14 @@ class Market3ConsumerElectronics extends Component {
                                     />
                                 </a>
                             </div>
-                            <div className="item">
+                            {/* <div className="item">
                                 <a href='/vendor/live-streamz'>
                                     <img
                                         src="/static/img/Banner 3.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
-                            </div>
+                            </div> */}
                             <div className="item">
                                 <a href='/vendor/creative-stamps'>
                                     <img
@@ -98,21 +98,21 @@ class Market3ConsumerElectronics extends Component {
                                     />
                                 </a>
                             </div>
-                            <div className="item">
+                            {/* <div className="item">
                                 <a href='/vendor/Banner 6'>
                                     <img
-                                        src="/static/img/Clean Co.png"
+                                        src="/static/img/5555.png"
                                         alt="Suppl-i"
                                     />
                                 </a>
-                            </div>
+                            </div> */}
                             <div className="item">
-                                {/* <a href='https://live.insure/livecover/pa?schemecode=zivikele&referredby=suppli'> */}
-                                <img
-                                    src="/static/img/Free Delivery.png"
-                                    alt="Suppl-i"
-                                />
-                                {/* </a> */}
+                                <a href='https://live.insure/livecover/pa?schemecode=zivikele&referredby=suppli'>
+                                    <img
+                                        src="/static/img/Banner 6.png"
+                                        alt="Suppl-i"
+                                    />
+                                </a>
                             </div>
                         </Slider>
                         <div className="ps-block__products">
