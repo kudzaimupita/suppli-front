@@ -264,10 +264,10 @@ class FormCheckoutInformation extends Component {
                                                         {/* <Button type="primary" onClick={() => this.setState({ showLoginModal: true })}>
                                                             Sign In
                                                         </Button> */}
-                                                        <Modal title=" Quick Sign In" visible={this.state.showLoginModal} onCancel={() => this.setState({ showLoginModal: false })}>
+                                                        <Modal footer={null} title=" Quick Sign In" visible={this.state.showLoginModal} onCancel={() => this.setState({ showLoginModal: false })}>
                                                             <LoginModal setShowModal={this.setShowModal} />
                                                         </Modal>
-                                                        <Modal title=" Register" visible={this.state.showRegisterModal} onCancel={() => this.setState({ showRegisterModal: false })}>
+                                                        <Modal footer={null} title=" Register" visible={this.state.showRegisterModal} onCancel={() => this.setState({ showRegisterModal: false })}>
                                                             <RegisterModal setShowModal={this.setShowModal} />
                                                         </Modal>
                                                         {this.state.address && <div className="">
