@@ -144,7 +144,7 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
                 <div className="form-group">
 
                     <input
-                        required='true'
+                        // required='true'
                         className="form-control"
                         type="text"
                         placeholder="Free Delivery Coupon Code"

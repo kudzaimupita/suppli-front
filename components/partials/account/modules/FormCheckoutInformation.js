@@ -14,6 +14,9 @@ import '../../../tailwind.scss'
 import { Badge, Radio, Tooltip, Empty } from 'antd';
 import Radioo from './radioGroup'
 import { setAlert } from '../../../../actions/alert';
+import { Modal, Button } from 'antd';
+import LoginModal from '../LoginModal2';
+import RegisterModal from '../RegisterModal';
 const wrap = Badge.Ribbon
 class FormCheckoutInformation extends Component {
     constructor(props) {
@@ -29,7 +32,8 @@ class FormCheckoutInformation extends Component {
         type: '',
         code: '',
         province: '',
-
+        showLoginModal: false,
+        showRegisterModal: false,
     }
     componentDidMount() {
 
@@ -91,6 +95,10 @@ class FormCheckoutInformation extends Component {
     setSelectedPrice = (e) => {
         this.setState({ price: e })
     }
+    setShowModal = (e) => {
+        this.setState({ showLoginModal: e })
+    }
+
 
     handleSubmit = async (e) => {
         e.preventDefault()
@@ -155,7 +163,7 @@ class FormCheckoutInformation extends Component {
                     onSubmit={this.handleSubmit}>
                     <div className="ps-form__content ">
                         <div className="row" >
-                            {/* <Row></Row> */}
+
                             <Card className="col-xl-7 col-lg-7 col-md-12 col-sm-12" style={{ marginRight: '15px' }} style={{ backgroundColor: '#eeeeee' }}>
                                 <div className="ps-form__billing-info">
 
@@ -248,8 +256,20 @@ class FormCheckoutInformation extends Component {
                                                             />
                                                             </div>
                                                         </div>
-
-
+                                                        {!this.props.isLoggedIn && <><Button type="primary" onClick={() => this.setState({ showLoginModal: true })}>
+                                                            Sign In
+                                                        </Button>{"   "}<Button type="primary" className="mr-2" onClick={() => this.setState({ showRegisterModal: true })}>
+                                                                Register
+                                                            </Button></>}
+                                                        {/* <Button type="primary" onClick={() => this.setState({ showLoginModal: true })}>
+                                                            Sign In
+                                                        </Button> */}
+                                                        <Modal title=" Quick Sign In" visible={this.state.showLoginModal} onCancel={() => this.setState({ showLoginModal: false })}>
+                                                            <LoginModal setShowModal={this.setShowModal} />
+                                                        </Modal>
+                                                        <Modal title=" Register" visible={this.state.showRegisterModal} onCancel={() => this.setState({ showRegisterModal: false })}>
+                                                            <RegisterModal setShowModal={this.setShowModal} />
+                                                        </Modal>
                                                         {this.state.address && <div className="">
                                                             <Radioo setSelectedType={this.handleSelectedType} setSelectedPrice={this.setSelectedPrice} prices={this.state.prices} />
                                                             {/* <div className="ps-checkbox">

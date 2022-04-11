@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
-import { register } from '../../../actions/auth';
-
+// import { login } from '../../../store/auth/action';
 import { login } from '../../../actions/auth';
-// import { LoadingOutlined } from '@ant-design/icons';
-import { Form, Input, Spin } from 'antd';
+
+import { Form, Input, notification, Spin } from 'antd';
 import { connect } from 'react-redux';
 import { setAlert } from '../../../actions/alert';
 import { LoadingOutlined } from '@ant-design/icons';
 const antIcon = <LoadingOutlined style={{ fontSize: 24, color: 'white' }} spin />
-class Register extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+class Login extends Component {
     state = {
         password: '',
         email: '',
-        passwordConfirm: '',
-        name: '',
     };
 
+    formData = {
+        email: this.state.email,
+        password: this.state.password,
+    };
     handlePasswordChange = (e) => {
         this.setState({ password: e.target.value });
     };
@@ -29,13 +26,7 @@ class Register extends Component {
     handleEmailChange = (e) => {
         this.setState({ email: e.target.value });
     };
-    handleNameChange = (e) => {
-        this.setState({ name: e.target.value });
-    };
 
-    handlePasswordConfirmChange = (e) => {
-        this.setState({ passwordConfirm: e.target.value });
-    };
 
 
     handleFeatureWillUpdate(e) {
@@ -47,16 +38,13 @@ class Register extends Component {
         });
     }
 
-    handleRegisterSubmit = (e) => {
-        if (!this.state.email || !this.state.name || !this.state.password || !this.state.passwordConfirm) return this.props.setAlert('All fields are required', 'warning')
-        const formData = {
-            email: this.state.email,
-            password: this.state.password,
-            name: this.state.name,
-            passwordConfirm: this.state.passwordConfirm,
-        };
-        this.props.register(formData);
-
+    handleLoginSubmit = (e) => {
+        this.props.dispatch(
+            login({
+                email: this.state.email,
+                password: this.state.password,
+            })
+        );
         this.props.setShowModal(false)
         e.preventDefault();
         // this.props.form.validateFields((err, values) => {
@@ -69,41 +57,21 @@ class Register extends Component {
     };
 
     render() {
-        const { getFieldDecorator } = this.props.form;
+        console.log(this.state);
 
+        const { getFieldDecorator } = this.props.form;
         return (
 
             <Form
 
-                onSubmit={this.handleSubmit}>
+                onSubmit={this.handleLoginSubmit}>
 
-                <div className="ps-tab active" id="register">
+                <div className="ps-tab active" id="sign-in">
                     <div className="ps-form__content">
-                        <h5>Vendor Login Credentials</h5>
+                        <h5>Log In Your Account</h5>
                         <div className="form-group">
                             <Form.Item>
-                                {getFieldDecorator('name', {
-                                    rules: [
-                                        {
-                                            required: true,
-                                            message:
-                                                'Please input your name!',
-                                        },
-                                    ],
-                                })(
-                                    <Input
-                                        className="form-control"
-                                        type="name"
-                                        placeholder="name"
-                                        value={this.state.name}
-                                        onChange={this.handleNameChange}
-                                    />
-                                )}
-                            </Form.Item>
-                        </div>
-                        <div className="form-group form-forgot">
-                            <Form.Item>
-                                {getFieldDecorator('email', {
+                                {getFieldDecorator('username', {
                                     rules: [
                                         {
                                             required: true,
@@ -114,8 +82,10 @@ class Register extends Component {
                                 })(
                                     <Input
                                         className="form-control"
-                                        type="email"
-                                        placeholder="email"
+                                        type="text"
+                                        placeholder="Email address"
+                                        required
+                                        name="email"
                                         value={this.state.email}
                                         onChange={
                                             this.handleEmailChange
@@ -138,7 +108,9 @@ class Register extends Component {
                                     <Input
                                         className="form-control"
                                         type="password"
-                                        placeholder="Password"
+                                        placeholder="Password..."
+                                        required
+                                        name="password"
                                         value={this.state.password}
                                         onChange={
                                             this.handlePasswordChange
@@ -147,66 +119,52 @@ class Register extends Component {
                                 )}
                             </Form.Item>
                         </div>
-                        <div className="form-group form-forgot">
-                            <Form.Item>
-                                {getFieldDecorator('passwordConfirm', {
-                                    rules: [
-                                        {
-                                            required: true,
-                                            message:
-                                                'Please type the password confirm!',
-                                        },
-                                    ],
-                                })(
-                                    <Input
-                                        className="form-control"
-                                        type="password"
-                                        placeholder="Password Confirm"
-                                        value={
-                                            this.state.passwordConfirm
-                                        }
-                                        onChange={
-                                            this
-                                                .handlePasswordConfirmChange
-                                        }
-                                    />
-                                )}
-                            </Form.Item>
-                        </div>
-                        <div className="form-group ">
+
+                        <div className="form-group">
                             <button
+                                onClick={this.handleLoginSubmit}
                                 style={{
                                     backgroundColor: '#62c4b0',
                                     color: 'white',
                                 }}
-                                onClick={(e) =>
-                                    this.handleRegisterSubmit(e)
-                                }
+                                // type="submit1"
                                 className="ps-btn ps-btn--fullwidth">
-                                {this.props.loading && <Spin indicator={antIcon} />}     Register
+                                {this.props.loading && <Spin indicator={antIcon} />}   Login
                             </button>
                         </div>
                     </div>
                     <div className="ps-form__footer">
-                        {/* <p>Connect with:</p>
-                                <ul className="ps-list--social">
+                        {/* <p>Connect with:</p> */}
+                        {/* <ul className="ps-list--social">
                                     <li>
-                                        <a className="facebook" href="#">
+                                        <a
+                                            className="facebook"
+                                            href="#"
+                                            onClick={e => this.handleFeatureWillUpdate(e)}>
                                             <i className="fa fa-facebook"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a className="google" href="#">
+                                        <a
+                                            className="google"
+                                            href="#"
+                                            onClick={e => this.handleFeatureWillUpdate(e)}>
                                             <i className="fa fa-google-plus"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a className="twitter" href="#">
+                                        <a
+                                            className="twitter"
+                                            href="#"
+                                            onClick={e => this.handleFeatureWillUpdate(e)}>
                                             <i className="fa fa-twitter"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a className="instagram" href="#">
+                                        <a
+                                            className="instagram"
+                                            href="#"
+                                            onClick={e => this.handleFeatureWillUpdate(e)}>
                                             <i className="fa fa-instagram"></i>
                                         </a>
                                     </li>
@@ -215,12 +173,13 @@ class Register extends Component {
                 </div>
             </Form>
 
+
         );
     }
 }
-const WrapFormRegister = Form.create()(Register);
+const WrapFormLogin = Form.create()(Login);
 const mapStateToProps = (state) => ({
     isLoggedIn: state.auth.isLoggedIn,
     loading: state.auth1.loading
 });
-export default connect(mapStateToProps, { register, login, setAlert })(WrapFormRegister);
+export default connect(mapStateToProps)(WrapFormLogin);

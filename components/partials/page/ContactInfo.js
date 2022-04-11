@@ -14,7 +14,7 @@ const ContactInfo = () => (
                             <h4>Contact Directly</h4>
                             <p>
                                 <a href="mailto:contact@Suppl-i.com">
-                                    info@suppl-i.com
+                                    contact@suppl-i.com
                                 </a>
                                 <span>(+27) 66 517 8403</span>
                             </p>
