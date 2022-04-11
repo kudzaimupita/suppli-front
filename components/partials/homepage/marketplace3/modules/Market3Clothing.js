@@ -149,7 +149,7 @@ class Market3ConsumerElectronics extends Component {
                             </Tabs>
                         </div>
                     </div>
-                    <div className="ps-block__right">
+                    {/* <div className="ps-block__right">
                         <figure>
                             <figcaption>Recommended For You</figcaption>
                             {data.map((product, index) => {
@@ -163,7 +163,7 @@ class Market3ConsumerElectronics extends Component {
                                 }
                             })}
                         </figure>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

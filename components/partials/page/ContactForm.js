@@ -273,7 +273,7 @@ class Login extends Component {
                                             </a>
                                             <span className="ml-3">@supplishopping</span>
                                         </dd>
-                                        <dd className="flex text-base text-indigo-100">
+                                        {/* <dd className="flex text-base text-indigo-100">
                                             <a className="text-indigo-200 hover:text-indigo-100" href="#">
                                                 <span className="sr-only">Twitter</span>
                                                 <svg
@@ -292,13 +292,13 @@ class Login extends Component {
                                                 </svg>
                                             </a>
                                             <span className="ml-3">@supplishopping</span>
-                                        </dd>
+                                        </dd> */}
                                         <dt>
                                             <span className="sr-only">Email</span>
                                         </dt>
                                         <dd className="flex text-base text-indigo-100">
                                             <MailIcon className="flex-shrink-0 w-6 h-6 text-indigo-200" aria-hidden="true" />
-                                            <span className="ml-3">contact@suppl-i.com</span>
+                                            <span className="ml-3">info@suppl-i.com</span>
                                         </dd>
                                     </dl>
 

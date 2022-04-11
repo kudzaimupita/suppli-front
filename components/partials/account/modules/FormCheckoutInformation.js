@@ -240,7 +240,7 @@ class FormCheckoutInformation extends Component {
                                                                     </Form.Item>
                                                                 </div>
                                                             </div>
-                                                            <div className="col-sm-12">  <Autocomplete
+                                                            {this.props.isLoggedIn && <div className="col-sm-12">  <Autocomplete
                                                                 required='true'
                                                                 apiKey='AIzaSyDdkpFLrMBAYzzMZg699Yr-lQJ1ksyfN2Q'
                                                                 className="form-control"
@@ -254,9 +254,13 @@ class FormCheckoutInformation extends Component {
                                                                 }}
 
                                                             />
-                                                            </div>
+                                                            </div>}
+
                                                         </div>
-                                                        {!this.props.isLoggedIn && <><Button type="primary" onClick={() => this.setState({ showLoginModal: true })}>
+                                                        {!this.props.isLoggedIn && <div className="">Please Sign To Continue
+                                                        </div>}
+
+                                                        {!this.props.isLoggedIn && <>                                    <Button type="primary" onClick={() => this.setState({ showLoginModal: true })}>
                                                             Sign In
                                                         </Button>{"   "}<Button type="primary" className="mr-2" onClick={() => this.setState({ showRegisterModal: true })}>
                                                                 Register

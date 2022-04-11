@@ -13,8 +13,8 @@ const ContactInfo = () => (
                         <div className="ps-block--contact-info">
                             <h4>Contact Directly</h4>
                             <p>
-                                <a href="mailto:contact@Suppl-i.com">
-                                    contact@suppl-i.com
+                                <a href="mailto:info@Suppl-i.com">
+                                    info@suppl-i.com
                                 </a>
                                 <span>(+27) 66 517 8403</span>
                             </p>

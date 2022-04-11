@@ -45,13 +45,13 @@ class Market3ConsumerElectronics extends Component {
                     <h3>
                         <i className="icon-laundry"></i><strong> Recommended</strong>
                     </h3>
-                    <ul>
+                    {/* <ul>
                         <li>
                             <Link href="/new-arrivals">
                                 <a>New Arrivals</a>
                             </Link>
                         </li>
-                    </ul>
+                    </ul> */}
                 </div>
                 <div className="ps-block__content">
                     <div className="ps-block__left">
