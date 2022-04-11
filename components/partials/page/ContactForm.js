@@ -298,7 +298,7 @@ class Login extends Component {
                                         </dt>
                                         <dd className="flex text-base text-indigo-100">
                                             <MailIcon className="flex-shrink-0 w-6 h-6 text-indigo-200" aria-hidden="true" />
-                                            <span className="ml-3">info@suppl-i.com</span>
+                                            <span className="ml-3">contact@suppl-i.com</span>
                                         </dd>
                                     </dl>
 

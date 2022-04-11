@@ -5,7 +5,7 @@ const MarketPlace3Promotions = () => (
     <div className="ps-home-promotions">
         <Link href="/vendor/suggest-a-vendor">
             <a>
-                <img src="/static/img/staticBanner.png" alt="Suppl-i" />
+                <img src="/static/img/New Banner.png" alt="Suppl-i" />
             </a>
         </Link>
     </div>

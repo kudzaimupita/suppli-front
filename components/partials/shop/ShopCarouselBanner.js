@@ -26,9 +26,9 @@ class ShopCarouselBanner extends Component {
                     <a href='/vendor/creative-stamps' className="item">
                         <img src="/static/img/banners/Banner 1.png" alt="Suppl-i" />
                     </a>
-                    <div className="item">
+                    {/* <div className="item">
                         <img src="/static/img/delivery banner.png" alt="Suppl-i" />
-                    </div>
+                    </div> */}
                     <a href='/vendor/clean-co'>    <div className="item">
                         <img src="/static/img/Clean Co.png" alt="Suppl-i" />
                     </div></a>
