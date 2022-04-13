@@ -58,7 +58,7 @@ class Register extends Component {
         // this.props.setShowModal(false)
         this.props.register(formData);
 
-        this.props.setShowModal(false)
+        // this.props.setShowModal(false)
         e.preventDefault();
         // this.props.form.validateFields((err, values) => {
         //     if (!err) {

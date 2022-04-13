@@ -13,21 +13,21 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
     const dispatch = useDispatch()
     const plans = [
         {
-            price: 60 || 0, name: 'Budget',
+            price: 75 || 0, name: 'Budget',
             ram: '4 Day Delivery',
             cpus: '6 CPUs',
-            disk: '160 GB SSD disk',
+            disk: '175 GB SSD disk',
             type: 'BUDGET_COURIER'
         },
         {
-            price: 60 || 0, name: 'Express',
+            price: 75 || 0, name: 'Express',
             ram: 'Fast Shipping, 1-2 days',
             cpus: '8 CPUs',
             disk: '512 GB SSD disk',
             type: 'EXPRESS_COURIER'
         },
         {
-            price: 60 || 0, name: 'Dash (Same Day Delivery)',
+            price: 75 || 0, name: 'Dash (Same Day Delivery)',
             ram: 'Limited to Gauteng/Western Cape',
             cpus: '12 CPUs',
             disk: '1024 GB SSD disk',
@@ -35,7 +35,7 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
         },
     ]
     useEffect(() => {
-        setSelectedPrice(60)
+        setSelectedPrice(75)
         setSelectedType('BUDGET_COURIER')
     }, [prices])
     const handleSelected = async (e) => {
@@ -47,7 +47,7 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
         setSelectedType(e.type)
         console.log(e)
         setSelected(e)
-        setSelectedPrice(60)
+        setSelectedPrice(75)
         console.log(e)
     }
     const [defaultSelect, setDefaultSelect] = useState(true)
@@ -62,12 +62,12 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
         // }
     }
     useEffect(() => {
-        if (couponCode === 'FREE-D22M') {
+        if (couponCode === 'nocouponc--') {
             setIsCodeCorrect(true)
             setSelectedPrice(0)
         } else {
             setIsCodeCorrect(false)
-            setSelectedPrice(60)
+            setSelectedPrice(75)
         }
     }, [couponCode])
 
@@ -82,7 +82,7 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
                         <div className="check-icon hidden border-4 border-gray-100 bg-gray-800 rounded-full w-full h-full z-1"></div>
                     </div>
                     <label id="label2" className="text-base leading-normal md:leading-4 text-gray-800">
-                        Express Delivery(Same day)   {" "}
+                        Standard Delivery  {" "}
                         <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-200 text-gray-800 ${isCodeCorrect ? 'line-through' : ''}`} >
                             {"ZAR " + plans[0].price}
                         </span>

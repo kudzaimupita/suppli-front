@@ -17,6 +17,7 @@ import { setAlert } from '../../../../actions/alert';
 import { Modal, Button } from 'antd';
 import LoginModal from '../LoginModal2';
 import RegisterModal from '../RegisterModal2';
+import Router from 'next/router';
 const wrap = Badge.Ribbon
 class FormCheckoutInformation extends Component {
     constructor(props) {
@@ -257,7 +258,7 @@ class FormCheckoutInformation extends Component {
                                                             </div>}
 
                                                         </div>
-                                                        {!this.props.isLoggedIn && <div className="">Please Sign To Continue
+                                                        {!this.props.isLoggedIn && <div className="">Please Sign In or Register To Continue
                                                         </div>}
 
                                                         {!this.props.isLoggedIn && <>                                    <Button type="primary" onClick={() => this.setState({ showLoginModal: true })}>
@@ -295,7 +296,7 @@ class FormCheckoutInformation extends Component {
 
                                                 <div className="flex justify-center items-center lg:justify-end lg:items-end w-full">
                                                     <div className="flex flex-col-reverse flex-col md:flex-row space-y-4 lg:space-y-0 md:space-x-6 w-full md:w-auto">
-                                                        <button className="mt-4 lg:mt-0 w-full lg:w-auto py-4 px-8 border border-gray-800 bg-indigo-400 text-lg font-medium leading-5 text-white hover:text-gray-600">Back To Cart</button>
+                                                        <button onClick={() => Router.push('/account/shopping-cart')} className="mt-4 lg:mt-0 w-full lg:w-auto py-4 px-8 border border-gray-800 bg-indigo-400 text-lg font-medium leading-5 text-white hover:text-gray-600">Back To Cart</button>
                                                         {((this.state.price === 0) || this.state.price) && <button type="submit" className="mt-4 lg:mt-0 w-full lg:w-auto py-4 px-8 border border-gray-800 text-lg font-medium leading-5 bg-gray-800 text-white hover:bg-gray-900">      Pay {((this.state.price === 0) || this.state.price) && new Intl.NumberFormat("de-ZA", {
                                                             style: "currency",
                                                             currency: "ZAR",

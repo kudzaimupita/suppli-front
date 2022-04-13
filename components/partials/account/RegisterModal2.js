@@ -55,7 +55,7 @@ class Register extends Component {
             name: this.state.name,
             passwordConfirm: this.state.passwordConfirm,
         };
-        this.props.setShowModal(false)
+        // this.props.setShowModal(false)
         this.props.register(formData);
 
         this.props.setShowModal(false)
