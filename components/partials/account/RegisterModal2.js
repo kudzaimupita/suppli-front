@@ -55,7 +55,7 @@ class Register extends Component {
             name: this.state.name,
             passwordConfirm: this.state.passwordConfirm,
         };
-        // this.props.setShowModal(false)
+        this.props.setShowModal(false)
         this.props.register(formData);
 
         this.props.setShowModal(false)
@@ -174,7 +174,7 @@ class Register extends Component {
                                 )}
                             </Form.Item>
                         </div>
-                        <div className="form-group submit">
+                        <div className="form-group ">
                             <button
                                 style={{
                                     backgroundColor: '#62c4b0',
@@ -183,7 +183,6 @@ class Register extends Component {
                                 onClick={(e) =>
                                     this.handleRegisterSubmit(e)
                                 }
-                                type="submit"
                                 className="ps-btn ps-btn--fullwidth">
                                 {this.props.loading && <Spin indicator={antIcon} />}     Register
                             </button>

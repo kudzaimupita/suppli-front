@@ -27,7 +27,7 @@ export default function Example({ prices, setSelectedPrice, setSelectedType }) {
             type: 'EXPRESS_COURIER'
         },
         {
-            price: prices.dashAmount || 0, name: 'Dash (Same Day Delivery)',
+            price: 60 || 0, name: 'Dash (Same Day Delivery)',
             ram: 'Limited to Gauteng/Western Cape',
             cpus: '12 CPUs',
             disk: '1024 GB SSD disk',

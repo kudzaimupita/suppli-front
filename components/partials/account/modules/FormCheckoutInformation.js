@@ -16,7 +16,7 @@ import Radioo from './radioGroup'
 import { setAlert } from '../../../../actions/alert';
 import { Modal, Button } from 'antd';
 import LoginModal from '../LoginModal2';
-import RegisterModal from '../RegisterModal';
+import RegisterModal from '../RegisterModal2';
 const wrap = Badge.Ribbon
 class FormCheckoutInformation extends Component {
     constructor(props) {
