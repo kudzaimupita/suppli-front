@@ -7,6 +7,7 @@ import PanelCartMobile from '../panel/PanelCartMobile';
 import PanelSearch from '../panel/PanelSearch';
 import PanelCategories from '../panel/PanelCategories';
 import { getCatergories } from '../../../actions/catergories'
+import { Badge, Avatar } from 'antd';
 class NavigationList extends Component {
     constructor(props) {
         super(props);
@@ -134,8 +135,16 @@ class NavigationList extends Component {
                         className={`navigation__item ${cartDrawer === true ? 'active' : ''
                             }`}
                         onClick={this.handleShowCartDrawer}>
-                        <i className="icon-bag2"></i>
-                        <span> Cart</span>
+                        <a className="header__extra" href="#">
+                            {/* <i className="icon-bag2" style={{ color: 'black' }}></i> */}
+                            {/* <span>
+                                <i>{this.props.cart.cartTotal ? this.props.cart.cartTotal : 0}</i>
+                            </span> */}
+                            <Badge count={this.props.cart.cartTotal}>
+                                <i className="icon-bag2" style={{ color: 'black' }}></i>
+                            </Badge>
+                        </a>
+                        {/* <span> Cart</span> */}
                     </a>
                 </div>
             </div>
@@ -145,7 +154,7 @@ class NavigationList extends Component {
 
 const mapStateToProps = (state) => ({
     vendors: state.allVendors.vendors,
-    // vendorsLoading: state.allVendors.loading,
+    cart: state.cart,
     // productsLoading: state.popularProducts.loading,
     catergories: state.catergories.catergories,
 });
